@@ -440,9 +440,9 @@
   <table class="stats-table">
     <thead><tr><th data-i18n="th-month">Tháng</th><th>KH</th><th data-i18n="th-inc">TH (Increasing)</th><th data-i18n="th-lk">Lũy Kế TH</th></tr></thead>
     <tbody><tr><td>T1</td><td class="pos">1.554</td><td class="neg">-467</td><td class="neg">-467</td></tr><tr><td>T2</td><td class="neg">-1.137</td><td class="neg">-256</td><td class="neg">-723</td></tr><tr><td>T3</td><td class="pos">4.422</td><td class="pos">6.203</td><td class="pos">5.480</td></tr><tr><td>T4</td><td class="pos">559</td><td class="pos">533</td><td class="pos">6.013</td></tr><tr><td>T5</td><td class="pos">3.332</td><td class="pos">2.893</td><td class="pos">8.906</td></tr><tr><td>T6</td><td class="pos">825</td><td class="pos">1.903</td><td class="pos">10.809</td></tr><tr><td>T7 (*)</td><td class="pos">2.247</td><td class="pos">453</td><td class="pos">11.262</td></tr></tbody>
-    <tfoot><tr><td>LK T1–T7</td><td class="pos">+11.802</td><td class="pos">+11.262</td><td class="pos">11.262</td></tr></tfoot>
+    <tfoot><tr><td data-i18n="tfoot-lk">LK T1–T7</td><td class="pos">+11.802</td><td class="pos">+11.262</td><td class="pos">11.262</td></tr></tfoot>
   </table>
-  <div class="note-box">
+  <div class="note-box" data-i18n="note1-box">
     <strong>📌 Ghi chú:</strong><br>
     • <strong>KH</strong>: Kế hoạch Increasing 15C3D (sheet CT2026)<br>
     • <strong>TH</strong>: Thực hiện – chênh lệch 15C3D N vs N-1 cùng kỳ<br>
@@ -517,9 +517,9 @@
   <table class="stats-table yellow-header">
     <thead><tr><th data-i18n="th-month">Tháng</th><th>REG_N</th><th>REG_N_1</th><th data-i18n="th-diff">Chênh lệch</th></tr></thead>
     <tbody><tr><td>T1</td><td>106.054</td><td>106.602</td><td class="neg">-548</td></tr><tr><td>T2</td><td>107.981</td><td>102.552</td><td class="pos">+5.429</td></tr><tr><td>T3</td><td>110.446</td><td>109.279</td><td class="pos">+1.167</td></tr><tr><td>T4</td><td>112.819</td><td>111.380</td><td class="pos">+1.439</td></tr><tr><td>T5</td><td>116.549</td><td>113.184</td><td class="pos">+3.365</td></tr><tr><td>T6</td><td>118.304</td><td>117.068</td><td class="pos">+1.236</td></tr><tr><td>T7 *</td><td>118.278</td><td>117.308</td><td class="pos">+970</td></tr></tbody>
-    <tfoot><tr><td>T7 vs T1</td><td>+12.224</td><td>+10.706</td><td>▲ Tăng</td></tr></tfoot>
+    <tfoot><tr><td>T7 vs T1</td><td>+12.224</td><td>+10.706</td><td data-i18n="tfoot-increase">▲ Tăng</td></tr></tfoot>
   </table>
-  <div class="note-box yellow">
+  <div class="note-box yellow" data-i18n="note2-box">
     <strong>📌 Ghi chú nguồn số liệu:</strong><br>
     • <strong>REG_N</strong>: Kết quả tháng N<br>
     • <strong>REG_N_1</strong>: Kết quả tháng N-1<br>
@@ -596,7 +596,7 @@
     <tbody><tr><td>T1</td><td>2.809.731</td><td>2.837.293</td><td class="neg">-27.562</td></tr><tr><td>T2</td><td>2.730.577</td><td>2.809.564</td><td class="neg">-78.987</td></tr><tr><td>T3</td><td>2.963.535</td><td>2.730.467</td><td class="pos">+233.068</td></tr><tr><td>T4</td><td>2.936.864</td><td>2.963.595</td><td class="neg">-26.731</td></tr><tr><td>T5</td><td>3.034.710</td><td>2.936.904</td><td class="pos">+97.806</td></tr><tr><td>T6</td><td>3.077.268</td><td>3.054.748</td><td class="pos">+22.520</td></tr><tr><td>T7 *</td><td>388.592</td><td>379.757</td><td class="pos">+8.835</td></tr></tbody>
     <tfoot><tr><td>T1–T7</td><td>17.941.277</td><td>17.712.328</td><td class="pos">+228.949</td></tr></tfoot>
   </table>
-  <div class="note-box" style="border-color:#7ecfa0;background:#f0fdf4;">
+  <div class="note-box" style="border-color:#7ecfa0;background:#f0fdf4;" data-i18n="note3-box">
     <strong>📌 Ghi chú nguồn số liệu:</strong><br>
     • <strong>Rev N</strong>: Revenue tháng N (PEN)<br>
     • <strong>Rev N-1</strong>: Revenue tháng N-1 (PEN)<br>
@@ -643,38 +643,38 @@
     <span class="leg-yellow" data-i18n="leg-yellow">🟡 Nghiêm trọng: -50 ≤ C &lt; -100</span>
     <span class="leg-green" data-i18n="leg-green">🟢 Cảnh báo: -20 ≤ C &lt; -50</span>
     <span class="leg-none" data-i18n="leg-none">Theo dõi: C &lt; -20</span>
-    <span style="color:#6a90a8;font-size:0.73rem;align-self:center;">Cột F: sẽ cập nhật sau &nbsp;|&nbsp; (*) T7 số liệu đến ngày 05/07/2026</span>
+    <span style="color:#6a90a8;font-size:0.73rem;align-self:center;" data-i18n="bts-note">Cột F: sẽ cập nhật sau &nbsp;|&nbsp; (*) T7 số liệu đến ngày 05/07/2026</span>
   </div>
 
   <div class="week-tabs">
   <div class="week-tab-btn" onclick="showBtsWeek('bts-w3', {&quot;total&quot;:69,&quot;red&quot;:1,&quot;yellow&quot;:6,&quot;green&quot;:23,&quot;none&quot;:39})">
-    <div class="wtb-title">Tuần 3 tháng 6</div>
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 3 <span data-i18n="wtb-month">tháng</span> 6</div>
     <div class="wtb-range">14/6 → 21/6</div>
-    <div class="wtb-count">69 trạm</div>
+    <div class="wtb-count">69 <span data-i18n="wtb-unit">trạm</span></div>
   </div>
   <div class="week-tab-btn" onclick="showBtsWeek('bts-w4', {&quot;total&quot;:59,&quot;red&quot;:4,&quot;yellow&quot;:6,&quot;green&quot;:22,&quot;none&quot;:27})">
-    <div class="wtb-title">Tuần 4 tháng 6</div>
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 4 <span data-i18n="wtb-month">tháng</span> 6</div>
     <div class="wtb-range">22/6 → 28/6</div>
-    <div class="wtb-count">59 trạm</div>
+    <div class="wtb-count">59 <span data-i18n="wtb-unit">trạm</span></div>
   </div>
   <div class="week-tab-btn active" onclick="showBtsWeek('bts-w5', {&quot;total&quot;:71,&quot;red&quot;:2,&quot;yellow&quot;:6,&quot;green&quot;:23,&quot;none&quot;:40})">
-    <div class="wtb-title">Tuần 1 tháng 7</div>
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 1 <span data-i18n="wtb-month">tháng</span> 7</div>
     <div class="wtb-range">29/6 → 5/7</div>
-    <div class="wtb-count">71 trạm</div>
+    <div class="wtb-count">71 <span data-i18n="wtb-unit">trạm</span></div>
   </div>
   <div class="week-tab-btn" onclick="showBtsWeek('bts-w6', {})">
-    <div class="wtb-title">Tuần 2 tháng 7</div>
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 2 <span data-i18n="wtb-month">tháng</span> 7</div>
     <div class="wtb-range">6/7 → 12/7</div>
-    <div class="wtb-count">Chưa có dữ liệu</div>
+    <div class="wtb-count" data-i18n="wtb-nodata">Chưa có dữ liệu</div>
   </div>
   <div class="week-tab-btn" onclick="showBtsWeek('bts-w7', {})">
-    <div class="wtb-title">Tuần 3 tháng 7</div>
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 3 <span data-i18n="wtb-month">tháng</span> 7</div>
     <div class="wtb-range">13/7 → 19/7</div>
-    <div class="wtb-count">Chưa có dữ liệu</div>
+    <div class="wtb-count" data-i18n="wtb-nodata">Chưa có dữ liệu</div>
   </div>
 </div>
 <div id="bts-w3" class="week-panel" style="display:none">
-  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T6 Tăng/Giảm (đến 28/06)</th><th>T5 Tăng/Giảm</th><th>Thuê bao T6</th><th>Cell*h</th><th>Mức Độ Cảnh Báo</th></tr></thead><tbody id="btsBody-w3">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th data-i18n="th-stt">STT</th><th data-i18n="th-site">Tên Trạm</th><th>T6 <span data-i18n="th-var">Tăng/Giảm</span> (<span data-i18n="th-asof">đến</span> 28/06)</th><th>T5 <span data-i18n="th-var">Tăng/Giảm</span></th><th><span data-i18n="th-subs">Thuê bao</span> T6</th><th>Cell*h</th><th data-i18n="th-warnlevel">Mức Độ Cảnh Báo</th></tr></thead><tbody id="btsBody-w3">
 <tr class="sev-red"><td class="tc">1</td><td class="site-name">UCA0142</td><td class="num neg-v">-311</td><td class="num neg-v">-94</td><td class="num">1.106</td><td class="num">136.94h</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
 <tr class="sev-yellow"><td class="tc">2</td><td class="site-name">UCA0012</td><td class="num neg-v">-81</td><td class="num pos-v">+64</td><td class="num">1.079</td><td class="num">12.02h</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
 <tr class="sev-yellow"><td class="tc">3</td><td class="site-name">UCA0030</td><td class="num neg-v">-74</td><td class="num neg-v">-3</td><td class="num">913</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
@@ -747,7 +747,7 @@
 </tbody></table></div>
 </div>
 <div id="bts-w4" class="week-panel" style="display:none">
-  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T6 Tăng/Giảm (đến 28/06)</th><th>T5 Tăng/Giảm</th><th>Thuê bao T6</th><th>Cell*h</th><th>Mức Độ Cảnh Báo</th></tr></thead><tbody id="btsBody-w4">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th data-i18n="th-stt">STT</th><th data-i18n="th-site">Tên Trạm</th><th>T6 <span data-i18n="th-var">Tăng/Giảm</span> (<span data-i18n="th-asof">đến</span> 28/06)</th><th>T5 <span data-i18n="th-var">Tăng/Giảm</span></th><th><span data-i18n="th-subs">Thuê bao</span> T6</th><th>Cell*h</th><th data-i18n="th-warnlevel">Mức Độ Cảnh Báo</th></tr></thead><tbody id="btsBody-w4">
 <tr class="sev-red"><td class="tc">1</td><td class="site-name">UCA0044</td><td class="num neg-v">-152</td><td class="num neg-v">-27</td><td class="num">1.279</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
 <tr class="sev-red"><td class="tc">2</td><td class="site-name">UCA0154</td><td class="num neg-v">-147</td><td class="num pos-v">+78</td><td class="num">673</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
 <tr class="sev-red"><td class="tc">3</td><td class="site-name">UCA0005</td><td class="num neg-v">-131</td><td class="num neg-v">-48</td><td class="num">805</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
@@ -810,7 +810,7 @@
 </tbody></table></div>
 </div>
 <div id="bts-w5" class="week-panel">
-  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T7 Tăng/Giảm (đến 05/07)</th><th>T6 Tăng/Giảm</th><th>Thuê bao T7</th><th>Cell*h</th><th>Mức Độ Cảnh Báo</th></tr></thead><tbody id="btsBody">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th data-i18n="th-stt">STT</th><th data-i18n="th-site">Tên Trạm</th><th>T7 <span data-i18n="th-var">Tăng/Giảm</span> (<span data-i18n="th-asof">đến</span> 05/07)</th><th>T6 <span data-i18n="th-var">Tăng/Giảm</span></th><th><span data-i18n="th-subs">Thuê bao</span> T7</th><th>Cell*h</th><th data-i18n="th-warnlevel">Mức Độ Cảnh Báo</th></tr></thead><tbody id="btsBody">
 <tr class="sev-red"><td class="tc">1</td><td class="site-name">UCA0142</td><td class="num neg-v">-215</td><td class="num pos-v">+52</td><td class="num">316</td><td class="num">95.94h</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
 <tr class="sev-red"><td class="tc">2</td><td class="site-name">HUN0115</td><td class="num neg-v">-151</td><td class="num pos-v">+39</td><td class="num">32</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
 <tr class="sev-yellow"><td class="tc">3</td><td class="site-name">HUN0184B3U2</td><td class="num neg-v">-85</td><td class="num neg-v">-23</td><td class="num">52</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
@@ -885,10 +885,10 @@
 </tbody></table></div>
 </div>
 <div id="bts-w6" class="week-panel" style="display:none">
-  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;">Chưa có dữ liệu cho tuần này</div>
+  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;" data-i18n="wtb-nodata-panel">Chưa có dữ liệu cho tuần này</div>
 </div>
 <div id="bts-w7" class="week-panel" style="display:none">
-  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;">Chưa có dữ liệu cho tuần này</div>
+  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;" data-i18n="wtb-nodata-panel">Chưa có dữ liệu cho tuần này</div>
 </div>
 </div>
 
@@ -911,33 +911,33 @@
 
   <div class="week-tabs">
   <div class="week-tab-btn" onclick="showBtsWeek('p5-w3', {&quot;cnt&quot;:19})">
-    <div class="wtb-title">Tuần 3 tháng 6</div>
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 3 <span data-i18n="wtb-month">tháng</span> 6</div>
     <div class="wtb-range">14/6 → 21/6</div>
-    <div class="wtb-count">19 trạm</div>
+    <div class="wtb-count">19 <span data-i18n="wtb-unit">trạm</span></div>
   </div>
   <div class="week-tab-btn" onclick="showBtsWeek('p5-w4', {&quot;cnt&quot;:15})">
-    <div class="wtb-title">Tuần 4 tháng 6</div>
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 4 <span data-i18n="wtb-month">tháng</span> 6</div>
     <div class="wtb-range">22/6 → 28/6</div>
-    <div class="wtb-count">15 trạm</div>
+    <div class="wtb-count">15 <span data-i18n="wtb-unit">trạm</span></div>
   </div>
   <div class="week-tab-btn active" onclick="showBtsWeek('p5-w5', {&quot;cnt&quot;:25})">
-    <div class="wtb-title">Tuần 1 tháng 7</div>
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 1 <span data-i18n="wtb-month">tháng</span> 7</div>
     <div class="wtb-range">29/6 → 5/7</div>
-    <div class="wtb-count">25 trạm</div>
+    <div class="wtb-count">25 <span data-i18n="wtb-unit">trạm</span></div>
   </div>
   <div class="week-tab-btn" onclick="showBtsWeek('p5-w6', {})">
-    <div class="wtb-title">Tuần 2 tháng 7</div>
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 2 <span data-i18n="wtb-month">tháng</span> 7</div>
     <div class="wtb-range">6/7 → 12/7</div>
-    <div class="wtb-count">Chưa có dữ liệu</div>
+    <div class="wtb-count" data-i18n="wtb-nodata">Chưa có dữ liệu</div>
   </div>
   <div class="week-tab-btn" onclick="showBtsWeek('p5-w7', {})">
-    <div class="wtb-title">Tuần 3 tháng 7</div>
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 3 <span data-i18n="wtb-month">tháng</span> 7</div>
     <div class="wtb-range">13/7 → 19/7</div>
-    <div class="wtb-count">Chưa có dữ liệu</div>
+    <div class="wtb-count" data-i18n="wtb-nodata">Chưa có dữ liệu</div>
   </div>
 </div>
 <div id="p5-w3" class="week-panel" style="display:none">
-  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T6 Tăng/Giảm</th><th>T5 Tăng/Giảm</th><th>Thuê bao T6</th><th>Cell*h</th></tr></thead><tbody id="p5Body-w3">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th data-i18n="th-stt">STT</th><th data-i18n="th-site">Tên Trạm</th><th>T6 <span data-i18n="th-var">Tăng/Giảm</span></th><th>T5 <span data-i18n="th-var">Tăng/Giảm</span></th><th><span data-i18n="th-subs">Thuê bao</span> T6</th><th>Cell*h</th></tr></thead><tbody id="p5Body-w3">
 <tr><td class="tc">1</td><td class="site-name">UCA0142</td><td class="num neg-v">-311</td><td class="num neg-v">-94</td><td class="num">1.106</td><td class="num">136.94h</td></tr>
 <tr><td class="tc">2</td><td class="site-name">UCA0030</td><td class="num neg-v">-74</td><td class="num neg-v">-3</td><td class="num">913</td><td class="num" style="color:#aaa;">—</td></tr>
 <tr><td class="tc">3</td><td class="site-name">UCA0139</td><td class="num neg-v">-52</td><td class="num neg-v">-80</td><td class="num">372</td><td class="num">87.96h</td></tr>
@@ -960,7 +960,7 @@
 </tbody></table></div>
 </div>
 <div id="p5-w4" class="week-panel" style="display:none">
-  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T6 Tăng/Giảm</th><th>T5 Tăng/Giảm</th><th>Thuê bao T6</th><th>Cell*h</th></tr></thead><tbody id="p5Body-w4">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th data-i18n="th-stt">STT</th><th data-i18n="th-site">Tên Trạm</th><th>T6 <span data-i18n="th-var">Tăng/Giảm</span></th><th>T5 <span data-i18n="th-var">Tăng/Giảm</span></th><th><span data-i18n="th-subs">Thuê bao</span> T6</th><th>Cell*h</th></tr></thead><tbody id="p5Body-w4">
 <tr><td class="tc">1</td><td class="site-name">UCA0044</td><td class="num neg-v">-152</td><td class="num neg-v">-27</td><td class="num">1.279</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
 <tr><td class="tc">2</td><td class="site-name">UCA0005</td><td class="num neg-v">-131</td><td class="num neg-v">-48</td><td class="num">805</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
 <tr><td class="tc">3</td><td class="site-name">UCA0030</td><td class="num neg-v">-85</td><td class="num neg-v">-3</td><td class="num">1.206</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
@@ -979,7 +979,7 @@
 </tbody></table></div>
 </div>
 <div id="p5-w5" class="week-panel">
-  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T7 Tăng/Giảm</th><th>T6 Tăng/Giảm</th><th>Thuê bao T7</th><th>Cell*h</th></tr></thead><tbody id="p5Body">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th data-i18n="th-stt">STT</th><th data-i18n="th-site">Tên Trạm</th><th>T7 <span data-i18n="th-var">Tăng/Giảm</span></th><th>T6 <span data-i18n="th-var">Tăng/Giảm</span></th><th><span data-i18n="th-subs">Thuê bao</span> T7</th><th>Cell*h</th></tr></thead><tbody id="p5Body">
 <tr><td class="tc">1</td><td class="site-name">HUN0184B3U2</td><td class="num neg-v">-85</td><td class="num neg-v">-23</td><td class="num">52</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
 <tr><td class="tc">2</td><td class="site-name">UCA0181</td><td class="num neg-v">-67</td><td class="num neg-v">-15</td><td class="num">237</td><td class="num">12.21h</td></tr>
 <tr><td class="tc">3</td><td class="site-name">UCA0139</td><td class="num neg-v">-64</td><td class="num neg-v">-73</td><td class="num">81</td><td class="num">96.43h</td></tr>
@@ -1008,19 +1008,19 @@
 </tbody></table></div>
 </div>
 <div id="p5-w6" class="week-panel" style="display:none">
-  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;">Chưa có dữ liệu cho tuần này</div>
+  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;" data-i18n="wtb-nodata-panel">Chưa có dữ liệu cho tuần này</div>
 </div>
 <div id="p5-w7" class="week-panel" style="display:none">
-  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;">Chưa có dữ liệu cho tuần này</div>
+  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;" data-i18n="wtb-nodata-panel">Chưa có dữ liệu cho tuần này</div>
 </div>
 </div>
 
 
 <!-- PAGE FOOTER -->
 <div class="page-footer">
-  <span>Bitel UCABR – Dashboard Điều Hành</span>
-  <span>Số liệu cập nhật đến: 05/07/2026</span>
-  <span>Tạo bởi Claude AI &nbsp;|&nbsp; Chi nhánh UCABR</span>
+  <span data-i18n="footer-title">Bitel UCABR – Dashboard Điều Hành</span>
+  <span data-i18n="footer-date">Số liệu cập nhật đến: 05/07/2026</span>
+  <span data-i18n="footer-credit">Tạo bởi Claude AI &nbsp;|&nbsp; Chi nhánh UCABR</span>
 </div>
 
 
@@ -1060,7 +1060,7 @@ const labels = ['T1/2026','T2/2026','T3/2026','T4/2026','T5/2026','T6','T7*'];
 (function(){
   const ctx = document.getElementById('chart15c3d');
   if (!ctx) return;
-  new Chart(ctx, {
+  window.chart15Instance = new Chart(ctx, {
     data: {
       labels,
       datasets: [
@@ -1163,7 +1163,31 @@ const I18N = {
     'login-title': 'Chào mừng đến Dashboard UCA',
     'login-sub': 'Vui lòng nhập tên của bạn để tiếp tục',
     'login-placeholder': 'Tên của bạn',
-    'login-btn': 'Vào Dashboard'
+    'login-btn': 'Vào Dashboard',
+    'th-stt': 'STT',
+    'th-site': 'Tên Trạm',
+    'th-var': 'Tăng/Giảm',
+    'th-asof': 'đến',
+    'th-subs': 'Thuê bao',
+    'th-warnlevel': 'Mức Độ Cảnh Báo',
+    'wtb-week': 'Tuần',
+    'wtb-month': 'tháng',
+    'wtb-unit': 'trạm',
+    'wtb-nodata': 'Chưa có dữ liệu',
+    'wtb-nodata-panel': 'Chưa có dữ liệu cho tuần này',
+    'sev-red-txt': 'Cực kỳ nghiêm trọng',
+    'sev-yellow-txt': 'Nghiêm trọng',
+    'sev-green-txt': 'Cảnh báo',
+    'sev-none-txt': 'Theo dõi',
+    'bts-note': 'Cột F: sẽ cập nhật sau &nbsp;|&nbsp; (*) T7 số liệu đến ngày 05/07/2026',
+    'tfoot-lk': 'LK T1–T7',
+    'tfoot-increase': '▲ Tăng',
+    'footer-title': 'Bitel UCABR – Dashboard Điều Hành',
+    'footer-date': 'Số liệu cập nhật đến: 05/07/2026',
+    'footer-credit': 'Tạo bởi Claude AI &nbsp;|&nbsp; Chi nhánh UCABR',
+    'note1-box': '<strong>📌 Ghi chú:</strong><br>• <strong>KH</strong>: Kế hoạch Increasing 15C3D (sheet CT2026)<br>• <strong>TH</strong>: Thực hiện – chênh lệch 15C3D N vs N-1 cùng kỳ<br>• <strong>Lũy Kế TH</strong>: Cộng dồn TH từ T1<br>• LK KH T1–T7: <strong>+11.802</strong> &nbsp;|&nbsp; LK TH T1–T7: <strong>+11.262</strong><br>• (*) T7: số liệu đến ngày <strong>05/07/2026</strong>',
+    'note2-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• <strong>REG_N</strong>: Kết quả tháng N<br>• <strong>REG_N_1</strong>: Kết quả tháng N-1<br>• Tổng hợp toàn bộ UCABR – Tháng 1 đến Tháng 7 / 2026<br>• REG_N T6: <strong>118.304</strong> &nbsp;|&nbsp; REG_N T7: <strong>118.278</strong><br>• (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 05/07/2026</strong>',
+    'note3-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• <strong>Rev N</strong>: Revenue tháng N (PEN)<br>• <strong>Rev N-1</strong>: Revenue tháng N-1 (PEN)<br>• Lũy kế T1–T7: <strong>17.941.277</strong> PEN<br>• KH năm 2026: <strong>36.180.452</strong> PEN → Đạt <strong>49,6%</strong><br>• (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 05/07/2026</strong>'
   },
   es: {
     'h1': 'Panel de Gestión de la Sucursal Bitel UCA',
@@ -1209,7 +1233,31 @@ const I18N = {
     'login-title': 'Bienvenido al Dashboard UCA',
     'login-sub': 'Por favor ingrese su nombre para continuar',
     'login-placeholder': 'Su nombre',
-    'login-btn': 'Entrar al Dashboard'
+    'login-btn': 'Entrar al Dashboard',
+    'th-stt': 'N°',
+    'th-site': 'Estación',
+    'th-var': 'Variación',
+    'th-asof': 'al',
+    'th-subs': 'Abonados',
+    'th-warnlevel': 'Nivel de Alerta',
+    'wtb-week': 'Semana',
+    'wtb-month': 'mes',
+    'wtb-unit': 'estaciones',
+    'wtb-nodata': 'Sin datos',
+    'wtb-nodata-panel': 'Sin datos para esta semana',
+    'sev-red-txt': 'Crítico extremo',
+    'sev-yellow-txt': 'Crítico',
+    'sev-green-txt': 'Alerta',
+    'sev-none-txt': 'Seguimiento',
+    'bts-note': 'Columna F: se actualizará después &nbsp;|&nbsp; (*) Datos T7 al 05/07/2026',
+    'tfoot-lk': 'Acum. T1–T7',
+    'tfoot-increase': '▲ Aumento',
+    'footer-title': 'Bitel UCABR – Panel de Gestión',
+    'footer-date': 'Datos actualizados al: 05/07/2026',
+    'footer-credit': 'Creado por Claude AI &nbsp;|&nbsp; Sucursal UCABR',
+    'note1-box': '<strong>📌 Nota:</strong><br>• <strong>KH</strong>: Meta Increasing 15C3D (hoja CT2026)<br>• <strong>TH</strong>: Ejecutado – diferencia 15C3D N vs N-1 mismo período<br>• <strong>Acumulado Ejec.</strong>: Suma de TH desde T1<br>• Acum. KH T1–T7: <strong>+11.802</strong> &nbsp;|&nbsp; Acum. TH T1–T7: <strong>+11.262</strong><br>• (*) T7: datos al <strong>05/07/2026</strong>',
+    'note2-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• <strong>REG_N</strong>: Resultado del mes N<br>• <strong>REG_N_1</strong>: Resultado del mes N-1<br>• Consolidado de toda la región UCABR – Enero a Julio / 2026<br>• REG_N T6: <strong>118.304</strong> &nbsp;|&nbsp; REG_N T7: <strong>118.278</strong><br>• (*) T7 es un mes incompleto, <strong>datos al 05/07/2026</strong>',
+    'note3-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• <strong>Rev N</strong>: Revenue del mes N (PEN)<br>• <strong>Rev N-1</strong>: Revenue del mes N-1 (PEN)<br>• Acumulado T1–T7: <strong>17.941.277</strong> PEN<br>• Meta anual 2026: <strong>36.180.452</strong> PEN → Logrado <strong>49,6%</strong><br>• (*) T7 es un mes incompleto, <strong>datos al 05/07/2026</strong>'
   },
   en: {
     'h1': 'Bitel UCA Branch Management Dashboard',
@@ -1255,7 +1303,31 @@ const I18N = {
     'login-title': 'Welcome to the UCA Dashboard',
     'login-sub': 'Please enter your name to continue',
     'login-placeholder': 'Your name',
-    'login-btn': 'Enter Dashboard'
+    'login-btn': 'Enter Dashboard',
+    'th-stt': 'No.',
+    'th-site': 'Site',
+    'th-var': 'Change',
+    'th-asof': 'as of',
+    'th-subs': 'Subscribers',
+    'th-warnlevel': 'Warning Level',
+    'wtb-week': 'Week',
+    'wtb-month': 'month',
+    'wtb-unit': 'sites',
+    'wtb-nodata': 'No data',
+    'wtb-nodata-panel': 'No data for this week',
+    'sev-red-txt': 'Extremely critical',
+    'sev-yellow-txt': 'Critical',
+    'sev-green-txt': 'Warning',
+    'sev-none-txt': 'Monitoring',
+    'bts-note': 'Column F: to be updated later &nbsp;|&nbsp; (*) T7 data as of 05/07/2026',
+    'tfoot-lk': 'Cum. T1–T7',
+    'tfoot-increase': '▲ Increase',
+    'footer-title': 'Bitel UCABR – Management Dashboard',
+    'footer-date': 'Data updated as of: 05/07/2026',
+    'footer-credit': 'Created by Claude AI &nbsp;|&nbsp; UCABR Branch',
+    'note1-box': '<strong>📌 Note:</strong><br>• <strong>KH</strong>: Increasing 15C3D Target (sheet CT2026)<br>• <strong>TH</strong>: Achieved – 15C3D difference N vs N-1 same period<br>• <strong>Cumulative Achieved</strong>: Sum of TH from T1<br>• Cum. KH T1–T7: <strong>+11.802</strong> &nbsp;|&nbsp; Cum. TH T1–T7: <strong>+11.262</strong><br>• (*) T7: data as of <strong>05/07/2026</strong>',
+    'note2-box': '<strong>📌 Data source note:</strong><br>• <strong>REG_N</strong>: Month N result<br>• <strong>REG_N_1</strong>: Month N-1 result<br>• Consolidated across all of UCABR – January to July / 2026<br>• REG_N T6: <strong>118.304</strong> &nbsp;|&nbsp; REG_N T7: <strong>118.278</strong><br>• (*) T7 is an incomplete month, <strong>data as of 05/07/2026</strong>',
+    'note3-box': '<strong>📌 Data source note:</strong><br>• <strong>Rev N</strong>: Month N Revenue (PEN)<br>• <strong>Rev N-1</strong>: Month N-1 Revenue (PEN)<br>• Cumulative T1–T7: <strong>17.941.277</strong> PEN<br>• 2026 Annual Target: <strong>36.180.452</strong> PEN → Achieved <strong>49.6%</strong><br>• (*) T7 is an incomplete month, <strong>data as of 05/07/2026</strong>'
   }
 };
 
@@ -1269,6 +1341,23 @@ function applyLang(lang){
     var key = el.getAttribute('data-i18n-placeholder');
     if(dict[key] !== undefined){ el.setAttribute('placeholder', dict[key]); }
   });
+  // Mức độ cảnh báo trong bảng BTS (sev-red/sev-yellow/sev-green/không class = theo dõi)
+  document.querySelectorAll('.sev-cell').forEach(function(el){
+    var key = 'sev-none-txt';
+    if(el.classList.contains('sev-red')) key = 'sev-red-txt';
+    else if(el.classList.contains('sev-yellow')) key = 'sev-yellow-txt';
+    else if(el.classList.contains('sev-green')) key = 'sev-green-txt';
+    if(dict[key] !== undefined){ el.textContent = dict[key]; }
+  });
+  // Legend biểu đồ 15C3D (KH giữ nguyên như mã, TH/Lũy Kế TH cần dịch)
+  if(window.chart15Instance){
+    try{
+      var ds = window.chart15Instance.data.datasets;
+      if(ds[1] && dict['th-inc'] !== undefined) ds[1].label = dict['th-inc'];
+      if(ds[2] && dict['th-lk'] !== undefined) ds[2].label = dict['th-lk'];
+      window.chart15Instance.update();
+    }catch(e){}
+  }
   document.documentElement.setAttribute('lang', lang);
   try{ localStorage.setItem('bitel_lang', lang); }catch(e){}
 }
