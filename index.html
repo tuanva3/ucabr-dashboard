@@ -1,0 +1,1378 @@
+<html lang="vi"><head>
+<meta charset="UTF-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Điều Hành Chi Nhánh Bitel UCA – 2026</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #f0f5fb;
+    color: #0a1a2a;
+    min-height: 100vh;
+  }
+  /* ── Bitel Brand Colors: Blue #0057A8 | Yellow #FFD100 ── */
+  :root {
+    --bitel-blue:   #0057A8;
+    --bitel-blue2:  #0069cc;
+    --bitel-blue3:  #0080e0;
+    --bitel-yellow: #FFD100;
+    --bitel-dark:   #003a75;
+    --bg-light:     #f0f6fc;
+    --border-light: #b3cfe8;
+  }
+  /* ── HEADER ── */
+  .page-header {
+    background: linear-gradient(135deg, var(--bitel-dark) 0%, var(--bitel-blue) 55%, var(--bitel-blue2) 100%);
+    color: #fff;
+    padding: 16px 28px 14px;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    box-shadow: 0 3px 14px rgba(0,60,140,0.35);
+  }
+  .page-header .logo-wrap { flex-shrink: 0; }
+  .page-header .titles { flex: 1; }
+  .page-header h1 { font-size: 1.3rem; font-weight: 700; margin-bottom: 2px; }
+  .page-header .subtitle { font-size: 0.82rem; opacity: 0.88; }
+  .page-header .date-badge {
+    background: rgba(255,255,255,0.18);
+    border: 1px solid rgba(255,209,0,0.55);
+    border-radius: 20px; padding: 5px 14px;
+    font-size: 0.8rem; white-space: nowrap;
+    color: var(--bitel-yellow);
+  }
+  .kpi-section { padding: 20px 24px 8px; }
+  .kpi-section h2 {
+    font-size: 0.72rem; text-transform: uppercase;
+    letter-spacing: 1.5px; color: #4a7090;
+    margin-bottom: 12px; font-weight: 600;
+  }
+  .kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 14px;
+  }
+  .kpi-card {
+    background: #fff; border-radius: 12px; padding: 18px 20px;
+    box-shadow: 0 2px 8px rgba(0,80,160,0.10);
+    border-left: 4px solid #0080e0;
+  }
+  .kpi-card.yellow { border-left-color: #FFD100; }
+  .kpi-card.navy   { border-left-color: #0057A8; }
+  .kpi-card.green  { border-left-color: #1a8a3a; }
+  .kpi-label { font-size: 0.74rem; color: #3a6080; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 8px; }
+  .kpi-value { font-size: 2rem; font-weight: 800; color: #0069cc; line-height: 1; margin-bottom: 6px; }
+  .kpi-card.yellow .kpi-value { color: #8a6600; }
+  .kpi-card.navy   .kpi-value { color: #0057A8; }
+  .kpi-card.green  .kpi-value { color: #1a6a30; }
+  .kpi-sub { font-size: 0.78rem; color: #6a90a8; }
+  .kpi-sub strong { color: #0057A8; }
+  .prog-bar-bg { background: #ddeef8; border-radius: 4px; height: 7px; overflow: hidden; margin-top: 10px; }
+  .prog-bar-fill { height: 100%; border-radius: 4px; background: linear-gradient(90deg, #0057A8, #FFD100); }
+  .prog-pct { font-size: 0.72rem; color: #6a90a8; margin-top: 5px; }
+  .section-divider {
+    display: flex; align-items: center; gap: 10px;
+    padding: 22px 24px 0;
+  }
+  .section-divider .tag {
+    background: #0057A8; color: #fff;
+    font-size: 0.72rem; font-weight: 700;
+    padding: 4px 12px; border-radius: 20px;
+    text-transform: uppercase; letter-spacing: 1px; white-space: nowrap;
+  }
+  .section-divider .tag.yellow { background: #FFD100; color: #0057A8; }
+  .section-divider h3 { font-size: 1rem; font-weight: 700; color: #0057A8; }
+  .section-divider .line { flex: 1; height: 1px; background: #b3d4ec; }
+  .content-row {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 14px 24px 20px;
+    align-items: flex-start;
+    box-sizing: border-box;
+  }
+  .chart-card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,60,120,0.07); padding: 20px;
+    flex: 1;
+    min-width: 0;
+  }
+  .table-card {
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,60,120,0.07); padding: 20px;
+    width: 400px;
+    flex-shrink: 0;
+  }
+  .chart-card h4, .table-card h4 {
+    font-size: 0.8rem; font-weight: 700; color: #0069cc;
+    text-transform: uppercase; letter-spacing: 0.8px;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 2px solid #ddeef8;
+  }
+  .chart-wrapper { position: relative; height: 290px; }
+  .stats-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  .stats-table thead tr th {
+    background: #ddeef8; color: #0057A8; font-weight: 700;
+    padding: 8px 10px; text-align: right;
+    font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.5px;
+  }
+  .stats-table thead tr th:first-child { text-align: left; }
+  .stats-table tbody tr:nth-child(even) td { background: #f0f5fb; }
+  .stats-table tbody tr:hover td { background: #ddeef8; }
+  .stats-table td {
+    padding: 8px 10px; border-bottom: 1px solid #cce0f0; text-align: right;
+  }
+  .stats-table td:first-child { text-align: left; font-weight: 700; color: #0069cc; }
+  .stats-table tfoot td {
+    background: #003a75; color: #FFD100; font-weight: 700;
+    padding: 9px 10px; text-align: right; font-size: 0.8rem;
+  }
+  .stats-table tfoot td:first-child { text-align: left; }
+  .pos { color: #1a7a30; font-weight: 700; }
+  .neg { color: #c62828; font-weight: 700; }
+  .yellow-header thead tr th { background: #fff8d0; color: #6a4c00; }
+  .yellow-header tfoot td { background: #0057A8; color: #FFD100; }
+  .yellow-header td:first-child { color: #0069cc; }
+  .note-box {
+    margin-top: 12px; padding: 10px; border-radius: 8px;
+    font-size: 0.76rem; border-left: 3px solid;
+  }
+  .note-box.blue   { background: #e8f4fd; color: #003a60; border-color: #0080e0; }
+  .note-box.yellow { background: #fffbe6; color: #5a4000; border-color: #FFD100; }
+  /* ── DATA STRIP ── */
+  .ds-month.partial { background: #fff0d0; border-color: #f0a800; }
+  .ds-month.partial .ds-month-label { color: #7a4800; }
+  .ds-month.partial .ds-row { border-bottom-color: #f0a800; }
+  .partial-note {
+    font-size: 0.68rem; color: #7a4800; background: #fff0d0;
+    border-radius: 4px; padding: 2px 5px; margin-top: 4px;
+    text-align: center; font-weight: 600;
+  }
+  .data-strip {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 5px;
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 2px dashed #b3d4ec;
+  }
+  .ds-month {
+    background: #f0f5fb;
+    border-radius: 8px;
+    padding: 8px 6px;
+    text-align: center;
+    border: 1px solid #b3d4ec;
+  }
+  .ds-month.yellow-bg { background: #fffbe6; border-color: #ffe066; }
+  .ds-month-label {
+    font-size: 0.72rem; font-weight: 800; color: #0069cc;
+    text-transform: uppercase; letter-spacing: 1px;
+    margin-bottom: 5px;
+  }
+  .ds-month.yellow-bg .ds-month-label { color: #8a6600; }
+  .ds-row {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.7rem; padding: 2px 0;
+    border-bottom: 1px dotted #b3d4ec;
+  }
+  .ds-month.yellow-bg .ds-row { border-bottom-color: #ffe066; }
+  .ds-row:last-child { border-bottom: none; }
+  .ds-key {
+    color: #5a88a8; font-weight: 600; font-size: 0.65rem;
+    white-space: nowrap; flex-shrink: 0;
+  }
+  .ds-val {
+    font-weight: 700; font-size: 0.72rem; color: #002040;
+    text-align: right;
+  }
+  .ds-val.pos { color: #1a7a30; }
+  .ds-val.neg { color: #c62828; }
+  .page-footer {
+    text-align: center; padding: 14px;
+    font-size: 0.72rem; color: #6a90a8;
+    border-top: 1px solid #b3d4ec; margin-top: 4px;
+  }
+  /* ── PHẦN 4: BTS TABLE ── */
+  .bts-section { padding: 14px 24px 20px; }
+  .bts-legend { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 12px; font-size: 0.78rem; }
+  .bts-legend span { padding: 3px 10px; border-radius: 12px; font-weight: 600; }
+  .leg-red    { background: #fde8e8; color: #9b1c1c; border: 1px solid #f5a0a0; }
+  .leg-yellow { background: #fef3c7; color: #78350f; border: 1px solid #fcd34d; }
+  .leg-green  { background: #d1fae5; color: #065f46; border: 1px solid #6ee7b7; }
+  .leg-none   { background: #f3f4f6; color: #374151; border: 1px solid #d1d5db; }
+  .bts-scroll { max-height: 520px; overflow-y: auto; border: 1px solid #b3cfe8; border-radius: 10px; }
+  .bts-table  { width: 100%; border-collapse: collapse; font-size: 0.80rem; }
+  .bts-table thead { position: sticky; top: 0; z-index: 2; }
+  .bts-table thead tr th {
+    background: #0057A8; color: #FFD100; font-weight: 700;
+    padding: 9px 10px; text-align: center; font-size: 0.73rem;
+    text-transform: uppercase; letter-spacing: 0.4px; white-space: nowrap;
+  }
+  .bts-table thead tr th:nth-child(2) { text-align: left; }
+  .bts-table tbody tr:nth-child(even) { background: #f8fbff; }
+  .bts-table tbody tr:hover { filter: brightness(0.96); }
+  .bts-table td { padding: 6px 10px; border-bottom: 1px solid #dde8f5; }
+  .bts-table .tc       { text-align: center; color: #6a90a8; font-size: 0.72rem; width: 32px; }
+  .bts-table .site-name{ font-weight: 700; color: #0057A8; font-size: 0.80rem; }
+  .bts-table .num      { text-align: right; font-weight: 600; color: #1a2a3a; }
+  .bts-table .neg-v    { color: #c62828; }
+  .bts-table .pos-v    { color: #1a7a30; }
+
+  .bts-table .sev-cell { text-align: center; font-weight: 700; font-size: 0.72rem;
+                          border-radius: 4px; padding: 3px 6px; white-space: nowrap; }
+  /* Row backgrounds */
+  .bts-table tr.sev-red    td { background: #fff0f0 !important; }
+  .bts-table tr.sev-yellow td { background: #fffce8 !important; }
+  .bts-table tr.sev-green  td { background: #f0fdf4 !important; }
+  /* Severity cell badges */
+  .sev-cell.sev-red    { background: #fde8e8; color: #9b1c1c; }
+  .sev-cell.sev-yellow { background: #fef3c7; color: #78350f; }
+  .sev-cell.sev-green  { background: #d1fae5; color: #065f46; }
+  .bts-summary { display: flex; gap: 12px; margin-bottom: 14px; flex-wrap: wrap; }
+  .bts-sum-card { background: #fff; border-radius: 10px; padding: 12px 18px; border: 2px solid #e0eaf4;
+                  box-shadow: 0 1px 4px rgba(0,60,120,0.08); flex: 1; min-width: 120px; text-align: center; }
+  .bts-sum-card .bsc-val { font-size: 1.4rem; font-weight: 800; }
+  .bts-sum-card .bsc-lbl { font-size: 0.70rem; color: inherit; opacity: 0.75; font-weight: 700; text-transform: uppercase; margin-top: 4px; }
+  @media (max-width: 1100px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 900px) {
+    .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    .content-row { flex-direction: column; }
+    .table-card { width: 100%; }
+  }
+
+  /* ── Language Switcher ── */
+  .lang-switcher {
+    display: flex;
+    gap: 5px;
+    margin-left: 16px;
+  }
+  .lang-switcher button {
+    background: rgba(255,255,255,0.12);
+    border: 2px solid rgba(255,255,255,0.25);
+    border-radius: 8px;
+    font-size: 1.45rem;
+    cursor: pointer;
+    padding: 2px 7px;
+    line-height: 1;
+    transition: border-color 0.18s, transform 0.15s, background 0.18s;
+    color: inherit;
+  }
+  .lang-switcher button:hover {
+    border-color: var(--bitel-yellow);
+    background: rgba(255,209,0,0.18);
+    transform: scale(1.12);
+  }
+  .lang-switcher button.active {
+    border-color: var(--bitel-yellow);
+    background: rgba(255,209,0,0.22);
+  }
+
+
+  /* ── User bar / Logout ── */
+  .user-bar {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-left: 8px;
+  }
+  .user-name {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.88);
+    font-weight: 600;
+    white-space: nowrap;
+  }
+  .btn-logout {
+    background: rgba(255,255,255,0.15);
+    border: 1.5px solid rgba(255,255,255,0.35);
+    color: #fff;
+    border-radius: 8px;
+    padding: 4px 12px;
+    font-size: 0.78rem;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.18s;
+  }
+  .btn-logout:hover { background: rgba(255,80,80,0.45); border-color: #ff6060; }
+
+
+/* ── WEEK TABS ─────────────────────────────────────────── */
+.week-tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:12px;}
+.week-tab-btn{cursor:pointer;padding:10px 16px;border:2px solid #dde3f0;border-radius:10px;background:#f8faff;min-width:140px;text-align:center;transition:all .2s;}
+.week-tab-btn:hover{border-color:#3b6fe0;background:#eef2ff;}
+.week-tab-btn.active{border-color:#3b6fe0;background:#3b6fe0;color:#fff;}
+.week-tab-btn.active .wtb-range,.week-tab-btn.active .wtb-count{color:#fff;}
+.wtb-title{font-weight:700;font-size:13px;}
+.wtb-range{font-size:11px;color:#888;margin:2px 0;}
+.wtb-count{font-size:13px;font-weight:600;color:#3b6fe0;}
+.week-panel{display:block;}
+
+</style>
+</head>
+<body>
+
+<!-- PAGE HEADER -->
+<div class="page-header">
+  <div class="logo-wrap">
+    <div style="background:#FFD100;color:#0057A8;font-size:1.9rem;font-weight:900;
+                letter-spacing:4px;padding:6px 18px;border-radius:6px;
+                font-family:'Segoe UI',Arial,sans-serif;line-height:1.2;">
+      BITEL
+    </div>
+  </div>
+  <div class="titles">
+    <h1 data-i18n="h1">Dashboard Điều Hành Chi Nhánh Bitel UCA</h1>
+    <div class="subtitle" data-i18n="subtitle">Thuê bao 15C3D &amp; REG &nbsp;|&nbsp; Khu vực UCABR &nbsp;|&nbsp; Lũy kế T1 – T7 / 2026</div>
+  </div>
+  <div class="date-badge" data-i18n="date-badge">📅 Số liệu đến: 05/07/2026</div>
+    <div class="user-bar">
+    <span class="user-name" id="userLabel">👤</span>
+    <button class="btn-logout" onclick="doLogout()" title="Đăng xuất" data-i18n="logout-btn">⏏ Đăng xuất</button>
+  </div>
+  <div class="lang-switcher" id="langSwitcher">
+    <button onclick="setLang('vi')" title="Tiếng Việt" class="active"><img src="https://flagcdn.com/w40/vn.png" width="26" height="17" alt="VN" style="border-radius:3px;vertical-align:middle;display:block;"></button>
+    <button onclick="setLang('es')" title="Español (Perú)"><img src="https://flagcdn.com/w40/pe.png" width="26" height="17" alt="PE" style="border-radius:3px;vertical-align:middle;display:block;"></button>
+    <button onclick="setLang('en')" title="English"><img src="https://flagcdn.com/w40/gb.png" width="26" height="17" alt="GB" style="border-radius:3px;vertical-align:middle;display:block;"></button>
+  </div>
+</div>
+
+<!-- KPI CARDS -->
+<div class="kpi-section">
+  <h2 data-i18n="kpi-title">Tổng Quan Lũy Kế T1–T7 / 2026 &nbsp;·&nbsp; Số liệu đến 05/07/2026 &nbsp;|&nbsp; 4 Chỉ Số Điều Hành</h2>
+  <div class="kpi-grid">
+    <div class="kpi-card">
+      <div class="kpi-label" data-i18n="kpi1-lbl">📱 15C3D – Lũy Kế T1–T6</div>
+      <div class="kpi-value">118.829</div>
+      <div class="kpi-sub" data-i18n="kpi1-sub">Tổng thuê bao 15C3D tích lũy tại Tháng 6 / 2026</div>
+    </div>
+    <div class="kpi-card yellow">
+      <div class="kpi-label" data-i18n="kpi2-lbl">🎯 So Sánh Lũy Kế vs KH Năm 2026</div>
+      <div class="kpi-value">11.262</div>
+      <div class="kpi-sub">Lũy kế thực hiện T1–T7 &nbsp;|&nbsp; KH năm 2026: <strong>19.027</strong></div>
+      <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:59.2%"></div></div>
+      <div class="prog-pct"><strong>11.262</strong> / 19.027 = <strong>59,2% kế hoạch năm 2026</strong></div>
+    </div>
+    <div class="kpi-card navy">
+      <div class="kpi-label" data-i18n="kpi3-lbl">📡 REG – So Sánh REG_N vs REG_N_1</div>
+      <div class="kpi-value">118.278</div>
+      <div class="kpi-sub">
+        REG_N: <strong>118.278</strong> &nbsp;|&nbsp; REG_N_1: <strong>117.308</strong><br>
+        Chênh lệch: <strong class="pos">+970</strong>
+      </div>
+    </div>
+    <div class="kpi-card green">
+      <div class="kpi-label" data-i18n="kpi4-lbl">💰 Revenue – Lũy Kế T1–T7 / 2026</div>
+      <div class="kpi-value">17.941.277</div>
+      <div class="kpi-sub">
+        Lũy kế T1–T7 &nbsp;|&nbsp; KH năm 2026: <strong>36.180.452</strong><br>
+        T7 số liệu đến <strong>05/07/2026</strong>
+      </div>
+      <div class="prog-bar-bg"><div class="prog-bar-fill" style="width:49.6%"></div></div>
+      <div class="prog-pct"><strong>17.941.277</strong> / 36.180.452 = <strong>49,6% kế hoạch năm</strong></div>
+    </div>
+  </div>
+</div>
+
+<!-- PHAN 1: 15C3D -->
+<div class="section-divider">
+  <div class="tag" data-i18n="sec1-tag">Phần 1</div>
+  <h3 data-i18n="sec1-h3">Biểu Đồ 15C3D – Kế Hoạch / Thực Hiện / Lũy Kế (T1–T7 / 2026)</h3>
+  <div class="line"></div>
+</div>
+
+<div class="content-row">
+  <div class="chart-card">
+    <h4 data-i18n="sec1-chart-h4">📊 Biểu Đồ Cột – 15C3D Tăng Trưởng Theo Tháng</h4>
+    <div class="chart-wrapper">
+      <canvas id="chart15c3d" width="1271" height="362" style="display: block; box-sizing: border-box; height: 290px; width: 1016px;"></canvas>
+    </div>
+    <div class="data-strip">
+  <div class="ds-month">
+    <div class="ds-month-label">T1 / 2026</div>
+    <div class="ds-row"><span class="ds-key">KH</span><span class="ds-val pos">1.554</span></div>
+    <div class="ds-row"><span class="ds-key">TH</span><span class="ds-val neg">-467</span></div>
+    <div class="ds-row"><span class="ds-key">LK</span><span class="ds-val neg">-467</span></div>
+  </div>
+  <div class="ds-month">
+    <div class="ds-month-label">T2 / 2026</div>
+    <div class="ds-row"><span class="ds-key">KH</span><span class="ds-val neg">-1.137</span></div>
+    <div class="ds-row"><span class="ds-key">TH</span><span class="ds-val neg">-256</span></div>
+    <div class="ds-row"><span class="ds-key">LK</span><span class="ds-val neg">-723</span></div>
+  </div>
+  <div class="ds-month">
+    <div class="ds-month-label">T3 / 2026</div>
+    <div class="ds-row"><span class="ds-key">KH</span><span class="ds-val pos">4.422</span></div>
+    <div class="ds-row"><span class="ds-key">TH</span><span class="ds-val pos">6.203</span></div>
+    <div class="ds-row"><span class="ds-key">LK</span><span class="ds-val pos">5.480</span></div>
+  </div>
+  <div class="ds-month">
+    <div class="ds-month-label">T4 / 2026</div>
+    <div class="ds-row"><span class="ds-key">KH</span><span class="ds-val pos">559</span></div>
+    <div class="ds-row"><span class="ds-key">TH</span><span class="ds-val pos">533</span></div>
+    <div class="ds-row"><span class="ds-key">LK</span><span class="ds-val pos">6.013</span></div>
+  </div>
+  <div class="ds-month">
+    <div class="ds-month-label">T5 / 2026</div>
+    <div class="ds-row"><span class="ds-key">KH</span><span class="ds-val pos">3.332</span></div>
+    <div class="ds-row"><span class="ds-key">TH</span><span class="ds-val pos">2.893</span></div>
+    <div class="ds-row"><span class="ds-key">LK</span><span class="ds-val pos">8.906</span></div>
+  </div>
+  <div class="ds-month">
+    <div class="ds-month-label">T6 / 2026</div>
+    <div class="ds-row"><span class="ds-key">KH</span><span class="ds-val pos">825</span></div>
+    <div class="ds-row"><span class="ds-key">TH</span><span class="ds-val pos">1.903</span></div>
+    <div class="ds-row"><span class="ds-key">LK</span><span class="ds-val pos">10.809</span></div>
+  </div>
+  <div class="ds-month partial">
+    <div class="ds-month-label">T7 *</div>
+    <div class="ds-row"><span class="ds-key">KH</span><span class="ds-val pos">2.247</span></div>
+    <div class="ds-row"><span class="ds-key">TH</span><span class="ds-val pos">453</span></div>
+    <div class="ds-row"><span class="ds-key">LK</span><span class="ds-val pos">11.262</span></div>
+    <div class="partial-note">đến 05/07</div>
+  </div>
+</div>
+  </div>
+  <div class="table-card">
+  <h4 data-i18n="sec1-table-h4">📋 Thống Kê Chi Tiết 15C3D</h4>
+  <table class="stats-table">
+    <thead><tr><th data-i18n="th-month">Tháng</th><th>KH</th><th data-i18n="th-inc">TH (Increasing)</th><th data-i18n="th-lk">Lũy Kế TH</th></tr></thead>
+    <tbody><tr><td>T1</td><td class="pos">1.554</td><td class="neg">-467</td><td class="neg">-467</td></tr><tr><td>T2</td><td class="neg">-1.137</td><td class="neg">-256</td><td class="neg">-723</td></tr><tr><td>T3</td><td class="pos">4.422</td><td class="pos">6.203</td><td class="pos">5.480</td></tr><tr><td>T4</td><td class="pos">559</td><td class="pos">533</td><td class="pos">6.013</td></tr><tr><td>T5</td><td class="pos">3.332</td><td class="pos">2.893</td><td class="pos">8.906</td></tr><tr><td>T6</td><td class="pos">825</td><td class="pos">1.903</td><td class="pos">10.809</td></tr><tr><td>T7 (*)</td><td class="pos">2.247</td><td class="pos">453</td><td class="pos">11.262</td></tr></tbody>
+    <tfoot><tr><td>LK T1–T7</td><td class="pos">+11.802</td><td class="pos">+11.262</td><td class="pos">11.262</td></tr></tfoot>
+  </table>
+  <div class="note-box">
+    <strong>📌 Ghi chú:</strong><br>
+    • <strong>KH</strong>: Kế hoạch Increasing 15C3D (sheet CT2026)<br>
+    • <strong>TH</strong>: Thực hiện – chênh lệch 15C3D N vs N-1 cùng kỳ<br>
+    • <strong>Lũy Kế TH</strong>: Cộng dồn TH từ T1<br>
+    • LK KH T1–T7: <strong>+11.802</strong> &nbsp;|&nbsp; LK TH T1–T7: <strong>+11.262</strong><br>
+    • (*) T7: số liệu đến ngày <strong>05/07/2026</strong>
+  </div>
+</div>
+</div>
+
+<!-- PHAN 2: REG -->
+<div class="section-divider">
+  <div class="tag" style="background:#c8a000;" data-i18n="sec2-tag">Phần 2</div>
+  <h3 data-i18n="sec2-h3">Biểu Đồ REG – REG_N &amp; REG_N‑1 Theo Tháng (T1–T7 / 2026)</h3>
+  <div class="line"></div>
+</div>
+
+<div class="content-row">
+  <div class="chart-card">
+    <h4 data-i18n="sec2-chart-h4">📊 Biểu Đồ Cột – REG Theo Tháng</h4>
+    <div class="chart-wrapper">
+      <canvas id="chartReg" width="1271" height="362" style="display: block; box-sizing: border-box; height: 290px; width: 1016px;"></canvas>
+    </div>
+    <div class="data-strip">
+  <div class="ds-month yellow-bg">
+    <div class="ds-month-label">T1 / 2026</div>
+    <div class="ds-row"><span class="ds-key">REG_N</span><span class="ds-val">106.054</span></div>
+    <div class="ds-row"><span class="ds-key">REG_N_1</span><span class="ds-val">106.602</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val neg">-548</span></div>
+  </div>
+  <div class="ds-month yellow-bg">
+    <div class="ds-month-label">T2 / 2026</div>
+    <div class="ds-row"><span class="ds-key">REG_N</span><span class="ds-val">107.981</span></div>
+    <div class="ds-row"><span class="ds-key">REG_N_1</span><span class="ds-val">102.552</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val pos">+5.429</span></div>
+  </div>
+  <div class="ds-month yellow-bg">
+    <div class="ds-month-label">T3 / 2026</div>
+    <div class="ds-row"><span class="ds-key">REG_N</span><span class="ds-val">110.446</span></div>
+    <div class="ds-row"><span class="ds-key">REG_N_1</span><span class="ds-val">109.279</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val pos">+1.167</span></div>
+  </div>
+  <div class="ds-month yellow-bg">
+    <div class="ds-month-label">T4 / 2026</div>
+    <div class="ds-row"><span class="ds-key">REG_N</span><span class="ds-val">112.819</span></div>
+    <div class="ds-row"><span class="ds-key">REG_N_1</span><span class="ds-val">111.380</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val pos">+1.439</span></div>
+  </div>
+  <div class="ds-month yellow-bg">
+    <div class="ds-month-label">T5 / 2026</div>
+    <div class="ds-row"><span class="ds-key">REG_N</span><span class="ds-val">116.549</span></div>
+    <div class="ds-row"><span class="ds-key">REG_N_1</span><span class="ds-val">113.184</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val pos">+3.365</span></div>
+  </div>
+  <div class="ds-month yellow-bg">
+    <div class="ds-month-label">T6 / 2026</div>
+    <div class="ds-row"><span class="ds-key">REG_N</span><span class="ds-val">118.304</span></div>
+    <div class="ds-row"><span class="ds-key">REG_N_1</span><span class="ds-val">117.068</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val pos">+1.236</span></div>
+  </div>
+  <div class="ds-month partial">
+    <div class="ds-month-label">T7 *</div>
+    <div class="ds-row"><span class="ds-key">REG_N</span><span class="ds-val">118.278</span></div>
+    <div class="ds-row"><span class="ds-key">REG_N_1</span><span class="ds-val">117.308</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val pos">+970</span></div>
+    <div class="partial-note">đến 05/07</div>
+  </div>
+</div>
+  </div>
+  <div class="table-card">
+  <h4 data-i18n="sec2-table-h4">📋 Thống Kê Chi Tiết REG</h4>
+  <table class="stats-table yellow-header">
+    <thead><tr><th data-i18n="th-month">Tháng</th><th>REG_N</th><th>REG_N_1</th><th data-i18n="th-diff">Chênh lệch</th></tr></thead>
+    <tbody><tr><td>T1</td><td>106.054</td><td>106.602</td><td class="neg">-548</td></tr><tr><td>T2</td><td>107.981</td><td>102.552</td><td class="pos">+5.429</td></tr><tr><td>T3</td><td>110.446</td><td>109.279</td><td class="pos">+1.167</td></tr><tr><td>T4</td><td>112.819</td><td>111.380</td><td class="pos">+1.439</td></tr><tr><td>T5</td><td>116.549</td><td>113.184</td><td class="pos">+3.365</td></tr><tr><td>T6</td><td>118.304</td><td>117.068</td><td class="pos">+1.236</td></tr><tr><td>T7 *</td><td>118.278</td><td>117.308</td><td class="pos">+970</td></tr></tbody>
+    <tfoot><tr><td>T7 vs T1</td><td>+12.224</td><td>+10.706</td><td>▲ Tăng</td></tr></tfoot>
+  </table>
+  <div class="note-box yellow">
+    <strong>📌 Ghi chú nguồn số liệu:</strong><br>
+    • <strong>REG_N</strong>: Kết quả tháng N<br>
+    • <strong>REG_N_1</strong>: Kết quả tháng N-1<br>
+    • Tổng hợp toàn bộ UCABR – Tháng 1 đến Tháng 7 / 2026<br>
+    • REG_N T6: <strong>118.304</strong> &nbsp;|&nbsp; REG_N T7: <strong>118.278</strong><br>
+    • (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 05/07/2026</strong>
+  </div>
+</div>
+</div>
+
+<!-- PHAN 3: REVENUE -->
+<div class="section-divider">
+  <div class="tag" style="background:#1a8a3a;" data-i18n="sec3-tag">Phần 3</div>
+  <h3 data-i18n="sec3-h3">Biểu Đồ Revenue – Revenue N &amp; Revenue N‑1 Theo Tháng (T1–T7 / 2026)</h3>
+  <div class="line"></div>
+</div>
+
+<div class="content-row">
+  <div class="chart-card">
+    <h4 data-i18n="sec3-chart-h4">📊 Biểu Đồ Cột – Revenue Theo Tháng (PEN)</h4>
+    <div class="chart-wrapper">
+      <canvas id="chartRevenue" width="1271" height="362" style="display: block; box-sizing: border-box; height: 290px; width: 1016px;"></canvas>
+    </div>
+    <div class="data-strip">
+  <div class="ds-month" style="background:#e8f5ee;border-color:#7ecfa0;">
+    <div class="ds-month-label" style="color:#1a6a30;">T1 / 2026</div>
+    <div class="ds-row"><span class="ds-key">Rev N</span><span class="ds-val">2.810K</span></div>
+    <div class="ds-row"><span class="ds-key">Rev N-1</span><span class="ds-val">2.837K</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val neg">-28K</span></div>
+  </div>
+  <div class="ds-month" style="background:#e8f5ee;border-color:#7ecfa0;">
+    <div class="ds-month-label" style="color:#1a6a30;">T2 / 2026</div>
+    <div class="ds-row"><span class="ds-key">Rev N</span><span class="ds-val">2.731K</span></div>
+    <div class="ds-row"><span class="ds-key">Rev N-1</span><span class="ds-val">2.810K</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val neg">-79K</span></div>
+  </div>
+  <div class="ds-month" style="background:#e8f5ee;border-color:#7ecfa0;">
+    <div class="ds-month-label" style="color:#1a6a30;">T3 / 2026</div>
+    <div class="ds-row"><span class="ds-key">Rev N</span><span class="ds-val">2.964K</span></div>
+    <div class="ds-row"><span class="ds-key">Rev N-1</span><span class="ds-val">2.730K</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val pos">+233K</span></div>
+  </div>
+  <div class="ds-month" style="background:#e8f5ee;border-color:#7ecfa0;">
+    <div class="ds-month-label" style="color:#1a6a30;">T4 / 2026</div>
+    <div class="ds-row"><span class="ds-key">Rev N</span><span class="ds-val">2.937K</span></div>
+    <div class="ds-row"><span class="ds-key">Rev N-1</span><span class="ds-val">2.964K</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val neg">-27K</span></div>
+  </div>
+  <div class="ds-month" style="background:#e8f5ee;border-color:#7ecfa0;">
+    <div class="ds-month-label" style="color:#1a6a30;">T5 / 2026</div>
+    <div class="ds-row"><span class="ds-key">Rev N</span><span class="ds-val">3.035K</span></div>
+    <div class="ds-row"><span class="ds-key">Rev N-1</span><span class="ds-val">2.937K</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val pos">+98K</span></div>
+  </div>
+  <div class="ds-month" style="background:#e8f5ee;border-color:#7ecfa0;">
+    <div class="ds-month-label" style="color:#1a6a30;">T6 / 2026</div>
+    <div class="ds-row"><span class="ds-key">Rev N</span><span class="ds-val">3.077K</span></div>
+    <div class="ds-row"><span class="ds-key">Rev N-1</span><span class="ds-val">3.055K</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val pos">+23K</span></div>
+  </div>
+  <div class="ds-month partial">
+    <div class="ds-month-label">T7 *</div>
+    <div class="ds-row"><span class="ds-key">Rev N</span><span class="ds-val">389K</span></div>
+    <div class="ds-row"><span class="ds-key">Rev N-1</span><span class="ds-val">380K</span></div>
+    <div class="ds-row"><span class="ds-key">±</span><span class="ds-val pos">+9K</span></div>
+    <div class="partial-note">đến 05/07</div>
+  </div>
+</div>
+  </div>
+  <div class="table-card">
+  <h4 data-i18n="sec3-table-h4">📋 Thống Kê Chi Tiết Revenue (PEN)</h4>
+  <table class="stats-table" style="--hdr-bg:#1a8a3a;">
+    <thead><tr><th data-i18n="th-month">Tháng</th><th>Rev N</th><th>Rev N-1</th><th data-i18n="th-diff">Chênh lệch</th></tr></thead>
+    <tbody><tr><td>T1</td><td>2.809.731</td><td>2.837.293</td><td class="neg">-27.562</td></tr><tr><td>T2</td><td>2.730.577</td><td>2.809.564</td><td class="neg">-78.987</td></tr><tr><td>T3</td><td>2.963.535</td><td>2.730.467</td><td class="pos">+233.068</td></tr><tr><td>T4</td><td>2.936.864</td><td>2.963.595</td><td class="neg">-26.731</td></tr><tr><td>T5</td><td>3.034.710</td><td>2.936.904</td><td class="pos">+97.806</td></tr><tr><td>T6</td><td>3.077.268</td><td>3.054.748</td><td class="pos">+22.520</td></tr><tr><td>T7 *</td><td>388.592</td><td>379.757</td><td class="pos">+8.835</td></tr></tbody>
+    <tfoot><tr><td>T1–T7</td><td>17.941.277</td><td>17.712.328</td><td class="pos">+228.949</td></tr></tfoot>
+  </table>
+  <div class="note-box" style="border-color:#7ecfa0;background:#f0fdf4;">
+    <strong>📌 Ghi chú nguồn số liệu:</strong><br>
+    • <strong>Rev N</strong>: Revenue tháng N (PEN)<br>
+    • <strong>Rev N-1</strong>: Revenue tháng N-1 (PEN)<br>
+    • Lũy kế T1–T7: <strong>17.941.277</strong> PEN<br>
+    • KH năm 2026: <strong>36.180.452</strong> PEN → Đạt <strong>49,6%</strong><br>
+    • (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 05/07/2026</strong>
+  </div>
+</div>
+</div>
+
+<!-- PHAN 4: BTS GIẢM THUÊ BAO -->
+<div class="section-divider">
+  <div class="tag" style="background:#c62828;" data-i18n="sec4-tag">Phần 4</div>
+  <h3 data-i18n="sec4-h3">Danh Sách Trạm BTS Giảm Thuê Bao 15C3D – Tháng 7 / 2026 (đến 05/07)</h3>
+  <div class="line"></div>
+</div>
+
+<div class="bts-section">
+  <div class="bts-summary">
+    <div class="bts-sum-card" style="background:#eaf2fb;border-color:#7ab0d8;color:#1a2a3a;">
+      <div class="bsc-val" id="cnt-total" style="color:#0057A8;">71</div>
+      <div class="bsc-lbl" data-i18n="bts-total">Tổng trạm giảm</div>
+    </div>
+    <div class="bts-sum-card" style="background:#fff0f0;border-color:#ef4444;color:#9b1c1c;">
+      <div class="bsc-val" id="cnt-red" style="color:#c0392b;">2</div>
+      <div class="bsc-lbl" data-i18n="bts-red-lbl">Cực kỳ nghiêm trọng (≥ -100)</div>
+    </div>
+    <div class="bts-sum-card" style="background:#fffbeb;border-color:#f59e0b;color:#78350f;">
+      <div class="bsc-val" id="cnt-yellow" style="color:#b45309;">6</div>
+      <div class="bsc-lbl" data-i18n="bts-yellow-lbl">Nghiêm trọng (-50 ≤ C &lt; -100)</div>
+    </div>
+    <div class="bts-sum-card" style="background:#f0fdf4;border-color:#22c55e;color:#065f46;">
+      <div class="bsc-val" id="cnt-green" style="color:#15803d;">23</div>
+      <div class="bsc-lbl" data-i18n="bts-green-lbl">Cảnh báo (-20 ≤ C &lt; -50)</div>
+    </div>
+    <div class="bts-sum-card" style="background:#f8fafc;border-color:#94a3b8;color:#374151;">
+      <div class="bsc-val" id="cnt-none" style="color:#374151;">40</div>
+      <div class="bsc-lbl" data-i18n="bts-none-lbl">Theo dõi (C &lt; -20)</div>
+    </div>
+  </div>
+
+  <div class="bts-legend">
+    <span class="leg-red" data-i18n="leg-red">🔴 Cực kỳ nghiêm trọng: C ≥ -100</span>
+    <span class="leg-yellow" data-i18n="leg-yellow">🟡 Nghiêm trọng: -50 ≤ C &lt; -100</span>
+    <span class="leg-green" data-i18n="leg-green">🟢 Cảnh báo: -20 ≤ C &lt; -50</span>
+    <span class="leg-none" data-i18n="leg-none">Theo dõi: C &lt; -20</span>
+    <span style="color:#6a90a8;font-size:0.73rem;align-self:center;">Cột F: sẽ cập nhật sau &nbsp;|&nbsp; (*) T7 số liệu đến ngày 05/07/2026</span>
+  </div>
+
+  <div class="week-tabs">
+  <div class="week-tab-btn" onclick="showBtsWeek('bts-w3', {&quot;total&quot;:69,&quot;red&quot;:1,&quot;yellow&quot;:6,&quot;green&quot;:23,&quot;none&quot;:39})">
+    <div class="wtb-title">Tuần 3 tháng 6</div>
+    <div class="wtb-range">14/6 → 21/6</div>
+    <div class="wtb-count">69 trạm</div>
+  </div>
+  <div class="week-tab-btn" onclick="showBtsWeek('bts-w4', {&quot;total&quot;:59,&quot;red&quot;:4,&quot;yellow&quot;:6,&quot;green&quot;:22,&quot;none&quot;:27})">
+    <div class="wtb-title">Tuần 4 tháng 6</div>
+    <div class="wtb-range">22/6 → 28/6</div>
+    <div class="wtb-count">59 trạm</div>
+  </div>
+  <div class="week-tab-btn active" onclick="showBtsWeek('bts-w5', {&quot;total&quot;:71,&quot;red&quot;:2,&quot;yellow&quot;:6,&quot;green&quot;:23,&quot;none&quot;:40})">
+    <div class="wtb-title">Tuần 1 tháng 7</div>
+    <div class="wtb-range">29/6 → 5/7</div>
+    <div class="wtb-count">71 trạm</div>
+  </div>
+  <div class="week-tab-btn" onclick="showBtsWeek('bts-w6', {})">
+    <div class="wtb-title">Tuần 2 tháng 7</div>
+    <div class="wtb-range">6/7 → 12/7</div>
+    <div class="wtb-count">Chưa có dữ liệu</div>
+  </div>
+  <div class="week-tab-btn" onclick="showBtsWeek('bts-w7', {})">
+    <div class="wtb-title">Tuần 3 tháng 7</div>
+    <div class="wtb-range">13/7 → 19/7</div>
+    <div class="wtb-count">Chưa có dữ liệu</div>
+  </div>
+</div>
+<div id="bts-w3" class="week-panel" style="display:none">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T6 Tăng/Giảm (đến 28/06)</th><th>T5 Tăng/Giảm</th><th>Thuê bao T6</th><th>Cell*h</th><th>Mức Độ Cảnh Báo</th></tr></thead><tbody id="btsBody-w3">
+<tr class="sev-red"><td class="tc">1</td><td class="site-name">UCA0142</td><td class="num neg-v">-311</td><td class="num neg-v">-94</td><td class="num">1.106</td><td class="num">136.94h</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">2</td><td class="site-name">UCA0012</td><td class="num neg-v">-81</td><td class="num pos-v">+64</td><td class="num">1.079</td><td class="num">12.02h</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">3</td><td class="site-name">UCA0030</td><td class="num neg-v">-74</td><td class="num neg-v">-3</td><td class="num">913</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">4</td><td class="site-name">UCA0180</td><td class="num neg-v">-66</td><td class="num pos-v">+94</td><td class="num">196</td><td class="num">1.26h</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">5</td><td class="site-name">UCA0021B3U1</td><td class="num neg-v">-61</td><td class="num pos-v">+13</td><td class="num">331</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">6</td><td class="site-name">UCA0058</td><td class="num neg-v">-59</td><td class="num pos-v">+82</td><td class="num">588</td><td class="num">11082.53h</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">7</td><td class="site-name">UCA0139</td><td class="num neg-v">-52</td><td class="num neg-v">-80</td><td class="num">372</td><td class="num">87.96h</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-green"><td class="tc">8</td><td class="site-name">UCA0181</td><td class="num neg-v">-46</td><td class="num pos-v">+82</td><td class="num">617</td><td class="num">34.94h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">9</td><td class="site-name">UCA0050</td><td class="num neg-v">-45</td><td class="num pos-v">+108</td><td class="num">538</td><td class="num">5119.23h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">10</td><td class="site-name">UCA0013</td><td class="num neg-v">-42</td><td class="num neg-v">-42</td><td class="num">746</td><td class="num">2.42h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">11</td><td class="site-name">UCA0154</td><td class="num neg-v">-42</td><td class="num pos-v">+78</td><td class="num">616</td><td class="num">214.01h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">12</td><td class="site-name">UCA0006</td><td class="num neg-v">-40</td><td class="num pos-v">+139</td><td class="num">659</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">13</td><td class="site-name">UCA0072</td><td class="num neg-v">-36</td><td class="num pos-v">+4</td><td class="num">458</td><td class="num">7.44h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">14</td><td class="site-name">UCA0086</td><td class="num neg-v">-36</td><td class="num neg-v">-8</td><td class="num">633</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">15</td><td class="site-name">PAS5012</td><td class="num neg-v">-35</td><td class="num pos-v">+60</td><td class="num">406</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">16</td><td class="site-name">UCA0152</td><td class="num neg-v">-34</td><td class="num neg-v">-2</td><td class="num">708</td><td class="num">474.19h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">17</td><td class="site-name">UCA0043</td><td class="num neg-v">-33</td><td class="num neg-v">-56</td><td class="num">349</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">18</td><td class="site-name">UCA0063</td><td class="num neg-v">-32</td><td class="num neg-v">-21</td><td class="num">964</td><td class="num">0.30h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">19</td><td class="site-name">UCA0081</td><td class="num neg-v">-30</td><td class="num pos-v">+15</td><td class="num">422</td><td class="num">180.20h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">20</td><td class="site-name">UCA0053</td><td class="num neg-v">-29</td><td class="num neg-v">-12</td><td class="num">879</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">21</td><td class="site-name">UCA0062</td><td class="num neg-v">-29</td><td class="num pos-v">+39</td><td class="num">618</td><td class="num">5728.02h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">22</td><td class="site-name">LOR0282</td><td class="num neg-v">-28</td><td class="num pos-v">+10</td><td class="num">115</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">23</td><td class="site-name">UCA3061</td><td class="num neg-v">-27</td><td class="num pos-v">+68</td><td class="num">491</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">24</td><td class="site-name">UCA0010</td><td class="num neg-v">-26</td><td class="num pos-v">+62</td><td class="num">794</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">25</td><td class="site-name">UCA0002</td><td class="num neg-v">-25</td><td class="num pos-v">+13</td><td class="num">403</td><td class="num">8817.65h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">26</td><td class="site-name">UCA0059</td><td class="num neg-v">-24</td><td class="num pos-v">+29</td><td class="num">747</td><td class="num">22.72h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">27</td><td class="site-name">UCA0160</td><td class="num neg-v">-24</td><td class="num pos-v">+66</td><td class="num">121</td><td class="num">531.21h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">28</td><td class="site-name">UCA0031</td><td class="num neg-v">-23</td><td class="num neg-v">-4</td><td class="num">430</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">29</td><td class="site-name">UCA0089</td><td class="num neg-v">-23</td><td class="num pos-v">+12</td><td class="num">238</td><td class="num">74.44h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">30</td><td class="site-name">UCA0036</td><td class="num neg-v">-20</td><td class="num pos-v">+20</td><td class="num">468</td><td class="num">2621.20h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr><td class="tc">31</td><td class="site-name">UCA0168</td><td class="num neg-v">-18</td><td class="num pos-v">+27</td><td class="num">367</td><td class="num">23.43h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">32</td><td class="site-name">UCA0183</td><td class="num neg-v">-17</td><td class="num pos-v">+48</td><td class="num">308</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">33</td><td class="site-name">PAS0095</td><td class="num neg-v">-16</td><td class="num pos-v">+17</td><td class="num">170</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">34</td><td class="site-name">UCA0003</td><td class="num neg-v">-16</td><td class="num pos-v">0</td><td class="num">458</td><td class="num">5020.32h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">35</td><td class="site-name">HUN0097</td><td class="num neg-v">-14</td><td class="num pos-v">+55</td><td class="num">1.123</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">36</td><td class="site-name">UCA0184</td><td class="num neg-v">-14</td><td class="num pos-v">+10</td><td class="num">310</td><td class="num">10.02h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">37</td><td class="site-name">UCA0038B3U3</td><td class="num neg-v">-13</td><td class="num pos-v">0</td><td class="num">275</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">38</td><td class="site-name">UCA0041B3U1</td><td class="num neg-v">-12</td><td class="num pos-v">+74</td><td class="num">194</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">39</td><td class="site-name">UCA0084</td><td class="num neg-v">-11</td><td class="num pos-v">+35</td><td class="num">1.229</td><td class="num">50.67h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">40</td><td class="site-name">UCA0041</td><td class="num neg-v">-10</td><td class="num pos-v">+10</td><td class="num">484</td><td class="num">6976.53h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">41</td><td class="site-name">UCA3020</td><td class="num neg-v">-10</td><td class="num pos-v">+8</td><td class="num">182</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">42</td><td class="site-name">UCA0137</td><td class="num neg-v">-9</td><td class="num pos-v">+29</td><td class="num">704</td><td class="num">65.93h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">43</td><td class="site-name">UCA0009</td><td class="num neg-v">-8</td><td class="num pos-v">+46</td><td class="num">754</td><td class="num">3401.30h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">44</td><td class="site-name">UCA0022B3U1</td><td class="num neg-v">-8</td><td class="num pos-v">+3</td><td class="num">193</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">45</td><td class="site-name">UCA0037</td><td class="num neg-v">-8</td><td class="num neg-v">-91</td><td class="num">494</td><td class="num">0.71h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">46</td><td class="site-name">UCA0085</td><td class="num neg-v">-8</td><td class="num pos-v">+20</td><td class="num">348</td><td class="num">0.57h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">47</td><td class="site-name">UCA0140</td><td class="num neg-v">-8</td><td class="num neg-v">-25</td><td class="num">538</td><td class="num">126.20h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">48</td><td class="site-name">UCA0150</td><td class="num neg-v">-8</td><td class="num pos-v">+7</td><td class="num">242</td><td class="num">393.85h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">49</td><td class="site-name">UCA0176</td><td class="num neg-v">-8</td><td class="num pos-v">+81</td><td class="num">139</td><td class="num">15.30h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">50</td><td class="site-name">UCA0185</td><td class="num neg-v">-8</td><td class="num neg-v">-11</td><td class="num">206</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">51</td><td class="site-name">HUN0184B3U2</td><td class="num neg-v">-7</td><td class="num pos-v">+38</td><td class="num">326</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">52</td><td class="site-name">UCA0032</td><td class="num neg-v">-7</td><td class="num neg-v">-26</td><td class="num">586</td><td class="num">12.14h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">53</td><td class="site-name">UCA0157</td><td class="num neg-v">-7</td><td class="num neg-v">-27</td><td class="num">338</td><td class="num">129.18h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">54</td><td class="site-name">PAS5014</td><td class="num neg-v">-6</td><td class="num pos-v">+40</td><td class="num">193</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">55</td><td class="site-name">LOR0137</td><td class="num neg-v">-5</td><td class="num pos-v">+1</td><td class="num">185</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">56</td><td class="site-name">UCA0019B3U1</td><td class="num neg-v">-5</td><td class="num neg-v">-7</td><td class="num">142</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">57</td><td class="site-name">UCA0057</td><td class="num neg-v">-5</td><td class="num neg-v">-15</td><td class="num">449</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">58</td><td class="site-name">UCA0138</td><td class="num neg-v">-5</td><td class="num pos-v">+47</td><td class="num">234</td><td class="num">325.21h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">59</td><td class="site-name">UCA0199</td><td class="num neg-v">-4</td><td class="num pos-v">+11</td><td class="num">27</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">60</td><td class="site-name">UCA2001</td><td class="num neg-v">-4</td><td class="num pos-v">+1</td><td class="num">635</td><td class="num">887.65h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">61</td><td class="site-name">UCA0021</td><td class="num neg-v">-3</td><td class="num pos-v">+60</td><td class="num">951</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">62</td><td class="site-name">UCA0073</td><td class="num neg-v">-3</td><td class="num pos-v">+38</td><td class="num">815</td><td class="num">1907.39h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">63</td><td class="site-name">UCA0178</td><td class="num neg-v">-3</td><td class="num pos-v">+7</td><td class="num">48</td><td class="num">1.27h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">64</td><td class="site-name">LOR0281</td><td class="num neg-v">-2</td><td class="num pos-v">+17</td><td class="num">83</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">65</td><td class="site-name">UCA0141</td><td class="num neg-v">-2</td><td class="num neg-v">-9</td><td class="num">211</td><td class="num">259.44h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">66</td><td class="site-name">UCA0179</td><td class="num neg-v">-2</td><td class="num neg-v">-5</td><td class="num">134</td><td class="num">1.13h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">67</td><td class="site-name">UCA0022B3U2</td><td class="num neg-v">-1</td><td class="num pos-v">+14</td><td class="num">52</td><td class="num" style="color:#aaa;">—</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">68</td><td class="site-name">UCA0049</td><td class="num neg-v">-1</td><td class="num pos-v">+56</td><td class="num">680</td><td class="num">30.14h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">69</td><td class="site-name">UCA3040</td><td class="num neg-v">-1</td><td class="num pos-v">+20</td><td class="num">352</td><td class="num">5.01h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+</tbody></table></div>
+</div>
+<div id="bts-w4" class="week-panel" style="display:none">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T6 Tăng/Giảm (đến 28/06)</th><th>T5 Tăng/Giảm</th><th>Thuê bao T6</th><th>Cell*h</th><th>Mức Độ Cảnh Báo</th></tr></thead><tbody id="btsBody-w4">
+<tr class="sev-red"><td class="tc">1</td><td class="site-name">UCA0044</td><td class="num neg-v">-152</td><td class="num neg-v">-27</td><td class="num">1.279</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
+<tr class="sev-red"><td class="tc">2</td><td class="site-name">UCA0154</td><td class="num neg-v">-147</td><td class="num pos-v">+78</td><td class="num">673</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
+<tr class="sev-red"><td class="tc">3</td><td class="site-name">UCA0005</td><td class="num neg-v">-131</td><td class="num neg-v">-48</td><td class="num">805</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
+<tr class="sev-red"><td class="tc">4</td><td class="site-name">UCA0021B3U1</td><td class="num neg-v">-129</td><td class="num pos-v">+13</td><td class="num">346</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">5</td><td class="site-name">UCA0180</td><td class="num neg-v">-93</td><td class="num pos-v">+94</td><td class="num">223</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">6</td><td class="site-name">UCA0012</td><td class="num neg-v">-87</td><td class="num pos-v">+64</td><td class="num">1.455</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">7</td><td class="site-name">UCA0030</td><td class="num neg-v">-85</td><td class="num neg-v">-3</td><td class="num">1.206</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">8</td><td class="site-name">UCA0006</td><td class="num neg-v">-82</td><td class="num pos-v">+139</td><td class="num">831</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">9</td><td class="site-name">UCA0041</td><td class="num neg-v">-65</td><td class="num pos-v">+10</td><td class="num">626</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">10</td><td class="site-name">UCA0010</td><td class="num neg-v">-51</td><td class="num pos-v">+62</td><td class="num">1.055</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-green"><td class="tc">11</td><td class="site-name">UCA0139</td><td class="num neg-v">-48</td><td class="num neg-v">-80</td><td class="num">485</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">12</td><td class="site-name">UCA0003</td><td class="num neg-v">-45</td><td class="num pos-v">+0</td><td class="num">574</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">13</td><td class="site-name">UCA0152</td><td class="num neg-v">-44</td><td class="num neg-v">-2</td><td class="num">907</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">14</td><td class="site-name">UCA0059</td><td class="num neg-v">-37</td><td class="num pos-v">+29</td><td class="num">991</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">15</td><td class="site-name">UCA0058</td><td class="num neg-v">-36</td><td class="num pos-v">+82</td><td class="num">835</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">16</td><td class="site-name">UCA3020</td><td class="num neg-v">-36</td><td class="num pos-v">+8</td><td class="num">222</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">17</td><td class="site-name">UCA0086</td><td class="num neg-v">-35</td><td class="num neg-v">-8</td><td class="num">875</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">18</td><td class="site-name">UCA3061</td><td class="num neg-v">-33</td><td class="num pos-v">+68</td><td class="num">626</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">19</td><td class="site-name">UCA0158</td><td class="num neg-v">-31</td><td class="num pos-v">+107</td><td class="num">326</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">20</td><td class="site-name">UCA0009</td><td class="num neg-v">-30</td><td class="num pos-v">+46</td><td class="num">1.032</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">21</td><td class="site-name">UCA3040</td><td class="num neg-v">-29</td><td class="num pos-v">+20</td><td class="num">477</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">22</td><td class="site-name">UCA0168</td><td class="num neg-v">-28</td><td class="num pos-v">+27</td><td class="num">428</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">23</td><td class="site-name">UCA0002</td><td class="num neg-v">-27</td><td class="num pos-v">+13</td><td class="num">568</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">24</td><td class="site-name">PAS5012</td><td class="num neg-v">-26</td><td class="num pos-v">+60</td><td class="num">512</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">25</td><td class="site-name">UCA0013</td><td class="num neg-v">-25</td><td class="num neg-v">-42</td><td class="num">993</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">26</td><td class="site-name">UCA0050</td><td class="num neg-v">-23</td><td class="num pos-v">+108</td><td class="num">767</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">27</td><td class="site-name">UCA0160</td><td class="num neg-v">-22</td><td class="num pos-v">+66</td><td class="num">165</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">28</td><td class="site-name">PAS0095</td><td class="num neg-v">-21</td><td class="num pos-v">+17</td><td class="num">201</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">29</td><td class="site-name">UCA0089</td><td class="num neg-v">-21</td><td class="num pos-v">+12</td><td class="num">315</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">30</td><td class="site-name">UCA0176</td><td class="num neg-v">-21</td><td class="num pos-v">+81</td><td class="num">156</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">31</td><td class="site-name">UCA0015B3U2</td><td class="num neg-v">-20</td><td class="num pos-v">+58</td><td class="num">517</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">32</td><td class="site-name">UCA0057</td><td class="num neg-v">-20</td><td class="num neg-v">-15</td><td class="num">589</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr><td class="tc">33</td><td class="site-name">HUN0184B3U2</td><td class="num neg-v">-14</td><td class="num pos-v">+38</td><td class="num">411</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">34</td><td class="site-name">LOR0137</td><td class="num neg-v">-14</td><td class="num pos-v">+1</td><td class="num">225</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">35</td><td class="site-name">UCA0056</td><td class="num neg-v">-14</td><td class="num neg-v">-33</td><td class="num">742</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">36</td><td class="site-name">UCA0140</td><td class="num neg-v">-14</td><td class="num neg-v">-25</td><td class="num">674</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">37</td><td class="site-name">UCA0157</td><td class="num neg-v">-14</td><td class="num neg-v">-27</td><td class="num">410</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">38</td><td class="site-name">UCA0049</td><td class="num neg-v">-13</td><td class="num pos-v">+56</td><td class="num">871</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">39</td><td class="site-name">UCA0053</td><td class="num neg-v">-13</td><td class="num neg-v">-12</td><td class="num">1.146</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">40</td><td class="site-name">UCA0079</td><td class="num neg-v">-12</td><td class="num neg-v">-2</td><td class="num">1.250</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">41</td><td class="site-name">UCA0181</td><td class="num neg-v">-12</td><td class="num pos-v">+82</td><td class="num">769</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">42</td><td class="site-name">UCA0051</td><td class="num neg-v">-11</td><td class="num pos-v">+35</td><td class="num">899</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">43</td><td class="site-name">UCA0081</td><td class="num neg-v">-11</td><td class="num pos-v">+15</td><td class="num">554</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">44</td><td class="site-name">HUN0142B3U1</td><td class="num neg-v">-10</td><td class="num pos-v">+48</td><td class="num">420</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">45</td><td class="site-name">UCA0156</td><td class="num neg-v">-9</td><td class="num pos-v">+27</td><td class="num">388</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">46</td><td class="site-name">UCA0175</td><td class="num neg-v">-9</td><td class="num pos-v">+36</td><td class="num">351</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">47</td><td class="site-name">UCA0159</td><td class="num neg-v">-8</td><td class="num pos-v">+29</td><td class="num">222</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">48</td><td class="site-name">UCA0199</td><td class="num neg-v">-7</td><td class="num pos-v">+11</td><td class="num">37</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">49</td><td class="site-name">UCA0072</td><td class="num neg-v">-6</td><td class="num pos-v">+4</td><td class="num">613</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">50</td><td class="site-name">LOR0282</td><td class="num neg-v">-5</td><td class="num pos-v">+10</td><td class="num">176</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">51</td><td class="site-name">HUN0171</td><td class="num neg-v">-4</td><td class="num pos-v">+17</td><td class="num">310</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">52</td><td class="site-name">UCA0038B3U3</td><td class="num neg-v">-4</td><td class="num pos-v">+0</td><td class="num">342</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">53</td><td class="site-name">PAS5014</td><td class="num neg-v">-3</td><td class="num pos-v">+40</td><td class="num">227</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">54</td><td class="site-name">UCA0021</td><td class="num neg-v">-3</td><td class="num pos-v">+60</td><td class="num">1.239</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">55</td><td class="site-name">UCA0001</td><td class="num neg-v">-2</td><td class="num neg-v">-13</td><td class="num">565</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">56</td><td class="site-name">UCA0031</td><td class="num neg-v">-2</td><td class="num neg-v">-4</td><td class="num">573</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">57</td><td class="site-name">UCA0041B3U1</td><td class="num neg-v">-2</td><td class="num pos-v">+74</td><td class="num">263</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">58</td><td class="site-name">UCA0183</td><td class="num neg-v">-1</td><td class="num pos-v">+48</td><td class="num">441</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+<tr><td class="tc">59</td><td class="site-name">UCA0204</td><td class="num neg-v">-1</td><td class="num pos-v">+51</td><td class="num">61</td><td class="num" style="color:#aaa;">&#8212;</td><td>Theo dõi</td></tr>
+</tbody></table></div>
+</div>
+<div id="bts-w5" class="week-panel">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T7 Tăng/Giảm (đến 05/07)</th><th>T6 Tăng/Giảm</th><th>Thuê bao T7</th><th>Cell*h</th><th>Mức Độ Cảnh Báo</th></tr></thead><tbody id="btsBody">
+<tr class="sev-red"><td class="tc">1</td><td class="site-name">UCA0142</td><td class="num neg-v">-215</td><td class="num pos-v">+52</td><td class="num">316</td><td class="num">95.94h</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
+<tr class="sev-red"><td class="tc">2</td><td class="site-name">HUN0115</td><td class="num neg-v">-151</td><td class="num pos-v">+39</td><td class="num">32</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-red">Cực kỳ nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">3</td><td class="site-name">HUN0184B3U2</td><td class="num neg-v">-85</td><td class="num neg-v">-23</td><td class="num">52</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">4</td><td class="site-name">UCA0177</td><td class="num neg-v">-68</td><td class="num pos-v">+40</td><td class="num">76</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">5</td><td class="site-name">UCA0181</td><td class="num neg-v">-67</td><td class="num neg-v">-15</td><td class="num">237</td><td class="num">12.21h</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">6</td><td class="site-name">UCA0139</td><td class="num neg-v">-64</td><td class="num neg-v">-73</td><td class="num">81</td><td class="num">96.43h</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">7</td><td class="site-name">UCA0005</td><td class="num neg-v">-63</td><td class="num neg-v">-167</td><td class="num">98</td><td class="num">2.03h</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-yellow"><td class="tc">8</td><td class="site-name">UCA0025</td><td class="num neg-v">-50</td><td class="num pos-v">+8</td><td class="num">214</td><td class="num">443.37h</td><td><span class="sev-cell sev-yellow">Nghiêm trọng</span></td></tr>
+<tr class="sev-green"><td class="tc">9</td><td class="site-name">UCA0049</td><td class="num neg-v">-42</td><td class="num neg-v">-20</td><td class="num">192</td><td class="num">0.28h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">10</td><td class="site-name">UCA0070</td><td class="num neg-v">-41</td><td class="num pos-v">+56</td><td class="num">245</td><td class="num">0.14h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">11</td><td class="site-name">UCA0029</td><td class="num neg-v">-40</td><td class="num pos-v">+22</td><td class="num">314</td><td class="num">163.75h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">12</td><td class="site-name">UCA0030</td><td class="num neg-v">-38</td><td class="num neg-v">-156</td><td class="num">294</td><td class="num">119.93h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">13</td><td class="site-name">UCA0155</td><td class="num neg-v">-38</td><td class="num pos-v">+84</td><td class="num">484</td><td class="num">265.56h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">14</td><td class="site-name">HUN0208</td><td class="num neg-v">-36</td><td class="num pos-v">+6</td><td class="num">156</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">15</td><td class="site-name">UCA0154</td><td class="num neg-v">-36</td><td class="num neg-v">-164</td><td class="num">195</td><td class="num">75.25h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">16</td><td class="site-name">UCA0012</td><td class="num neg-v">-35</td><td class="num neg-v">-128</td><td class="num">292</td><td class="num">2.60h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">17</td><td class="site-name">UCA0067</td><td class="num neg-v">-33</td><td class="num pos-v">+25</td><td class="num">162</td><td class="num">32.36h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">18</td><td class="site-name">UCA0088</td><td class="num neg-v">-33</td><td class="num pos-v">+3</td><td class="num">283</td><td class="num">0.23h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">19</td><td class="site-name">UCA0173</td><td class="num neg-v">-33</td><td class="num pos-v">+23</td><td class="num">222</td><td class="num">98.21h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">20</td><td class="site-name">UCA0016B3U2</td><td class="num neg-v">-30</td><td class="num pos-v">+71</td><td class="num">226</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">21</td><td class="site-name">UCA0032</td><td class="num neg-v">-28</td><td class="num pos-v">+7</td><td class="num">169</td><td class="num">928.77h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">22</td><td class="site-name">UCA0086</td><td class="num neg-v">-28</td><td class="num neg-v">-24</td><td class="num">190</td><td class="num">0.95h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">23</td><td class="site-name">UCA0063</td><td class="num neg-v">-27</td><td class="num pos-v">+3</td><td class="num">378</td><td class="num">0.19h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">24</td><td class="site-name">UCA0069</td><td class="num neg-v">-27</td><td class="num neg-v">-47</td><td class="num">602</td><td class="num">369.55h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">25</td><td class="site-name">UCA0073B3U2</td><td class="num neg-v">-27</td><td class="num pos-v">+13</td><td class="num">96</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">26</td><td class="site-name">UCA0055</td><td class="num neg-v">-26</td><td class="num pos-v">+33</td><td class="num">82</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">27</td><td class="site-name">PAS0082</td><td class="num neg-v">-25</td><td class="num pos-v">+91</td><td class="num">310</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">28</td><td class="site-name">UCA0015</td><td class="num neg-v">-24</td><td class="num pos-v">+101</td><td class="num">800</td><td class="num">1.20h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">29</td><td class="site-name">UCA3038</td><td class="num neg-v">-22</td><td class="num pos-v">+818</td><td class="num">264</td><td class="num">82.10h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">30</td><td class="site-name">HUN0097B3U1</td><td class="num neg-v">-21</td><td class="num pos-v">+10</td><td class="num">0</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr class="sev-green"><td class="tc">31</td><td class="site-name">UCA2000</td><td class="num neg-v">-21</td><td class="num pos-v">+20</td><td class="num">296</td><td class="num">1.29h</td><td><span class="sev-cell sev-green">Cảnh báo</span></td></tr>
+<tr><td class="tc">32</td><td class="site-name">HUN0184</td><td class="num neg-v">-17</td><td class="num pos-v">+0</td><td class="num">77</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">33</td><td class="site-name">UCA0077</td><td class="num neg-v">-17</td><td class="num pos-v">+3</td><td class="num">336</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">34</td><td class="site-name">UCA0176</td><td class="num neg-v">-17</td><td class="num neg-v">-18</td><td class="num">53</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">35</td><td class="site-name">UCA0205</td><td class="num neg-v">-17</td><td class="num pos-v">+6</td><td class="num">12</td><td class="num">40.15h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">36</td><td class="site-name">HUN0096</td><td class="num neg-v">-16</td><td class="num pos-v">+87</td><td class="num">347</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">37</td><td class="site-name">UCA0175</td><td class="num neg-v">-15</td><td class="num neg-v">-21</td><td class="num">135</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">38</td><td class="site-name">UCA0021B3U1</td><td class="num neg-v">-13</td><td class="num neg-v">-134</td><td class="num">104</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">39</td><td class="site-name">UCA0054</td><td class="num neg-v">-13</td><td class="num pos-v">+36</td><td class="num">197</td><td class="num">83.64h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">40</td><td class="site-name">UCA0079</td><td class="num neg-v">-12</td><td class="num neg-v">-8</td><td class="num">270</td><td class="num">2.00h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">41</td><td class="site-name">UCA0198</td><td class="num neg-v">-12</td><td class="num pos-v">+27</td><td class="num">25</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">42</td><td class="site-name">UCA0140</td><td class="num neg-v">-11</td><td class="num neg-v">-20</td><td class="num">200</td><td class="num">66.09h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">43</td><td class="site-name">UCA2001</td><td class="num neg-v">-11</td><td class="num neg-v">-14</td><td class="num">241</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">44</td><td class="site-name">UCA0184</td><td class="num neg-v">-10</td><td class="num neg-v">-3</td><td class="num">125</td><td class="num">5.96h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">45</td><td class="site-name">UCA0011</td><td class="num neg-v">-9</td><td class="num pos-v">+51</td><td class="num">328</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">46</td><td class="site-name">UCA0044B3U1</td><td class="num neg-v">-9</td><td class="num pos-v">+16</td><td class="num">33</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">47</td><td class="site-name">UCA0044B3U2</td><td class="num neg-v">-9</td><td class="num pos-v">+18</td><td class="num">33</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">48</td><td class="site-name">UCA0153</td><td class="num neg-v">-9</td><td class="num pos-v">+16</td><td class="num">158</td><td class="num">288.35h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">49</td><td class="site-name">UCA0159</td><td class="num neg-v">-9</td><td class="num neg-v">-15</td><td class="num">58</td><td class="num">127.13h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">50</td><td class="site-name">UCA0168</td><td class="num neg-v">-9</td><td class="num neg-v">-29</td><td class="num">185</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">51</td><td class="site-name">PAS5014</td><td class="num neg-v">-8</td><td class="num pos-v">+4</td><td class="num">74</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">52</td><td class="site-name">UCA0194</td><td class="num neg-v">-8</td><td class="num pos-v">+0</td><td class="num">9</td><td class="num">524.06h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">53</td><td class="site-name">UCA0022B3U1</td><td class="num neg-v">-7</td><td class="num pos-v">+11</td><td class="num">74</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">54</td><td class="site-name">HUN0254</td><td class="num neg-v">-6</td><td class="num pos-v">+6</td><td class="num">172</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">55</td><td class="site-name">UCA0060</td><td class="num neg-v">-5</td><td class="num pos-v">+29</td><td class="num">141</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">56</td><td class="site-name">UCA3061</td><td class="num neg-v">-5</td><td class="num neg-v">-34</td><td class="num">164</td><td class="num">1.19h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">57</td><td class="site-name">PAS0090</td><td class="num neg-v">-4</td><td class="num pos-v">+229</td><td class="num">171</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">58</td><td class="site-name">UCA0022</td><td class="num neg-v">-4</td><td class="num pos-v">+17</td><td class="num">375</td><td class="num">11.83h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">59</td><td class="site-name">UCA0083B3U1</td><td class="num neg-v">-4</td><td class="num pos-v">+4</td><td class="num">194</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">60</td><td class="site-name">PAS5011</td><td class="num neg-v">-3</td><td class="num pos-v">+33</td><td class="num">103</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">61</td><td class="site-name">PAS5012</td><td class="num neg-v">-3</td><td class="num neg-v">-24</td><td class="num">154</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">62</td><td class="site-name">UCA0197</td><td class="num neg-v">-3</td><td class="num pos-v">+10</td><td class="num">36</td><td class="num">66.21h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">63</td><td class="site-name">HUN0171</td><td class="num neg-v">-2</td><td class="num neg-v">-3</td><td class="num">87</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">64</td><td class="site-name">UCA0021</td><td class="num neg-v">-2</td><td class="num neg-v">-4</td><td class="num">354</td><td class="num">82.66h</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">65</td><td class="site-name">UCA0066</td><td class="num neg-v">-2</td><td class="num pos-v">+48</td><td class="num">162</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">66</td><td class="site-name">UCA0189</td><td class="num neg-v">-2</td><td class="num pos-v">+21</td><td class="num">9</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">67</td><td class="site-name">LOR0029</td><td class="num neg-v">-1</td><td class="num pos-v">+51</td><td class="num">87</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">68</td><td class="site-name">UCA0009B3U1</td><td class="num neg-v">-1</td><td class="num neg-v">-2</td><td class="num">14</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">69</td><td class="site-name">UCA0016</td><td class="num neg-v">-1</td><td class="num pos-v">+101</td><td class="num">641</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">70</td><td class="site-name">UCA0037</td><td class="num neg-v">-1</td><td class="num pos-v">+9</td><td class="num">180</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+<tr><td class="tc">71</td><td class="site-name">UCA0211</td><td class="num neg-v">-1</td><td class="num neg-v">-1</td><td class="num">165</td><td class="num" style="color:#aaa;">&#8212;</td><td><span class="sev-cell">Theo dõi</span></td></tr>
+</tbody></table></div>
+</div>
+<div id="bts-w6" class="week-panel" style="display:none">
+  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;">Chưa có dữ liệu cho tuần này</div>
+</div>
+<div id="bts-w7" class="week-panel" style="display:none">
+  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;">Chưa có dữ liệu cho tuần này</div>
+</div>
+</div>
+
+
+
+<!-- PHAN 5: BTS GIẢM LIÊN TỤC 3 THÁNG -->
+<div class="section-divider">
+  <div class="tag" style="background:#6d28d9;" data-i18n="sec5-tag">Phần 5</div>
+  <h3 data-i18n="sec5-h3">Danh Sách Trạm BTS Giảm Liên Tiếp 2 Tháng (T6, T7)</h3>
+  <div class="line"></div>
+</div>
+
+<div class="bts-section">
+  <div class="bts-summary" style="justify-content:flex-start;">
+    <div class="bts-sum-card" style="background:#f5f3ff;border-color:#7c3aed;color:#4c1d95;max-width:220px;">
+      <div class="bsc-val" id="p5-cnt" style="color:#6d28d9;">25</div>
+      <div class="bsc-lbl" data-i18n="p5-total">Tổng trạm giảm T6 và T7</div>
+    </div>
+  </div>
+
+  <div class="week-tabs">
+  <div class="week-tab-btn" onclick="showBtsWeek('p5-w3', {&quot;cnt&quot;:19})">
+    <div class="wtb-title">Tuần 3 tháng 6</div>
+    <div class="wtb-range">14/6 → 21/6</div>
+    <div class="wtb-count">19 trạm</div>
+  </div>
+  <div class="week-tab-btn" onclick="showBtsWeek('p5-w4', {&quot;cnt&quot;:15})">
+    <div class="wtb-title">Tuần 4 tháng 6</div>
+    <div class="wtb-range">22/6 → 28/6</div>
+    <div class="wtb-count">15 trạm</div>
+  </div>
+  <div class="week-tab-btn active" onclick="showBtsWeek('p5-w5', {&quot;cnt&quot;:25})">
+    <div class="wtb-title">Tuần 1 tháng 7</div>
+    <div class="wtb-range">29/6 → 5/7</div>
+    <div class="wtb-count">25 trạm</div>
+  </div>
+  <div class="week-tab-btn" onclick="showBtsWeek('p5-w6', {})">
+    <div class="wtb-title">Tuần 2 tháng 7</div>
+    <div class="wtb-range">6/7 → 12/7</div>
+    <div class="wtb-count">Chưa có dữ liệu</div>
+  </div>
+  <div class="week-tab-btn" onclick="showBtsWeek('p5-w7', {})">
+    <div class="wtb-title">Tuần 3 tháng 7</div>
+    <div class="wtb-range">13/7 → 19/7</div>
+    <div class="wtb-count">Chưa có dữ liệu</div>
+  </div>
+</div>
+<div id="p5-w3" class="week-panel" style="display:none">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T6 Tăng/Giảm</th><th>T5 Tăng/Giảm</th><th>Thuê bao T6</th><th>Cell*h</th></tr></thead><tbody id="p5Body-w3">
+<tr><td class="tc">1</td><td class="site-name">UCA0142</td><td class="num neg-v">-311</td><td class="num neg-v">-94</td><td class="num">1.106</td><td class="num">136.94h</td></tr>
+<tr><td class="tc">2</td><td class="site-name">UCA0030</td><td class="num neg-v">-74</td><td class="num neg-v">-3</td><td class="num">913</td><td class="num" style="color:#aaa;">—</td></tr>
+<tr><td class="tc">3</td><td class="site-name">UCA0139</td><td class="num neg-v">-52</td><td class="num neg-v">-80</td><td class="num">372</td><td class="num">87.96h</td></tr>
+<tr><td class="tc">4</td><td class="site-name">UCA0013</td><td class="num neg-v">-42</td><td class="num neg-v">-42</td><td class="num">746</td><td class="num">2.42h</td></tr>
+<tr><td class="tc">5</td><td class="site-name">UCA0086</td><td class="num neg-v">-36</td><td class="num neg-v">-8</td><td class="num">633</td><td class="num" style="color:#aaa;">—</td></tr>
+<tr><td class="tc">6</td><td class="site-name">UCA0152</td><td class="num neg-v">-34</td><td class="num neg-v">-2</td><td class="num">708</td><td class="num">474.19h</td></tr>
+<tr><td class="tc">7</td><td class="site-name">UCA0043</td><td class="num neg-v">-33</td><td class="num neg-v">-56</td><td class="num">349</td><td class="num" style="color:#aaa;">—</td></tr>
+<tr><td class="tc">8</td><td class="site-name">UCA0063</td><td class="num neg-v">-32</td><td class="num neg-v">-21</td><td class="num">964</td><td class="num">0.30h</td></tr>
+<tr><td class="tc">9</td><td class="site-name">UCA0053</td><td class="num neg-v">-29</td><td class="num neg-v">-12</td><td class="num">879</td><td class="num" style="color:#aaa;">—</td></tr>
+<tr><td class="tc">10</td><td class="site-name">UCA0031</td><td class="num neg-v">-23</td><td class="num neg-v">-4</td><td class="num">430</td><td class="num" style="color:#aaa;">—</td></tr>
+<tr><td class="tc">11</td><td class="site-name">UCA0037</td><td class="num neg-v">-8</td><td class="num neg-v">-91</td><td class="num">494</td><td class="num">0.71h</td></tr>
+<tr><td class="tc">12</td><td class="site-name">UCA0140</td><td class="num neg-v">-8</td><td class="num neg-v">-25</td><td class="num">538</td><td class="num">126.20h</td></tr>
+<tr><td class="tc">13</td><td class="site-name">UCA0185</td><td class="num neg-v">-8</td><td class="num neg-v">-11</td><td class="num">206</td><td class="num" style="color:#aaa;">—</td></tr>
+<tr><td class="tc">14</td><td class="site-name">UCA0032</td><td class="num neg-v">-7</td><td class="num neg-v">-26</td><td class="num">586</td><td class="num">12.14h</td></tr>
+<tr><td class="tc">15</td><td class="site-name">UCA0157</td><td class="num neg-v">-7</td><td class="num neg-v">-27</td><td class="num">338</td><td class="num">129.18h</td></tr>
+<tr><td class="tc">16</td><td class="site-name">UCA0019B3U1</td><td class="num neg-v">-5</td><td class="num neg-v">-7</td><td class="num">142</td><td class="num" style="color:#aaa;">—</td></tr>
+<tr><td class="tc">17</td><td class="site-name">UCA0057</td><td class="num neg-v">-5</td><td class="num neg-v">-15</td><td class="num">449</td><td class="num" style="color:#aaa;">—</td></tr>
+<tr><td class="tc">18</td><td class="site-name">UCA0141</td><td class="num neg-v">-2</td><td class="num neg-v">-9</td><td class="num">211</td><td class="num">259.44h</td></tr>
+<tr><td class="tc">19</td><td class="site-name">UCA0179</td><td class="num neg-v">-2</td><td class="num neg-v">-5</td><td class="num">134</td><td class="num">1.13h</td></tr>
+</tbody></table></div>
+</div>
+<div id="p5-w4" class="week-panel" style="display:none">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T6 Tăng/Giảm</th><th>T5 Tăng/Giảm</th><th>Thuê bao T6</th><th>Cell*h</th></tr></thead><tbody id="p5Body-w4">
+<tr><td class="tc">1</td><td class="site-name">UCA0044</td><td class="num neg-v">-152</td><td class="num neg-v">-27</td><td class="num">1.279</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">2</td><td class="site-name">UCA0005</td><td class="num neg-v">-131</td><td class="num neg-v">-48</td><td class="num">805</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">3</td><td class="site-name">UCA0030</td><td class="num neg-v">-85</td><td class="num neg-v">-3</td><td class="num">1.206</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">4</td><td class="site-name">UCA0139</td><td class="num neg-v">-48</td><td class="num neg-v">-80</td><td class="num">485</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">5</td><td class="site-name">UCA0152</td><td class="num neg-v">-44</td><td class="num neg-v">-2</td><td class="num">907</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">6</td><td class="site-name">UCA0086</td><td class="num neg-v">-35</td><td class="num neg-v">-8</td><td class="num">875</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">7</td><td class="site-name">UCA0013</td><td class="num neg-v">-25</td><td class="num neg-v">-42</td><td class="num">993</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">8</td><td class="site-name">UCA0057</td><td class="num neg-v">-20</td><td class="num neg-v">-15</td><td class="num">589</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">9</td><td class="site-name">UCA0056</td><td class="num neg-v">-14</td><td class="num neg-v">-33</td><td class="num">742</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">10</td><td class="site-name">UCA0140</td><td class="num neg-v">-14</td><td class="num neg-v">-25</td><td class="num">674</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">11</td><td class="site-name">UCA0157</td><td class="num neg-v">-14</td><td class="num neg-v">-27</td><td class="num">410</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">12</td><td class="site-name">UCA0053</td><td class="num neg-v">-13</td><td class="num neg-v">-12</td><td class="num">1.146</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">13</td><td class="site-name">UCA0079</td><td class="num neg-v">-12</td><td class="num neg-v">-2</td><td class="num">1.250</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">14</td><td class="site-name">UCA0001</td><td class="num neg-v">-2</td><td class="num neg-v">-13</td><td class="num">565</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">15</td><td class="site-name">UCA0031</td><td class="num neg-v">-2</td><td class="num neg-v">-4</td><td class="num">573</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+</tbody></table></div>
+</div>
+<div id="p5-w5" class="week-panel">
+  <div class="bts-scroll"><table class="bts-table"><thead><tr><th>STT</th><th>Tên Trạm</th><th>T7 Tăng/Giảm</th><th>T6 Tăng/Giảm</th><th>Thuê bao T7</th><th>Cell*h</th></tr></thead><tbody id="p5Body">
+<tr><td class="tc">1</td><td class="site-name">HUN0184B3U2</td><td class="num neg-v">-85</td><td class="num neg-v">-23</td><td class="num">52</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">2</td><td class="site-name">UCA0181</td><td class="num neg-v">-67</td><td class="num neg-v">-15</td><td class="num">237</td><td class="num">12.21h</td></tr>
+<tr><td class="tc">3</td><td class="site-name">UCA0139</td><td class="num neg-v">-64</td><td class="num neg-v">-73</td><td class="num">81</td><td class="num">96.43h</td></tr>
+<tr><td class="tc">4</td><td class="site-name">UCA0005</td><td class="num neg-v">-63</td><td class="num neg-v">-167</td><td class="num">98</td><td class="num">2.03h</td></tr>
+<tr><td class="tc">5</td><td class="site-name">UCA0049</td><td class="num neg-v">-42</td><td class="num neg-v">-20</td><td class="num">192</td><td class="num">0.28h</td></tr>
+<tr><td class="tc">6</td><td class="site-name">UCA0030</td><td class="num neg-v">-38</td><td class="num neg-v">-156</td><td class="num">294</td><td class="num">119.93h</td></tr>
+<tr><td class="tc">7</td><td class="site-name">UCA0154</td><td class="num neg-v">-36</td><td class="num neg-v">-164</td><td class="num">195</td><td class="num">75.25h</td></tr>
+<tr><td class="tc">8</td><td class="site-name">UCA0012</td><td class="num neg-v">-35</td><td class="num neg-v">-128</td><td class="num">292</td><td class="num">2.60h</td></tr>
+<tr><td class="tc">9</td><td class="site-name">UCA0086</td><td class="num neg-v">-28</td><td class="num neg-v">-24</td><td class="num">190</td><td class="num">0.95h</td></tr>
+<tr><td class="tc">10</td><td class="site-name">UCA0069</td><td class="num neg-v">-27</td><td class="num neg-v">-47</td><td class="num">602</td><td class="num">369.55h</td></tr>
+<tr><td class="tc">11</td><td class="site-name">UCA0176</td><td class="num neg-v">-17</td><td class="num neg-v">-18</td><td class="num">53</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">12</td><td class="site-name">UCA0175</td><td class="num neg-v">-15</td><td class="num neg-v">-21</td><td class="num">135</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">13</td><td class="site-name">UCA0021B3U1</td><td class="num neg-v">-13</td><td class="num neg-v">-134</td><td class="num">104</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">14</td><td class="site-name">UCA0079</td><td class="num neg-v">-12</td><td class="num neg-v">-8</td><td class="num">270</td><td class="num">2.00h</td></tr>
+<tr><td class="tc">15</td><td class="site-name">UCA0140</td><td class="num neg-v">-11</td><td class="num neg-v">-20</td><td class="num">200</td><td class="num">66.09h</td></tr>
+<tr><td class="tc">16</td><td class="site-name">UCA2001</td><td class="num neg-v">-11</td><td class="num neg-v">-14</td><td class="num">241</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">17</td><td class="site-name">UCA0184</td><td class="num neg-v">-10</td><td class="num neg-v">-3</td><td class="num">125</td><td class="num">5.96h</td></tr>
+<tr><td class="tc">18</td><td class="site-name">UCA0159</td><td class="num neg-v">-9</td><td class="num neg-v">-15</td><td class="num">58</td><td class="num">127.13h</td></tr>
+<tr><td class="tc">19</td><td class="site-name">UCA0168</td><td class="num neg-v">-9</td><td class="num neg-v">-29</td><td class="num">185</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">20</td><td class="site-name">UCA3061</td><td class="num neg-v">-5</td><td class="num neg-v">-34</td><td class="num">164</td><td class="num">1.19h</td></tr>
+<tr><td class="tc">21</td><td class="site-name">PAS5012</td><td class="num neg-v">-3</td><td class="num neg-v">-24</td><td class="num">154</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">22</td><td class="site-name">HUN0171</td><td class="num neg-v">-2</td><td class="num neg-v">-3</td><td class="num">87</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">23</td><td class="site-name">UCA0021</td><td class="num neg-v">-2</td><td class="num neg-v">-4</td><td class="num">354</td><td class="num">82.66h</td></tr>
+<tr><td class="tc">24</td><td class="site-name">UCA0009B3U1</td><td class="num neg-v">-1</td><td class="num neg-v">-2</td><td class="num">14</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+<tr><td class="tc">25</td><td class="site-name">UCA0211</td><td class="num neg-v">-1</td><td class="num neg-v">-1</td><td class="num">165</td><td class="num" style="color:#aaa;">&#8212;</td></tr>
+</tbody></table></div>
+</div>
+<div id="p5-w6" class="week-panel" style="display:none">
+  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;">Chưa có dữ liệu cho tuần này</div>
+</div>
+<div id="p5-w7" class="week-panel" style="display:none">
+  <div style="padding:40px;text-align:center;color:#9ca3af;font-style:italic;">Chưa có dữ liệu cho tuần này</div>
+</div>
+</div>
+
+
+<!-- PAGE FOOTER -->
+<div class="page-footer">
+  <span>Bitel UCABR – Dashboard Điều Hành</span>
+  <span>Số liệu cập nhật đến: 05/07/2026</span>
+  <span>Tạo bởi Claude AI &nbsp;|&nbsp; Chi nhánh UCABR</span>
+</div>
+
+
+
+
+
+
+
+<!-- ── Login Overlay ─────────────────────────── -->
+<div id="loginOverlay" style="position:fixed;inset:0;background:rgba(0,58,117,0.92);z-index:9999;display:none;align-items:center;justify-content:center;">
+  <div style="background:#fff;border-radius:14px;padding:32px 36px;max-width:360px;width:90%;box-shadow:0 8px 30px rgba(0,0,0,0.3);text-align:center;">
+    <div style="background:#FFD100;color:#0057A8;font-size:1.6rem;font-weight:900;letter-spacing:3px;padding:6px 16px;border-radius:6px;display:inline-block;margin-bottom:18px;">BITEL</div>
+    <h2 data-i18n="login-title" style="color:#0057A8;font-size:1.05rem;margin-bottom:6px;">Chào mừng đến Dashboard UCA</h2>
+    <p data-i18n="login-sub" style="color:#4a7090;font-size:0.82rem;margin-bottom:18px;">Vui lòng nhập tên của bạn để tiếp tục</p>
+    <input id="loginNameInput" type="text" data-i18n-placeholder="login-placeholder" placeholder="Tên của bạn" style="width:100%;padding:10px 14px;border:1.5px solid #b3cfe8;border-radius:8px;font-size:0.9rem;margin-bottom:14px;box-sizing:border-box;">
+    <button id="loginSubmitBtn" data-i18n="login-btn" style="width:100%;background:#0057A8;color:#fff;border:none;border-radius:8px;padding:10px;font-size:0.9rem;font-weight:700;cursor:pointer;">Vào Dashboard</button>
+  </div>
+</div>
+
+
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script>
+// ── DATA ──────────────────────────────────────────────────
+const kh15 = [1554, -1137, 4422, 559, 3332, 825, 2247];
+const th15 = [-467, -256, 6203, 533, 2893, 1903, 453];
+const lk15 = [-467, -723, 5480, 6013, 8906, 10809, 11262];
+const regN  = [106054, 107981, 110446, 112819, 116549, 118304, 118278];
+const regN1 = [106602, 102552, 109279, 111380, 113184, 117068, 117308];
+const revN  = [2809731, 2730577, 2963535, 2936864, 3034710, 3077268, 388592];
+const revN1 = [2837293, 2809564, 2730467, 2963595, 2936904, 3054748, 379757];
+const labels = ['T1/2026','T2/2026','T3/2026','T4/2026','T5/2026','T6','T7*'];
+
+// ── CHART 1: 15C3D ────────────────────────────────────────
+(function(){
+  const ctx = document.getElementById('chart15c3d');
+  if (!ctx) return;
+  new Chart(ctx, {
+    data: {
+      labels,
+      datasets: [
+        { type:'bar', label:'KH', data: kh15, backgroundColor:'rgba(0,87,168,0.55)', borderColor:'#0057A8', borderWidth:1.5, borderRadius:4, order:2 },
+        { type:'bar', label:'TH (Increasing)', data: th15, backgroundColor: th15.map(v=>v>=0?'rgba(0,128,0,0.6)':'rgba(192,57,43,0.6)'), borderColor: th15.map(v=>v>=0?'#15803d':'#c0392b'), borderWidth:1.5, borderRadius:4, order:2 },
+        { type:'line', label:'Lũy Kế TH', data: lk15, borderColor:'#FFD100', backgroundColor:'rgba(255,209,0,0.12)', tension:0.3, pointRadius:5, pointBackgroundColor:'#FFD100', borderWidth:2.5, fill:false, order:1 }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top', labels:{ font:{ size:12 } } }, tooltip:{ mode:'index', intersect:false } },
+      scales:{ y:{ grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 } } }, x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } }
+    }
+  });
+})();
+
+// ── CHART 2: REG ──────────────────────────────────────────
+(function(){
+  const ctx = document.getElementById('chartReg');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels,
+      datasets:[
+        { label:'REG_N',   data:regN,  backgroundColor:'rgba(0,87,168,0.65)', borderColor:'#0057A8', borderWidth:1.5, borderRadius:4 },
+        { label:'REG_N_1', data:regN1, backgroundColor:'rgba(255,209,0,0.65)', borderColor:'#c8a000', borderWidth:1.5, borderRadius:4 }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top' }, tooltip:{ mode:'index', intersect:false } },
+      scales:{ y:{ min: Math.min(...regN,...regN1)*0.95, grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 }, callback:v=>v.toLocaleString('es-PE') } }, x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } }
+    }
+  });
+})();
+
+// ── CHART 3: REVENUE ──────────────────────────────────────
+(function(){
+  const ctx = document.getElementById('chartRevenue');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels,
+      datasets:[
+        { label:'Rev N',   data:revN,  backgroundColor:'rgba(26,138,58,0.65)', borderColor:'#1a8a3a', borderWidth:1.5, borderRadius:4 },
+        { label:'Rev N-1', data:revN1, backgroundColor:'rgba(0,87,168,0.45)', borderColor:'#0057A8', borderWidth:1.5, borderRadius:4 }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top' }, tooltip:{ mode:'index', intersect:false, callbacks:{ label:c=>c.dataset.label+': '+c.raw.toLocaleString('es-PE')+' PEN' } } },
+      scales:{ y:{ grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 }, callback:v=>v.toLocaleString('es-PE') } }, x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } }
+    }
+  });
+})();
+
+// ── LANG / LOGIN / LOGOUT ─────────────────────────────────
+// ── I18N DICTIONARY ────────────────────────────────────────
+const I18N = {
+  vi: {
+    'h1': 'Dashboard Điều Hành Chi Nhánh Bitel UCA',
+    'subtitle': 'Thuê bao 15C3D &amp; REG &nbsp;|&nbsp; Khu vực UCABR &nbsp;|&nbsp; Lũy kế T1 – T7 / 2026',
+    'date-badge': '📅 Số liệu đến: 05/07/2026',
+    'kpi-title': 'Tổng Quan Lũy Kế T1–T7 / 2026 &nbsp;·&nbsp; Số liệu đến 05/07/2026 &nbsp;|&nbsp; 4 Chỉ Số Điều Hành',
+    'kpi1-lbl': '📱 15C3D – Lũy Kế T1–T6',
+    'kpi1-sub': 'Tổng thuê bao 15C3D tích lũy tại Tháng 6 / 2026',
+    'kpi2-lbl': '🎯 So Sánh Lũy Kế vs KH Năm 2026',
+    'kpi3-lbl': '📡 REG – So Sánh REG_N vs REG_N_1',
+    'kpi4-lbl': '💰 Revenue – Lũy Kế T1–T7 / 2026',
+    'sec1-tag': 'Phần 1',
+    'sec1-h3': 'Biểu Đồ 15C3D – Kế Hoạch / Thực Hiện / Lũy Kế (T1–T7 / 2026)',
+    'sec1-chart-h4': '📊 Biểu Đồ Cột – 15C3D Tăng Trưởng Theo Tháng',
+    'sec1-table-h4': '📋 Thống Kê Chi Tiết 15C3D',
+    'th-month': 'Tháng',
+    'th-inc': 'TH (Increasing)',
+    'th-lk': 'Lũy Kế TH',
+    'sec2-tag': 'Phần 2',
+    'sec2-h3': 'Biểu Đồ REG – REG_N &amp; REG_N‑1 Theo Tháng (T1–T7 / 2026)',
+    'sec2-chart-h4': '📊 Biểu Đồ Cột – REG Theo Tháng',
+    'sec2-table-h4': '📋 Thống Kê Chi Tiết REG',
+    'th-diff': 'Chênh lệch',
+    'sec3-tag': 'Phần 3',
+    'sec3-h3': 'Biểu Đồ Revenue – Revenue N &amp; Revenue N‑1 Theo Tháng (T1–T7 / 2026)',
+    'sec3-chart-h4': '📊 Biểu Đồ Cột – Revenue Theo Tháng (PEN)',
+    'sec3-table-h4': '📋 Thống Kê Chi Tiết Revenue (PEN)',
+    'sec4-tag': 'Phần 4',
+    'sec4-h3': 'Danh Sách Trạm BTS Giảm Thuê Bao 15C3D – Tháng 7 / 2026 (đến 05/07)',
+    'bts-total': 'Tổng trạm giảm',
+    'bts-red-lbl': 'Cực kỳ nghiêm trọng (≥ -100)',
+    'bts-yellow-lbl': 'Nghiêm trọng (-50 ≤ C &lt; -100)',
+    'bts-green-lbl': 'Cảnh báo (-20 ≤ C &lt; -50)',
+    'bts-none-lbl': 'Theo dõi (C &lt; -20)',
+    'leg-red': '🔴 Cực kỳ nghiêm trọng: C ≥ -100',
+    'leg-yellow': '🟡 Nghiêm trọng: -50 ≤ C &lt; -100',
+    'leg-green': '🟢 Cảnh báo: -20 ≤ C &lt; -50',
+    'leg-none': 'Theo dõi: C &lt; -20',
+    'sec5-tag': 'Phần 5',
+    'sec5-h3': 'Danh Sách Trạm BTS Giảm Liên Tiếp 2 Tháng (T6, T7)',
+    'p5-total': 'Tổng trạm giảm T6 và T7',
+    'logout-btn': '⏏ Đăng xuất',
+    'login-title': 'Chào mừng đến Dashboard UCA',
+    'login-sub': 'Vui lòng nhập tên của bạn để tiếp tục',
+    'login-placeholder': 'Tên của bạn',
+    'login-btn': 'Vào Dashboard'
+  },
+  es: {
+    'h1': 'Panel de Gestión de la Sucursal Bitel UCA',
+    'subtitle': 'Abonados 15C3D &amp; REG &nbsp;|&nbsp; Región UCABR &nbsp;|&nbsp; Acumulado T1 – T7 / 2026',
+    'date-badge': '📅 Datos al: 05/07/2026',
+    'kpi-title': 'Resumen Acumulado T1–T7 / 2026 &nbsp;·&nbsp; Datos al 05/07/2026 &nbsp;|&nbsp; 4 Indicadores de Gestión',
+    'kpi1-lbl': '📱 15C3D – Acumulado T1–T6',
+    'kpi1-sub': 'Total de abonados 15C3D acumulado al Mes 6 / 2026',
+    'kpi2-lbl': '🎯 Comparación Acumulado vs Meta Anual 2026',
+    'kpi3-lbl': '📡 REG – Comparación REG_N vs REG_N_1',
+    'kpi4-lbl': '💰 Revenue – Acumulado T1–T7 / 2026',
+    'sec1-tag': 'Sección 1',
+    'sec1-h3': 'Gráfico 15C3D – Meta / Ejecutado / Acumulado (T1–T7 / 2026)',
+    'sec1-chart-h4': '📊 Gráfico de Barras – Crecimiento 15C3D Mensual',
+    'sec1-table-h4': '📋 Estadísticas Detalladas 15C3D',
+    'th-month': 'Mes',
+    'th-inc': 'Ejec. (Increasing)',
+    'th-lk': 'Acumulado Ejec.',
+    'sec2-tag': 'Sección 2',
+    'sec2-h3': 'Gráfico REG – REG_N &amp; REG_N‑1 Mensual (T1–T7 / 2026)',
+    'sec2-chart-h4': '📊 Gráfico de Barras – REG Mensual',
+    'sec2-table-h4': '📋 Estadísticas Detalladas REG',
+    'th-diff': 'Diferencia',
+    'sec3-tag': 'Sección 3',
+    'sec3-h3': 'Gráfico Revenue – Revenue N &amp; Revenue N‑1 Mensual (T1–T7 / 2026)',
+    'sec3-chart-h4': '📊 Gráfico de Barras – Revenue Mensual (PEN)',
+    'sec3-table-h4': '📋 Estadísticas Detalladas Revenue (PEN)',
+    'sec4-tag': 'Sección 4',
+    'sec4-h3': 'Lista de Estaciones BTS con Baja de Abonados 15C3D – Julio / 2026 (al 05/07)',
+    'bts-total': 'Total estaciones en baja',
+    'bts-red-lbl': 'Crítico extremo (≥ -100)',
+    'bts-yellow-lbl': 'Crítico (-50 ≤ C &lt; -100)',
+    'bts-green-lbl': 'Alerta (-20 ≤ C &lt; -50)',
+    'bts-none-lbl': 'Seguimiento (C &lt; -20)',
+    'leg-red': '🔴 Crítico extremo: C ≥ -100',
+    'leg-yellow': '🟡 Crítico: -50 ≤ C &lt; -100',
+    'leg-green': '🟢 Alerta: -20 ≤ C &lt; -50',
+    'leg-none': 'Seguimiento: C &lt; -20',
+    'sec5-tag': 'Sección 5',
+    'sec5-h3': 'Lista de Estaciones BTS con Baja Consecutiva 2 Meses (T6, T7)',
+    'p5-total': 'Total estaciones en baja T6 y T7',
+    'logout-btn': '⏏ Cerrar sesión',
+    'login-title': 'Bienvenido al Dashboard UCA',
+    'login-sub': 'Por favor ingrese su nombre para continuar',
+    'login-placeholder': 'Su nombre',
+    'login-btn': 'Entrar al Dashboard'
+  },
+  en: {
+    'h1': 'Bitel UCA Branch Management Dashboard',
+    'subtitle': '15C3D &amp; REG Subscribers &nbsp;|&nbsp; UCABR Region &nbsp;|&nbsp; Cumulative T1 – T7 / 2026',
+    'date-badge': '📅 Data as of: 05/07/2026',
+    'kpi-title': 'Cumulative Overview T1–T7 / 2026 &nbsp;·&nbsp; Data as of 05/07/2026 &nbsp;|&nbsp; 4 Key Indicators',
+    'kpi1-lbl': '📱 15C3D – Cumulative T1–T6',
+    'kpi1-sub': 'Total 15C3D subscribers accumulated through Month 6 / 2026',
+    'kpi2-lbl': '🎯 Cumulative vs Annual Target 2026',
+    'kpi3-lbl': '📡 REG – REG_N vs REG_N_1 Comparison',
+    'kpi4-lbl': '💰 Revenue – Cumulative T1–T7 / 2026',
+    'sec1-tag': 'Section 1',
+    'sec1-h3': '15C3D Chart – Target / Achieved / Cumulative (T1–T7 / 2026)',
+    'sec1-chart-h4': '📊 Bar Chart – Monthly 15C3D Growth',
+    'sec1-table-h4': '📋 15C3D Detailed Statistics',
+    'th-month': 'Month',
+    'th-inc': 'Achieved (Increasing)',
+    'th-lk': 'Cumulative Achieved',
+    'sec2-tag': 'Section 2',
+    'sec2-h3': 'REG Chart – REG_N &amp; REG_N‑1 Monthly (T1–T7 / 2026)',
+    'sec2-chart-h4': '📊 Bar Chart – Monthly REG',
+    'sec2-table-h4': '📋 REG Detailed Statistics',
+    'th-diff': 'Difference',
+    'sec3-tag': 'Section 3',
+    'sec3-h3': 'Revenue Chart – Revenue N &amp; Revenue N‑1 Monthly (T1–T7 / 2026)',
+    'sec3-chart-h4': '📊 Bar Chart – Monthly Revenue (PEN)',
+    'sec3-table-h4': '📋 Revenue Detailed Statistics (PEN)',
+    'sec4-tag': 'Section 4',
+    'sec4-h3': 'List of BTS Sites with 15C3D Subscriber Decline – July / 2026 (as of 07/05)',
+    'bts-total': 'Total declining sites',
+    'bts-red-lbl': 'Extremely critical (≥ -100)',
+    'bts-yellow-lbl': 'Critical (-50 ≤ C &lt; -100)',
+    'bts-green-lbl': 'Warning (-20 ≤ C &lt; -50)',
+    'bts-none-lbl': 'Monitoring (C &lt; -20)',
+    'leg-red': '🔴 Extremely critical: C ≥ -100',
+    'leg-yellow': '🟡 Critical: -50 ≤ C &lt; -100',
+    'leg-green': '🟢 Warning: -20 ≤ C &lt; -50',
+    'leg-none': 'Monitoring: C &lt; -20',
+    'sec5-tag': 'Section 5',
+    'sec5-h3': 'List of BTS Sites with 2-Month Consecutive Decline (T6, T7)',
+    'p5-total': 'Total declining sites T6 and T7',
+    'logout-btn': '⏏ Log out',
+    'login-title': 'Welcome to the UCA Dashboard',
+    'login-sub': 'Please enter your name to continue',
+    'login-placeholder': 'Your name',
+    'login-btn': 'Enter Dashboard'
+  }
+};
+
+function applyLang(lang){
+  var dict = I18N[lang] || I18N.vi;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var key = el.getAttribute('data-i18n');
+    if(dict[key] !== undefined){ el.innerHTML = dict[key]; }
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach(function(el){
+    var key = el.getAttribute('data-i18n-placeholder');
+    if(dict[key] !== undefined){ el.setAttribute('placeholder', dict[key]); }
+  });
+  document.documentElement.setAttribute('lang', lang);
+  try{ localStorage.setItem('bitel_lang', lang); }catch(e){}
+}
+
+function setLang(l){
+  document.querySelectorAll('#langSwitcher button').forEach(function(b){ b.classList.remove('active'); });
+  var clicked = (typeof event !== 'undefined' && event && event.currentTarget) ? event.currentTarget : null;
+  if(clicked){ clicked.classList.add('active'); }
+  else {
+    var btn = document.querySelector('#langSwitcher button[onclick*="\'' + l + '\'"]');
+    if(btn) btn.classList.add('active');
+  }
+  applyLang(l);
+}
+
+// ── LOGIN / LOGOUT (simple name gate, no password) ─────────
+function updateUserLabel(){
+  var name = sessionStorage.getItem('bitel_user');
+  var el = document.getElementById('userLabel');
+  if(el) el.textContent = name ? ('👤 ' + name) : '👤';
+}
+function showLogin(){
+  var ov = document.getElementById('loginOverlay');
+  if(ov){ ov.style.display = 'flex'; }
+  var input = document.getElementById('loginNameInput');
+  if(input){ input.value = ''; setTimeout(function(){ input.focus(); }, 50); }
+}
+function hideLogin(){
+  var ov = document.getElementById('loginOverlay');
+  if(ov){ ov.style.display = 'none'; }
+}
+function submitLogin(){
+  var input = document.getElementById('loginNameInput');
+  var val = input ? input.value.trim() : '';
+  if(!val) { if(input) input.focus(); return; }
+  sessionStorage.setItem('bitel_user', val);
+  updateUserLabel();
+  hideLogin();
+}
+function doLogout(){
+  sessionStorage.removeItem('bitel_user');
+  updateUserLabel();
+  showLogin();
+}
+
+document.addEventListener('DOMContentLoaded', function(){
+  // Restore saved language preference
+  var savedLang = null;
+  try{ savedLang = localStorage.getItem('bitel_lang'); }catch(e){}
+  if(savedLang && savedLang !== 'vi' && I18N[savedLang]){
+    document.querySelectorAll('#langSwitcher button').forEach(function(b){ b.classList.remove('active'); });
+    var btn = document.querySelector('#langSwitcher button[onclick*="\'' + savedLang + '\'"]');
+    if(btn) btn.classList.add('active');
+    applyLang(savedLang);
+  }
+
+  // Login gate
+  updateUserLabel();
+  var existingUser = sessionStorage.getItem('bitel_user');
+  if(!existingUser){ showLogin(); } else { hideLogin(); }
+
+  var submitBtn = document.getElementById('loginSubmitBtn');
+  if(submitBtn){ submitBtn.addEventListener('click', submitLogin); }
+  var nameInput = document.getElementById('loginNameInput');
+  if(nameInput){
+    nameInput.addEventListener('keydown', function(e){
+      if(e.key === 'Enter'){ submitLogin(); }
+    });
+  }
+});
+
+
+function showBtsWeek(wid, cj) {
+  var prefix = wid.startsWith('bts') ? 'bts' : 'p5';
+  // Chỉ ẩn panel cùng section, không ẩn section kia
+  var all = document.querySelectorAll('[id^="' + prefix + '-w"]');
+  all.forEach(function(p){p.style.display='none';});
+  var el = document.getElementById(wid);
+  if(el) el.style.display='';
+  // Update tab button active state
+  document.querySelectorAll('.week-tab-btn').forEach(function(btn){
+    var oc = btn.getAttribute('onclick')||'';
+    if(oc.includes("'"+wid+"'")) btn.classList.add('active');
+    else if(oc.includes("'"+prefix+"-")) btn.classList.remove('active');
+  });
+  // Update counters if present
+  if(!cj || !Object.keys(cj).length) return;
+  if(prefix==='bts'){
+    if(cj.total!==undefined){var e=document.getElementById('cnt-total');if(e)e.textContent=cj.total;}
+    if(cj.red!==undefined){var e=document.getElementById('cnt-red');if(e)e.textContent=cj.red;}
+    if(cj.yellow!==undefined){var e=document.getElementById('cnt-yellow');if(e)e.textContent=cj.yellow;}
+    if(cj.green!==undefined){var e=document.getElementById('cnt-green');if(e)e.textContent=cj.green;}
+    if(cj.none!==undefined){var e=document.getElementById('cnt-none');if(e)e.textContent=cj.none;}
+  } else {
+    if(cj.cnt!==undefined){var e=document.getElementById('p5-cnt');if(e)e.textContent=cj.cnt;}
+  }
+}
+// Show active panels on load
+document.addEventListener('DOMContentLoaded',function(){
+  ['bts-w5','p5-w5'].forEach(function(id){
+    var el=document.getElementById(id);
+    if(el) el.style.display='';
+  });
+});
+</script>
+
+</body></html>
