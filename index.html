@@ -1074,16 +1074,148 @@
     <h3 data-i18n="tab-mobile-h3">Chỉ Số Kinh Doanh Di Động</h3>
     <div class="line"></div>
   </div>
+
+  <!-- PHAN 1 (DI DONG): TONG KICH HOAT -->
+  <div class="section-divider">
+    <div class="tag" data-i18n="activar-tag">Phần 1</div>
+    <h3 data-i18n="activar-h3">Tổng Kích Hoạt – Postpaid / Prepaid / Total Theo Tháng (T5–T7 / 2026)</h3>
+    <div class="line"></div>
+  </div>
+
   <div class="content-row">
     <div class="chart-card" style="flex:1;">
-      <div class="tab-empty">
-        <div class="tab-empty-icon">📶</div>
-        <div class="tab-empty-title" data-i18n="tab-empty-title">Nội dung đang được cập nhật</div>
-        <div class="tab-empty-msg" data-i18n="tab-empty-msg-mobile">Số liệu Di động sẽ được bổ sung tại đây, trình bày cùng bố cục và màu sắc với thẻ Dashboard chung.</div>
+      <h4 data-i18n="activar-chart-h4">📊 Biểu Đồ Cột Chồng – Kích Hoạt UCABR Theo Tháng</h4>
+      <div class="chart-wrapper">
+        <canvas id="chartActivar" height="290"></canvas>
+      </div>
+      <div class="data-strip" style="grid-template-columns:repeat(3,1fr);">
+        <div class="ds-month" style="background:#eaf2fb;border-color:#7ab0d8;">
+          <div class="ds-month-label" style="color:#0057A8;">T5 / 2026</div>
+          <div class="ds-row"><span class="ds-key">Postpaid</span><span class="ds-val">3.609</span></div>
+          <div class="ds-row"><span class="ds-key">Prepaid</span><span class="ds-val">13.052</span></div>
+          <div class="ds-row"><span class="ds-key">Total</span><span class="ds-val">16.661</span></div>
+        </div>
+        <div class="ds-month" style="background:#eaf2fb;border-color:#7ab0d8;">
+          <div class="ds-month-label" style="color:#0057A8;">T6 / 2026</div>
+          <div class="ds-row"><span class="ds-key">Postpaid</span><span class="ds-val">3.438</span></div>
+          <div class="ds-row"><span class="ds-key">Prepaid</span><span class="ds-val">13.131</span></div>
+          <div class="ds-row"><span class="ds-key">Total</span><span class="ds-val">16.569</span></div>
+        </div>
+        <div class="ds-month partial" style="background:#eaf2fb;border-color:#7ab0d8;">
+          <div class="ds-month-label" style="color:#0057A8;">T7 *</div>
+          <div class="ds-row"><span class="ds-key">Postpaid</span><span class="ds-val">1.274</span></div>
+          <div class="ds-row"><span class="ds-key">Prepaid</span><span class="ds-val">4.283</span></div>
+          <div class="ds-row"><span class="ds-key">Total</span><span class="ds-val">5.557</span></div>
+          <div class="partial-note">đến 11/07</div>
+        </div>
+      </div>
+    </div>
+    <div class="table-card" style="flex:1;">
+      <h4 data-i18n="activar-table-h4">📋 Thống Kê Chi Tiết Kích Hoạt – Tổng UCABR</h4>
+      <div style="overflow-x:auto;">
+      <table class="stats-table">
+        <thead><tr><th data-i18n="th-month">Tháng</th><th>Postpaid</th><th>Prepaid</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>T5</td><td>3.609</td><td>13.052</td><td>16.661</td></tr>
+          <tr><td>T6</td><td>3.438</td><td>13.131</td><td>16.569</td></tr>
+          <tr><td>T7 (*)</td><td>1.274</td><td>4.283</td><td>5.557</td></tr>
+        </tbody>
+        <tfoot><tr><td data-i18n="mau-tfoot">T7 hiện tại</td><td>1.274</td><td>4.283</td><td>5.557</td></tr></tfoot>
+      </table>
+      </div>
+      <div class="note-box" data-i18n="activar-note-box">
+        <strong>📌 Ghi chú nguồn số liệu:</strong><br>
+        • Nguồn: file "Activar ngày ..." – dữ liệu chi tiết từng thuê bao kích hoạt, chi nhánh <strong>UCABR</strong><br>
+        • <strong>Postpaid</strong>/<strong>Prepaid</strong>: đếm số dòng theo cột <strong>sub_type</strong>, nhóm theo tháng (cột <strong>month</strong>)<br>
+        • <strong>Total</strong> = Postpaid + Prepaid, cập nhật hàng tuần<br>
+        • (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 11/07/2026</strong> – sẽ được ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc
       </div>
     </div>
   </div>
-</div>
+
+  <!-- PHAN 2 (DI DONG): KICH HOAT THEO BC -->
+  <div class="section-divider">
+    <div class="tag" style="background:#6d28d9;" data-i18n="activar-bc-tag">Phần 2</div>
+    <h3 data-i18n="activar-bc-h3">Kích Hoạt Theo Trung Tâm Kinh Doanh – BC01 &amp; BC02 (T5–T7 / 2026)</h3>
+    <div class="line"></div>
+  </div>
+
+  <div class="bts-section" style="padding-top:0;">
+    <div class="bts-summary">
+      <div class="bts-sum-card" style="background:#eaf2fb;border-color:#0057A8;color:#0057A8;text-align:left;padding:14px 20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="font-weight:800;font-size:0.95rem;">🏢 BC01 – Tổng Kích Hoạt</span>
+          <span style="font-size:0.7rem;background:#0057A8;color:#fff;padding:2px 8px;border-radius:10px;" data-i18n="mau-bc-latest">T7 hiện tại (*)</span>
+        </div>
+        <div style="font-size:1.6rem;font-weight:800;color:#0057A8;line-height:1;">4.125</div>
+        <div class="prog-bar-bg" style="margin-top:8px;"><div class="prog-bar-fill" style="width:74.2%;background:#0057A8;"></div></div>
+        <div class="prog-pct" style="text-align:left;"><strong>74,2%</strong> <span data-i18n="activar-bc-share">tổng kích hoạt UCABR</span></div>
+      </div>
+      <div class="bts-sum-card" style="background:#fffbe6;border-color:#c8a000;color:#8a6600;text-align:left;padding:14px 20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="font-weight:800;font-size:0.95rem;">🏢 BC02 – Tổng Kích Hoạt</span>
+          <span style="font-size:0.7rem;background:#c8a000;color:#fff;padding:2px 8px;border-radius:10px;" data-i18n="mau-bc-latest">T7 hiện tại (*)</span>
+        </div>
+        <div style="font-size:1.6rem;font-weight:800;color:#8a6600;line-height:1;">1.432</div>
+        <div class="prog-bar-bg" style="margin-top:8px;"><div class="prog-bar-fill" style="width:25.8%;background:#FFD100;"></div></div>
+        <div class="prog-pct" style="text-align:left;"><strong>25,8%</strong> <span data-i18n="activar-bc-share">tổng kích hoạt UCABR</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-row">
+    <div class="table-card" style="flex:1;">
+      <h4 style="color:#0057A8;">🏢 BC01 <span data-i18n="activar-bc-suffix" style="font-weight:600;text-transform:none;letter-spacing:0;color:#3a6080;">– Chi Tiết Kích Hoạt Theo Tháng</span></h4>
+      <table class="stats-table">
+        <thead><tr><th data-i18n="th-month">Tháng</th><th>Postpaid</th><th>Prepaid</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>T5</td><td>2.630</td><td>8.778</td><td>11.408</td></tr>
+          <tr><td>T6</td><td>2.461</td><td>8.858</td><td>11.319</td></tr>
+          <tr><td>T7 (*)</td><td>961</td><td>3.164</td><td>4.125</td></tr>
+        </tbody>
+        <tfoot><tr><td data-i18n="mau-tfoot">T7 hiện tại</td><td>961</td><td>3.164</td><td>4.125</td></tr></tfoot>
+      </table>
+    </div>
+    <div class="table-card yellow-header" style="flex:1;">
+      <h4 style="color:#8a6600;">🏢 BC02 <span data-i18n="activar-bc-suffix" style="font-weight:600;text-transform:none;letter-spacing:0;color:#7a6020;">– Chi Tiết Kích Hoạt Theo Tháng</span></h4>
+      <table class="stats-table yellow-header">
+        <thead><tr><th data-i18n="th-month">Tháng</th><th>Postpaid</th><th>Prepaid</th><th>Total</th></tr></thead>
+        <tbody>
+          <tr><td>T5</td><td>979</td><td>4.274</td><td>5.253</td></tr>
+          <tr><td>T6</td><td>977</td><td>4.273</td><td>5.250</td></tr>
+          <tr><td>T7 (*)</td><td>313</td><td>1.119</td><td>1.432</td></tr>
+        </tbody>
+        <tfoot><tr><td data-i18n="mau-tfoot">T7 hiện tại</td><td>313</td><td>1.119</td><td>1.432</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div class="content-row">
+    <div class="chart-card" style="flex:1;">
+      <h4 style="color:#0057A8;" data-i18n="activar-mnp-bc01-h4">📊 BC01 – Kích Hoạt Theo Loại MNP</h4>
+      <div class="chart-wrapper">
+        <canvas id="chartActivarMnpBc01" height="290"></canvas>
+      </div>
+    </div>
+    <div class="chart-card" style="flex:1;">
+      <h4 style="color:#8a6600;" data-i18n="activar-mnp-bc02-h4">📊 BC02 – Kích Hoạt Theo Loại MNP</h4>
+      <div class="chart-wrapper">
+        <canvas id="chartActivarMnpBc02" height="290"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-row" style="padding-top:0;">
+    <div class="note-box" style="flex:1;" data-i18n="activar-bc-note-box">
+      <strong>📌 Ghi chú nguồn số liệu:</strong><br>
+      • Cột <strong>center</strong> trong file "Activar ngày ..." – <strong>UCABC01</strong> và <strong>UCABC02</strong><br>
+      • <strong>MNP</strong> (cột <strong>mnp</strong>) gồm 3 loại: <strong>New line</strong> (thuê bao mới), <strong>MNP</strong> (chuyển mạng giữ số), <strong>Pre to Post by CM</strong> (chuyển Prepaid sang Postpaid)<br>
+      • BC01 + BC02 = Tổng kích hoạt UCABR ở Phần 1 (đã đối chiếu khớp từng tháng)<br>
+      • (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 11/07/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc
+    </div>
+  </div>
+
+</div><!-- /#tabpanel-mobile -->
 
 <!-- TAB: DIGITAL (placeholder – kế thừa màu sắc, bố cục, chuyển ngữ của Dashboard chung) -->
 <div id="tabpanel-digital" class="tab-panel" style="display:none">
@@ -1653,6 +1785,60 @@ const labels = ['T1/2026','T2/2026','T3/2026','T4/2026','T5/2026','T6','T7*'];
   });
 })();
 
+// ── DATA: ACTIVAR (DI DONG) ────────────────────────────────
+const labelsActivar = ['T5/2026','T6/2026','T7*'];
+const activarPostpaid = [3609, 3438, 1274];
+const activarPrepaid  = [13052, 13131, 4283];
+const activarMnpBc01 = { newline:[9908,9968,3606], mnp:[1158,1079,430], pretopost:[342,272,89] };
+const activarMnpBc02 = { newline:[4641,4632,1222], mnp:[398,376,139], pretopost:[214,242,71] };
+
+// ── CHART 8: TONG KICH HOAT (DI DONG, STACKED) ─────────────
+(function(){
+  const ctx = document.getElementById('chartActivar');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels: labelsActivar,
+      datasets:[
+        { label:'Postpaid', data:activarPostpaid, backgroundColor:'rgba(0,87,168,0.75)', borderColor:'#0057A8', borderWidth:1, stack:'act' },
+        { label:'Prepaid',  data:activarPrepaid,  backgroundColor:'rgba(255,209,0,0.85)', borderColor:'#c8a000', borderWidth:1, stack:'act' }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top' }, tooltip:{ mode:'index', intersect:false,
+        callbacks:{ footer:(items)=>{ let s=0; items.forEach(i=>s+=i.raw); return 'Total: '+s.toLocaleString('es-PE'); } } } },
+      scales:{ y:{ stacked:true, grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 }, callback:v=>v.toLocaleString('es-PE') } },
+               x:{ stacked:true, grid:{ display:false }, ticks:{ font:{ size:11 } } } }
+    }
+  });
+})();
+
+// ── CHART 9+10: KICH HOAT THEO MNP - BC01 / BC02 ───────────
+(function(){
+  function buildMnpChart(id, data, colorMain){
+    const ctx = document.getElementById(id);
+    if (!ctx) return;
+    new Chart(ctx, {
+      type:'bar',
+      data:{
+        labels: labelsActivar,
+        datasets:[
+          { label:'New line', data:data.newline, backgroundColor:'rgba(26,138,58,0.7)', borderColor:'#1a8a3a', borderWidth:1.5, borderRadius:4 },
+          { label:'MNP', data:data.mnp, backgroundColor:colorMain.bg, borderColor:colorMain.border, borderWidth:1.5, borderRadius:4 },
+          { label:'Pre to Post by CM', data:data.pretopost, backgroundColor:'rgba(109,40,217,0.55)', borderColor:'#6d28d9', borderWidth:1.5, borderRadius:4 }
+        ]
+      },
+      options:{ responsive:true, maintainAspectRatio:false,
+        plugins:{ legend:{ position:'top', labels:{ font:{ size:11 } } }, tooltip:{ mode:'index', intersect:false } },
+        scales:{ y:{ grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 }, callback:v=>v.toLocaleString('es-PE') } }, x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } }
+      }
+    });
+  }
+  buildMnpChart('chartActivarMnpBc01', activarMnpBc01, { bg:'rgba(0,87,168,0.65)', border:'#0057A8' });
+  buildMnpChart('chartActivarMnpBc02', activarMnpBc02, { bg:'rgba(255,209,0,0.75)', border:'#c8a000' });
+})();
+
 // ── LANG / LOGIN / LOGOUT ─────────────────────────────────
 // ── I18N DICTIONARY ────────────────────────────────────────
 const I18N = {
@@ -1670,6 +1856,18 @@ const I18N = {
     'tab-empty-title': 'Nội dung đang được cập nhật',
     'tab-empty-msg-mobile': 'Số liệu Di động sẽ được bổ sung tại đây, trình bày cùng bố cục và màu sắc với thẻ Dashboard chung.',
     'tab-empty-msg-digital': 'Số liệu Digital sẽ được bổ sung tại đây, trình bày cùng bố cục và màu sắc với thẻ Dashboard chung.',
+    'activar-tag': 'Phần 1',
+    'activar-h3': 'Tổng Kích Hoạt – Postpaid / Prepaid / Total Theo Tháng (T5–T7 / 2026)',
+    'activar-chart-h4': '📊 Biểu Đồ Cột Chồng – Kích Hoạt UCABR Theo Tháng',
+    'activar-table-h4': '📋 Thống Kê Chi Tiết Kích Hoạt – Tổng UCABR',
+    'activar-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Nguồn: file "Activar ngày ..." – dữ liệu chi tiết từng thuê bao kích hoạt, chi nhánh <strong>UCABR</strong><br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: đếm số dòng theo cột <strong>sub_type</strong>, nhóm theo tháng (cột <strong>month</strong>)<br>• <strong>Total</strong> = Postpaid + Prepaid, cập nhật hàng tuần<br>• (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 11/07/2026</strong> – sẽ được ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc',
+    'activar-bc-tag': 'Phần 2',
+    'activar-bc-h3': 'Kích Hoạt Theo Trung Tâm Kinh Doanh – BC01 &amp; BC02 (T5–T7 / 2026)',
+    'activar-bc-share': 'tổng kích hoạt UCABR',
+    'activar-bc-suffix': '– Chi Tiết Kích Hoạt Theo Tháng',
+    'activar-mnp-bc01-h4': '📊 BC01 – Kích Hoạt Theo Loại MNP',
+    'activar-mnp-bc02-h4': '📊 BC02 – Kích Hoạt Theo Loại MNP',
+    'activar-bc-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Cột <strong>center</strong> trong file "Activar ngày ..." – <strong>UCABC01</strong> và <strong>UCABC02</strong><br>• <strong>MNP</strong> (cột <strong>mnp</strong>) gồm 3 loại: <strong>New line</strong> (thuê bao mới), <strong>MNP</strong> (chuyển mạng giữ số), <strong>Pre to Post by CM</strong> (chuyển Prepaid sang Postpaid)<br>• BC01 + BC02 = Tổng kích hoạt UCABR ở Phần 1 (đã đối chiếu khớp từng tháng)<br>• (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 11/07/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc',
     'mau-tag': 'Phần 1',
     'mau-h3': 'Biểu Đồ MAU – MAU (N) &amp; MAU (N‑1) Theo Tháng (T1–T7 / 2026)',
     'mau-chart-h4': '📊 Biểu Đồ Cột – MAU Theo Tháng',
@@ -1779,6 +1977,18 @@ const I18N = {
     'tab-empty-title': 'Contenido en actualización',
     'tab-empty-msg-mobile': 'Los datos de Móvil se agregarán aquí, con el mismo diseño y colores que el panel General.',
     'tab-empty-msg-digital': 'Los datos de Digital se agregarán aquí, con el mismo diseño y colores que el panel General.',
+    'activar-tag': 'Sección 1',
+    'activar-h3': 'Activaciones Totales – Postpaid / Prepaid / Total Mensual (T5–T7 / 2026)',
+    'activar-chart-h4': '📊 Gráfico de Barras Apiladas – Activaciones UCABR Mensual',
+    'activar-table-h4': '📋 Estadísticas Detalladas de Activaciones – Total UCABR',
+    'activar-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Fuente: archivo "Activar ngày ..." – datos detallados por abonado activado, sucursal <strong>UCABR</strong><br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: conteo de filas según la columna <strong>sub_type</strong>, agrupado por mes (columna <strong>month</strong>)<br>• <strong>Total</strong> = Postpaid + Prepaid, actualización semanal<br>• (*) T7 es un mes incompleto, <strong>datos al 11/07/2026</strong> – se sobrescribirá en la próxima actualización hasta que cierre julio',
+    'activar-bc-tag': 'Sección 2',
+    'activar-bc-h3': 'Activaciones por Centro de Negocio – BC01 &amp; BC02 (T5–T7 / 2026)',
+    'activar-bc-share': 'del total de activaciones UCABR',
+    'activar-bc-suffix': '– Detalle de Activaciones Mensual',
+    'activar-mnp-bc01-h4': '📊 BC01 – Activaciones por Tipo de MNP',
+    'activar-mnp-bc02-h4': '📊 BC02 – Activaciones por Tipo de MNP',
+    'activar-bc-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Columna <strong>center</strong> del archivo "Activar ngày ..." – <strong>UCABC01</strong> y <strong>UCABC02</strong><br>• <strong>MNP</strong> (columna <strong>mnp</strong>) tiene 3 tipos: <strong>New line</strong> (línea nueva), <strong>MNP</strong> (portabilidad numérica), <strong>Pre to Post by CM</strong> (cambio de Prepaid a Postpaid)<br>• BC01 + BC02 = Total de activaciones UCABR en la Sección 1 (verificado cada mes)<br>• (*) T7 es un mes incompleto, <strong>datos al 11/07/2026</strong> – se sobrescribirá en la próxima actualización hasta que cierre julio',
     'mau-tag': 'Sección 1',
     'mau-h3': 'Gráfico MAU – MAU (N) &amp; MAU (N‑1) Mensual (T1–T7 / 2026)',
     'mau-chart-h4': '📊 Gráfico de Barras – MAU Mensual',
@@ -1888,6 +2098,18 @@ const I18N = {
     'tab-empty-title': 'Content coming soon',
     'tab-empty-msg-mobile': 'Mobile data will be added here, using the same layout and colors as the General Dashboard.',
     'tab-empty-msg-digital': 'Digital data will be added here, using the same layout and colors as the General Dashboard.',
+    'activar-tag': 'Section 1',
+    'activar-h3': 'Total Activations – Postpaid / Prepaid / Total by Month (T5–T7 / 2026)',
+    'activar-chart-h4': '📊 Stacked Bar Chart – UCABR Activations by Month',
+    'activar-table-h4': '📋 Detailed Activation Statistics – UCABR Total',
+    'activar-note-box': '<strong>📌 Data source note:</strong><br>• Source: "Activar ngày ..." file – detailed record per activated subscriber, <strong>UCABR</strong> branch<br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: row count by <strong>sub_type</strong> column, grouped by month (<strong>month</strong> column)<br>• <strong>Total</strong> = Postpaid + Prepaid, updated weekly<br>• (*) T7 is an incomplete month, <strong>data as of 11/07/2026</strong> – will be overwritten in the next update until July closes',
+    'activar-bc-tag': 'Section 2',
+    'activar-bc-h3': 'Activations by Business Center – BC01 &amp; BC02 (T5–T7 / 2026)',
+    'activar-bc-share': 'of total UCABR activations',
+    'activar-bc-suffix': '– Monthly Activation Detail',
+    'activar-mnp-bc01-h4': '📊 BC01 – Activations by MNP Type',
+    'activar-mnp-bc02-h4': '📊 BC02 – Activations by MNP Type',
+    'activar-bc-note-box': '<strong>📌 Data source note:</strong><br>• <strong>center</strong> column in the "Activar ngày ..." file – <strong>UCABC01</strong> and <strong>UCABC02</strong><br>• <strong>MNP</strong> (<strong>mnp</strong> column) has 3 types: <strong>New line</strong>, <strong>MNP</strong> (number portability), <strong>Pre to Post by CM</strong> (Prepaid to Postpaid conversion)<br>• BC01 + BC02 = Total UCABR activations in Section 1 (cross-checked each month)<br>• (*) T7 is an incomplete month, <strong>data as of 11/07/2026</strong> – will be overwritten in the next update until July closes',
     'mau-tag': 'Section 1',
     'mau-h3': 'MAU Chart – MAU (N) &amp; MAU (N‑1) Monthly (T1–T7 / 2026)',
     'mau-chart-h4': '📊 Bar Chart – Monthly MAU',
