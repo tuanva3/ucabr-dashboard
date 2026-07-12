@@ -310,6 +310,47 @@
 .wtb-count{font-size:13px;font-weight:600;color:#3b6fe0;}
 .week-panel{display:block;}
 
+/* ── MAIN NAV TABS (Dashboard chung / Di động / Digital) ── */
+.main-tabs {
+  background: var(--bitel-blue);
+  display: flex;
+  padding: 0 24px;
+  box-shadow: 0 2px 6px rgba(0,60,140,0.2);
+  overflow-x: auto;
+}
+.main-tab-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.72);
+  font-weight: 700;
+  font-size: 0.86rem;
+  padding: 13px 26px;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: all 0.18s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  font-family: inherit;
+}
+.main-tab-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
+.main-tab-btn.active { color: var(--bitel-yellow); border-bottom-color: var(--bitel-yellow); background: rgba(255,255,255,0.06); }
+.tab-panel { display: block; }
+.tab-empty {
+  width: 100%;
+  min-height: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+  color: #6a90a8;
+}
+.tab-empty-icon { font-size: 2.4rem; margin-bottom: 10px; }
+.tab-empty-title { font-size: 1rem; font-weight: 700; color: #0057A8; margin-bottom: 6px; }
+.tab-empty-msg { font-size: 0.84rem; color: #6a90a8; max-width: 480px; }
+
 </style>
 </head>
 <body>
@@ -338,6 +379,15 @@
     <button onclick="setLang('en')" title="English"><img src="https://flagcdn.com/w40/gb.png" width="26" height="17" alt="GB" style="border-radius:3px;vertical-align:middle;display:block;"></button>
   </div>
 </div>
+
+<!-- MAIN NAV TABS -->
+<div class="main-tabs" id="mainTabs">
+  <button class="main-tab-btn active" data-tab="dashboard" onclick="showMainTab('dashboard', this)" data-i18n="tab-dashboard">📊 Dashboard chung</button>
+  <button class="main-tab-btn" data-tab="mobile" onclick="showMainTab('mobile', this)" data-i18n="tab-mobile">📶 Di động</button>
+  <button class="main-tab-btn" data-tab="digital" onclick="showMainTab('digital', this)" data-i18n="tab-digital">💻 Digital</button>
+</div>
+
+<div id="tabpanel-dashboard" class="tab-panel">
 
 <!-- KPI CARDS -->
 <div class="kpi-section">
@@ -1015,6 +1065,44 @@
 </div>
 </div>
 
+</div><!-- /#tabpanel-dashboard -->
+
+<!-- TAB: DI ĐỘNG (placeholder – kế thừa màu sắc, bố cục, chuyển ngữ của Dashboard chung) -->
+<div id="tabpanel-mobile" class="tab-panel" style="display:none">
+  <div class="section-divider">
+    <div class="tag" data-i18n="tab-mobile-tag">Di Động</div>
+    <h3 data-i18n="tab-mobile-h3">Chỉ Số Kinh Doanh Di Động</h3>
+    <div class="line"></div>
+  </div>
+  <div class="content-row">
+    <div class="chart-card" style="flex:1;">
+      <div class="tab-empty">
+        <div class="tab-empty-icon">📶</div>
+        <div class="tab-empty-title" data-i18n="tab-empty-title">Nội dung đang được cập nhật</div>
+        <div class="tab-empty-msg" data-i18n="tab-empty-msg-mobile">Số liệu Di động sẽ được bổ sung tại đây, trình bày cùng bố cục và màu sắc với thẻ Dashboard chung.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAB: DIGITAL (placeholder – kế thừa màu sắc, bố cục, chuyển ngữ của Dashboard chung) -->
+<div id="tabpanel-digital" class="tab-panel" style="display:none">
+  <div class="section-divider">
+    <div class="tag" style="background:#c8a000;" data-i18n="tab-digital-tag">Digital</div>
+    <h3 data-i18n="tab-digital-h3">Chỉ Số Kinh Doanh Digital</h3>
+    <div class="line"></div>
+  </div>
+  <div class="content-row">
+    <div class="chart-card" style="flex:1;">
+      <div class="tab-empty">
+        <div class="tab-empty-icon">💻</div>
+        <div class="tab-empty-title" data-i18n="tab-empty-title">Nội dung đang được cập nhật</div>
+        <div class="tab-empty-msg" data-i18n="tab-empty-msg-digital">Số liệu Digital sẽ được bổ sung tại đây, trình bày cùng bố cục và màu sắc với thẻ Dashboard chung.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- PAGE FOOTER -->
 <div class="page-footer">
@@ -1123,6 +1211,16 @@ const I18N = {
     'h1': 'Dashboard Điều Hành Chi Nhánh Bitel UCA',
     'subtitle': 'Thuê bao 15C3D &amp; REG &nbsp;|&nbsp; Khu vực UCABR &nbsp;|&nbsp; Lũy kế T1 – T7 / 2026',
     'date-badge': '📅 Số liệu đến: 05/07/2026',
+    'tab-dashboard': '📊 Dashboard chung',
+    'tab-mobile': '📶 Di động',
+    'tab-digital': '💻 Digital',
+    'tab-mobile-tag': 'Di Động',
+    'tab-mobile-h3': 'Chỉ Số Kinh Doanh Di Động',
+    'tab-digital-tag': 'Digital',
+    'tab-digital-h3': 'Chỉ Số Kinh Doanh Digital',
+    'tab-empty-title': 'Nội dung đang được cập nhật',
+    'tab-empty-msg-mobile': 'Số liệu Di động sẽ được bổ sung tại đây, trình bày cùng bố cục và màu sắc với thẻ Dashboard chung.',
+    'tab-empty-msg-digital': 'Số liệu Digital sẽ được bổ sung tại đây, trình bày cùng bố cục và màu sắc với thẻ Dashboard chung.',
     'kpi-title': 'Tổng Quan Lũy Kế T1–T7 / 2026 &nbsp;·&nbsp; Số liệu đến 05/07/2026 &nbsp;|&nbsp; 4 Chỉ Số Điều Hành',
     'kpi1-lbl': '📱 15C3D – Lũy Kế T1–T6',
     'kpi1-sub': 'Tổng thuê bao 15C3D tích lũy tại Tháng 6 / 2026',
@@ -1193,6 +1291,16 @@ const I18N = {
     'h1': 'Panel de Gestión de la Sucursal Bitel UCA',
     'subtitle': 'Abonados 15C3D &amp; REG &nbsp;|&nbsp; Región UCABR &nbsp;|&nbsp; Acumulado T1 – T7 / 2026',
     'date-badge': '📅 Datos al: 05/07/2026',
+    'tab-dashboard': '📊 Panel General',
+    'tab-mobile': '📶 Móvil',
+    'tab-digital': '💻 Digital',
+    'tab-mobile-tag': 'Móvil',
+    'tab-mobile-h3': 'Indicadores de Negocio Móvil',
+    'tab-digital-tag': 'Digital',
+    'tab-digital-h3': 'Indicadores de Negocio Digital',
+    'tab-empty-title': 'Contenido en actualización',
+    'tab-empty-msg-mobile': 'Los datos de Móvil se agregarán aquí, con el mismo diseño y colores que el panel General.',
+    'tab-empty-msg-digital': 'Los datos de Digital se agregarán aquí, con el mismo diseño y colores que el panel General.',
     'kpi-title': 'Resumen Acumulado T1–T7 / 2026 &nbsp;·&nbsp; Datos al 05/07/2026 &nbsp;|&nbsp; 4 Indicadores de Gestión',
     'kpi1-lbl': '📱 15C3D – Acumulado T1–T6',
     'kpi1-sub': 'Total de abonados 15C3D acumulado al Mes 6 / 2026',
@@ -1263,6 +1371,16 @@ const I18N = {
     'h1': 'Bitel UCA Branch Management Dashboard',
     'subtitle': '15C3D &amp; REG Subscribers &nbsp;|&nbsp; UCABR Region &nbsp;|&nbsp; Cumulative T1 – T7 / 2026',
     'date-badge': '📅 Data as of: 05/07/2026',
+    'tab-dashboard': '📊 General Dashboard',
+    'tab-mobile': '📶 Mobile',
+    'tab-digital': '💻 Digital',
+    'tab-mobile-tag': 'Mobile',
+    'tab-mobile-h3': 'Mobile Business Indicators',
+    'tab-digital-tag': 'Digital',
+    'tab-digital-h3': 'Digital Business Indicators',
+    'tab-empty-title': 'Content coming soon',
+    'tab-empty-msg-mobile': 'Mobile data will be added here, using the same layout and colors as the General Dashboard.',
+    'tab-empty-msg-digital': 'Digital data will be added here, using the same layout and colors as the General Dashboard.',
     'kpi-title': 'Cumulative Overview T1–T7 / 2026 &nbsp;·&nbsp; Data as of 05/07/2026 &nbsp;|&nbsp; 4 Key Indicators',
     'kpi1-lbl': '📱 15C3D – Cumulative T1–T6',
     'kpi1-sub': 'Total 15C3D subscribers accumulated through Month 6 / 2026',
@@ -1371,6 +1489,20 @@ function setLang(l){
     if(btn) btn.classList.add('active');
   }
   applyLang(l);
+}
+
+// ── MAIN NAV TABS (Dashboard chung / Di động / Digital) ────
+function showMainTab(tab, btnEl){
+  document.querySelectorAll('.tab-panel').forEach(function(p){ p.style.display = 'none'; });
+  var panel = document.getElementById('tabpanel-' + tab);
+  if(panel) panel.style.display = 'block';
+  document.querySelectorAll('#mainTabs .main-tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  if(btnEl){ btnEl.classList.add('active'); }
+  else {
+    var btn = document.querySelector('#mainTabs .main-tab-btn[data-tab="' + tab + '"]');
+    if(btn) btn.classList.add('active');
+  }
+  try{ localStorage.setItem('bitel_main_tab', tab); }catch(e){}
 }
 
 // ── LOGIN / LOGOUT (simple name gate, no password) ─────────
