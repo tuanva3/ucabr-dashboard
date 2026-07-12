@@ -1618,6 +1618,16 @@ function showMainTab(tab, btnEl){
     if(btn) btn.classList.add('active');
   }
   try{ localStorage.setItem('bitel_main_tab', tab); }catch(e){}
+  // Charts inside a tab that was display:none at creation time get 0-size
+  // canvases; force every Chart.js instance to recompute its size now that
+  // the panel is visible (fixes MAU/Di động/Digital charts rendering as slivers).
+  if(window.Chart && Chart.instances){
+    setTimeout(function(){
+      Object.keys(Chart.instances).forEach(function(id){
+        try{ Chart.instances[id].resize(); }catch(e){}
+      });
+    }, 0);
+  }
 }
 
 // ── LOGIN / LOGOUT (simple name gate, no password) ─────────
