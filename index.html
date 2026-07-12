@@ -1220,27 +1220,50 @@
         📌 Cột chồng: chiều cao mỗi cột = tổng MAU UCABR trong tháng đó; phần xanh dương là BC01, phần vàng là BC02.
       </div>
     </div>
-    <div class="table-card" style="width:460px;">
-      <h4 data-i18n="mau-bc-table-h4">📋 Thống Kê Chi Tiết MAU Theo BC</h4>
-      <table class="stats-table" style="font-size:0.76rem;">
-        <thead><tr><th data-i18n="th-month">Tháng</th><th>BC01</th><th>BC02</th><th data-i18n="mau-bc-total-th">Tổng UCABR</th></tr></thead>
+  </div>
+
+  <div class="content-row">
+    <div class="table-card" style="flex:1;">
+      <h4 style="color:#0057A8;">🏢 BC01 <span data-i18n="mau-bc-compare-suffix" style="font-weight:600;text-transform:none;letter-spacing:0;color:#3a6080;">– So Sánh MAU(N) vs MAU(N-1) Theo Tháng</span></h4>
+      <table class="stats-table">
+        <thead><tr><th data-i18n="th-month">Tháng</th><th>MAU (N)</th><th>MAU (N-1)</th><th data-i18n="th-diff">Chênh lệch</th></tr></thead>
         <tbody>
-          <tr><td>T1</td><td>1.883</td><td>715</td><td>2.598</td></tr>
-          <tr><td>T2</td><td>3.102</td><td>1.158</td><td>4.260</td></tr>
-          <tr><td>T3</td><td>4.054</td><td>1.760</td><td>5.814</td></tr>
-          <tr><td>T4</td><td>4.424</td><td>1.937</td><td>6.361</td></tr>
-          <tr><td>T5</td><td>4.272</td><td>1.914</td><td>6.186</td></tr>
-          <tr><td>T6</td><td>4.262</td><td>1.901</td><td>6.163</td></tr>
-          <tr><td>T7 (*)</td><td>1.845</td><td>778</td><td>2.623</td></tr>
+          <tr><td>T1</td><td>1.883</td><td>1.700</td><td class="pos">▲ +183</td></tr>
+          <tr><td>T2</td><td>3.102</td><td>1.883</td><td class="pos">▲ +1.219</td></tr>
+          <tr><td>T3</td><td>4.054</td><td>3.102</td><td class="pos">▲ +952</td></tr>
+          <tr><td>T4</td><td>4.424</td><td>4.054</td><td class="pos">▲ +370</td></tr>
+          <tr><td>T5</td><td>4.272</td><td>4.423</td><td class="neg">▼ -151</td></tr>
+          <tr><td>T6</td><td>4.262</td><td>4.272</td><td class="neg">▼ -10</td></tr>
+          <tr><td>T7 (*)</td><td>1.845</td><td>1.799</td><td class="pos">▲ +46</td></tr>
         </tbody>
-        <tfoot><tr><td data-i18n="mau-tfoot">T7 hiện tại</td><td>1.845</td><td>778</td><td>2.623</td></tr></tfoot>
+        <tfoot><tr><td data-i18n="mau-tfoot">T7 hiện tại</td><td>1.845</td><td>1.799</td><td class="pos">▲ +46</td></tr></tfoot>
       </table>
-      <div class="note-box" data-i18n="mau-bc-note-box">
-        <strong>📌 Ghi chú nguồn số liệu:</strong><br>
-        • Cột <strong>CENTER_CODE</strong> trong file "MAU ngày ..." – <strong>UCABC01</strong> và <strong>UCABC02</strong><br>
-        • BC01 + BC02 = Tổng MAU chi nhánh UCABR (đã đối chiếu khớp từng tháng)<br>
-        • (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 10/07/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc
-      </div>
+    </div>
+    <div class="table-card yellow-header" style="flex:1;">
+      <h4 style="color:#8a6600;">🏢 BC02 <span data-i18n="mau-bc-compare-suffix" style="font-weight:600;text-transform:none;letter-spacing:0;color:#7a6020;">– So Sánh MAU(N) vs MAU(N-1) Theo Tháng</span></h4>
+      <table class="stats-table yellow-header">
+        <thead><tr><th data-i18n="th-month">Tháng</th><th>MAU (N)</th><th>MAU (N-1)</th><th data-i18n="th-diff">Chênh lệch</th></tr></thead>
+        <tbody>
+          <tr><td>T1</td><td>715</td><td>682</td><td class="pos">▲ +33</td></tr>
+          <tr><td>T2</td><td>1.158</td><td>715</td><td class="pos">▲ +443</td></tr>
+          <tr><td>T3</td><td>1.760</td><td>1.158</td><td class="pos">▲ +602</td></tr>
+          <tr><td>T4</td><td>1.937</td><td>1.760</td><td class="pos">▲ +177</td></tr>
+          <tr><td>T5</td><td>1.914</td><td>1.937</td><td class="neg">▼ -23</td></tr>
+          <tr><td>T6</td><td>1.901</td><td>1.913</td><td class="neg">▼ -12</td></tr>
+          <tr><td>T7 (*)</td><td>778</td><td>857</td><td class="neg">▼ -79</td></tr>
+        </tbody>
+        <tfoot><tr><td data-i18n="mau-tfoot">T7 hiện tại</td><td>778</td><td>857</td><td class="neg">▼ -79</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div class="content-row" style="padding-top:0;">
+    <div class="note-box" style="flex:1;" data-i18n="mau-bc-note-box">
+      <strong>📌 Ghi chú nguồn số liệu:</strong><br>
+      • Cột <strong>CENTER_CODE</strong> trong file "MAU ngày ..." – <strong>UCABC01</strong> và <strong>UCABC02</strong><br>
+      • <strong>▲</strong> = MAU(N) tăng so với MAU(N-1), <strong>▼</strong> = MAU(N) giảm so với MAU(N-1)<br>
+      • BC01 + BC02 = Tổng MAU chi nhánh UCABR ở Phần 1 (đã đối chiếu khớp từng tháng)<br>
+      • (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 10/07/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc
     </div>
   </div>
 
@@ -1423,7 +1446,8 @@ const I18N = {
     'mau-bc-chart-note': '📌 Cột chồng: chiều cao mỗi cột = tổng MAU UCABR trong tháng đó; phần xanh dương là BC01, phần vàng là BC02.',
     'mau-bc-table-h4': '📋 Thống Kê Chi Tiết MAU Theo BC',
     'mau-bc-total-th': 'Tổng UCABR',
-    'mau-bc-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Cột <strong>CENTER_CODE</strong> trong file "MAU ngày ..." – <strong>UCABC01</strong> và <strong>UCABC02</strong><br>• BC01 + BC02 = Tổng MAU chi nhánh UCABR (đã đối chiếu khớp từng tháng)<br>• (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 10/07/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc',
+    'mau-bc-compare-suffix': '– So Sánh MAU(N) vs MAU(N-1) Theo Tháng',
+    'mau-bc-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Cột <strong>CENTER_CODE</strong> trong file "MAU ngày ..." – <strong>UCABC01</strong> và <strong>UCABC02</strong><br>• <strong>▲</strong> = MAU(N) tăng so với MAU(N-1), <strong>▼</strong> = MAU(N) giảm so với MAU(N-1)<br>• BC01 + BC02 = Tổng MAU chi nhánh UCABR ở Phần 1 (đã đối chiếu khớp từng tháng)<br>• (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 10/07/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc',
     'kpi-title': 'Tổng Quan Lũy Kế T1–T7 / 2026 &nbsp;·&nbsp; Số liệu đến 05/07/2026 &nbsp;|&nbsp; 4 Chỉ Số Điều Hành',
     'kpi1-lbl': '📱 15C3D – Lũy Kế T1–T6',
     'kpi1-sub': 'Tổng thuê bao 15C3D tích lũy tại Tháng 6 / 2026',
@@ -1518,7 +1542,8 @@ const I18N = {
     'mau-bc-chart-note': '📌 Barras apiladas: la altura total = MAU total UCABR del mes; la parte azul es BC01, la parte amarilla es BC02.',
     'mau-bc-table-h4': '📋 Estadísticas Detalladas MAU por BC',
     'mau-bc-total-th': 'Total UCABR',
-    'mau-bc-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Columna <strong>CENTER_CODE</strong> del archivo "MAU ngày ..." – <strong>UCABC01</strong> y <strong>UCABC02</strong><br>• BC01 + BC02 = Total MAU de la sucursal UCABR (verificado cada mes)<br>• (*) T7 es un mes incompleto, <strong>datos al 10/07/2026</strong> – se sobrescribirá en la próxima actualización hasta que cierre julio',
+    'mau-bc-compare-suffix': '– Comparación MAU(N) vs MAU(N-1) Mensual',
+    'mau-bc-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Columna <strong>CENTER_CODE</strong> del archivo "MAU ngày ..." – <strong>UCABC01</strong> y <strong>UCABC02</strong><br>• <strong>▲</strong> = MAU(N) aumentó respecto a MAU(N-1), <strong>▼</strong> = MAU(N) disminuyó respecto a MAU(N-1)<br>• BC01 + BC02 = Total MAU de la sucursal UCABR en la Sección 1 (verificado cada mes)<br>• (*) T7 es un mes incompleto, <strong>datos al 10/07/2026</strong> – se sobrescribirá en la próxima actualización hasta que cierre julio',
     'kpi-title': 'Resumen Acumulado T1–T7 / 2026 &nbsp;·&nbsp; Datos al 05/07/2026 &nbsp;|&nbsp; 4 Indicadores de Gestión',
     'kpi1-lbl': '📱 15C3D – Acumulado T1–T6',
     'kpi1-sub': 'Total de abonados 15C3D acumulado al Mes 6 / 2026',
@@ -1613,7 +1638,8 @@ const I18N = {
     'mau-bc-chart-note': '📌 Stacked bars: total bar height = total UCABR MAU for the month; the blue segment is BC01, the yellow segment is BC02.',
     'mau-bc-table-h4': '📋 MAU Detailed Statistics by BC',
     'mau-bc-total-th': 'Total UCABR',
-    'mau-bc-note-box': '<strong>📌 Data source note:</strong><br>• <strong>CENTER_CODE</strong> column in the "MAU ngày ..." file – <strong>UCABC01</strong> and <strong>UCABC02</strong><br>• BC01 + BC02 = Total UCABR branch MAU (cross-checked each month)<br>• (*) T7 is an incomplete month, <strong>data as of 10/07/2026</strong> – will be overwritten in the next update until July closes',
+    'mau-bc-compare-suffix': '– MAU(N) vs MAU(N-1) Monthly Comparison',
+    'mau-bc-note-box': '<strong>📌 Data source note:</strong><br>• <strong>CENTER_CODE</strong> column in the "MAU ngày ..." file – <strong>UCABC01</strong> and <strong>UCABC02</strong><br>• <strong>▲</strong> = MAU(N) increased vs MAU(N-1), <strong>▼</strong> = MAU(N) decreased vs MAU(N-1)<br>• BC01 + BC02 = Total UCABR branch MAU in Section 1 (cross-checked each month)<br>• (*) T7 is an incomplete month, <strong>data as of 10/07/2026</strong> – will be overwritten in the next update until July closes',
     'kpi-title': 'Cumulative Overview T1–T7 / 2026 &nbsp;·&nbsp; Data as of 05/07/2026 &nbsp;|&nbsp; 4 Key Indicators',
     'kpi1-lbl': '📱 15C3D – Cumulative T1–T6',
     'kpi1-sub': 'Total 15C3D subscribers accumulated through Month 6 / 2026',
