@@ -1133,6 +1133,37 @@
     </div>
   </div>
 
+  <div class="content-row">
+    <div class="chart-card" style="flex:1;">
+      <h4 data-i18n="activar-cmp-chart-h4">📊 So Sánh Cùng Kỳ – Kích Hoạt Ngày 1–11 Mỗi Tháng</h4>
+      <div class="chart-wrapper">
+        <canvas id="chartActivarCmp" height="290"></canvas>
+      </div>
+      <div class="note-box blue" style="margin-top:10px;" data-i18n="activar-cmp-chart-note">
+        📌 So sánh cùng kỳ: chỉ lấy số liệu <strong>ngày 1–11</strong> của mỗi tháng (bằng với số ngày đã có của T7) để so sánh công bằng, không so cả tháng đầy đủ với tháng chưa đầy.
+      </div>
+    </div>
+    <div class="table-card" style="flex:1;">
+      <h4 data-i18n="activar-cmp-table-h4">📋 Bảng So Sánh Cùng Kỳ (Ngày 1–11)</h4>
+      <div style="overflow-x:auto;">
+      <table class="stats-table" style="font-size:0.78rem;">
+        <thead><tr><th data-i18n="th-index">Chỉ số</th><th>T5 (1–11)</th><th>T6 (1–11)</th><th>T7 (1–11)</th><th data-i18n="activar-cmp-vs-t6">T7 vs T6</th><th data-i18n="activar-cmp-vs-t5">T7 vs T5</th></tr></thead>
+        <tbody>
+          <tr><td>Postpaid</td><td>1.210</td><td>1.269</td><td>1.274</td><td class="pos">+5 (+0,4%)</td><td class="pos">+64 (+5,3%)</td></tr>
+          <tr><td>Prepaid</td><td>4.092</td><td>4.683</td><td>4.283</td><td class="neg">-400 (-8,5%)</td><td class="pos">+191 (+4,7%)</td></tr>
+          <tr><td>Total</td><td>5.302</td><td>5.952</td><td>5.557</td><td class="neg">-395 (-6,6%)</td><td class="pos">+255 (+4,8%)</td></tr>
+        </tbody>
+      </table>
+      </div>
+      <div class="note-box" data-i18n="activar-cmp-note-box">
+        <strong>📌 Ghi chú nguồn số liệu:</strong><br>
+        • Lấy dữ liệu <strong>cột date ≤ 11</strong> của từng tháng T5, T6, T7 (cùng số ngày với T7 hiện tại, <strong>đến ngày 11/07/2026</strong>)<br>
+        • <strong>T7 vs T6</strong>, <strong>T7 vs T5</strong>: chênh lệch tuyệt đối và % so với cùng kỳ<br>
+        • Số ngày so sánh (hiện là 1–11) sẽ tự thay đổi theo số ngày thực tế có trong file mỗi lần cập nhật
+      </div>
+    </div>
+  </div>
+
   <!-- PHAN 2 (DI DONG): KICH HOAT THEO BC -->
   <div class="section-divider">
     <div class="tag" style="background:#6d28d9;" data-i18n="activar-bc-tag">Phần 2</div>
@@ -1791,6 +1822,9 @@ const activarPostpaid = [3609, 3438, 1274];
 const activarPrepaid  = [13052, 13131, 4283];
 const activarMnpBc01 = { newline:[9908,9968,3606], mnp:[1158,1079,430], pretopost:[342,272,89] };
 const activarMnpBc02 = { newline:[4641,4632,1222], mnp:[398,376,139], pretopost:[214,242,71] };
+const labelsActivarCmp = ['T5 (1-11)','T6 (1-11)','T7 (1-11)'];
+const activarCmpPostpaid = [1210, 1269, 1274];
+const activarCmpPrepaid  = [4092, 4683, 4283];
 
 // ── CHART 8: TONG KICH HOAT (DI DONG, STACKED) ─────────────
 (function(){
@@ -1839,6 +1873,28 @@ const activarMnpBc02 = { newline:[4641,4632,1222], mnp:[398,376,139], pretopost:
   buildMnpChart('chartActivarMnpBc02', activarMnpBc02, { bg:'rgba(255,209,0,0.75)', border:'#c8a000' });
 })();
 
+// ── CHART 11: SO SANH CUNG KY NGAY 1-11 (DI DONG) ──────────
+(function(){
+  const ctx = document.getElementById('chartActivarCmp');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels: labelsActivarCmp,
+      datasets:[
+        { label:'Postpaid', data:activarCmpPostpaid, backgroundColor:'rgba(0,87,168,0.75)', borderColor:'#0057A8', borderWidth:1, stack:'cmp' },
+        { label:'Prepaid',  data:activarCmpPrepaid,  backgroundColor:'rgba(255,209,0,0.85)', borderColor:'#c8a000', borderWidth:1, stack:'cmp' }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top' }, tooltip:{ mode:'index', intersect:false,
+        callbacks:{ footer:(items)=>{ let s=0; items.forEach(i=>s+=i.raw); return 'Total: '+s.toLocaleString('es-PE'); } } } },
+      scales:{ y:{ stacked:true, grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 }, callback:v=>v.toLocaleString('es-PE') } },
+               x:{ stacked:true, grid:{ display:false }, ticks:{ font:{ size:11 } } } }
+    }
+  });
+})();
+
 // ── LANG / LOGIN / LOGOUT ─────────────────────────────────
 // ── I18N DICTIONARY ────────────────────────────────────────
 const I18N = {
@@ -1861,6 +1917,13 @@ const I18N = {
     'activar-chart-h4': '📊 Biểu Đồ Cột Chồng – Kích Hoạt UCABR Theo Tháng',
     'activar-table-h4': '📋 Thống Kê Chi Tiết Kích Hoạt – Tổng UCABR',
     'activar-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Nguồn: file "Activar ngày ..." – dữ liệu chi tiết từng thuê bao kích hoạt, chi nhánh <strong>UCABR</strong><br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: đếm số dòng theo cột <strong>sub_type</strong>, nhóm theo tháng (cột <strong>month</strong>)<br>• <strong>Total</strong> = Postpaid + Prepaid, cập nhật hàng tuần<br>• (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 11/07/2026</strong> – sẽ được ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc',
+    'th-index': 'Chỉ số',
+    'activar-cmp-chart-h4': '📊 So Sánh Cùng Kỳ – Kích Hoạt Ngày 1–11 Mỗi Tháng',
+    'activar-cmp-chart-note': '📌 So sánh cùng kỳ: chỉ lấy số liệu <strong>ngày 1–11</strong> của mỗi tháng (bằng với số ngày đã có của T7) để so sánh công bằng, không so cả tháng đầy đủ với tháng chưa đầy.',
+    'activar-cmp-table-h4': '📋 Bảng So Sánh Cùng Kỳ (Ngày 1–11)',
+    'activar-cmp-vs-t6': 'T7 vs T6',
+    'activar-cmp-vs-t5': 'T7 vs T5',
+    'activar-cmp-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Lấy dữ liệu <strong>cột date ≤ 11</strong> của từng tháng T5, T6, T7 (cùng số ngày với T7 hiện tại, <strong>đến ngày 11/07/2026</strong>)<br>• <strong>T7 vs T6</strong>, <strong>T7 vs T5</strong>: chênh lệch tuyệt đối và % so với cùng kỳ<br>• Số ngày so sánh (hiện là 1–11) sẽ tự thay đổi theo số ngày thực tế có trong file mỗi lần cập nhật',
     'activar-bc-tag': 'Phần 2',
     'activar-bc-h3': 'Kích Hoạt Theo Trung Tâm Kinh Doanh – BC01 &amp; BC02 (T5–T7 / 2026)',
     'activar-bc-share': 'tổng kích hoạt UCABR',
@@ -1982,6 +2045,13 @@ const I18N = {
     'activar-chart-h4': '📊 Gráfico de Barras Apiladas – Activaciones UCABR Mensual',
     'activar-table-h4': '📋 Estadísticas Detalladas de Activaciones – Total UCABR',
     'activar-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Fuente: archivo "Activar ngày ..." – datos detallados por abonado activado, sucursal <strong>UCABR</strong><br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: conteo de filas según la columna <strong>sub_type</strong>, agrupado por mes (columna <strong>month</strong>)<br>• <strong>Total</strong> = Postpaid + Prepaid, actualización semanal<br>• (*) T7 es un mes incompleto, <strong>datos al 11/07/2026</strong> – se sobrescribirá en la próxima actualización hasta que cierre julio',
+    'th-index': 'Indicador',
+    'activar-cmp-chart-h4': '📊 Comparación del Mismo Período – Activaciones Días 1–11 de Cada Mes',
+    'activar-cmp-chart-note': '📌 Comparación del mismo período: solo se toman los <strong>días 1–11</strong> de cada mes (igual a los días disponibles de T7) para una comparación justa, sin comparar un mes completo con uno incompleto.',
+    'activar-cmp-table-h4': '📋 Tabla Comparativa del Mismo Período (Días 1–11)',
+    'activar-cmp-vs-t6': 'T7 vs T6',
+    'activar-cmp-vs-t5': 'T7 vs T5',
+    'activar-cmp-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Se toman los datos con <strong>columna date ≤ 11</strong> de cada mes T5, T6, T7 (mismos días que el T7 actual, <strong>datos al 11/07/2026</strong>)<br>• <strong>T7 vs T6</strong>, <strong>T7 vs T5</strong>: diferencia absoluta y % respecto al mismo período<br>• El número de días de comparación (actualmente 1–11) cambiará automáticamente según los días reales disponibles en cada actualización',
     'activar-bc-tag': 'Sección 2',
     'activar-bc-h3': 'Activaciones por Centro de Negocio – BC01 &amp; BC02 (T5–T7 / 2026)',
     'activar-bc-share': 'del total de activaciones UCABR',
@@ -2103,6 +2173,13 @@ const I18N = {
     'activar-chart-h4': '📊 Stacked Bar Chart – UCABR Activations by Month',
     'activar-table-h4': '📋 Detailed Activation Statistics – UCABR Total',
     'activar-note-box': '<strong>📌 Data source note:</strong><br>• Source: "Activar ngày ..." file – detailed record per activated subscriber, <strong>UCABR</strong> branch<br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: row count by <strong>sub_type</strong> column, grouped by month (<strong>month</strong> column)<br>• <strong>Total</strong> = Postpaid + Prepaid, updated weekly<br>• (*) T7 is an incomplete month, <strong>data as of 11/07/2026</strong> – will be overwritten in the next update until July closes',
+    'th-index': 'Metric',
+    'activar-cmp-chart-h4': '📊 Same-Period Comparison – Activations Days 1–11 of Each Month',
+    'activar-cmp-chart-note': '📌 Same-period comparison: only takes <strong>days 1–11</strong> of each month (matching the days available for T7) for a fair comparison, avoiding comparing a full month against an incomplete one.',
+    'activar-cmp-table-h4': '📋 Same-Period Comparison Table (Days 1–11)',
+    'activar-cmp-vs-t6': 'T7 vs T6',
+    'activar-cmp-vs-t5': 'T7 vs T5',
+    'activar-cmp-note-box': '<strong>📌 Data source note:</strong><br>• Takes data with <strong>date column ≤ 11</strong> for each of T5, T6, T7 (same days as current T7, <strong>data as of 11/07/2026</strong>)<br>• <strong>T7 vs T6</strong>, <strong>T7 vs T5</strong>: absolute difference and % vs same period<br>• The comparison day count (currently 1–11) will automatically change based on the actual days available in each update',
     'activar-bc-tag': 'Section 2',
     'activar-bc-h3': 'Activations by Business Center – BC01 &amp; BC02 (T5–T7 / 2026)',
     'activar-bc-share': 'of total UCABR activations',
