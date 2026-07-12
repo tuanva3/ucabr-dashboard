@@ -1281,14 +1281,14 @@
       <div class="chart-wrapper">
         <canvas id="chartCashIn" height="290"></canvas>
       </div>
-      <div class="data-strip">
+      <div class="data-strip" style="grid-template-columns:repeat(3,1fr);">
         <div class="ds-month" style="background:#e8f7ee;border-color:#7fc79a;">
           <div class="ds-month-label" style="color:#1a8a3a;">T5 / 2026</div>
           <div class="ds-row"><span class="ds-key">ID Active SIM</span><span class="ds-val">14.839</span></div>
           <div class="ds-row"><span class="ds-key">New Active Bipay</span><span class="ds-val">8.258</span></div>
           <div class="ds-row"><span class="ds-key">MAU CashIn</span><span class="ds-val">2.269</span></div>
           <div class="ds-row"><span class="ds-key">Consumer</span><span class="ds-val">767</span></div>
-          <div class="ds-row"><span class="ds-key">% Consumer/MAU CashIn</span><span class="ds-val">33,8%</span></div>
+          <div class="ds-row"><span class="ds-key">% Cons/CashIn</span><span class="ds-val">33,8%</span></div>
         </div>
         <div class="ds-month" style="background:#e8f7ee;border-color:#7fc79a;">
           <div class="ds-month-label" style="color:#1a8a3a;">T6 / 2026</div>
@@ -1296,7 +1296,7 @@
           <div class="ds-row"><span class="ds-key">New Active Bipay</span><span class="ds-val">9.665</span></div>
           <div class="ds-row"><span class="ds-key">MAU CashIn</span><span class="ds-val">2.757</span></div>
           <div class="ds-row"><span class="ds-key">Consumer</span><span class="ds-val">1.946</span></div>
-          <div class="ds-row"><span class="ds-key">% Consumer/MAU CashIn</span><span class="ds-val">70,6%</span></div>
+          <div class="ds-row"><span class="ds-key">% Cons/CashIn</span><span class="ds-val">70,6%</span></div>
         </div>
         <div class="ds-month partial" style="background:#e8f7ee;border-color:#7fc79a;">
           <div class="ds-month-label" style="color:#1a8a3a;">T7 *</div>
@@ -1304,14 +1304,15 @@
           <div class="ds-row"><span class="ds-key">New Active Bipay</span><span class="ds-val">2.622</span></div>
           <div class="ds-row"><span class="ds-key">MAU CashIn</span><span class="ds-val">841</span></div>
           <div class="ds-row"><span class="ds-key">Consumer</span><span class="ds-val">618</span></div>
-          <div class="ds-row"><span class="ds-key">% Consumer/MAU CashIn</span><span class="ds-val">73,5%</span></div>
+          <div class="ds-row"><span class="ds-key">% Cons/CashIn</span><span class="ds-val">73,5%</span></div>
           <div class="partial-note">đến 10/07</div>
         </div>
       </div>
     </div>
-    <div class="table-card">
+    <div class="table-card" style="flex:1;">
       <h4 data-i18n="cashin-table-h4">📋 Thống Kê Chi Tiết CASH IN – Tổng UCABR</h4>
-      <table class="stats-table">
+      <div style="overflow-x:auto;">
+      <table class="stats-table" style="font-size:0.78rem;">
         <thead><tr><th data-i18n="th-month">Tháng</th><th>ID Active SIM</th><th>New Active Bipay</th><th>MAU CashIn</th><th>Consumer</th><th data-i18n="th-cons-pct">% Consumer/MAU CashIn</th></tr></thead>
         <tbody>
           <tr><td>T5</td><td>14.839</td><td>8.258</td><td>2.269</td><td>767</td><td>33,8%</td></tr>
@@ -1320,6 +1321,7 @@
         </tbody>
         <tfoot><tr><td data-i18n="mau-tfoot">T7 hiện tại</td><td>4.845</td><td>2.622</td><td>841</td><td>618</td><td>73,5%</td></tr></tfoot>
       </table>
+      </div>
       <div class="note-box" data-i18n="cashin-note-box">
         <strong>📌 Ghi chú nguồn số liệu:</strong><br>
         • <strong>ID Active SIM</strong> (cột E), <strong>New Active Bipay</strong> (cột F), <strong>MAU CashIn</strong> (cột O), <strong>Consumer</strong> (cột P) trong file "CASH IN ngày ..."<br>
@@ -1367,7 +1369,8 @@
   <div class="content-row">
     <div class="table-card" style="flex:1;">
       <h4 style="color:#0057A8;">🏢 BC01 <span data-i18n="cashin-bc-suffix" style="font-weight:600;text-transform:none;letter-spacing:0;color:#3a6080;">– Chi Tiết CASH IN Theo Tháng</span></h4>
-      <table class="stats-table">
+      <div style="overflow-x:auto;">
+      <table class="stats-table" style="font-size:0.78rem;">
         <thead><tr><th data-i18n="th-month">Tháng</th><th>ID Active SIM</th><th>New Active Bipay</th><th>MAU CashIn</th><th>Consumer</th><th data-i18n="th-cons-pct">% Consumer/MAU CashIn</th></tr></thead>
         <tbody>
           <tr><td>T5</td><td>9.912</td><td>5.792</td><td>1.519</td><td>516</td><td>34,0%</td></tr>
@@ -1376,10 +1379,12 @@
         </tbody>
         <tfoot><tr><td data-i18n="mau-tfoot">T7 hiện tại</td><td>3.476</td><td>2.067</td><td>646</td><td>480</td><td>74,3%</td></tr></tfoot>
       </table>
+      </div>
     </div>
     <div class="table-card yellow-header" style="flex:1;">
       <h4 style="color:#8a6600;">🏢 BC02 <span data-i18n="cashin-bc-suffix" style="font-weight:600;text-transform:none;letter-spacing:0;color:#7a6020;">– Chi Tiết CASH IN Theo Tháng</span></h4>
-      <table class="stats-table yellow-header">
+      <div style="overflow-x:auto;">
+      <table class="stats-table yellow-header" style="font-size:0.78rem;">
         <thead><tr><th data-i18n="th-month">Tháng</th><th>ID Active SIM</th><th>New Active Bipay</th><th>MAU CashIn</th><th>Consumer</th><th data-i18n="th-cons-pct">% Consumer/MAU CashIn</th></tr></thead>
         <tbody>
           <tr><td>T5</td><td>4.927</td><td>2.466</td><td>750</td><td>251</td><td>33,5%</td></tr>
@@ -1388,13 +1393,15 @@
         </tbody>
         <tfoot><tr><td data-i18n="mau-tfoot">T7 hiện tại</td><td>1.369</td><td>555</td><td>195</td><td>138</td><td>70,8%</td></tr></tfoot>
       </table>
+      </div>
     </div>
   </div>
 
   <div class="content-row">
     <div class="table-card" style="flex:1;">
       <h4 style="color:#0057A8;" data-i18n="cashin-ch-bc01-h4">📋 Chi Tiết Kênh – BC01 (T7 hiện tại, đến 10/07)</h4>
-      <table class="stats-table">
+      <div style="overflow-x:auto;">
+      <table class="stats-table" style="font-size:0.78rem;">
         <thead><tr><th data-i18n="th-channel">Kênh</th><th>ID Active SIM</th><th>New Active Bipay</th><th>MAU CashIn</th><th>Consumer</th><th data-i18n="th-cons-pct">% Consumer/MAU CashIn</th></tr></thead>
         <tbody>
           <tr><td>Promotores Channel</td><td>1.835</td><td>1.454</td><td>259</td><td>208</td><td>80,3%</td></tr>
@@ -1409,10 +1416,12 @@
           <tr><td>Agente BIPAY Channel</td><td>0</td><td>0</td><td>0</td><td>0</td><td>–</td></tr>
         </tbody>
       </table>
+      </div>
     </div>
     <div class="table-card yellow-header" style="flex:1;">
       <h4 style="color:#8a6600;" data-i18n="cashin-ch-bc02-h4">📋 Chi Tiết Kênh – BC02 (T7 hiện tại, đến 10/07)</h4>
-      <table class="stats-table yellow-header">
+      <div style="overflow-x:auto;">
+      <table class="stats-table yellow-header" style="font-size:0.78rem;">
         <thead><tr><th data-i18n="th-channel">Kênh</th><th>ID Active SIM</th><th>New Active Bipay</th><th>MAU CashIn</th><th>Consumer</th><th data-i18n="th-cons-pct">% Consumer/MAU CashIn</th></tr></thead>
         <tbody>
           <tr><td>Promotores Channel</td><td>250</td><td>172</td><td>111</td><td>61</td><td>55,0%</td></tr>
@@ -1423,6 +1432,7 @@
           <tr><td>Bitel Staff</td><td>5</td><td>0</td><td>0</td><td>0</td><td>–</td></tr>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 
