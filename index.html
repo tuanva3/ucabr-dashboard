@@ -347,6 +347,19 @@
 .sub-tab-btn:hover { background: #d7e8f8; }
 .sub-tab-btn.active { background: #0057A8; border-color: #0057A8; color: #fff; }
 .sub-tab-panel { display: block; }
+
+/* ── CARRIER BRAND BADGES (MNP: Movistar/Claro/Entel/Bitel) ── */
+.carrier-badge {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 18px; height: 18px; border-radius: 5px; margin-right: 7px;
+  font-size: 0.62rem; font-weight: 800; color: #fff; vertical-align: middle;
+  line-height: 1;
+}
+.carrier-claro    { background: #E4032E; }
+.carrier-movistar { background: #019DF4; }
+.carrier-entel    { background: #00629B; }
+.carrier-bitel    { background: #FFD100; color: #0057A8; }
+.carrier-other    { background: #6b7280; }
 .tab-empty {
   width: 100%;
   min-height: 220px;
@@ -1548,10 +1561,10 @@
       <table class="stats-table">
         <thead><tr><th data-i18n="th-operator">Nhà Mạng</th><th>Port In</th><th>Port Out</th><th data-i18n="th-diff">Chênh Lệch</th></tr></thead>
         <tbody>
-          <tr><td>📡 Claro</td><td>321</td><td>539</td><td class="neg">-218</td></tr>
-          <tr><td>📡 Movistar</td><td>134</td><td>279</td><td class="neg">-145</td></tr>
-          <tr><td>📡 Entel</td><td>171</td><td>210</td><td class="neg">-39</td></tr>
-          <tr><td>📡 Guinea Mobile S.A.C.</td><td>1</td><td>1</td><td>0 (0,0%)</td></tr>
+          <tr><td><span class="carrier-badge carrier-claro">C</span>Claro</td><td>321</td><td>539</td><td class="neg">-218</td></tr>
+          <tr><td><span class="carrier-badge carrier-movistar">M</span>Movistar</td><td>134</td><td>279</td><td class="neg">-145</td></tr>
+          <tr><td><span class="carrier-badge carrier-entel">e</span>Entel</td><td>171</td><td>210</td><td class="neg">-39</td></tr>
+          <tr><td><span class="carrier-badge carrier-other">G</span>Guinea Mobile S.A.C.</td><td>1</td><td>1</td><td>0 (0,0%)</td></tr>
         </tbody>
         <tfoot><tr><td data-i18n="activar-ch-tfoot">Tổng</td><td>627</td><td>1.029</td><td class="neg">-402</td></tr></tfoot>
       </table>
@@ -2370,10 +2383,10 @@ const mnpDailyOut = [100, 110, 70, 95, 107, 27, 102, 77, 83, 97, 115, 46];
     data:{
       labels: labelsMnp,
       datasets:[
-        { label:'Claro', data:mnpOpInClaro, backgroundColor:'rgba(198,40,40,0.75)', borderColor:'#c62828', borderWidth:1, stack:'op' },
-        { label:'Movistar', data:mnpOpInMovistar, backgroundColor:'rgba(0,87,168,0.75)', borderColor:'#0057A8', borderWidth:1, stack:'op' },
-        { label:'Entel', data:mnpOpInEntel, backgroundColor:'rgba(255,209,0,0.85)', borderColor:'#c8a000', borderWidth:1, stack:'op' },
-        { label:'Guinea Mobile', data:mnpOpInGuinea, backgroundColor:'rgba(109,40,217,0.65)', borderColor:'#6d28d9', borderWidth:1, stack:'op' }
+        { label:'Claro', data:mnpOpInClaro, backgroundColor:'rgba(228,3,46,0.80)', borderColor:'#E4032E', borderWidth:1, stack:'op' },
+        { label:'Movistar', data:mnpOpInMovistar, backgroundColor:'rgba(1,157,244,0.80)', borderColor:'#019DF4', borderWidth:1, stack:'op' },
+        { label:'Entel', data:mnpOpInEntel, backgroundColor:'rgba(0,98,155,0.85)', borderColor:'#00629B', borderWidth:1, stack:'op' },
+        { label:'Guinea Mobile', data:mnpOpInGuinea, backgroundColor:'rgba(107,114,128,0.65)', borderColor:'#6b7280', borderWidth:1, stack:'op' }
       ]
     },
     options:{ responsive:true, maintainAspectRatio:false,
