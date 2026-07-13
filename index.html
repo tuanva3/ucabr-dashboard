@@ -1164,6 +1164,46 @@
     </div>
   </div>
 
+  <div class="content-row">
+    <div class="chart-card" style="flex:1;">
+      <h4 data-i18n="activar-daily-chart-h4">📈 Thống Kê Kích Hoạt Theo Ngày (T7, Ngày 1–11)</h4>
+      <div class="chart-wrapper">
+        <canvas id="chartActivarDaily" height="290"></canvas>
+      </div>
+    </div>
+    <div class="table-card" style="flex:1;">
+      <h4 data-i18n="activar-daily-table-h4">📋 Bảng Chi Tiết Kích Hoạt Theo Ngày</h4>
+      <div style="overflow-x:auto;">
+      <table class="stats-table" style="font-size:0.8rem;">
+        <thead><tr><th data-i18n="th-date">Ngày</th><th>Postpaid</th><th>Prepaid</th><th>Total</th><th data-i18n="th-cumulative">Lũy Kế</th></tr></thead>
+        <tbody>
+          <tr><td>01/07</td><td>108</td><td>359</td><td><strong>467</strong></td><td>467</td></tr>
+          <tr><td>02/07</td><td>117</td><td>350</td><td><strong>467</strong></td><td>934</td></tr>
+          <tr><td>03/07</td><td>125</td><td>385</td><td><strong>510</strong></td><td>1.444</td></tr>
+          <tr><td>04/07</td><td>116</td><td>392</td><td><strong>508</strong></td><td>1.952</td></tr>
+          <tr><td>05/07</td><td>84</td><td>263</td><td><strong>347</strong></td><td>2.299</td></tr>
+          <tr><td>06/07</td><td>128</td><td>408</td><td><strong>536</strong></td><td>2.835</td></tr>
+          <tr><td>07/07</td><td>140</td><td>438</td><td><strong>578</strong></td><td>3.413</td></tr>
+          <tr><td>08/07</td><td>135</td><td>440</td><td><strong>575</strong></td><td>3.988</td></tr>
+          <tr><td>09/07</td><td>125</td><td>473</td><td><strong>598</strong></td><td>4.586</td></tr>
+          <tr><td>10/07</td><td>134</td><td>393</td><td><strong>527</strong></td><td>5.113</td></tr>
+          <tr><td>11/07</td><td>62</td><td>382</td><td><strong>444</strong></td><td>5.557</td></tr>
+        </tbody>
+        <tfoot>
+          <tr><td data-i18n="activar-ch-tfoot">Tổng</td><td>1.274</td><td>4.283</td><td><strong>5.557</strong></td><td>—</td></tr>
+        </tfoot>
+      </table>
+      </div>
+      <div class="note-box" data-i18n="activar-daily-note-box">
+        <strong>📌 Ghi chú nguồn số liệu:</strong><br>
+        • Lấy dữ liệu <strong>cột date</strong> (cột C) trong file "Activar ngày ..." để nhóm số lượng kích hoạt theo từng ngày<br>
+        • Chỉ tính tháng hiện tại (T7), từ <strong>ngày 1 đến ngày 11</strong> – ngày gần nhất có dữ liệu trong file<br>
+        • Biểu đồ đường thể hiện xu hướng kích hoạt hàng ngày (Postpaid, Prepaid, Tổng)<br>
+        • Số ngày hiển thị sẽ tự động mở rộng theo số ngày thực tế có trong file ở mỗi lần cập nhật kế tiếp
+      </div>
+    </div>
+  </div>
+
   <!-- PHAN 2 (DI DONG): KICH HOAT THEO BC -->
   <div class="section-divider">
     <div class="tag" style="background:#6d28d9;" data-i18n="activar-bc-tag">Phần 2</div>
@@ -1282,16 +1322,16 @@
           <tr><th style="text-align:right;">T5</th><th style="text-align:right;">T6</th><th style="text-align:right;">T7</th><th style="text-align:right;">T5</th><th style="text-align:right;">T6</th><th style="text-align:right;">T7</th><th style="text-align:right;" data-i18n="th-total-t7">Tổng T7</th><th style="text-align:right;" data-i18n="th-vs-t6">T7 so T6</th><th style="text-align:right;" data-i18n="th-vs-t5">T7 so T5</th></tr>
         </thead>
         <tbody>
-          <tr><td>Promotores Channel</td><td>415</td><td>377</td><td>339</td><td>2.197</td><td>2.532</td><td>2.381</td><td><strong>2.720</strong></td><td class="neg">-189 (-6,5%)</td><td class="pos">+108 (+4,1%)</td></tr>
-          <tr><td>Point of Sales Channel</td><td>116</td><td>122</td><td>140</td><td>1.391</td><td>1.637</td><td>1.387</td><td><strong>1.527</strong></td><td class="neg">-232 (-13,2%)</td><td class="pos">+20 (+1,3%)</td></tr>
-          <tr><td>Dealer Autorizado</td><td>242</td><td>352</td><td>375</td><td>337</td><td>361</td><td>393</td><td><strong>768</strong></td><td class="pos">+55 (+7,7%)</td><td class="pos">+189 (+32,6%)</td></tr>
-          <tr><td>CAB Dealer</td><td>187</td><td>237</td><td>207</td><td>62</td><td>47</td><td>39</td><td><strong>246</strong></td><td class="neg">-38 (-13,4%)</td><td class="neg">-3 (-1,2%)</td></tr>
-          <tr><td>Store Channel</td><td>121</td><td>94</td><td>90</td><td>1</td><td>2</td><td>1</td><td><strong>91</strong></td><td class="neg">-5 (-5,2%)</td><td class="neg">-31 (-25,4%)</td></tr>
-          <tr><td>Dealer Channel</td><td>39</td><td>33</td><td>37</td><td>70</td><td>82</td><td>51</td><td><strong>88</strong></td><td class="neg">-27 (-23,5%)</td><td class="neg">-21 (-19,3%)</td></tr>
-          <tr><td>Islas BITEL</td><td>88</td><td>52</td><td>69</td><td>6</td><td>6</td><td>5</td><td><strong>74</strong></td><td class="pos">+16 (+27,6%)</td><td class="neg">-20 (-21,3%)</td></tr>
-          <tr><td>Mini Store Channel</td><td>0</td><td>0</td><td>17</td><td>0</td><td>0</td><td>11</td><td><strong>28</strong></td><td class="pos">+28 (Mới)</td><td class="pos">+28 (Mới)</td></tr>
-          <tr><td>Bitel Staff</td><td>2</td><td>2</td><td>0</td><td>27</td><td>14</td><td>15</td><td><strong>15</strong></td><td class="neg">-1 (-6,3%)</td><td class="neg">-14 (-48,3%)</td></tr>
-          <tr><td>Agente BIPAY Channel</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td><strong>0</strong></td><td class="neg">-2 (-100,0%)</td><td class="neg">-1 (-100,0%)</td></tr>
+          <tr><td>🧑‍💼 Promotores Channel</td><td>415</td><td>377</td><td>339</td><td>2.197</td><td>2.532</td><td>2.381</td><td><strong>2.720</strong></td><td class="neg">-189 (-6,5%)</td><td class="pos">+108 (+4,1%)</td></tr>
+          <tr><td>💳 Point of Sales Channel</td><td>116</td><td>122</td><td>140</td><td>1.391</td><td>1.637</td><td>1.387</td><td><strong>1.527</strong></td><td class="neg">-232 (-13,2%)</td><td class="pos">+20 (+1,3%)</td></tr>
+          <tr><td>🏬 Dealer Autorizado</td><td>242</td><td>352</td><td>375</td><td>337</td><td>361</td><td>393</td><td><strong>768</strong></td><td class="pos">+55 (+7,7%)</td><td class="pos">+189 (+32,6%)</td></tr>
+          <tr><td>🏢 CAB Dealer</td><td>187</td><td>237</td><td>207</td><td>62</td><td>47</td><td>39</td><td><strong>246</strong></td><td class="neg">-38 (-13,4%)</td><td class="neg">-3 (-1,2%)</td></tr>
+          <tr><td>🛒 Store Channel</td><td>121</td><td>94</td><td>90</td><td>1</td><td>2</td><td>1</td><td><strong>91</strong></td><td class="neg">-5 (-5,2%)</td><td class="neg">-31 (-25,4%)</td></tr>
+          <tr><td>🤝 Dealer Channel</td><td>39</td><td>33</td><td>37</td><td>70</td><td>82</td><td>51</td><td><strong>88</strong></td><td class="neg">-27 (-23,5%)</td><td class="neg">-21 (-19,3%)</td></tr>
+          <tr><td>🏝️ Islas BITEL</td><td>88</td><td>52</td><td>69</td><td>6</td><td>6</td><td>5</td><td><strong>74</strong></td><td class="pos">+16 (+27,6%)</td><td class="neg">-20 (-21,3%)</td></tr>
+          <tr><td>🏪 Mini Store Channel</td><td>0</td><td>0</td><td>17</td><td>0</td><td>0</td><td>11</td><td><strong>28</strong></td><td class="pos">+28 (Mới)</td><td class="pos">+28 (Mới)</td></tr>
+          <tr><td>👤 Bitel Staff</td><td>2</td><td>2</td><td>0</td><td>27</td><td>14</td><td>15</td><td><strong>15</strong></td><td class="neg">-1 (-6,3%)</td><td class="neg">-14 (-48,3%)</td></tr>
+          <tr><td>💰 Agente BIPAY Channel</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td><strong>0</strong></td><td class="neg">-2 (-100,0%)</td><td class="neg">-1 (-100,0%)</td></tr>
         </tbody>
         <tfoot>
           <tr><td data-i18n="activar-ch-tfoot">Tổng</td><td>1.210</td><td>1.269</td><td>1.274</td><td>4.092</td><td>4.683</td><td>4.283</td><td><strong>5.557</strong></td><td>-395 (-6,6%)</td><td>+255 (+4,8%)</td></tr>
@@ -1311,16 +1351,16 @@
           <tr><th style="text-align:right;">T5</th><th style="text-align:right;">T6</th><th style="text-align:right;">T7</th><th style="text-align:right;">T5</th><th style="text-align:right;">T6</th><th style="text-align:right;">T7</th><th style="text-align:right;" data-i18n="th-total-t7">Tổng T7</th><th style="text-align:right;" data-i18n="th-vs-t6">T7 so T6</th><th style="text-align:right;" data-i18n="th-vs-t5">T7 so T5</th></tr>
         </thead>
         <tbody>
-          <tr><td>Promotores Channel</td><td>299</td><td>225</td><td>257</td><td>1.804</td><td>1.988</td><td>2.179</td><td><strong>2.436</strong></td><td class="pos">+223 (+10,1%)</td><td class="pos">+333 (+15,8%)</td></tr>
-          <tr><td>Point of Sales Channel</td><td>62</td><td>57</td><td>83</td><td>639</td><td>777</td><td>736</td><td><strong>819</strong></td><td class="neg">-15 (-1,8%)</td><td class="pos">+118 (+16,8%)</td></tr>
-          <tr><td>Dealer Autorizado</td><td>163</td><td>240</td><td>246</td><td>165</td><td>164</td><td>199</td><td><strong>445</strong></td><td class="pos">+41 (+10,1%)</td><td class="pos">+117 (+35,7%)</td></tr>
-          <tr><td>CAB Dealer</td><td>163</td><td>218</td><td>193</td><td>44</td><td>29</td><td>21</td><td><strong>214</strong></td><td class="neg">-33 (-13,4%)</td><td class="pos">+7 (+3,4%)</td></tr>
-          <tr><td>Store Channel</td><td>121</td><td>94</td><td>90</td><td>1</td><td>2</td><td>1</td><td><strong>91</strong></td><td class="neg">-5 (-5,2%)</td><td class="neg">-31 (-25,4%)</td></tr>
-          <tr><td>Islas BITEL</td><td>88</td><td>52</td><td>69</td><td>6</td><td>6</td><td>5</td><td><strong>74</strong></td><td class="pos">+16 (+27,6%)</td><td class="neg">-20 (-21,3%)</td></tr>
-          <tr><td>Mini Store Channel</td><td>0</td><td>0</td><td>17</td><td>0</td><td>0</td><td>11</td><td><strong>28</strong></td><td class="pos">+28 (Mới)</td><td class="pos">+28 (Mới)</td></tr>
-          <tr><td>Bitel Staff</td><td>1</td><td>2</td><td>0</td><td>16</td><td>9</td><td>10</td><td><strong>10</strong></td><td class="neg">-1 (-9,1%)</td><td class="neg">-7 (-41,2%)</td></tr>
-          <tr><td>Dealer Channel</td><td>9</td><td>4</td><td>6</td><td>8</td><td>4</td><td>2</td><td><strong>8</strong></td><td>0 (0,0%)</td><td class="neg">-9 (-52,9%)</td></tr>
-          <tr><td>Agente BIPAY Channel</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td><strong>0</strong></td><td class="neg">-2 (-100,0%)</td><td class="neg">-1 (-100,0%)</td></tr>
+          <tr><td>🧑‍💼 Promotores Channel</td><td>299</td><td>225</td><td>257</td><td>1.804</td><td>1.988</td><td>2.179</td><td><strong>2.436</strong></td><td class="pos">+223 (+10,1%)</td><td class="pos">+333 (+15,8%)</td></tr>
+          <tr><td>💳 Point of Sales Channel</td><td>62</td><td>57</td><td>83</td><td>639</td><td>777</td><td>736</td><td><strong>819</strong></td><td class="neg">-15 (-1,8%)</td><td class="pos">+118 (+16,8%)</td></tr>
+          <tr><td>🏬 Dealer Autorizado</td><td>163</td><td>240</td><td>246</td><td>165</td><td>164</td><td>199</td><td><strong>445</strong></td><td class="pos">+41 (+10,1%)</td><td class="pos">+117 (+35,7%)</td></tr>
+          <tr><td>🏢 CAB Dealer</td><td>163</td><td>218</td><td>193</td><td>44</td><td>29</td><td>21</td><td><strong>214</strong></td><td class="neg">-33 (-13,4%)</td><td class="pos">+7 (+3,4%)</td></tr>
+          <tr><td>🛒 Store Channel</td><td>121</td><td>94</td><td>90</td><td>1</td><td>2</td><td>1</td><td><strong>91</strong></td><td class="neg">-5 (-5,2%)</td><td class="neg">-31 (-25,4%)</td></tr>
+          <tr><td>🏝️ Islas BITEL</td><td>88</td><td>52</td><td>69</td><td>6</td><td>6</td><td>5</td><td><strong>74</strong></td><td class="pos">+16 (+27,6%)</td><td class="neg">-20 (-21,3%)</td></tr>
+          <tr><td>🏪 Mini Store Channel</td><td>0</td><td>0</td><td>17</td><td>0</td><td>0</td><td>11</td><td><strong>28</strong></td><td class="pos">+28 (Mới)</td><td class="pos">+28 (Mới)</td></tr>
+          <tr><td>👤 Bitel Staff</td><td>1</td><td>2</td><td>0</td><td>16</td><td>9</td><td>10</td><td><strong>10</strong></td><td class="neg">-1 (-9,1%)</td><td class="neg">-7 (-41,2%)</td></tr>
+          <tr><td>🤝 Dealer Channel</td><td>9</td><td>4</td><td>6</td><td>8</td><td>4</td><td>2</td><td><strong>8</strong></td><td>0 (0,0%)</td><td class="neg">-9 (-52,9%)</td></tr>
+          <tr><td>💰 Agente BIPAY Channel</td><td>0</td><td>0</td><td>0</td><td>1</td><td>2</td><td>0</td><td><strong>0</strong></td><td class="neg">-2 (-100,0%)</td><td class="neg">-1 (-100,0%)</td></tr>
         </tbody>
         <tfoot>
           <tr><td data-i18n="activar-ch-tfoot">Tổng</td><td>906</td><td>892</td><td>961</td><td>2.684</td><td>2.981</td><td>3.164</td><td><strong>4.125</strong></td><td class="pos">+252 (+6,5%)</td><td class="pos">+535 (+14,9%)</td></tr>
@@ -1340,12 +1380,12 @@
           <tr><th style="text-align:right;">T5</th><th style="text-align:right;">T6</th><th style="text-align:right;">T7</th><th style="text-align:right;">T5</th><th style="text-align:right;">T6</th><th style="text-align:right;">T7</th><th style="text-align:right;" data-i18n="th-total-t7">Tổng T7</th><th style="text-align:right;" data-i18n="th-vs-t6">T7 so T6</th><th style="text-align:right;" data-i18n="th-vs-t5">T7 so T5</th></tr>
         </thead>
         <tbody>
-          <tr><td>Point of Sales Channel</td><td>54</td><td>65</td><td>57</td><td>752</td><td>860</td><td>651</td><td><strong>708</strong></td><td class="neg">-217 (-23,5%)</td><td class="neg">-98 (-12,2%)</td></tr>
-          <tr><td>Dealer Autorizado</td><td>79</td><td>112</td><td>129</td><td>172</td><td>197</td><td>194</td><td><strong>323</strong></td><td class="pos">+14 (+4,5%)</td><td class="pos">+72 (+28,7%)</td></tr>
-          <tr><td>Promotores Channel</td><td>116</td><td>152</td><td>82</td><td>393</td><td>544</td><td>202</td><td><strong>284</strong></td><td class="neg">-412 (-59,2%)</td><td class="neg">-225 (-44,2%)</td></tr>
-          <tr><td>Dealer Channel</td><td>30</td><td>29</td><td>31</td><td>62</td><td>78</td><td>49</td><td><strong>80</strong></td><td class="neg">-27 (-25,2%)</td><td class="neg">-12 (-13,0%)</td></tr>
-          <tr><td>CAB Dealer</td><td>24</td><td>19</td><td>14</td><td>18</td><td>18</td><td>18</td><td><strong>32</strong></td><td class="neg">-5 (-13,5%)</td><td class="neg">-10 (-23,8%)</td></tr>
-          <tr><td>Bitel Staff</td><td>1</td><td>0</td><td>0</td><td>11</td><td>5</td><td>5</td><td><strong>5</strong></td><td>0 (0,0%)</td><td class="neg">-7 (-58,3%)</td></tr>
+          <tr><td>💳 Point of Sales Channel</td><td>54</td><td>65</td><td>57</td><td>752</td><td>860</td><td>651</td><td><strong>708</strong></td><td class="neg">-217 (-23,5%)</td><td class="neg">-98 (-12,2%)</td></tr>
+          <tr><td>🏬 Dealer Autorizado</td><td>79</td><td>112</td><td>129</td><td>172</td><td>197</td><td>194</td><td><strong>323</strong></td><td class="pos">+14 (+4,5%)</td><td class="pos">+72 (+28,7%)</td></tr>
+          <tr><td>🧑‍💼 Promotores Channel</td><td>116</td><td>152</td><td>82</td><td>393</td><td>544</td><td>202</td><td><strong>284</strong></td><td class="neg">-412 (-59,2%)</td><td class="neg">-225 (-44,2%)</td></tr>
+          <tr><td>🤝 Dealer Channel</td><td>30</td><td>29</td><td>31</td><td>62</td><td>78</td><td>49</td><td><strong>80</strong></td><td class="neg">-27 (-25,2%)</td><td class="neg">-12 (-13,0%)</td></tr>
+          <tr><td>🏢 CAB Dealer</td><td>24</td><td>19</td><td>14</td><td>18</td><td>18</td><td>18</td><td><strong>32</strong></td><td class="neg">-5 (-13,5%)</td><td class="neg">-10 (-23,8%)</td></tr>
+          <tr><td>👤 Bitel Staff</td><td>1</td><td>0</td><td>0</td><td>11</td><td>5</td><td>5</td><td><strong>5</strong></td><td>0 (0,0%)</td><td class="neg">-7 (-58,3%)</td></tr>
         </tbody>
         <tfoot>
           <tr><td data-i18n="activar-ch-tfoot">Tổng</td><td>304</td><td>377</td><td>313</td><td>1.408</td><td>1.702</td><td>1.119</td><td><strong>1.432</strong></td><td class="neg">-647 (-31,1%)</td><td class="neg">-280 (-16,4%)</td></tr>
@@ -1689,16 +1729,16 @@
       <table class="stats-table" style="font-size:0.78rem;">
         <thead><tr><th data-i18n="th-channel">Kênh</th><th>ID Active SIM</th><th>New Active Bipay</th><th>MAU CashIn</th><th>Consumer</th><th data-i18n="th-cons-pct">% Consumer/MAU CashIn</th></tr></thead>
         <tbody>
-          <tr><td>Promotores Channel</td><td>1.835</td><td>1.454</td><td>259</td><td>208</td><td>80,3%</td></tr>
-          <tr><td>Dealer Autorizado</td><td>424</td><td>278</td><td>181</td><td>156</td><td>86,2%</td></tr>
-          <tr><td>CAB Dealer</td><td>209</td><td>95</td><td>81</td><td>76</td><td>93,8%</td></tr>
-          <tr><td>Store Channel</td><td>89</td><td>46</td><td>45</td><td>4</td><td>8,9%</td></tr>
-          <tr><td>Islas BITEL</td><td>70</td><td>49</td><td>44</td><td>16</td><td>36,4%</td></tr>
-          <tr><td>Point of Sales Channel</td><td>804</td><td>118</td><td>19</td><td>13</td><td>68,4%</td></tr>
-          <tr><td>Mini Store Channel</td><td>27</td><td>23</td><td>11</td><td>1</td><td>9,1%</td></tr>
-          <tr><td>Dealer Channel</td><td>8</td><td>4</td><td>5</td><td>5</td><td>100,0%</td></tr>
-          <tr><td>Bitel Staff</td><td>10</td><td>0</td><td>1</td><td>1</td><td>100,0%</td></tr>
-          <tr><td>Agente BIPAY Channel</td><td>0</td><td>0</td><td>0</td><td>0</td><td>–</td></tr>
+          <tr><td>🧑‍💼 Promotores Channel</td><td>1.835</td><td>1.454</td><td>259</td><td>208</td><td>80,3%</td></tr>
+          <tr><td>🏬 Dealer Autorizado</td><td>424</td><td>278</td><td>181</td><td>156</td><td>86,2%</td></tr>
+          <tr><td>🏢 CAB Dealer</td><td>209</td><td>95</td><td>81</td><td>76</td><td>93,8%</td></tr>
+          <tr><td>🛒 Store Channel</td><td>89</td><td>46</td><td>45</td><td>4</td><td>8,9%</td></tr>
+          <tr><td>🏝️ Islas BITEL</td><td>70</td><td>49</td><td>44</td><td>16</td><td>36,4%</td></tr>
+          <tr><td>💳 Point of Sales Channel</td><td>804</td><td>118</td><td>19</td><td>13</td><td>68,4%</td></tr>
+          <tr><td>🏪 Mini Store Channel</td><td>27</td><td>23</td><td>11</td><td>1</td><td>9,1%</td></tr>
+          <tr><td>🤝 Dealer Channel</td><td>8</td><td>4</td><td>5</td><td>5</td><td>100,0%</td></tr>
+          <tr><td>👤 Bitel Staff</td><td>10</td><td>0</td><td>1</td><td>1</td><td>100,0%</td></tr>
+          <tr><td>💰 Agente BIPAY Channel</td><td>0</td><td>0</td><td>0</td><td>0</td><td>–</td></tr>
         </tbody>
       </table>
       </div>
@@ -1709,12 +1749,12 @@
       <table class="stats-table yellow-header" style="font-size:0.78rem;">
         <thead><tr><th data-i18n="th-channel">Kênh</th><th>ID Active SIM</th><th>New Active Bipay</th><th>MAU CashIn</th><th>Consumer</th><th data-i18n="th-cons-pct">% Consumer/MAU CashIn</th></tr></thead>
         <tbody>
-          <tr><td>Promotores Channel</td><td>250</td><td>172</td><td>111</td><td>61</td><td>55,0%</td></tr>
-          <tr><td>Dealer Autorizado</td><td>313</td><td>121</td><td>63</td><td>59</td><td>93,7%</td></tr>
-          <tr><td>Point of Sales Channel</td><td>691</td><td>235</td><td>17</td><td>14</td><td>82,4%</td></tr>
-          <tr><td>CAB Dealer</td><td>32</td><td>4</td><td>3</td><td>3</td><td>100,0%</td></tr>
-          <tr><td>Dealer Channel</td><td>78</td><td>23</td><td>1</td><td>1</td><td>100,0%</td></tr>
-          <tr><td>Bitel Staff</td><td>5</td><td>0</td><td>0</td><td>0</td><td>–</td></tr>
+          <tr><td>🧑‍💼 Promotores Channel</td><td>250</td><td>172</td><td>111</td><td>61</td><td>55,0%</td></tr>
+          <tr><td>🏬 Dealer Autorizado</td><td>313</td><td>121</td><td>63</td><td>59</td><td>93,7%</td></tr>
+          <tr><td>💳 Point of Sales Channel</td><td>691</td><td>235</td><td>17</td><td>14</td><td>82,4%</td></tr>
+          <tr><td>🏢 CAB Dealer</td><td>32</td><td>4</td><td>3</td><td>3</td><td>100,0%</td></tr>
+          <tr><td>🤝 Dealer Channel</td><td>78</td><td>23</td><td>1</td><td>1</td><td>100,0%</td></tr>
+          <tr><td>👤 Bitel Staff</td><td>5</td><td>0</td><td>0</td><td>0</td><td>–</td></tr>
         </tbody>
       </table>
       </div>
@@ -1947,6 +1987,10 @@ const activarMnpBc02 = { newline:[4641,4632,1222], mnp:[398,376,139], pretopost:
 const labelsActivarCmp = ['T5 (1-11)','T6 (1-11)','T7 (1-11)'];
 const activarCmpPostpaid = [1210, 1269, 1274];
 const activarCmpPrepaid  = [4092, 4683, 4283];
+const labelsActivarDaily = ['01/07','02/07','03/07','04/07','05/07','06/07','07/07','08/07','09/07','10/07','11/07'];
+const activarDailyPostpaid = [108, 117, 125, 116, 84, 128, 140, 135, 125, 134, 62];
+const activarDailyPrepaid  = [359, 350, 385, 392, 263, 408, 438, 440, 473, 393, 382];
+const activarDailyTotal    = [467, 467, 510, 508, 347, 536, 578, 575, 598, 527, 444];
 
 // ── CHART 8: TONG KICH HOAT (DI DONG, STACKED) ─────────────
 (function(){
@@ -1966,6 +2010,28 @@ const activarCmpPrepaid  = [4092, 4683, 4283];
         callbacks:{ footer:(items)=>{ let s=0; items.forEach(i=>s+=i.raw); return 'Total: '+s.toLocaleString('es-PE'); } } } },
       scales:{ y:{ stacked:true, grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 }, callback:v=>v.toLocaleString('es-PE') } },
                x:{ stacked:true, grid:{ display:false }, ticks:{ font:{ size:11 } } } }
+    }
+  });
+})();
+
+// ── CHART 8b: THONG KE KICH HOAT THEO NGAY (T7, LINE) ──────
+(function(){
+  const ctx = document.getElementById('chartActivarDaily');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type:'line',
+    data:{
+      labels: labelsActivarDaily,
+      datasets:[
+        { label:'Total', data:activarDailyTotal, borderColor:'#0057A8', backgroundColor:'rgba(0,87,168,0.1)', borderWidth:3, tension:0.3, pointRadius:4, pointBackgroundColor:'#0057A8', fill:true },
+        { label:'Postpaid', data:activarDailyPostpaid, borderColor:'#1a8a3a', backgroundColor:'rgba(26,138,58,0.08)', borderWidth:2, borderDash:[5,3], tension:0.3, pointRadius:3, pointBackgroundColor:'#1a8a3a', fill:false },
+        { label:'Prepaid', data:activarDailyPrepaid, borderColor:'#c8a000', backgroundColor:'rgba(200,160,0,0.08)', borderWidth:2, borderDash:[5,3], tension:0.3, pointRadius:3, pointBackgroundColor:'#c8a000', fill:false }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top', labels:{ font:{ size:11 } } }, tooltip:{ mode:'index', intersect:false } },
+      scales:{ y:{ grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 }, callback:v=>v.toLocaleString('es-PE') } },
+               x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } }
     }
   });
 })();
@@ -2046,6 +2112,11 @@ const I18N = {
     'activar-cmp-vs-t6': 'T7 vs T6',
     'activar-cmp-vs-t5': 'T7 vs T5',
     'activar-cmp-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Lấy dữ liệu <strong>cột date ≤ 11</strong> của từng tháng T5, T6, T7 (cùng số ngày với T7 hiện tại, <strong>đến ngày 11/07/2026</strong>)<br>• <strong>T7 vs T6</strong>, <strong>T7 vs T5</strong>: chênh lệch tuyệt đối và % so với cùng kỳ<br>• Số ngày so sánh (hiện là 1–11) sẽ tự thay đổi theo số ngày thực tế có trong file mỗi lần cập nhật',
+    'th-date': 'Ngày',
+    'th-cumulative': 'Lũy Kế',
+    'activar-daily-chart-h4': '📈 Thống Kê Kích Hoạt Theo Ngày (T7, Ngày 1–11)',
+    'activar-daily-table-h4': '📋 Bảng Chi Tiết Kích Hoạt Theo Ngày',
+    'activar-daily-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Lấy dữ liệu <strong>cột date</strong> (cột C) trong file "Activar ngày ..." để nhóm số lượng kích hoạt theo từng ngày<br>• Chỉ tính tháng hiện tại (T7), từ <strong>ngày 1 đến ngày 11</strong> – ngày gần nhất có dữ liệu trong file<br>• Biểu đồ đường thể hiện xu hướng kích hoạt hàng ngày (Postpaid, Prepaid, Tổng)<br>• Số ngày hiển thị sẽ tự động mở rộng theo số ngày thực tế có trong file ở mỗi lần cập nhật kế tiếp',
     'activar-bc-tag': 'Phần 2',
     'activar-bc-h3': 'Kích Hoạt Theo Trung Tâm Kinh Doanh – BC01 &amp; BC02 (T5–T7 / 2026)',
     'activar-bc-share': 'tổng kích hoạt UCABR',
@@ -2186,6 +2257,11 @@ const I18N = {
     'activar-cmp-vs-t6': 'T7 vs T6',
     'activar-cmp-vs-t5': 'T7 vs T5',
     'activar-cmp-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Se toman los datos con <strong>columna date ≤ 11</strong> de cada mes T5, T6, T7 (mismos días que el T7 actual, <strong>datos al 11/07/2026</strong>)<br>• <strong>T7 vs T6</strong>, <strong>T7 vs T5</strong>: diferencia absoluta y % respecto al mismo período<br>• El número de días de comparación (actualmente 1–11) cambiará automáticamente según los días reales disponibles en cada actualización',
+    'th-date': 'Día',
+    'th-cumulative': 'Acumulado',
+    'activar-daily-chart-h4': '📈 Estadísticas de Activación Diaria (T7, Días 1–11)',
+    'activar-daily-table-h4': '📋 Tabla Detallada de Activaciones Diarias',
+    'activar-daily-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Se toman los datos de la <strong>columna date</strong> (columna C) del archivo "Activar ngày ..." para agrupar las activaciones por día<br>• Solo se calcula el mes actual (T7), del <strong>día 1 al día 11</strong> – el último día con datos en el archivo<br>• El gráfico de líneas muestra la tendencia diaria de activaciones (Postpaid, Prepaid, Total)<br>• El número de días mostrados se ampliará automáticamente según los días reales disponibles en cada actualización',
     'activar-bc-tag': 'Sección 2',
     'activar-bc-h3': 'Activaciones por Centro de Negocio – BC01 &amp; BC02 (T5–T7 / 2026)',
     'activar-bc-share': 'del total de activaciones UCABR',
@@ -2326,6 +2402,11 @@ const I18N = {
     'activar-cmp-vs-t6': 'T7 vs T6',
     'activar-cmp-vs-t5': 'T7 vs T5',
     'activar-cmp-note-box': '<strong>📌 Data source note:</strong><br>• Takes data with <strong>date column ≤ 11</strong> for each of T5, T6, T7 (same days as current T7, <strong>data as of 11/07/2026</strong>)<br>• <strong>T7 vs T6</strong>, <strong>T7 vs T5</strong>: absolute difference and % vs same period<br>• The comparison day count (currently 1–11) will automatically change based on the actual days available in each update',
+    'th-date': 'Date',
+    'th-cumulative': 'Cumulative',
+    'activar-daily-chart-h4': '📈 Daily Activation Statistics (T7, Days 1–11)',
+    'activar-daily-table-h4': '📋 Daily Activation Detail Table',
+    'activar-daily-note-box': '<strong>📌 Data source note:</strong><br>• Takes data from the <strong>date column</strong> (column C) in the "Activar ngày ..." file to group activations by day<br>• Only the current month (T7) is calculated, from <strong>day 1 to day 11</strong> – the latest day with data in the file<br>• The line chart shows the daily activation trend (Postpaid, Prepaid, Total)<br>• The number of days shown will automatically expand based on the actual days available in each update',
     'activar-bc-tag': 'Section 2',
     'activar-bc-h3': 'Activations by Business Center – BC01 &amp; BC02 (T5–T7 / 2026)',
     'activar-bc-share': 'of total UCABR activations',
