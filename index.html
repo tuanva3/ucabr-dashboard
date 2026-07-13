@@ -336,6 +336,17 @@
 .main-tab-btn:hover { color: #fff; background: rgba(255,255,255,0.08); }
 .main-tab-btn.active { color: var(--bitel-yellow); border-bottom-color: var(--bitel-yellow); background: rgba(255,255,255,0.06); }
 .tab-panel { display: block; }
+
+/* ── SUB TABS (Di động: Kích hoạt / MNP) ── */
+.sub-tab-bar { display: flex; gap: 8px; padding: 22px 24px 0; flex-wrap: wrap; }
+.sub-tab-btn {
+  background: #eaf2fb; border: 2px solid #b3d4ec; color: #0057A8;
+  font-weight: 700; font-size: 0.85rem; padding: 9px 20px;
+  border-radius: 22px; cursor: pointer; transition: all 0.18s; font-family: inherit;
+}
+.sub-tab-btn:hover { background: #d7e8f8; }
+.sub-tab-btn.active { background: #0057A8; border-color: #0057A8; color: #fff; }
+.sub-tab-panel { display: block; }
 .tab-empty {
   width: 100%;
   min-height: 220px;
@@ -1069,11 +1080,12 @@
 
 <!-- TAB: DI ĐỘNG (placeholder – kế thừa màu sắc, bố cục, chuyển ngữ của Dashboard chung) -->
 <div id="tabpanel-mobile" class="tab-panel" style="display:none">
-  <div class="section-divider">
-    <div class="tag" data-i18n="tab-mobile-tag">Di Động</div>
-    <h3 data-i18n="tab-mobile-h3">Chỉ Số Kinh Doanh Di Động</h3>
-    <div class="line"></div>
+  <div class="sub-tab-bar" id="mobileSubTabs">
+    <button class="sub-tab-btn active" data-subtab="kichhoat" onclick="showMobileSubTab('kichhoat', this)" data-i18n="mobile-sub-kichhoat">📱 Kích Hoạt</button>
+    <button class="sub-tab-btn" data-subtab="mnp" onclick="showMobileSubTab('mnp', this)" data-i18n="mobile-sub-mnp">🔄 MNP</button>
   </div>
+
+<div id="subtab-mobile-kichhoat" class="sub-tab-panel">
 
   <!-- PHAN 1 (DI DONG): TONG KICH HOAT -->
   <div class="section-divider">
@@ -1407,6 +1419,239 @@
       • (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 11/07/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc
     </div>
   </div>
+
+</div><!-- /#subtab-mobile-kichhoat -->
+
+<div id="subtab-mobile-mnp" class="sub-tab-panel" style="display:none">
+
+  <div class="section-divider">
+    <div class="tag" style="background:#6d28d9;" data-i18n="mnp-tag">MNP</div>
+    <h3 data-i18n="mnp-h3">Chuyển Mạng Giữ Số (MNP) – Port In / Port Out Toàn Chi Nhánh UCABR</h3>
+    <div class="line"></div>
+  </div>
+
+  <div class="content-row" style="padding-top:0;">
+    <div class="note-box" style="flex:1;background:#fdecea;border-color:#e57373;" data-i18n="mnp-alert-box">
+      <strong>⚠️ Cảnh báo:</strong> Port In <strong>thấp hơn</strong> Port Out ở <strong>tất cả 6/6 tháng</strong> gần nhất (T2–T7) — chi nhánh UCABR đang <strong>mất ròng thuê bao</strong> qua MNP sang các nhà mạng khác. Lũy kế T2–T7: Port In 8.126 / Port Out 11.031 (<span class="neg">-2.905</span>). Nhà mạng nhận nhiều thuê bao nhất từ UCABR: <strong>Claro</strong>.
+    </div>
+  </div>
+
+  <!-- PHAN 1 (MNP): TONG HOP UCA + THEO BC -->
+  <div class="section-divider">
+    <div class="tag" style="background:#6d28d9;" data-i18n="mnp-p1-tag">Phần 1</div>
+    <h3 data-i18n="mnp-p1-h3">Tổng Hợp MNP – Toàn Chi Nhánh &amp; Theo BC (T2–T7 / 2026)</h3>
+    <div class="line"></div>
+  </div>
+
+  <div class="content-row">
+    <div class="chart-card" style="flex:1;">
+      <h4 data-i18n="mnp-chart-h4">📊 Biểu Đồ Cột – Port In / Port Out Theo Tháng (UCABR)</h4>
+      <div class="chart-wrapper">
+        <canvas id="chartMnp" height="290"></canvas>
+      </div>
+    </div>
+    <div class="table-card" style="flex:1;">
+      <h4 data-i18n="mnp-table-h4">📋 Thống Kê Chi Tiết Port In/Out – Tổng UCABR</h4>
+      <div style="overflow-x:auto;">
+      <table class="stats-table">
+        <thead><tr><th data-i18n="th-month">Tháng</th><th>Port In</th><th>Port Out</th><th data-i18n="th-diff">Chênh Lệch</th></tr></thead>
+        <tbody>
+          <tr><td>T2</td><td>1.409</td><td>1.657</td><td class="neg">-248</td></tr>
+          <tr><td>T3</td><td>1.495</td><td>1.905</td><td class="neg">-410</td></tr>
+          <tr><td>T4</td><td>1.600</td><td>2.093</td><td class="neg">-493</td></tr>
+          <tr><td>T5</td><td>1.567</td><td>2.179</td><td class="neg">-612</td></tr>
+          <tr><td>T6</td><td>1.428</td><td>2.168</td><td class="neg">-740</td></tr>
+          <tr><td>T7 (*)</td><td>627</td><td>1.029</td><td class="neg">-402</td></tr>
+        </tbody>
+        <tfoot><tr><td data-i18n="activar-ch-tfoot">Tổng</td><td>8.126</td><td>11.031</td><td class="neg">-2.905</td></tr></tfoot>
+      </table>
+      </div>
+      <div class="note-box" data-i18n="mnp-note-box">
+        <strong>📌 Ghi chú nguồn số liệu:</strong><br>
+        • Nguồn: file "MNP ngày ..." – cột <strong>port type</strong> (cột C): <strong>Port_in</strong> = thuê bao từ nhà mạng khác chuyển vào Bitel, <strong>Port_out</strong> = thuê bao Bitel chuyển đi nhà mạng khác (nhà mạng đích ở cột <strong>operator</strong> – cột J)<br>
+        • Nhóm theo <strong>month_rp</strong> (cột A)<br>
+        • <strong>Chênh lệch</strong> = Port In − Port Out; số âm (màu đỏ) nghĩa là mất thuê bao ròng qua MNP<br>
+        • (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 12/07/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc
+      </div>
+    </div>
+  </div>
+
+  <div class="bts-section" style="padding-top:0;">
+    <div class="bts-summary">
+      <div class="bts-sum-card" style="background:#eaf2fb;border-color:#0057A8;color:#0057A8;text-align:left;padding:14px 20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="font-weight:800;font-size:0.95rem;">🏢 BC01</span>
+          <span data-i18n="mnp-bc-badge" style="font-size:0.7rem;font-weight:700;background:#0057A8;color:#fff;padding:2px 8px;border-radius:10px;">T7 hiện tại (*)</span>
+        </div>
+        <div style="font-size:1.6rem;font-weight:800;color:#0057A8;line-height:1;">474 / 805</div>
+        <div style="font-size:0.78rem;color:#3a6080;margin-top:6px;"><span data-i18n="mnp-bc-sub">Port In / Port Out</span> — <span class="neg">-331</span> · 78,2% Port Out UCABR</div>
+      </div>
+      <div class="bts-sum-card" style="background:#fffbe6;border-color:#c8a000;color:#8a6600;text-align:left;padding:14px 20px;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:6px;">
+          <span style="font-weight:800;font-size:0.95rem;">🏢 BC02</span>
+          <span data-i18n="mnp-bc-badge" style="font-size:0.7rem;font-weight:700;background:#c8a000;color:#fff;padding:2px 8px;border-radius:10px;">T7 hiện tại (*)</span>
+        </div>
+        <div style="font-size:1.6rem;font-weight:800;color:#8a6600;line-height:1;">153 / 222</div>
+        <div style="font-size:0.78rem;color:#7a6020;margin-top:6px;"><span data-i18n="mnp-bc-sub">Port In / Port Out</span> — <span class="neg">-69</span> · 21,6% Port Out UCABR</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="content-row">
+    <div class="table-card" style="flex:1;">
+      <h4 style="color:#0057A8;" data-i18n="mnp-bc01-h4">📋 BC01 – Port In/Out Theo Tháng</h4>
+      <table class="stats-table">
+        <thead><tr><th data-i18n="th-month">Tháng</th><th>Port In</th><th>Port Out</th><th data-i18n="th-diff">Chênh Lệch</th></tr></thead>
+        <tbody>
+          <tr><td>T2</td><td>1.100</td><td>1.238</td><td class="neg">-138</td></tr>
+          <tr><td>T3</td><td>1.105</td><td>1.381</td><td class="neg">-276</td></tr>
+          <tr><td>T4</td><td>1.186</td><td>1.528</td><td class="neg">-342</td></tr>
+          <tr><td>T5</td><td>1.168</td><td>1.603</td><td class="neg">-435</td></tr>
+          <tr><td>T6</td><td>1.054</td><td>1.605</td><td class="neg">-551</td></tr>
+          <tr><td>T7 (*)</td><td>474</td><td>805</td><td class="neg">-331</td></tr>
+        </tbody>
+        <tfoot><tr><td data-i18n="activar-ch-tfoot">Tổng</td><td>6.087</td><td>8.160</td><td class="neg">-2.073</td></tr></tfoot>
+      </table>
+    </div>
+    <div class="table-card yellow-header" style="flex:1;">
+      <h4 style="color:#8a6600;" data-i18n="mnp-bc02-h4">📋 BC02 – Port In/Out Theo Tháng</h4>
+      <table class="stats-table yellow-header">
+        <thead><tr><th data-i18n="th-month">Tháng</th><th>Port In</th><th>Port Out</th><th data-i18n="th-diff">Chênh Lệch</th></tr></thead>
+        <tbody>
+          <tr><td>T2</td><td>309</td><td>414</td><td class="neg">-105</td></tr>
+          <tr><td>T3</td><td>390</td><td>513</td><td class="neg">-123</td></tr>
+          <tr><td>T4</td><td>414</td><td>549</td><td class="neg">-135</td></tr>
+          <tr><td>T5</td><td>399</td><td>553</td><td class="neg">-154</td></tr>
+          <tr><td>T6</td><td>374</td><td>551</td><td class="neg">-177</td></tr>
+          <tr><td>T7 (*)</td><td>153</td><td>222</td><td class="neg">-69</td></tr>
+        </tbody>
+        <tfoot><tr><td data-i18n="activar-ch-tfoot">Tổng</td><td>2.039</td><td>2.802</td><td class="neg">-763</td></tr></tfoot>
+      </table>
+    </div>
+  </div>
+
+  <div class="content-row" style="padding-top:0;">
+    <div class="note-box blue" style="flex:1;" data-i18n="mnp-bc-note-box">
+      📌 BC01 + BC02 ≈ Tổng UCABR ở bảng trên (một số ít bản ghi Port_out không xác định được BC — cột center="-", khoảng 2–23 dòng/tháng — không tính vào 2 bảng BC01/BC02 nhưng vẫn nằm trong Tổng UCABR).
+    </div>
+  </div>
+
+  <div class="content-row">
+    <div class="chart-card" style="flex:1;">
+      <h4 data-i18n="mnp-op-chart-h4">📊 Port In Theo Nhà Mạng Nguồn (Theo Tháng)</h4>
+      <div class="chart-wrapper">
+        <canvas id="chartMnpOperator" height="290"></canvas>
+      </div>
+    </div>
+    <div class="table-card" style="flex:1;">
+      <h4 data-i18n="mnp-op-table-h4">📋 Theo Nhà Mạng – T7 Hiện Tại (*)</h4>
+      <table class="stats-table">
+        <thead><tr><th data-i18n="th-operator">Nhà Mạng</th><th>Port In</th><th>Port Out</th><th data-i18n="th-diff">Chênh Lệch</th></tr></thead>
+        <tbody>
+          <tr><td>📡 Claro</td><td>321</td><td>539</td><td class="neg">-218</td></tr>
+          <tr><td>📡 Movistar</td><td>134</td><td>279</td><td class="neg">-145</td></tr>
+          <tr><td>📡 Entel</td><td>171</td><td>210</td><td class="neg">-39</td></tr>
+          <tr><td>📡 Guinea Mobile S.A.C.</td><td>1</td><td>1</td><td>0 (0,0%)</td></tr>
+        </tbody>
+        <tfoot><tr><td data-i18n="activar-ch-tfoot">Tổng</td><td>627</td><td>1.029</td><td class="neg">-402</td></tr></tfoot>
+      </table>
+      <div class="note-box" style="margin-top:10px;" data-i18n="mnp-op-note-box">
+        📌 <strong>Claro</strong> vừa là nhà mạng nhận nhiều thuê bao Port In nhất, vừa là nhà mạng lấy đi nhiều thuê bao Port Out nhất từ UCABR mỗi tháng.
+      </div>
+    </div>
+  </div>
+
+  <!-- PHAN 2 (MNP): CHI TIET THEO NGAY THANG 7 -->
+  <div class="section-divider">
+    <div class="tag" style="background:#1a8a3a;" data-i18n="mnp-p2-tag">Phần 2</div>
+    <h3 data-i18n="mnp-p2-h3">Chi Tiết MNP Theo Ngày – Tháng 7/2026 (Ngày 1–12)</h3>
+    <div class="line"></div>
+  </div>
+
+  <div class="content-row">
+    <div class="chart-card" style="flex:1;">
+      <h4 data-i18n="mnp-daily-chart-h4">📈 Xu Hướng Port In/Out Theo Ngày (T7)</h4>
+      <div class="chart-wrapper">
+        <canvas id="chartMnpDaily" height="290"></canvas>
+      </div>
+    </div>
+    <div class="table-card" style="flex:1;">
+      <h4 data-i18n="mnp-daily-table-h4">📋 Bảng Chi Tiết Theo Ngày</h4>
+      <div style="overflow-x:auto;">
+      <table class="stats-table" style="font-size:0.8rem;">
+        <thead><tr><th data-i18n="th-date">Ngày</th><th>Port In</th><th>Port Out</th><th data-i18n="th-diff">Chênh Lệch</th><th data-i18n="th-cumulative">Lũy Kế</th></tr></thead>
+        <tbody>
+          <tr><td>01/07</td><td>64</td><td>100</td><td class="neg">-36</td><td class="neg">-36</td></tr>
+          <tr><td>02/07</td><td>53</td><td>110</td><td class="neg">-57</td><td class="neg">-93</td></tr>
+          <tr><td>03/07</td><td>46</td><td>70</td><td class="neg">-24</td><td class="neg">-117</td></tr>
+          <tr><td>04/07</td><td>50</td><td>95</td><td class="neg">-45</td><td class="neg">-162</td></tr>
+          <tr><td>05/07</td><td>49</td><td>107</td><td class="neg">-58</td><td class="neg">-220</td></tr>
+          <tr><td>06/07</td><td>40</td><td>27</td><td class="pos">+13</td><td class="neg">-207</td></tr>
+          <tr><td>07/07</td><td>71</td><td>102</td><td class="neg">-31</td><td class="neg">-238</td></tr>
+          <tr><td>08/07</td><td>64</td><td>77</td><td class="neg">-13</td><td class="neg">-251</td></tr>
+          <tr><td>09/07</td><td>59</td><td>83</td><td class="neg">-24</td><td class="neg">-275</td></tr>
+          <tr><td>10/07</td><td>48</td><td>97</td><td class="neg">-49</td><td class="neg">-324</td></tr>
+          <tr><td>11/07</td><td>57</td><td>115</td><td class="neg">-58</td><td class="neg">-382</td></tr>
+          <tr><td>12/07</td><td>26</td><td>46</td><td class="neg">-20</td><td class="neg">-402</td></tr>
+        </tbody>
+        <tfoot><tr><td data-i18n="activar-ch-tfoot">Tổng</td><td>627</td><td>1.029</td><td class="neg">-402</td><td>—</td></tr></tfoot>
+      </table>
+      </div>
+      <div class="note-box" style="background:#fdecea;border-color:#e57373;" data-i18n="mnp-daily-note-box">
+        <strong>⚠️ Cảnh báo:</strong> 11/12 ngày của tháng 7 có Chênh lệch âm (chỉ ngày 06/07 dương +13) — lũy kế đến 12/07 đã mất ròng <strong>402</strong> thuê bao qua MNP.
+      </div>
+    </div>
+  </div>
+
+  <div class="content-row">
+    <div class="table-card" style="flex:1;">
+      <h4 style="color:#1a8a3a;" data-i18n="mnp-ch-h4">📋 Top 10 Kênh Thực Hiện Port In Nhiều Nhất (T7)</h4>
+      <table class="stats-table">
+        <thead><tr><th data-i18n="th-channel">Kênh</th><th>Port In</th></tr></thead>
+        <tbody>
+          <tr><td>UCACD08</td><td>69</td></tr>
+          <tr><td>UCAST02</td><td>32</td></tr>
+          <tr><td>UCAPR02425</td><td>21</td></tr>
+          <tr><td>UCADA47</td><td>17</td></tr>
+          <tr><td>UCADL01</td><td>15</td></tr>
+          <tr><td>UCAIB01</td><td>15</td></tr>
+          <tr><td>UCAPR02541</td><td>14</td></tr>
+          <tr><td>UCAIB03</td><td>13</td></tr>
+          <tr><td>UCAPR02266</td><td>13</td></tr>
+          <tr><td>UCADA56</td><td>13</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="table-card yellow-header" style="flex:1;">
+      <h4 style="color:#8a6600;" data-i18n="mnp-site-h4">📋 Top 10 Trạm BTS Phát Sinh Port Out Nhiều Nhất (T7)</h4>
+      <table class="stats-table yellow-header">
+        <thead><tr><th data-i18n="th-bts">Mã Trạm (Site)</th><th>Port Out</th></tr></thead>
+        <tbody>
+          <tr><td>UCA0063</td><td>21</td></tr>
+          <tr><td>UCA0145</td><td>19</td></tr>
+          <tr><td>UCA0052</td><td>17</td></tr>
+          <tr><td>UCA0184</td><td>16</td></tr>
+          <tr><td>UCA0069</td><td>16</td></tr>
+          <tr><td>UCA0151</td><td>16</td></tr>
+          <tr><td>UCA0152</td><td>15</td></tr>
+          <tr><td>UCA0027</td><td>15</td></tr>
+          <tr><td>UCA0015</td><td>15</td></tr>
+          <tr><td>UCA2000</td><td>15</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="content-row" style="padding-top:0;">
+    <div class="note-box" style="flex:1;" data-i18n="mnp-p2-note-box">
+      <strong>📌 Ghi chú nguồn số liệu:</strong><br>
+      • Dữ liệu lấy từ các cột được tô vàng trong file "MNP ngày ...": <strong>month_rp</strong> (cột A), <strong>date_rp</strong> (cột B), <strong>port type</strong> (cột C), <strong>operator</strong> (cột J), <strong>site</strong> (cột P), <strong>channel</strong> (cột R)<br>
+      • Cột <strong>channel</strong> (mã kênh thực hiện) chỉ có dữ liệu ở các bản ghi <strong>Port_in</strong>; cột <strong>site</strong>/<strong>bts_home</strong> (mã trạm BTS) chỉ có dữ liệu ở các bản ghi <strong>Port_out</strong> — hai cột không cùng xuất hiện trên 1 dòng dữ liệu<br>
+      • Chỉ hiển thị tháng hiện tại (T7), từ ngày 1 đến ngày gần nhất có dữ liệu (hiện là <strong>12/07/2026</strong>) – số ngày sẽ tự mở rộng ở các lần cập nhật kế tiếp
+    </div>
+  </div>
+
+</div><!-- /#subtab-mobile-mnp -->
 
 </div><!-- /#tabpanel-mobile -->
 
@@ -2083,6 +2328,84 @@ const activarDailyTotal    = [467, 467, 510, 508, 347, 536, 578, 575, 598, 527, 
   });
 })();
 
+// ── DATA: MNP (DI DONG - SUB TAB MNP) ───────────────────────
+const labelsMnp = ['T2/2026','T3/2026','T4/2026','T5/2026','T6/2026','T7*'];
+const mnpPortIn  = [1409, 1495, 1600, 1567, 1428, 627];
+const mnpPortOut = [1657, 1905, 2093, 2179, 2168, 1029];
+const mnpOpInClaro    = [698, 793, 786, 825, 757, 321];
+const mnpOpInEntel    = [328, 325, 412, 386, 330, 171];
+const mnpOpInMovistar = [383, 377, 402, 356, 340, 134];
+const mnpOpInGuinea   = [0, 0, 0, 0, 1, 1];
+const labelsMnpDaily = ['01/07','02/07','03/07','04/07','05/07','06/07','07/07','08/07','09/07','10/07','11/07','12/07'];
+const mnpDailyIn  = [64, 53, 46, 50, 49, 40, 71, 64, 59, 48, 57, 26];
+const mnpDailyOut = [100, 110, 70, 95, 107, 27, 102, 77, 83, 97, 115, 46];
+
+// ── CHART 12: MNP - PORT IN/OUT THEO THANG (UCABR) ──────────
+(function(){
+  const ctx = document.getElementById('chartMnp');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels: labelsMnp,
+      datasets:[
+        { label:'Port In', data:mnpPortIn, backgroundColor:'rgba(26,138,58,0.75)', borderColor:'#1a8a3a', borderWidth:1.5, borderRadius:4 },
+        { label:'Port Out', data:mnpPortOut, backgroundColor:'rgba(198,40,40,0.75)', borderColor:'#c62828', borderWidth:1.5, borderRadius:4 }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top' }, tooltip:{ mode:'index', intersect:false } },
+      scales:{ y:{ grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 }, callback:v=>v.toLocaleString('es-PE') } },
+               x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } }
+    }
+  });
+})();
+
+// ── CHART 13: MNP - PORT IN THEO NHA MANG (STACKED) ─────────
+(function(){
+  const ctx = document.getElementById('chartMnpOperator');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type:'bar',
+    data:{
+      labels: labelsMnp,
+      datasets:[
+        { label:'Claro', data:mnpOpInClaro, backgroundColor:'rgba(198,40,40,0.75)', borderColor:'#c62828', borderWidth:1, stack:'op' },
+        { label:'Movistar', data:mnpOpInMovistar, backgroundColor:'rgba(0,87,168,0.75)', borderColor:'#0057A8', borderWidth:1, stack:'op' },
+        { label:'Entel', data:mnpOpInEntel, backgroundColor:'rgba(255,209,0,0.85)', borderColor:'#c8a000', borderWidth:1, stack:'op' },
+        { label:'Guinea Mobile', data:mnpOpInGuinea, backgroundColor:'rgba(109,40,217,0.65)', borderColor:'#6d28d9', borderWidth:1, stack:'op' }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top', labels:{ font:{ size:11 } } }, tooltip:{ mode:'index', intersect:false,
+        callbacks:{ footer:(items)=>{ let s=0; items.forEach(i=>s+=i.raw); return 'Total Port In: '+s.toLocaleString('es-PE'); } } } },
+      scales:{ y:{ stacked:true, grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 }, callback:v=>v.toLocaleString('es-PE') } },
+               x:{ stacked:true, grid:{ display:false }, ticks:{ font:{ size:11 } } } }
+    }
+  });
+})();
+
+// ── CHART 14: MNP - XU HUONG PORT IN/OUT THEO NGAY (T7) ─────
+(function(){
+  const ctx = document.getElementById('chartMnpDaily');
+  if (!ctx) return;
+  new Chart(ctx, {
+    type:'line',
+    data:{
+      labels: labelsMnpDaily,
+      datasets:[
+        { label:'Port Out', data:mnpDailyOut, borderColor:'#c62828', backgroundColor:'rgba(198,40,40,0.1)', borderWidth:3, tension:0.3, pointRadius:4, pointBackgroundColor:'#c62828', fill:true },
+        { label:'Port In', data:mnpDailyIn, borderColor:'#1a8a3a', backgroundColor:'rgba(26,138,58,0.08)', borderWidth:2, borderDash:[5,3], tension:0.3, pointRadius:3, pointBackgroundColor:'#1a8a3a', fill:false }
+      ]
+    },
+    options:{ responsive:true, maintainAspectRatio:false,
+      plugins:{ legend:{ position:'top', labels:{ font:{ size:11 } } }, tooltip:{ mode:'index', intersect:false } },
+      scales:{ y:{ grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 }, callback:v=>v.toLocaleString('es-PE') } },
+               x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } }
+    }
+  });
+})();
+
 // ── LANG / LOGIN / LOGOUT ─────────────────────────────────
 // ── I18N DICTIONARY ────────────────────────────────────────
 const I18N = {
@@ -2095,6 +2418,34 @@ const I18N = {
     'tab-digital': '💻 Digital',
     'tab-mobile-tag': 'Di Động',
     'tab-mobile-h3': 'Chỉ Số Kinh Doanh Di Động',
+    'mobile-sub-kichhoat': '📱 Kích Hoạt',
+    'mobile-sub-mnp': '🔄 MNP',
+    'th-operator': 'Nhà Mạng',
+    'th-bts': 'Mã Trạm (Site)',
+    'mnp-tag': 'MNP',
+    'mnp-h3': 'Chuyển Mạng Giữ Số (MNP) – Port In / Port Out Toàn Chi Nhánh UCABR',
+    'mnp-alert-box': '<strong>⚠️ Cảnh báo:</strong> Port In <strong>thấp hơn</strong> Port Out ở <strong>tất cả 6/6 tháng</strong> gần nhất (T2–T7) — chi nhánh UCABR đang <strong>mất ròng thuê bao</strong> qua MNP sang các nhà mạng khác. Lũy kế T2–T7: Port In 8.126 / Port Out 11.031 (-2.905). Nhà mạng nhận nhiều thuê bao nhất từ UCABR: <strong>Claro</strong>.',
+    'mnp-p1-tag': 'Phần 1',
+    'mnp-p1-h3': 'Tổng Hợp MNP – Toàn Chi Nhánh &amp; Theo BC (T2–T7 / 2026)',
+    'mnp-chart-h4': '📊 Biểu Đồ Cột – Port In / Port Out Theo Tháng (UCABR)',
+    'mnp-table-h4': '📋 Thống Kê Chi Tiết Port In/Out – Tổng UCABR',
+    'mnp-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Nguồn: file "MNP ngày ..." – cột <strong>port type</strong> (cột C): <strong>Port_in</strong> = thuê bao từ nhà mạng khác chuyển vào Bitel, <strong>Port_out</strong> = thuê bao Bitel chuyển đi nhà mạng khác (nhà mạng đích ở cột <strong>operator</strong> – cột J)<br>• Nhóm theo <strong>month_rp</strong> (cột A)<br>• <strong>Chênh lệch</strong> = Port In − Port Out; số âm (màu đỏ) nghĩa là mất thuê bao ròng qua MNP<br>• (*) T7 là số liệu chưa đầy tháng, <strong>đến ngày 12/07/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 7 kết thúc',
+    'mnp-bc-badge': 'T7 hiện tại (*)',
+    'mnp-bc-sub': 'Port In / Port Out',
+    'mnp-bc01-h4': '📋 BC01 – Port In/Out Theo Tháng',
+    'mnp-bc02-h4': '📋 BC02 – Port In/Out Theo Tháng',
+    'mnp-bc-note-box': '📌 BC01 + BC02 ≈ Tổng UCABR ở bảng trên (một số ít bản ghi Port_out không xác định được BC — cột center="-", khoảng 2–23 dòng/tháng — không tính vào 2 bảng BC01/BC02 nhưng vẫn nằm trong Tổng UCABR).',
+    'mnp-op-chart-h4': '📊 Port In Theo Nhà Mạng Nguồn (Theo Tháng)',
+    'mnp-op-table-h4': '📋 Theo Nhà Mạng – T7 Hiện Tại (*)',
+    'mnp-op-note-box': '📌 <strong>Claro</strong> vừa là nhà mạng nhận nhiều thuê bao Port In nhất, vừa là nhà mạng lấy đi nhiều thuê bao Port Out nhất từ UCABR mỗi tháng.',
+    'mnp-p2-tag': 'Phần 2',
+    'mnp-p2-h3': 'Chi Tiết MNP Theo Ngày – Tháng 7/2026 (Ngày 1–12)',
+    'mnp-daily-chart-h4': '📈 Xu Hướng Port In/Out Theo Ngày (T7)',
+    'mnp-daily-table-h4': '📋 Bảng Chi Tiết Theo Ngày',
+    'mnp-daily-note-box': '<strong>⚠️ Cảnh báo:</strong> 11/12 ngày của tháng 7 có Chênh lệch âm (chỉ ngày 06/07 dương +13) — lũy kế đến 12/07 đã mất ròng <strong>402</strong> thuê bao qua MNP.',
+    'mnp-ch-h4': '📋 Top 10 Kênh Thực Hiện Port In Nhiều Nhất (T7)',
+    'mnp-site-h4': '📋 Top 10 Trạm BTS Phát Sinh Port Out Nhiều Nhất (T7)',
+    'mnp-p2-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Dữ liệu lấy từ các cột được tô vàng trong file "MNP ngày ...": <strong>month_rp</strong> (cột A), <strong>date_rp</strong> (cột B), <strong>port type</strong> (cột C), <strong>operator</strong> (cột J), <strong>site</strong> (cột P), <strong>channel</strong> (cột R)<br>• Cột <strong>channel</strong> (mã kênh thực hiện) chỉ có dữ liệu ở các bản ghi <strong>Port_in</strong>; cột <strong>site</strong>/<strong>bts_home</strong> (mã trạm BTS) chỉ có dữ liệu ở các bản ghi <strong>Port_out</strong> — hai cột không cùng xuất hiện trên 1 dòng dữ liệu<br>• Chỉ hiển thị tháng hiện tại (T7), từ ngày 1 đến ngày gần nhất có dữ liệu (hiện là <strong>12/07/2026</strong>) – số ngày sẽ tự mở rộng ở các lần cập nhật kế tiếp',
     'tab-digital-tag': 'Digital',
     'tab-digital-h3': 'Chỉ Số Kinh Doanh Digital',
     'tab-empty-title': 'Nội dung đang được cập nhật',
@@ -2240,6 +2591,34 @@ const I18N = {
     'tab-digital': '💻 Digital',
     'tab-mobile-tag': 'Móvil',
     'tab-mobile-h3': 'Indicadores de Negocio Móvil',
+    'mobile-sub-kichhoat': '📱 Activaciones',
+    'mobile-sub-mnp': '🔄 MNP',
+    'th-operator': 'Operador',
+    'th-bts': 'Código de Sitio (Site)',
+    'mnp-tag': 'MNP',
+    'mnp-h3': 'Portabilidad Numérica (MNP) – Port In / Port Out de Toda la Sucursal UCABR',
+    'mnp-alert-box': '<strong>⚠️ Alerta:</strong> Port In es <strong>menor</strong> que Port Out en <strong>los 6/6 meses</strong> más recientes (T2–T7) — la sucursal UCABR está <strong>perdiendo líneas netas</strong> vía MNP hacia otros operadores. Acumulado T2–T7: Port In 8.126 / Port Out 11.031 (-2.905). El operador que más líneas recibe de UCABR: <strong>Claro</strong>.',
+    'mnp-p1-tag': 'Sección 1',
+    'mnp-p1-h3': 'Resumen MNP – Toda la Sucursal &amp; por BC (T2–T7 / 2026)',
+    'mnp-chart-h4': '📊 Gráfico de Barras – Port In / Port Out por Mes (UCABR)',
+    'mnp-table-h4': '📋 Estadísticas Detalladas Port In/Out – Total UCABR',
+    'mnp-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Fuente: archivo "MNP ngày ..." – columna <strong>port type</strong> (columna C): <strong>Port_in</strong> = línea que llega a Bitel desde otro operador, <strong>Port_out</strong> = línea de Bitel que se va a otro operador (operador destino en la columna <strong>operator</strong> – columna J)<br>• Agrupado por <strong>month_rp</strong> (columna A)<br>• <strong>Diferencia</strong> = Port In − Port Out; un número negativo (rojo) significa pérdida neta de líneas vía MNP<br>• (*) T7 es un mes incompleto, <strong>datos al 12/07/2026</strong> – se sobrescribirá en la próxima actualización hasta que cierre julio',
+    'mnp-bc-badge': 'T7 actual (*)',
+    'mnp-bc-sub': 'Port In / Port Out',
+    'mnp-bc01-h4': '📋 BC01 – Port In/Out por Mes',
+    'mnp-bc02-h4': '📋 BC02 – Port In/Out por Mes',
+    'mnp-bc-note-box': '📌 BC01 + BC02 ≈ Total UCABR en la tabla anterior (algunos registros de Port_out no tienen BC identificado — columna center="-", entre 2 y 23 filas/mes — no se cuentan en las tablas BC01/BC02 pero sí están en el Total UCABR).',
+    'mnp-op-chart-h4': '📊 Port In por Operador de Origen (por Mes)',
+    'mnp-op-table-h4': '📋 Por Operador – T7 Actual (*)',
+    'mnp-op-note-box': '📌 <strong>Claro</strong> es el operador que más líneas recibe vía Port In y también el que más líneas quita a UCABR vía Port Out cada mes.',
+    'mnp-p2-tag': 'Sección 2',
+    'mnp-p2-h3': 'Detalle Diario de MNP – Julio 2026 (Días 1–12)',
+    'mnp-daily-chart-h4': '📈 Tendencia Port In/Out por Día (T7)',
+    'mnp-daily-table-h4': '📋 Tabla Detallada por Día',
+    'mnp-daily-note-box': '<strong>⚠️ Alerta:</strong> 11 de los 12 días de julio tienen Diferencia negativa (solo el 06/07 fue positivo +13) — el acumulado al 12/07 ya perdió netamente <strong>402</strong> líneas vía MNP.',
+    'mnp-ch-h4': '📋 Top 10 Canales que Más Port In Ejecutan (T7)',
+    'mnp-site-h4': '📋 Top 10 Sitios BTS con Más Port Out (T7)',
+    'mnp-p2-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Datos de las columnas resaltadas en amarillo en el archivo "MNP ngày ...": <strong>month_rp</strong> (columna A), <strong>date_rp</strong> (columna B), <strong>port type</strong> (columna C), <strong>operator</strong> (columna J), <strong>site</strong> (columna P), <strong>channel</strong> (columna R)<br>• La columna <strong>channel</strong> (canal que ejecuta) solo tiene datos en registros de <strong>Port_in</strong>; la columna <strong>site</strong>/<strong>bts_home</strong> (código BTS) solo tiene datos en registros de <strong>Port_out</strong> — ambas columnas no aparecen juntas en la misma fila<br>• Solo se muestra el mes actual (T7), del día 1 al último día con datos (actualmente <strong>12/07/2026</strong>) – el número de días se ampliará automáticamente en cada actualización',
     'tab-digital-tag': 'Digital',
     'tab-digital-h3': 'Indicadores de Negocio Digital',
     'tab-empty-title': 'Contenido en actualización',
@@ -2385,6 +2764,34 @@ const I18N = {
     'tab-digital': '💻 Digital',
     'tab-mobile-tag': 'Mobile',
     'tab-mobile-h3': 'Mobile Business Indicators',
+    'mobile-sub-kichhoat': '📱 Activations',
+    'mobile-sub-mnp': '🔄 MNP',
+    'th-operator': 'Carrier',
+    'th-bts': 'Site Code',
+    'mnp-tag': 'MNP',
+    'mnp-h3': 'Mobile Number Portability (MNP) – Port In / Port Out, Entire UCABR Branch',
+    'mnp-alert-box': '<strong>⚠️ Warning:</strong> Port In is <strong>lower</strong> than Port Out in <strong>all 6/6 of the most recent months</strong> (T2–T7) — the UCABR branch is <strong>losing net subscribers</strong> via MNP to other carriers. T2–T7 cumulative: Port In 8,126 / Port Out 11,031 (-2,905). The carrier receiving the most subscribers from UCABR: <strong>Claro</strong>.',
+    'mnp-p1-tag': 'Section 1',
+    'mnp-p1-h3': 'MNP Summary – Whole Branch &amp; by BC (T2–T7 / 2026)',
+    'mnp-chart-h4': '📊 Bar Chart – Port In / Port Out by Month (UCABR)',
+    'mnp-table-h4': '📋 Detailed Port In/Out Statistics – Total UCABR',
+    'mnp-note-box': '<strong>📌 Data source note:</strong><br>• Source: "MNP ngày ..." file – <strong>port type</strong> column (column C): <strong>Port_in</strong> = subscriber moving into Bitel from another carrier, <strong>Port_out</strong> = Bitel subscriber moving to another carrier (destination carrier in the <strong>operator</strong> column – column J)<br>• Grouped by <strong>month_rp</strong> (column A)<br>• <strong>Difference</strong> = Port In − Port Out; a negative number (red) means a net subscriber loss via MNP<br>• (*) T7 is an incomplete month, <strong>data as of 12/07/2026</strong> – will be overwritten in the next update until July closes',
+    'mnp-bc-badge': 'Current T7 (*)',
+    'mnp-bc-sub': 'Port In / Port Out',
+    'mnp-bc01-h4': '📋 BC01 – Port In/Out by Month',
+    'mnp-bc02-h4': '📋 BC02 – Port In/Out by Month',
+    'mnp-bc-note-box': '📌 BC01 + BC02 ≈ Total UCABR in the table above (a small number of Port_out records have no identified BC — center="-" column, about 2–23 rows/month — not counted in the BC01/BC02 tables but still included in Total UCABR).',
+    'mnp-op-chart-h4': '📊 Port In by Source Carrier (by Month)',
+    'mnp-op-table-h4': '📋 By Carrier – Current T7 (*)',
+    'mnp-op-note-box': '📌 <strong>Claro</strong> is both the carrier receiving the most Port In subscribers and the carrier taking the most Port Out subscribers from UCABR each month.',
+    'mnp-p2-tag': 'Section 2',
+    'mnp-p2-h3': 'Daily MNP Detail – July 2026 (Days 1–12)',
+    'mnp-daily-chart-h4': '📈 Port In/Out Daily Trend (T7)',
+    'mnp-daily-table-h4': '📋 Daily Detail Table',
+    'mnp-daily-note-box': '<strong>⚠️ Warning:</strong> 11 of the 12 days in July have a negative Difference (only 06/07 was positive at +13) — the cumulative total as of 12/07 is already a net loss of <strong>402</strong> subscribers via MNP.',
+    'mnp-ch-h4': '📋 Top 10 Channels Executing the Most Port In (T7)',
+    'mnp-site-h4': '📋 Top 10 BTS Sites Generating the Most Port Out (T7)',
+    'mnp-p2-note-box': '<strong>📌 Data source note:</strong><br>• Data taken from the yellow-highlighted columns in the "MNP ngày ..." file: <strong>month_rp</strong> (column A), <strong>date_rp</strong> (column B), <strong>port type</strong> (column C), <strong>operator</strong> (column J), <strong>site</strong> (column P), <strong>channel</strong> (column R)<br>• The <strong>channel</strong> column (executing channel) only has data on <strong>Port_in</strong> records; the <strong>site</strong>/<strong>bts_home</strong> column (BTS code) only has data on <strong>Port_out</strong> records — the two columns never appear together on the same row<br>• Only the current month (T7) is shown, from day 1 to the latest day with data (currently <strong>12/07/2026</strong>) – the number of days will automatically expand in each update',
     'tab-digital-tag': 'Digital',
     'tab-digital-h3': 'Digital Business Indicators',
     'tab-empty-title': 'Content coming soon',
@@ -2580,6 +2987,26 @@ function showMainTab(tab, btnEl){
   // Charts inside a tab that was display:none at creation time get 0-size
   // canvases; force every Chart.js instance to recompute its size now that
   // the panel is visible (fixes MAU/Di động/Digital charts rendering as slivers).
+  if(window.Chart && Chart.instances){
+    setTimeout(function(){
+      Object.keys(Chart.instances).forEach(function(id){
+        try{ Chart.instances[id].resize(); }catch(e){}
+      });
+    }, 0);
+  }
+}
+
+// ── SUB TABS (Di động: Kích hoạt / MNP) ─────────────────────
+function showMobileSubTab(tab, btnEl){
+  document.querySelectorAll('#tabpanel-mobile .sub-tab-panel').forEach(function(p){ p.style.display = 'none'; });
+  var panel = document.getElementById('subtab-mobile-' + tab);
+  if(panel) panel.style.display = 'block';
+  document.querySelectorAll('#mobileSubTabs .sub-tab-btn').forEach(function(b){ b.classList.remove('active'); });
+  if(btnEl){ btnEl.classList.add('active'); }
+  else {
+    var btn = document.querySelector('#mobileSubTabs .sub-tab-btn[data-subtab="' + tab + '"]');
+    if(btn) btn.classList.add('active');
+  }
   if(window.Chart && Chart.instances){
     setTimeout(function(){
       Object.keys(Chart.instances).forEach(function(id){
