@@ -230,6 +230,29 @@
   .bts-table tfoot td:first-child { text-align:left; color:#FFD100; }
   .bts-table tfoot .neg-v { color:#ffb3b3 !important; }
   .bts-table tfoot .pos-v { color:#c8ffd4 !important; }
+  /* ── Filter row (Phần 4 & Phần 5 tables) ── */
+  .bts-table thead tr.bts-filter-row th {
+    background: #eaf3fc; padding: 5px 6px; text-align: left;
+    text-transform: none; letter-spacing: normal;
+  }
+  .bts-filter-input, .bts-filter-select {
+    width: 100%; box-sizing: border-box; padding: 4px 6px;
+    border: 1px solid #b3cfe8; border-radius: 5px;
+    font-size: 0.72rem; font-weight: 500; text-transform: none;
+    color: #1a2a3a; background: #fff;
+  }
+  .bts-filter-input:focus, .bts-filter-select:focus {
+    outline: none; border-color: #FFD100; box-shadow: 0 0 0 2px rgba(255,209,0,0.35);
+  }
+  .bts-filter-input::placeholder { color: #9db3c7; }
+  .bts-filter-clear {
+    width: 100%; padding: 4px 2px; border: 1px solid #b3cfe8; border-radius: 5px;
+    background: #fff; color: #c62828; font-weight: 700; font-size: 0.7rem; cursor: pointer;
+  }
+  .bts-filter-clear:hover { background: #fde8e8; }
+  .bts-filter-count {
+    font-size: 0.74rem; color: #0057A8; font-weight: 600; padding: 5px 4px 0; display: none;
+  }
   /* Severity cell badges */
   .sev-cell.sev-red    { background: #fde8e8; color: #9b1c1c; }
   .sev-cell.sev-yellow { background: #fef3c7; color: #78350f; }
@@ -3226,7 +3249,99 @@ document.addEventListener('DOMContentLoaded',function(){
     var el=document.getElementById(id);
     if(el) el.style.display='';
   });
+  initBtsTableFilters();
 });
+
+/* ── Bộ lọc tìm kiếm nhanh cho bảng Phần 4 & Phần 5 ── */
+function btsStripAccents(s){
+  try{ return s.normalize('NFD').replace(/[̀-ͯ]/g,''); }catch(e){ return s; }
+}
+function initBtsTableFilters(){
+  document.querySelectorAll('table.bts-table').forEach(function(table){
+    if(table.dataset.filterInit) return;
+    var headRow = table.querySelector('thead tr');
+    if(!headRow) return;
+    var ths = Array.prototype.slice.call(headRow.children);
+    var filterRow = document.createElement('tr');
+    filterRow.className = 'bts-filter-row';
+    ths.forEach(function(th, idx){
+      var cell = document.createElement('th');
+      if(idx === 0){
+        var btn = document.createElement('button');
+        btn.type = 'button';
+        btn.className = 'bts-filter-clear';
+        btn.textContent = '✕';
+        btn.title = 'Xóa lọc';
+        btn.addEventListener('click', function(){ clearBtsTableFilter(table); });
+        cell.appendChild(btn);
+      } else if(th.getAttribute('data-i18n') === 'th-warnlevel'){
+        var sel = document.createElement('select');
+        sel.className = 'bts-filter-select';
+        [['','Tất cả'],['Cực kỳ nghiêm trọng','Cực kỳ nghiêm trọng'],['Nghiêm trọng','Nghiêm trọng'],
+         ['Cảnh báo','Cảnh báo'],['Theo dõi','Theo dõi']].forEach(function(o){
+          var op = document.createElement('option');
+          op.value = o[0]; op.textContent = o[1];
+          sel.appendChild(op);
+        });
+        sel.addEventListener('change', function(){ filterBtsTable(table); });
+        cell.appendChild(sel);
+      } else {
+        var inp = document.createElement('input');
+        inp.type = 'text';
+        inp.className = 'bts-filter-input';
+        inp.placeholder = idx === 1 ? 'VD: UCA0005' : 'Lọc...';
+        inp.addEventListener('input', function(){ filterBtsTable(table); });
+        cell.appendChild(inp);
+      }
+      filterRow.appendChild(cell);
+    });
+    headRow.parentNode.insertBefore(filterRow, headRow.nextSibling);
+    table.dataset.filterInit = '1';
+    var scrollDiv = table.closest('.bts-scroll');
+    if(scrollDiv){
+      var cnt = document.createElement('div');
+      cnt.className = 'bts-filter-count';
+      scrollDiv.insertAdjacentElement('afterend', cnt);
+      table._filterCountEl = cnt;
+    }
+  });
+}
+function filterBtsTable(table){
+  var filterRow = table.querySelector('tr.bts-filter-row');
+  if(!filterRow) return;
+  var filters = Array.prototype.map.call(filterRow.children, function(cell){
+    var input = cell.querySelector('input, select');
+    if(!input) return null;
+    var v = input.value.trim();
+    if(!v) return null;
+    return btsStripAccents(v.toLowerCase());
+  });
+  var rows = table.querySelectorAll('tbody tr');
+  var shown = 0, total = rows.length;
+  rows.forEach(function(row){
+    var cells = row.children;
+    var visible = true;
+    for(var i=0;i<filters.length;i++){
+      var f = filters[i];
+      if(!f) continue;
+      var cellText = cells[i] ? btsStripAccents(cells[i].textContent.trim().toLowerCase()) : '';
+      if(cellText.indexOf(f) === -1){ visible = false; break; }
+    }
+    row.style.display = visible ? '' : 'none';
+    if(visible) shown++;
+  });
+  if(table._filterCountEl){
+    table._filterCountEl.textContent = 'Hiển thị ' + shown + '/' + total + ' trạm';
+    table._filterCountEl.style.display = shown === total ? 'none' : 'block';
+  }
+}
+function clearBtsTableFilter(table){
+  var filterRow = table.querySelector('tr.bts-filter-row');
+  if(!filterRow) return;
+  filterRow.querySelectorAll('input').forEach(function(i){ i.value=''; });
+  filterRow.querySelectorAll('select').forEach(function(s){ s.value=''; });
+  filterBtsTable(table);
+}
 </script>
 
 </body></html>
