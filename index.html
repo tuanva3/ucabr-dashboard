@@ -3481,6 +3481,36 @@ function clearBtsTableFilter(table){
   filterRow.querySelectorAll('select').forEach(function(s){ s.value=''; });
   filterBtsTable(table);
 }
+
+/* ── Nút "Lên đầu trang" ── */
+(function(){
+  var btn = document.createElement('button');
+  btn.id = 'backToTopBtn';
+  btn.type = 'button';
+  btn.setAttribute('aria-label','Lên đầu trang');
+  btn.title = 'Lên đầu trang';
+  btn.innerHTML = '&#8593;';
+  btn.style.cssText = 'position:fixed;right:22px;bottom:22px;width:48px;height:48px;border-radius:50%;'
+    + 'background:#0057A8;color:#FFD100;border:2px solid #FFD100;font-size:22px;font-weight:700;'
+    + 'cursor:pointer;box-shadow:0 3px 10px rgba(0,0,0,0.25);z-index:2000;'
+    + 'display:none;align-items:center;justify-content:center;line-height:1;'
+    + 'transition:opacity .2s, transform .2s;opacity:0;';
+  document.body.appendChild(btn);
+
+  function toggleBtn(){
+    if(window.scrollY > 400){
+      if(btn.style.display !== 'flex'){ btn.style.display = 'flex'; requestAnimationFrame(function(){ btn.style.opacity = '1'; }); }
+    } else {
+      btn.style.opacity = '0';
+      setTimeout(function(){ if(window.scrollY <= 400) btn.style.display = 'none'; }, 200);
+    }
+  }
+  btn.addEventListener('mouseenter', function(){ btn.style.transform = 'scale(1.08)'; });
+  btn.addEventListener('mouseleave', function(){ btn.style.transform = 'scale(1)'; });
+  btn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+  window.addEventListener('scroll', toggleBtn, {passive:true});
+  toggleBtn();
+})();
 </script>
 
 </body></html>
