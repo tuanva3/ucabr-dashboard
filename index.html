@@ -3387,12 +3387,7 @@ function showBtsWeek(wid, cj) {
     if(cj.cnt!==undefined){var e=document.getElementById('p5-cnt');if(e)e.textContent=cj.cnt;}
   }
 }
-// Show active panels on load
 document.addEventListener('DOMContentLoaded',function(){
-  ['bts-w6','p5-w6'].forEach(function(id){
-    var el=document.getElementById(id);
-    if(el) el.style.display='';
-  });
   initBtsTableFilters();
 });
 
