@@ -2699,7 +2699,7 @@
   <!-- PHAN 1 (DI DONG): TONG KICH HOAT -->
   <div class="section-divider">
     <div class="tag" data-i18n="activar-tag">Phần 1</div>
-    <h3 data-i18n="activar-h3">Tổng Kích Hoạt – Postpaid / Prepaid / Total Theo Tháng (T8–T10 / 2026)</h3>
+    <h3 data-i18n="activar-h3">Tổng Kích Hoạt – Postpaid / Prepaid / Total Theo Tháng (T5–T10 / 2026)</h3>
     <div class="line"></div>
   </div>
 
@@ -2710,6 +2710,24 @@
         <canvas id="chartActivar" height="290"></canvas>
       </div>
       <div class="data-strip" style="grid-template-columns:repeat(3,1fr);">
+        <div class="ds-month" style="background:#eaf2fb;border-color:#7ab0d8;">
+          <div class="ds-month-label" style="color:#0057A8;">T5 / 2026</div>
+          <div class="ds-row"><span class="ds-key">Postpaid</span><span class="ds-val">3.609</span></div>
+          <div class="ds-row"><span class="ds-key">Prepaid</span><span class="ds-val">13.052</span></div>
+          <div class="ds-row"><span class="ds-key">Total</span><span class="ds-val">16.661</span></div>
+        </div>
+        <div class="ds-month" style="background:#eaf2fb;border-color:#7ab0d8;">
+          <div class="ds-month-label" style="color:#0057A8;">T6 / 2026</div>
+          <div class="ds-row"><span class="ds-key">Postpaid</span><span class="ds-val">3.438</span></div>
+          <div class="ds-row"><span class="ds-key">Prepaid</span><span class="ds-val">13.131</span></div>
+          <div class="ds-row"><span class="ds-key">Total</span><span class="ds-val">16.569</span></div>
+        </div>
+        <div class="ds-month" style="background:#eaf2fb;border-color:#7ab0d8;">
+          <div class="ds-month-label" style="color:#0057A8;">T7 / 2026</div>
+          <div class="ds-row"><span class="ds-key">Postpaid</span><span class="ds-val">3.327</span></div>
+          <div class="ds-row"><span class="ds-key">Prepaid</span><span class="ds-val">9.875</span></div>
+          <div class="ds-row"><span class="ds-key">Total</span><span class="ds-val">13.202</span></div>
+        </div>
         <div class="ds-month" style="background:#eaf2fb;border-color:#7ab0d8;">
           <div class="ds-month-label" style="color:#0057A8;">T8 / 2026</div>
           <div class="ds-row"><span class="ds-key">Postpaid</span><span class="ds-val">3.302</span></div>
@@ -2737,6 +2755,9 @@
       <table class="stats-table">
         <thead><tr><th data-i18n="th-month">Tháng</th><th>Postpaid</th><th>Prepaid</th><th>Total</th></tr></thead>
         <tbody>
+          <tr><td>T5</td><td>3.609</td><td>13.052</td><td>16.661</td></tr>
+          <tr><td>T6</td><td>3.438</td><td>13.131</td><td>16.569</td></tr>
+          <tr><td>T7</td><td>3.327</td><td>9.875</td><td>13.202</td></tr>
           <tr><td>T8</td><td>3.302</td><td>8.005</td><td>11.307</td></tr>
           <tr><td>T9</td><td>3.045</td><td>6.904</td><td>9.949</td></tr>
           <tr><td>T10 (*)</td><td>553</td><td>1.442</td><td>1.995</td></tr>
@@ -2744,7 +2765,7 @@
         <tfoot><tr><td data-i18n="mau-tfoot">T10 hiện tại</td><td>553</td><td>1.442</td><td>1.995</td></tr></tfoot>
       </table>
       </div>
-      <div class="note-box" data-i18n="activar-note-box"><strong>📌 Ghi chú nguồn số liệu:</strong><br>• Nguồn: file "Activar ngày ..." – dữ liệu chi tiết từng thuê bao kích hoạt, chi nhánh <strong>UCABR</strong><br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: đếm số dòng theo cột <strong>sub_type</strong>, nhóm theo tháng (cột <strong>month</strong>)<br>• <strong>Total</strong> = Postpaid + Prepaid, cập nhật hàng tuần (đã đối chiếu khớp cột NEW ACTIVE SIM của file CASH IN cùng ngày)<br>• (*) T10 là số liệu chưa đầy tháng, <strong>đến ngày 05/10/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 10 kết thúc</div>
+      <div class="note-box" data-i18n="activar-note-box"><strong>📌 Ghi chú nguồn số liệu:</strong><br>• Nguồn: file "Activar ngày ..." – dữ liệu chi tiết từng thuê bao kích hoạt, chi nhánh <strong>UCABR</strong><br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: đếm số dòng theo cột <strong>sub_type</strong>, nhóm theo tháng (cột <strong>month</strong>)<br>• <strong>Total</strong> = Postpaid + Prepaid, cập nhật hàng tuần (đã đối chiếu khớp cột NEW ACTIVE SIM của file CASH IN cùng ngày)<br>• T5–T7: số liệu chốt từ các file Activar đã gửi trước đây; T8–T10: từ file mới nhất<br>• (*) T10 là số liệu chưa đầy tháng, <strong>đến ngày 05/10/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 10 kết thúc</div>
     </div>
   </div>
 
@@ -2803,7 +2824,7 @@
   <!-- PHAN 2 (DI DONG): KICH HOAT THEO BC -->
   <div class="section-divider">
     <div class="tag" style="background:#6d28d9;" data-i18n="activar-bc-tag">Phần 2</div>
-    <h3 data-i18n="activar-bc-h3">Kích Hoạt Theo Trung Tâm Kinh Doanh – BC01 &amp; BC02 (T8–T10 / 2026)</h3>
+    <h3 data-i18n="activar-bc-h3">Kích Hoạt Theo Trung Tâm Kinh Doanh – BC01 &amp; BC02 (T5–T10 / 2026)</h3>
     <div class="line"></div>
   </div>
 
@@ -2836,6 +2857,9 @@
       <table class="stats-table">
         <thead><tr><th data-i18n="th-month">Tháng</th><th>Postpaid</th><th>Prepaid</th><th>Total</th></tr></thead>
         <tbody>
+          <tr><td>T5</td><td>2.630</td><td>8.778</td><td>11.408</td></tr>
+          <tr><td>T6</td><td>2.461</td><td>8.858</td><td>11.319</td></tr>
+          <tr><td>T7</td><td>2.436</td><td>6.670</td><td>9.106</td></tr>
           <tr><td>T8</td><td>2.294</td><td>4.511</td><td>6.805</td></tr>
           <tr><td>T9</td><td>2.199</td><td>3.899</td><td>6.098</td></tr>
           <tr><td>T10 (*)</td><td>369</td><td>869</td><td>1.238</td></tr>
@@ -2848,6 +2872,9 @@
       <table class="stats-table yellow-header">
         <thead><tr><th data-i18n="th-month">Tháng</th><th>Postpaid</th><th>Prepaid</th><th>Total</th></tr></thead>
         <tbody>
+          <tr><td>T5</td><td>979</td><td>4.274</td><td>5.253</td></tr>
+          <tr><td>T6</td><td>977</td><td>4.273</td><td>5.250</td></tr>
+          <tr><td>T7</td><td>891</td><td>3.205</td><td>4.096</td></tr>
           <tr><td>T8</td><td>1.008</td><td>3.494</td><td>4.502</td></tr>
           <tr><td>T9</td><td>846</td><td>3.005</td><td>3.851</td></tr>
           <tr><td>T10 (*)</td><td>184</td><td>573</td><td>757</td></tr>
@@ -3406,7 +3433,7 @@
   <!-- PHAN 3 (DIGITAL): CASH IN -->
   <div class="section-divider">
     <div class="tag" style="background:#1a8a3a;" data-i18n="cashin-tag">Phần 3</div>
-    <h3 data-i18n="cashin-h3">CASH IN – ID Active SIM / New Active Bipay / MAU CashIn / Consumer (T8–T10 / 2026)</h3>
+    <h3 data-i18n="cashin-h3">CASH IN – ID Active SIM / New Active Bipay / MAU CashIn / Consumer (T5–T10 / 2026)</h3>
     <div class="line"></div>
   </div>
 
@@ -3417,6 +3444,30 @@
         <canvas id="chartCashIn" height="290"></canvas>
       </div>
       <div class="data-strip" style="grid-template-columns:repeat(3,1fr);">
+        <div class="ds-month" style="background:#e8f7ee;border-color:#7fc79a;">
+          <div class="ds-month-label" style="color:#1a8a3a;">T5 / 2026</div>
+          <div class="ds-row"><span class="ds-key">ID Active SIM</span><span class="ds-val">14.839</span></div>
+          <div class="ds-row"><span class="ds-key">New Active Bipay</span><span class="ds-val">8.258</span></div>
+          <div class="ds-row"><span class="ds-key">MAU CashIn</span><span class="ds-val">2.269</span></div>
+          <div class="ds-row"><span class="ds-key">Consumer</span><span class="ds-val">767</span></div>
+          <div class="ds-row"><span class="ds-key">% Cons/CashIn</span><span class="ds-val">33,8%</span></div>
+        </div>
+        <div class="ds-month" style="background:#e8f7ee;border-color:#7fc79a;">
+          <div class="ds-month-label" style="color:#1a8a3a;">T6 / 2026</div>
+          <div class="ds-row"><span class="ds-key">ID Active SIM</span><span class="ds-val">14.373</span></div>
+          <div class="ds-row"><span class="ds-key">New Active Bipay</span><span class="ds-val">9.665</span></div>
+          <div class="ds-row"><span class="ds-key">MAU CashIn</span><span class="ds-val">2.757</span></div>
+          <div class="ds-row"><span class="ds-key">Consumer</span><span class="ds-val">1.946</span></div>
+          <div class="ds-row"><span class="ds-key">% Cons/CashIn</span><span class="ds-val">70,6%</span></div>
+        </div>
+        <div class="ds-month" style="background:#e8f7ee;border-color:#7fc79a;">
+          <div class="ds-month-label" style="color:#1a8a3a;">T7 / 2026</div>
+          <div class="ds-row"><span class="ds-key">ID Active SIM</span><span class="ds-val">12.137</span></div>
+          <div class="ds-row"><span class="ds-key">New Active Bipay</span><span class="ds-val">5.934</span></div>
+          <div class="ds-row"><span class="ds-key">MAU CashIn</span><span class="ds-val">1.978</span></div>
+          <div class="ds-row"><span class="ds-key">Consumer</span><span class="ds-val">1.482</span></div>
+          <div class="ds-row"><span class="ds-key">% Cons/CashIn</span><span class="ds-val">74,9%</span></div>
+        </div>
         <div class="ds-month" style="background:#e8f7ee;border-color:#7fc79a;">
           <div class="ds-month-label" style="color:#1a8a3a;">T8 / 2026</div>
           <div class="ds-row"><span class="ds-key">ID Active SIM</span><span class="ds-val">11.064</span></div>
@@ -3450,6 +3501,9 @@
       <table class="stats-table" style="font-size:0.78rem;">
         <thead><tr><th data-i18n="th-month">Tháng</th><th>ID Active SIM</th><th>New Active Bipay</th><th>MAU CashIn</th><th>Consumer</th><th data-i18n="th-cons-pct">% Consumer/MAU CashIn</th></tr></thead>
         <tbody>
+          <tr><td>T5</td><td>14.839</td><td>8.258</td><td>2.269</td><td>767</td><td>33,8%</td></tr>
+          <tr><td>T6</td><td>14.373</td><td>9.665</td><td>2.757</td><td>1.946</td><td>70,6%</td></tr>
+          <tr><td>T7</td><td>12.137</td><td>5.934</td><td>1.978</td><td>1.482</td><td>74,9%</td></tr>
           <tr><td>T8</td><td>11.064</td><td>4.372</td><td>1.622</td><td>1.202</td><td>74,1%</td></tr>
           <tr><td>T9</td><td>9.765</td><td>3.092</td><td>1.138</td><td>883</td><td>77,6%</td></tr>
           <tr><td>T10 (*)</td><td>1.977</td><td>587</td><td>165</td><td>124</td><td>75,2%</td></tr>
@@ -3457,7 +3511,7 @@
         <tfoot><tr><td data-i18n="mau-tfoot">T10 hiện tại</td><td>1.977</td><td>587</td><td>165</td><td>124</td><td>75,2%</td></tr></tfoot>
       </table>
       </div>
-      <div class="note-box" data-i18n="cashin-note-box"><strong>📌 Ghi chú nguồn số liệu:</strong><br>• <strong>ID Active SIM</strong> (cột E), <strong>New Active Bipay</strong> (cột F), <strong>MAU CashIn</strong> (cột O), <strong>Consumer</strong> (cột P) trong file "CASH IN ngày ..."<br>• Nguồn: dòng <strong>UCABR</strong> (chi nhánh UCA, không phải Totales toàn quốc), cập nhật hàng tuần<br>• <strong>% Consumer/MAU CashIn</strong> = Consumer ÷ MAU CashIn × 100%<br>• (*) T10 là số liệu chưa đầy tháng, <strong>đến ngày 05/10/2026</strong> – sẽ được ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 10 kết thúc</div>
+      <div class="note-box" data-i18n="cashin-note-box"><strong>📌 Ghi chú nguồn số liệu:</strong><br>• <strong>ID Active SIM</strong> (cột E), <strong>New Active Bipay</strong> (cột F), <strong>MAU CashIn</strong> (cột O), <strong>Consumer</strong> (cột P) trong file "CASH IN ngày ..."<br>• Nguồn: dòng <strong>UCABR</strong> (chi nhánh UCA, không phải Totales toàn quốc), cập nhật hàng tuần<br>• <strong>% Consumer/MAU CashIn</strong> = Consumer ÷ MAU CashIn × 100%<br>• T5–T7: số liệu chốt từ các file CASH IN đã gửi trước đây; T8–T10: từ file mới nhất<br>• (*) T10 là số liệu chưa đầy tháng, <strong>đến ngày 05/10/2026</strong> – sẽ được ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 10 kết thúc</div>
     </div>
   </div>
 
@@ -3501,6 +3555,9 @@
       <table class="stats-table" style="font-size:0.78rem;">
         <thead><tr><th data-i18n="th-month">Tháng</th><th>ID Active SIM</th><th>New Active Bipay</th><th>MAU CashIn</th><th>Consumer</th><th data-i18n="th-cons-pct">% Consumer/MAU CashIn</th></tr></thead>
         <tbody>
+          <tr><td>T5</td><td>9.912</td><td>5.792</td><td>1.519</td><td>516</td><td>34,0%</td></tr>
+          <tr><td>T6</td><td>9.541</td><td>6.596</td><td>1.860</td><td>1.429</td><td>76,8%</td></tr>
+          <tr><td>T7</td><td>8.205</td><td>4.155</td><td>1.417</td><td>1.091</td><td>77,0%</td></tr>
           <tr><td>T8</td><td>6.645</td><td>2.543</td><td>1.068</td><td>805</td><td>75,4%</td></tr>
           <tr><td>T9</td><td>5.981</td><td>1.790</td><td>825</td><td>646</td><td>78,3%</td></tr>
           <tr><td>T10 (*)</td><td>1.224</td><td>334</td><td>133</td><td>100</td><td>75,2%</td></tr>
@@ -3515,6 +3572,9 @@
       <table class="stats-table yellow-header" style="font-size:0.78rem;">
         <thead><tr><th data-i18n="th-month">Tháng</th><th>ID Active SIM</th><th>New Active Bipay</th><th>MAU CashIn</th><th>Consumer</th><th data-i18n="th-cons-pct">% Consumer/MAU CashIn</th></tr></thead>
         <tbody>
+          <tr><td>T5</td><td>4.927</td><td>2.466</td><td>750</td><td>251</td><td>33,5%</td></tr>
+          <tr><td>T6</td><td>4.832</td><td>3.069</td><td>897</td><td>517</td><td>57,6%</td></tr>
+          <tr><td>T7</td><td>3.932</td><td>1.779</td><td>561</td><td>391</td><td>69,7%</td></tr>
           <tr><td>T8</td><td>4.419</td><td>1.829</td><td>554</td><td>397</td><td>71,7%</td></tr>
           <tr><td>T9</td><td>3.784</td><td>1.302</td><td>313</td><td>237</td><td>75,7%</td></tr>
           <tr><td>T10 (*)</td><td>753</td><td>253</td><td>32</td><td>24</td><td>75,0%</td></tr>
@@ -3618,14 +3678,14 @@ const mauN  = [2598, 4260, 5814, 6361, 6186, 6163, 5230, 5471, 5232, 1823];
 const mauN1 = [2382, 2598, 4260, 5814, 6360, 6185, 5724, 5658, 5414, 1557];
 const mauBc01N = [1883, 3102, 4054, 4424, 4272, 4262, 3379, 3687, 3649, 1283];
 const mauBc02N = [715, 1158, 1760, 1937, 1914, 1901, 1851, 1784, 1583, 540];
-const labelsCashIn = ['T8/2026','T9/2026','T10*'];
-const cashinIdSim   = [11064, 9765, 1977];
-const cashinNewBipay = [4372, 3092, 587];
-const cashinMauCashIn = [1622, 1138, 165];
-const cashinConsumer = [1202, 883, 124];
-const cashinConsumerPct = [74.1, 77.6, 75.2];
-const cashinBc01Mau = [1068, 825, 133];
-const cashinBc02Mau = [554, 313, 32];
+const labelsCashIn = ['T5/2026','T6/2026','T7/2026','T8/2026','T9/2026','T10*'];
+const cashinIdSim   = [14839, 14373, 12137, 11064, 9765, 1977];
+const cashinNewBipay = [8258, 9665, 5934, 4372, 3092, 587];
+const cashinMauCashIn = [2269, 2757, 1978, 1622, 1138, 165];
+const cashinConsumer = [767, 1946, 1482, 1202, 883, 124];
+const cashinConsumerPct = [33.8, 70.6, 74.9, 74.1, 77.6, 75.2];
+const cashinBc01Mau = [1519, 1860, 1417, 1068, 825, 133];
+const cashinBc02Mau = [750, 897, 561, 554, 313, 32];
 
 const labels = ['T1/2026','T2/2026','T3/2026','T4/2026','T5/2026','T6/2026','T7/2026','T8/2026','T9/2026','T10*'];
 
@@ -3782,11 +3842,11 @@ const labels = ['T1/2026','T2/2026','T3/2026','T4/2026','T5/2026','T6/2026','T7/
 })();
 
 // ── DATA: ACTIVAR (DI DONG) ────────────────────────────────
-const labelsActivar = ['T8/2026','T9/2026','T10*'];
-const activarPostpaid = [3302, 3045, 553];
-const activarPrepaid  = [8005, 6904, 1442];
-const activarMnpBc01 = { newline:[5694,5023,1033], mnp:[910,726,142], pretopost:[201,349,63] };
-const activarMnpBc02 = { newline:[3891,3396,668], mnp:[388,230,48], pretopost:[223,225,41] };
+const labelsActivar = ['T5/2026','T6/2026','T7/2026','T8/2026','T9/2026','T10*'];
+const activarPostpaid = [3609, 3438, 3327, 3302, 3045, 553];
+const activarPrepaid  = [13052, 13131, 9875, 8005, 6904, 1442];
+const activarMnpBc01 = { newline:[9908,9968,7834,5694,5023,1033], mnp:[1158,1079,1035,910,726,142], pretopost:[342,272,237,201,349,63] };
+const activarMnpBc02 = { newline:[4641,4632,3557,3891,3396,668], mnp:[398,376,340,388,230,48], pretopost:[214,242,199,223,225,41] };
 const labelsActivarCmp = ['T8 (1-5)','T9 (1-5)','T10 (1-5)'];
 const activarCmpPostpaid = [504, 490, 553];
 const activarCmpPrepaid = [1293, 1102, 1442];
@@ -4011,10 +4071,10 @@ const I18N = {
     'tab-empty-msg-mobile': 'Số liệu Di động sẽ được bổ sung tại đây, trình bày cùng bố cục và màu sắc với thẻ Dashboard chung.',
     'tab-empty-msg-digital': 'Số liệu Digital sẽ được bổ sung tại đây, trình bày cùng bố cục và màu sắc với thẻ Dashboard chung.',
     'activar-tag': 'Phần 1',
-    'activar-h3': 'Tổng Kích Hoạt – Postpaid / Prepaid / Total Theo Tháng (T8–T10 / 2026)',
+    'activar-h3': 'Tổng Kích Hoạt – Postpaid / Prepaid / Total Theo Tháng (T5–T10 / 2026)',
     'activar-chart-h4': '📊 Biểu Đồ Cột Chồng – Kích Hoạt UCABR Theo Tháng',
     'activar-table-h4': '📋 Thống Kê Chi Tiết Kích Hoạt – Tổng UCABR',
-    'activar-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Nguồn: file "Activar ngày ..." – dữ liệu chi tiết từng thuê bao kích hoạt, chi nhánh <strong>UCABR</strong><br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: đếm số dòng theo cột <strong>sub_type</strong>, nhóm theo tháng (cột <strong>month</strong>)<br>• <strong>Total</strong> = Postpaid + Prepaid, cập nhật hàng tuần (đã đối chiếu khớp cột NEW ACTIVE SIM của file CASH IN cùng ngày)<br>• (*) T10 là số liệu chưa đầy tháng, <strong>đến ngày 05/10/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 10 kết thúc',
+    'activar-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Nguồn: file "Activar ngày ..." – dữ liệu chi tiết từng thuê bao kích hoạt, chi nhánh <strong>UCABR</strong><br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: đếm số dòng theo cột <strong>sub_type</strong>, nhóm theo tháng (cột <strong>month</strong>)<br>• <strong>Total</strong> = Postpaid + Prepaid, cập nhật hàng tuần (đã đối chiếu khớp cột NEW ACTIVE SIM của file CASH IN cùng ngày)<br>• T5–T7: số liệu chốt từ các file Activar đã gửi trước đây; T8–T10: từ file mới nhất<br>• (*) T10 là số liệu chưa đầy tháng, <strong>đến ngày 05/10/2026</strong> – ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 10 kết thúc',
     'th-index': 'Chỉ số',
     'activar-cmp-chart-h4': '📊 So Sánh Cùng Kỳ – Kích Hoạt Ngày 1–5 Mỗi Tháng',
     'activar-cmp-chart-note': '📌 So sánh cùng kỳ: chỉ lấy số liệu <strong>ngày 1–5</strong> của mỗi tháng (bằng với số ngày đã có của T10) để so sánh công bằng, không so cả tháng đầy đủ với tháng chưa đầy.',
@@ -4028,7 +4088,7 @@ const I18N = {
     'activar-daily-table-h4': '📋 Bảng Chi Tiết Kích Hoạt Theo Ngày',
     'activar-daily-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• Lấy dữ liệu <strong>cột date</strong> (cột C) trong file "Activar ngày ..." để nhóm số lượng kích hoạt theo từng ngày<br>• Chỉ tính tháng hiện tại (T10), từ <strong>ngày 1 đến ngày 5</strong> – ngày gần nhất có dữ liệu trong file<br>• Biểu đồ đường thể hiện xu hướng kích hoạt hàng ngày (Postpaid, Prepaid, Tổng)<br>• Số ngày hiển thị sẽ tự động mở rộng theo số ngày thực tế có trong file ở mỗi lần cập nhật kế tiếp',
     'activar-bc-tag': 'Phần 2',
-    'activar-bc-h3': 'Kích Hoạt Theo Trung Tâm Kinh Doanh – BC01 &amp; BC02 (T8–T10 / 2026)',
+    'activar-bc-h3': 'Kích Hoạt Theo Trung Tâm Kinh Doanh – BC01 &amp; BC02 (T5–T10 / 2026)',
     'activar-bc-share': 'tổng kích hoạt UCABR',
     'activar-bc-suffix': '– Chi Tiết Kích Hoạt Theo Tháng',
     'activar-mnp-bc01-h4': '📊 BC01 – Kích Hoạt Theo Loại MNP',
@@ -4064,10 +4124,10 @@ const I18N = {
     'th-vs-t6': 'T10 so T9',
     'th-vs-t5': 'T10 so T8',
     'cashin-tag': 'Phần 3',
-    'cashin-h3': 'CASH IN – ID Active SIM / New Active Bipay / MAU CashIn / Consumer (T8–T10 / 2026)',
+    'cashin-h3': 'CASH IN – ID Active SIM / New Active Bipay / MAU CashIn / Consumer (T5–T10 / 2026)',
     'cashin-chart-h4': '📊 Biểu Đồ Cột – CASH IN Tổng Chi Nhánh UCA Theo Tháng',
     'cashin-table-h4': '📋 Thống Kê Chi Tiết CASH IN – Tổng UCABR',
-    'cashin-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• <strong>ID Active SIM</strong> (cột E), <strong>New Active Bipay</strong> (cột F), <strong>MAU CashIn</strong> (cột O), <strong>Consumer</strong> (cột P) trong file "CASH IN ngày ..."<br>• Nguồn: dòng <strong>UCABR</strong> (chi nhánh UCA, không phải Totales toàn quốc), cập nhật hàng tuần<br>• <strong>% Consumer/MAU CashIn</strong> = Consumer ÷ MAU CashIn × 100%<br>• (*) T10 là số liệu chưa đầy tháng, <strong>đến ngày 05/10/2026</strong> – sẽ được ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 10 kết thúc',
+    'cashin-note-box': '<strong>📌 Ghi chú nguồn số liệu:</strong><br>• <strong>ID Active SIM</strong> (cột E), <strong>New Active Bipay</strong> (cột F), <strong>MAU CashIn</strong> (cột O), <strong>Consumer</strong> (cột P) trong file "CASH IN ngày ..."<br>• Nguồn: dòng <strong>UCABR</strong> (chi nhánh UCA, không phải Totales toàn quốc), cập nhật hàng tuần<br>• <strong>% Consumer/MAU CashIn</strong> = Consumer ÷ MAU CashIn × 100%<br>• T5–T7: số liệu chốt từ các file CASH IN đã gửi trước đây; T8–T10: từ file mới nhất<br>• (*) T10 là số liệu chưa đầy tháng, <strong>đến ngày 05/10/2026</strong> – sẽ được ghi đè ở lần cập nhật kế tiếp cho đến khi tháng 10 kết thúc',
     'cashin-bc-share': 'tổng MAU CashIn UCABR',
     'cashin-bc-chart-h4': '📊 Biểu Đồ Cột Chồng – MAU CashIn BC01 + BC02 Theo Tháng',
     'cashin-bc-chart-note': '📌 Cột chồng: chiều cao mỗi cột = tổng MAU CashIn UCABR trong tháng đó; phần xanh dương là BC01, phần vàng là BC02.',
@@ -4190,10 +4250,10 @@ const I18N = {
     'tab-empty-msg-mobile': 'Los datos de Móvil se agregarán aquí, con el mismo diseño y colores que el panel General.',
     'tab-empty-msg-digital': 'Los datos de Digital se agregarán aquí, con el mismo diseño y colores que el panel General.',
     'activar-tag': 'Sección 1',
-    'activar-h3': 'Activaciones Totales – Postpaid / Prepaid / Total Mensual (T8–T10 / 2026)',
+    'activar-h3': 'Activaciones Totales – Postpaid / Prepaid / Total Mensual (T5–T10 / 2026)',
     'activar-chart-h4': '📊 Gráfico de Barras Apiladas – Activaciones UCABR Mensual',
     'activar-table-h4': '📋 Estadísticas Detalladas de Activaciones – Total UCABR',
-    'activar-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Fuente: archivo "Activar ngày ..." – datos detallados por abonado activado, sucursal <strong>UCABR</strong><br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: conteo de filas según la columna <strong>sub_type</strong>, agrupado por mes (columna <strong>month</strong>)<br>• <strong>Total</strong> = Postpaid + Prepaid, actualización semanal (verificado con la columna NEW ACTIVE SIM del archivo CASH IN de la misma fecha)<br>• (*) T10 es un mes incompleto, <strong>datos al 05/10/2026</strong> – se sobrescribirá en la próxima actualización hasta que cierre octubre',
+    'activar-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Fuente: archivo "Activar ngày ..." – datos detallados por abonado activado, sucursal <strong>UCABR</strong><br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: conteo de filas según la columna <strong>sub_type</strong>, agrupado por mes (columna <strong>month</strong>)<br>• <strong>Total</strong> = Postpaid + Prepaid, actualización semanal (verificado con la columna NEW ACTIVE SIM del archivo CASH IN de la misma fecha)<br>• T5–T7: datos cerrados de los archivos Activar enviados anteriormente; T8–T10: del archivo más reciente<br>• (*) T10 es un mes incompleto, <strong>datos al 05/10/2026</strong> – se sobrescribirá en la próxima actualización hasta que cierre octubre',
     'th-index': 'Indicador',
     'activar-cmp-chart-h4': '📊 Comparación del Mismo Período – Activaciones Días 1–5 de Cada Mes',
     'activar-cmp-chart-note': '📌 Comparación del mismo período: solo se toman los <strong>días 1–5</strong> de cada mes (igual a los días disponibles de T10) para una comparación justa, sin comparar un mes completo con uno incompleto.',
@@ -4207,7 +4267,7 @@ const I18N = {
     'activar-daily-table-h4': '📋 Tabla Detallada de Activaciones Diarias',
     'activar-daily-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• Se toman los datos de la <strong>columna date</strong> (columna C) del archivo "Activar ngày ..." para agrupar las activaciones por día<br>• Solo se calcula el mes actual (T10), del <strong>día 1 al día 5</strong> – el último día con datos en el archivo<br>• El gráfico de líneas muestra la tendencia diaria de activaciones (Postpaid, Prepaid, Total)<br>• El número de días mostrados se ampliará automáticamente según los días reales disponibles en cada actualización',
     'activar-bc-tag': 'Sección 2',
-    'activar-bc-h3': 'Activaciones por Centro de Negocio – BC01 &amp; BC02 (T8–T10 / 2026)',
+    'activar-bc-h3': 'Activaciones por Centro de Negocio – BC01 &amp; BC02 (T5–T10 / 2026)',
     'activar-bc-share': 'del total de activaciones UCABR',
     'activar-bc-suffix': '– Detalle de Activaciones Mensual',
     'activar-mnp-bc01-h4': '📊 BC01 – Activaciones por Tipo de MNP',
@@ -4243,10 +4303,10 @@ const I18N = {
     'th-vs-t6': 'T10 vs T9',
     'th-vs-t5': 'T10 vs T8',
     'cashin-tag': 'Sección 3',
-    'cashin-h3': 'CASH IN – ID Active SIM / New Active Bipay / MAU CashIn / Consumer (T8–T10 / 2026)',
+    'cashin-h3': 'CASH IN – ID Active SIM / New Active Bipay / MAU CashIn / Consumer (T5–T10 / 2026)',
     'cashin-chart-h4': '📊 Gráfico de Barras – CASH IN Total Sucursal UCA Mensual',
     'cashin-table-h4': '📋 Estadísticas Detalladas CASH IN – Total UCABR',
-    'cashin-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• <strong>ID Active SIM</strong> (columna E), <strong>New Active Bipay</strong> (columna F), <strong>MAU CashIn</strong> (columna O), <strong>Consumer</strong> (columna P) del archivo "CASH IN ngày ..."<br>• Fuente: fila <strong>UCABR</strong> (sucursal UCA, no el Totales nacional), actualización semanal<br>• <strong>% Consumer/MAU CashIn</strong> = Consumer ÷ MAU CashIn × 100%<br>• (*) T10 es un mes incompleto, <strong>datos al 05/10/2026</strong> – se sobrescribirá en la próxima actualización hasta que cierre octubre',
+    'cashin-note-box': '<strong>📌 Nota de la fuente de datos:</strong><br>• <strong>ID Active SIM</strong> (columna E), <strong>New Active Bipay</strong> (columna F), <strong>MAU CashIn</strong> (columna O), <strong>Consumer</strong> (columna P) del archivo "CASH IN ngày ..."<br>• Fuente: fila <strong>UCABR</strong> (sucursal UCA, no el Totales nacional), actualización semanal<br>• <strong>% Consumer/MAU CashIn</strong> = Consumer ÷ MAU CashIn × 100%<br>• T5–T7: datos cerrados de los archivos CASH IN enviados anteriormente; T8–T10: del archivo más reciente<br>• (*) T10 es un mes incompleto, <strong>datos al 05/10/2026</strong> – se sobrescribirá en la próxima actualización hasta que cierre octubre',
     'cashin-bc-share': 'del MAU CashIn total UCABR',
     'cashin-bc-chart-h4': '📊 Gráfico de Barras Apiladas – MAU CashIn BC01 + BC02 Mensual',
     'cashin-bc-chart-note': '📌 Barras apiladas: la altura total = MAU CashIn total UCABR del mes; la parte azul es BC01, la parte amarilla es BC02.',
@@ -4369,10 +4429,10 @@ const I18N = {
     'tab-empty-msg-mobile': 'Mobile data will be added here, using the same layout and colors as the General Dashboard.',
     'tab-empty-msg-digital': 'Digital data will be added here, using the same layout and colors as the General Dashboard.',
     'activar-tag': 'Section 1',
-    'activar-h3': 'Total Activations – Postpaid / Prepaid / Total by Month (T8–T10 / 2026)',
+    'activar-h3': 'Total Activations – Postpaid / Prepaid / Total by Month (T5–T10 / 2026)',
     'activar-chart-h4': '📊 Stacked Bar Chart – UCABR Activations by Month',
     'activar-table-h4': '📋 Detailed Activation Statistics – UCABR Total',
-    'activar-note-box': '<strong>📌 Data source note:</strong><br>• Source: "Activar ngày ..." file – detailed record per activated subscriber, <strong>UCABR</strong> branch<br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: row count by <strong>sub_type</strong> column, grouped by month (<strong>month</strong> column)<br>• <strong>Total</strong> = Postpaid + Prepaid, updated weekly (cross-checked against the NEW ACTIVE SIM column of the same-date CASH IN file)<br>• (*) T10 is an incomplete month, <strong>data as of 05/10/2026</strong> – will be overwritten in the next update until October closes',
+    'activar-note-box': '<strong>📌 Data source note:</strong><br>• Source: "Activar ngày ..." file – detailed record per activated subscriber, <strong>UCABR</strong> branch<br>• <strong>Postpaid</strong>/<strong>Prepaid</strong>: row count by <strong>sub_type</strong> column, grouped by month (<strong>month</strong> column)<br>• <strong>Total</strong> = Postpaid + Prepaid, updated weekly (cross-checked against the NEW ACTIVE SIM column of the same-date CASH IN file)<br>• T5–T7: closed figures from previously sent Activar files; T8–T10: from the latest file<br>• (*) T10 is an incomplete month, <strong>data as of 05/10/2026</strong> – will be overwritten in the next update until October closes',
     'th-index': 'Metric',
     'activar-cmp-chart-h4': '📊 Same-Period Comparison – Activations Days 1–5 of Each Month',
     'activar-cmp-chart-note': '📌 Same-period comparison: only takes <strong>days 1–5</strong> of each month (matching the days available for T10) for a fair comparison, avoiding comparing a full month against an incomplete one.',
@@ -4386,7 +4446,7 @@ const I18N = {
     'activar-daily-table-h4': '📋 Daily Activation Detail Table',
     'activar-daily-note-box': '<strong>📌 Data source note:</strong><br>• Takes data from the <strong>date column</strong> (column C) in the "Activar ngày ..." file to group activations by day<br>• Only the current month (T10) is calculated, from <strong>day 1 to day 5</strong> – the latest day with data in the file<br>• The line chart shows the daily activation trend (Postpaid, Prepaid, Total)<br>• The number of days shown will automatically expand based on the actual days available in each update',
     'activar-bc-tag': 'Section 2',
-    'activar-bc-h3': 'Activations by Business Center – BC01 &amp; BC02 (T8–T10 / 2026)',
+    'activar-bc-h3': 'Activations by Business Center – BC01 &amp; BC02 (T5–T10 / 2026)',
     'activar-bc-share': 'of total UCABR activations',
     'activar-bc-suffix': '– Monthly Activation Detail',
     'activar-mnp-bc01-h4': '📊 BC01 – Activations by MNP Type',
@@ -4422,10 +4482,10 @@ const I18N = {
     'th-vs-t6': 'T10 vs T9',
     'th-vs-t5': 'T10 vs T8',
     'cashin-tag': 'Section 3',
-    'cashin-h3': 'CASH IN – ID Active SIM / New Active Bipay / MAU CashIn / Consumer (T8–T10 / 2026)',
+    'cashin-h3': 'CASH IN – ID Active SIM / New Active Bipay / MAU CashIn / Consumer (T5–T10 / 2026)',
     'cashin-chart-h4': '📊 Bar Chart – CASH IN Total UCA Branch by Month',
     'cashin-table-h4': '📋 Detailed CASH IN Statistics – UCABR Total',
-    'cashin-note-box': '<strong>📌 Data source note:</strong><br>• <strong>ID Active SIM</strong> (column E), <strong>New Active Bipay</strong> (column F), <strong>MAU CashIn</strong> (column O), <strong>Consumer</strong> (column P) from the "CASH IN ngày ..." file<br>• Source: <strong>UCABR</strong> row (UCA branch, not the nationwide Totales), updated weekly<br>• <strong>% Consumer/MAU CashIn</strong> = Consumer ÷ MAU CashIn × 100%<br>• (*) T10 is an incomplete month, <strong>data as of 05/10/2026</strong> – will be overwritten in the next update until October closes',
+    'cashin-note-box': '<strong>📌 Data source note:</strong><br>• <strong>ID Active SIM</strong> (column E), <strong>New Active Bipay</strong> (column F), <strong>MAU CashIn</strong> (column O), <strong>Consumer</strong> (column P) from the "CASH IN ngày ..." file<br>• Source: <strong>UCABR</strong> row (UCA branch, not the nationwide Totales), updated weekly<br>• <strong>% Consumer/MAU CashIn</strong> = Consumer ÷ MAU CashIn × 100%<br>• T5–T7: closed figures from previously sent CASH IN files; T8–T10: from the latest file<br>• (*) T10 is an incomplete month, <strong>data as of 05/10/2026</strong> – will be overwritten in the next update until October closes',
     'cashin-bc-share': 'of total UCABR MAU CashIn',
     'cashin-bc-chart-h4': '📊 Stacked Bar Chart – MAU CashIn BC01 + BC02 by Month',
     'cashin-bc-chart-note': '📌 Stacked bars: total height = total UCABR MAU CashIn that month; the blue part is BC01, the yellow part is BC02.',
