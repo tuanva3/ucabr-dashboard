@@ -5410,6 +5410,72 @@ function doLogout(){
   showLogin();
 }
 
+
+// ── I18N FALLBACK (22/10/2026): dịch nốt các chữ tiếng Việt chưa có data-i18n + bộ lọc mức cảnh báo ──
+var I18N_FB = {
+  es: [[/T10 số liệu đến/g,'Datos T10 al'],[/Lũy kế thực hiện/g,'Acumulado ejecutado'],[/KH năm/g,'Plan anual'],[/kế hoạch năm/g,'del plan anual'],
+       [/Chênh lệch:/g,'Diferencia:'],[/Lũy kế/g,'Acumulado'],[/Tổng Kích Hoạt/g,'Total Activaciones'],[/\(Mới\)/g,'(Nuevo)'],[/"Mới"/g,'"Nuevo"'],
+       [/đến (\d{1,2}\/\d{1,2})/g,'al $1'],[/^Tất cả$/,'Todos']],
+  en: [[/T10 số liệu đến/g,'T10 data as of'],[/Lũy kế thực hiện/g,'Cumulative actual'],[/KH năm/g,'Annual plan'],[/kế hoạch năm/g,'of annual plan'],
+       [/Chênh lệch:/g,'Difference:'],[/Lũy kế/g,'Cumulative'],[/Tổng Kích Hoạt/g,'Total Activations'],[/\(Mới\)/g,'(New)'],[/"Mới"/g,'"New"'],
+       [/đến (\d{1,2}\/\d{1,2})/g,'to $1'],[/^Tất cả$/,'All']]
+};
+var I18N_FB_ATTR = {
+  'Lọc...': {es:'Filtrar...', en:'Filter...'}, 'VD: UCA0005': {es:'Ej.: UCA0005', en:'e.g. UCA0005'},
+  'Xóa lọc': {es:'Borrar filtro', en:'Clear filter'}, 'Lên đầu trang': {es:'Ir arriba', en:'Back to top'},
+  'Đăng xuất': {es:'Cerrar sesión', en:'Log out'}
+};
+var I18N_FB_VN = /[ăâđơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ]/i;
+var I18N_FB_ORIG = new WeakMap();
+function i18nFallback(lang){
+  var dict = I18N[lang] || I18N.vi;
+  // 1) Text nodes không có data-i18n
+  var w = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT), n, nodes = [];
+  while((n = w.nextNode())){ nodes.push(n); }
+  nodes.forEach(function(node){
+    var p = node.parentElement; if(!p || p.closest('script,style,select')) return;
+    var orig = I18N_FB_ORIG.get(node);
+    if(orig === undefined){
+      if(!I18N_FB_VN.test(node.textContent)) return;
+      orig = node.textContent; I18N_FB_ORIG.set(node, orig);
+    }
+    if(lang === 'vi' || !I18N_FB[lang]){ node.textContent = orig; return; }
+    var t = orig; I18N_FB[lang].forEach(function(r){ t = t.replace(r[0], r[1]); });
+    node.textContent = t;
+  });
+  // 2) placeholder / title
+  ['placeholder','title'].forEach(function(a){
+    document.querySelectorAll('[' + a + ']').forEach(function(el){
+      var key = 'fbOrig' + a; var o = el.dataset[key];
+      if(o === undefined){ o = el.getAttribute(a); if(!I18N_FB_ATTR[o]) return; el.dataset[key] = o; }
+      el.setAttribute(a, (lang !== 'vi' && I18N_FB_ATTR[o] && I18N_FB_ATTR[o][lang]) ? I18N_FB_ATTR[o][lang] : o);
+    });
+  });
+  // 3) Ô chọn mức cảnh báo: chữ + giá trị theo ngôn ngữ đang chọn (để lọc đúng)
+  var SEV = {'Cực kỳ nghiêm trọng':'sev-red-txt','Nghiêm trọng':'sev-yellow-txt','Cảnh báo':'sev-green-txt','Theo dõi':'sev-none-txt'};
+  document.querySelectorAll('select.bts-filter-select').forEach(function(sel){
+    var changed = false;
+    Array.prototype.forEach.call(sel.options, function(op){
+      if(op.dataset.vi === undefined) op.dataset.vi = op.value;
+      var b = op.dataset.vi;
+      if(b === ''){ op.textContent = {vi:'Tất cả', es:'Todos', en:'All'}[lang] || 'Tất cả'; return; }
+      var t = (dict[SEV[b]] !== undefined) ? dict[SEV[b]] : b;
+      if(op.value !== t){ changed = true; }
+      op.value = t; op.textContent = t;
+    });
+    if(changed && sel.selectedIndex > 0){
+      var tbl = sel.closest('table'); if(tbl && typeof filterBtsTable === 'function') filterBtsTable(tbl);
+    }
+  });
+}
+(function(){
+  var _applyLangOrig = applyLang;
+  applyLang = function(lang){ _applyLangOrig(lang); try{ i18nFallback(lang); }catch(e){} };
+  window.addEventListener('load', function(){
+    try{ i18nFallback(document.documentElement.getAttribute('lang') || 'vi'); }catch(e){}
+  });
+})();
+
 document.addEventListener('DOMContentLoaded', function(){
   // Restore saved language preference
   var savedLang = null;
@@ -5574,7 +5640,7 @@ function filterBtsTable(table){
     if(!input) return null;
     var v = input.value.trim();
     if(!v) return null;
-    return btsStripAccents(v.toLowerCase());
+    return (input.tagName === 'SELECT' ? '=' : '') + btsStripAccents(v.toLowerCase());
   });
   var rows = table.querySelectorAll('tbody tr');
   var shown = 0, total = rows.length;
@@ -5585,13 +5651,15 @@ function filterBtsTable(table){
       var f = filters[i];
       if(!f) continue;
       var cellText = cells[i] ? btsStripAccents(cells[i].textContent.trim().toLowerCase()) : '';
+      if(f.charAt(0) === '='){ if(cellText !== f.slice(1)){ visible = false; break; } continue; }
       if(cellText.indexOf(f) === -1){ visible = false; break; }
     }
     row.style.display = visible ? '' : 'none';
     if(visible) shown++;
   });
   if(table._filterCountEl){
-    table._filterCountEl.textContent = 'Hiển thị ' + shown + '/' + total + ' trạm';
+    var _lg = document.documentElement.getAttribute('lang') || 'vi';
+    table._filterCountEl.textContent = (_lg === 'es' ? 'Mostrando ' + shown + '/' + total + ' estaciones' : _lg === 'en' ? 'Showing ' + shown + '/' + total + ' sites' : 'Hiển thị ' + shown + '/' + total + ' trạm');
     table._filterCountEl.style.display = shown === total ? 'none' : 'block';
   }
 }
