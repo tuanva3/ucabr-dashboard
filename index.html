@@ -269,7 +269,8 @@
   /* ── TAB QUẬN GIẢM THỊ PHẦN ── */
   .qgt-table th, .qgt-table td { white-space: nowrap; }
   .qgt-table tfoot td:first-child { color: #FFD100; }
-  .qgt-table tbody tr.sev-red td:first-child { border-left: 4px solid #ef4444; }
+  .qgt-table tbody tr.sev-red td:first-child, .qgt-table tbody tr.qgt-dec td:first-child { border-left: 4px solid #ef4444; }
+  .qgt-table thead tr:first-child th { text-align: center; border-left: 1px solid #c4dcef; }
   .qgt-table tbody tr.sev-yellow td:first-child { border-left: 4px solid #f0a800; }
   .qgt-table tbody tr.sev-green td:first-child { border-left: 4px solid #10b981; }
   .qgt-table .sev-cell { display:inline-block; padding: 2px 8px; border-radius: 10px; font-size: 0.7rem; font-weight: 700; background:#eaf2fb; color:#0057A8; }
@@ -3953,199 +3954,31 @@
     <h3 data-i18n="qgt-h3-0">Quận Giảm Thị Phần – Tháng 9/2026 (7 quận)</h3>
     <div class="line"></div>
   </div>
-  <div style="padding:14px 24px 0;">
-    <div class="bts-summary">
-      <div class="bts-sum-card" style="background:#eaf2fb;border-color:#7ab0d8;color:#0057A8;"><div class="bsc-val">7</div><div class="bsc-lbl" data-i18n="qgt-k1">Quận giảm thị phần T9</div></div>
-      <div class="bts-sum-card" style="background:#eaf2fb;border-color:#7ab0d8;color:#0057A8;"><div class="bsc-val">16</div><div class="bsc-lbl" data-i18n="qgt-k2">Trạm BTS (Tahuania: 0)</div></div>
-      <div class="bts-sum-card" style="background:#fffbe6;border-color:#FFD100;color:#6a4c00;"><div class="bsc-val">8.994</div><div class="bsc-lbl" data-i18n="qgt-k3">15C3D T9 – 6 quận</div></div>
-      <div class="bts-sum-card" style="background:#fff0f0;border-color:#ef4444;color:#9b1c1c;"><div class="bsc-val">-489</div><div class="bsc-lbl" data-i18n="qgt-k4">Tăng/giảm 15C3D T9 (-5,2%)</div></div>
-      <div class="bts-sum-card" style="background:#fff0f0;border-color:#ef4444;color:#9b1c1c;"><div class="bsc-val">4/6</div><div class="bsc-lbl" data-i18n="qgt-k5">Quận giảm 15C3D trong T9</div></div>
-      <div class="bts-sum-card" style="background:#ecfdf5;border-color:#10b981;color:#065f46;"><div class="bsc-val">+506</div><div class="bsc-lbl" data-i18n="qgt-k6">T10 so cùng kỳ (đến 21/10)</div></div>
-      <div class="bts-sum-card" style="background:#fff0f0;border-color:#ef4444;color:#9b1c1c;"><div class="bsc-val">11.402</div><div class="bsc-lbl" data-i18n="qgt-k7">Cell*h T9 – 6 quận</div></div>
-    </div>
-  </div>
-
-  <div class="section-divider">
-    <div class="tag" data-i18n="qgt-tag1">Phần 1</div>
-    <h3 data-i18n="qgt-h3-1">Bảng Đánh Giá Xu Hướng Theo Quận – 15C3D T7→T10 / 2026</h3>
-    <div class="line"></div>
-  </div>
   <div class="content-row">
     <div class="table-card" style="flex:1;width:auto;">
-      <h4 data-i18n="qgt-t1-h4">📋 Đánh giá xu hướng 7 quận giảm thị phần</h4>
+      <h4 data-i18n="qgt-t5-h4">📋 Số liệu T9 – T10/2026 theo quận (T10 đến 18/10)</h4>
       <div style="overflow-x:auto;">
       <table class="stats-table qgt-table" style="font-size:0.74rem;">
         <thead>
           <tr><th rowspan="2" data-i18n="qgt-th-dist">Quận</th><th rowspan="2" style="text-align:left;">BC</th><th rowspan="2" data-i18n="qgt-th-sites">Số trạm</th>
-              <th colspan="4" data-i18n="qgt-th-15">Thuê bao 15C3D</th><th colspan="4" data-i18n="qgt-th-inc">Tăng / Giảm 15C3D</th>
-              <th colspan="2" data-i18n="qgt-th-flow">Biến động T9</th><th colspan="2" data-i18n="qgt-th-rev">Doanh thu T9 (PEN)</th><th rowspan="2" data-i18n="qgt-th-ev">Đánh giá</th></tr>
-          <tr><th>T7</th><th>T8</th><th>T9</th><th>T10*</th><th>T8</th><th>T9</th><th>%T9</th><th>T10*</th>
-              <th>Churn</th><th data-i18n="qgt-th-new">TB mới</th><th>T9</th><th data-i18n="qgt-th-vs8">so T8</th></tr>
+              <th colspan="3">15C3D</th><th colspan="2">REG</th><th colspan="2">Cell*h</th><th colspan="3" data-i18n="qgt-th-act2">Kích hoạt</th>
+              <th colspan="3">Churn</th><th colspan="2" data-i18n="qgt-th-inc2">Sự cố</th></tr>
+          <tr><th>T9</th><th>T10</th><th data-i18n="qgt-th-pm1">± cùng kỳ</th><th>T9</th><th>T10</th><th>T9</th><th>T10</th>
+              <th>T9</th><th>T10</th><th data-i18n="qgt-th-pm1b">± cùng kỳ</th><th>T9</th><th>T10</th><th>±</th><th>T9</th><th>T10</th></tr>
         </thead>
         <tbody>
-<tr class="sev-red"><td>Yuyapichis</td><td style="text-align:left;">UCABC02</td><td>5</td><td>1.954</td><td>1.917</td><td><strong>1.569</strong></td><td>1.412</td><td class="neg">-37</td><td class="neg">-348</td><td class="neg">-18,2%</td><td class="pos">+138</td><td class="neg">-412</td><td>56</td><td>39.694</td><td class="neg">-20,6%</td><td><span class="sev-cell sev-red" data-i18n="qgt-ev-yuyapichis">Giảm mạnh</span></td></tr>
-<tr class="sev-red"><td>Masisea</td><td style="text-align:left;">UCABC01</td><td>1</td><td>718</td><td>722</td><td><strong>650</strong></td><td>605</td><td class="pos">+4</td><td class="neg">-72</td><td class="neg">-10,0%</td><td class="pos">+79</td><td class="neg">-102</td><td>29</td><td>15.496</td><td class="neg">-12,5%</td><td><span class="sev-cell sev-red" data-i18n="qgt-ev-masisea">Giảm mạnh</span></td></tr>
-<tr class="sev-yellow"><td>Curimana</td><td style="text-align:left;">UCABC02</td><td>2</td><td>2.139</td><td>2.192</td><td><strong>2.096</strong></td><td>1.597</td><td class="pos">+53</td><td class="neg">-96</td><td class="neg">-4,4%</td><td class="pos">+13</td><td class="neg">-217</td><td>118</td><td>55.570</td><td class="neg">-5,7%</td><td><span class="sev-cell sev-yellow" data-i18n="qgt-ev-curimana">Giảm</span></td></tr>
-<tr class="sev-yellow"><td>Tournavista</td><td style="text-align:left;">UCABC02</td><td>3</td><td>2.693</td><td>2.973</td><td><strong>2.918</strong></td><td>2.493</td><td class="pos">+280</td><td class="neg">-55</td><td class="neg">-1,8%</td><td class="pos">+152</td><td class="neg">-254</td><td>195</td><td>68.076</td><td class="neg">-5,0%</td><td><span class="sev-cell sev-yellow" data-i18n="qgt-ev-tournavista">Giảm nhẹ</span></td></tr>
-<tr class="sev-green"><td>Nueva Requena</td><td style="text-align:left;">UCABC01</td><td>1</td><td>641</td><td>643</td><td><strong>668</strong></td><td>522</td><td class="pos">+2</td><td class="pos">+25</td><td class="pos">+3,9%</td><td class="neg">-14</td><td class="neg">-19</td><td>40</td><td>14.964</td><td class="neg">-6,5%</td><td><span class="sev-cell sev-green" data-i18n="qgt-ev-nueva-requena">Cảnh báo</span></td></tr>
-<tr class=""><td>Contamana</td><td style="text-align:left;">UCABC01</td><td>4</td><td>1.000</td><td>1.037</td><td><strong>1.093</strong></td><td>1.047</td><td class="pos">+37</td><td class="pos">+57</td><td class="pos">+5,4%</td><td class="pos">+138</td><td class="neg">-16</td><td>72</td><td>24.848</td><td class="pos">+1,4%</td><td><span class="sev-cell" data-i18n="qgt-ev-contamana">Theo dõi đối thủ</span></td></tr>
-<tr class=""><td>Tahuania</td><td style="text-align:left;">—</td><td>0</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td><span class="sev-cell" data-i18n="qgt-ev-tahuania">Chưa có trạm</span></td></tr>
+<tr class=""><td>Yuyapichis</td><td style="text-align:left;">UCABC02</td><td>5</td><td>1.569</td><td><strong>1.313</strong></td><td class="pos">+126</td><td>1.143</td><td><strong>1.741</strong></td><td class="neg">8.020</td><td>421</td><td>28</td><td><strong>47</strong></td><td class="pos">+42</td><td class="neg">-412</td><td class="pos">+70</td><td class="pos">+482</td><td>380</td><td><strong>161</strong></td></tr>
+<tr class=""><td>Masisea</td><td style="text-align:left;">UCABC01</td><td>1</td><td>650</td><td><strong>583</strong></td><td class="pos">+83</td><td>680</td><td><strong>673</strong></td><td class="neg">851</td><td>39</td><td>19</td><td><strong>22</strong></td><td class="pos">+16</td><td class="neg">-102</td><td class="pos">+57</td><td class="pos">+159</td><td>73</td><td><strong>43</strong></td></tr>
+<tr class="qgt-dec"><td>Curimana</td><td style="text-align:left;">UCABC02</td><td>2</td><td>2.096</td><td><strong>1.520</strong></td><td class="neg">-3</td><td>1.905</td><td><strong>1.921</strong></td><td class="">434</td><td>2</td><td>132</td><td><strong>85</strong></td><td class="pos">+26</td><td class="neg">-217</td><td class="neg">-88</td><td class="pos">+129</td><td>68</td><td><strong>7</strong></td></tr>
+<tr class=""><td>Tournavista</td><td style="text-align:left;">UCABC02</td><td>3</td><td>2.918</td><td><strong>2.376</strong></td><td class="pos">+165</td><td>2.737</td><td><strong>2.858</strong></td><td class="neg">567</td><td>10</td><td>238</td><td><strong>201</strong></td><td class="pos">+47</td><td class="neg">-254</td><td class="pos">+36</td><td class="pos">+290</td><td>126</td><td><strong>20</strong></td></tr>
+<tr class="qgt-dec"><td>Nueva Requena</td><td style="text-align:left;">UCABC01</td><td>1</td><td>668</td><td><strong>504</strong></td><td class="neg">-3</td><td>591</td><td><strong>586</strong></td><td class="">337</td><td>0</td><td>19</td><td><strong>25</strong></td><td class="pos">+12</td><td class="neg">-19</td><td class="neg">-27</td><td class="neg">-8</td><td>74</td><td><strong>3</strong></td></tr>
+<tr class=""><td>Contamana</td><td style="text-align:left;">UCABC01</td><td>4</td><td>1.093</td><td><strong>999</strong></td><td class="pos">+136</td><td>1.109</td><td><strong>1.257</strong></td><td class="neg">1.193</td><td>76</td><td>53</td><td><strong>83</strong></td><td class="pos">+52</td><td class="neg">-16</td><td class="pos">+44</td><td class="pos">+60</td><td>663</td><td><strong>43</strong></td></tr>
+<tr><td>Tahuania</td><td style="text-align:left;">—</td><td>0</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td></tr>
         </tbody>
-        <tfoot><tr><td data-i18n="qgt-total6">Tổng 6 quận</td><td></td><td>16</td><td>9.145</td><td>9.484</td><td>8.994</td><td>7.676</td><td>+339</td><td>-489</td><td>-5,2%</td><td>+506</td><td>-1.020</td><td>510</td><td>218.648</td><td>-8,4%</td><td></td></tr><tr><td data-i18n="qgt-total-uca">Tổng UCABR (tham chiếu)</td><td></td><td>187</td><td>118.940</td><td>121.264</td><td>118.987</td><td>93.788</td><td>+2.324</td><td>-2.275</td><td>-1,9%</td><td>+1.559</td><td>-10.338</td><td>7.612</td><td>3.097.943</td><td>-3,3%</td><td></td></tr></tfoot>
+        <tfoot><tr class=""><td data-i18n="qgt-total6">Tổng 6 quận</td><td style="text-align:left;"></td><td>16</td><td>8.994</td><td><strong>7.295</strong></td><td class="pos">+504</td><td>8.165</td><td><strong>9.036</strong></td><td class="neg">11.402</td><td>547</td><td>489</td><td><strong>463</strong></td><td class="pos">+195</td><td class="neg">-1.020</td><td class="pos">+92</td><td class="pos">+1.112</td><td>1.384</td><td><strong>277</strong></td></tr><tr class=""><td data-i18n="qgt-total-uca">Tổng UCABR (tham chiếu)</td><td style="text-align:left;"></td><td>187</td><td>118.987</td><td><strong>89.378</strong></td><td class="pos">+1.153</td><td>119.408</td><td><strong>121.043</strong></td><td class="neg">95.990</td><td>5.454</td><td>9.949</td><td><strong>6.030</strong></td><td class="pos">+560</td><td class="neg">-10.338</td><td class="neg">-3.291</td><td class="pos">+7.047</td><td>10.703</td><td><strong>1.756</strong></td></tr></tfoot>
       </table>
       </div>
-      <div class="note-box blue" data-i18n="qgt-note1">📌 Nguồn: file <strong>TOTAL_BTS_UCA 22/10/2026</strong> (sheet 15c3d), lọc theo cột District. T7 = 15C3D N‑1 của block tháng 8. <strong>T10* = số đến 21/10</strong>, cột Tăng/Giảm T10* là so với <strong>cùng kỳ 21/09</strong> (không so với T9 đủ tháng). Churn = thuê bao 15C3D tháng trước mất đi; TB mới = 15c3d_new. Mức đánh giá: <strong>Giảm mạnh</strong> ≤ −5% T9; <strong>Giảm</strong>/<strong>Giảm nhẹ</strong> &lt; 0; <strong>Cảnh báo</strong> T9 tăng nhưng T10 giảm.</div>
-    </div>
-  </div>
-
-  <div class="content-row">
-    <div class="chart-card">
-      <h4 data-i18n="qgt-c1-h4">📊 Tăng / giảm 15C3D theo quận – T8, T9, T10*</h4>
-      <div class="chart-wrapper"><canvas id="chartQgtInc" height="290"></canvas></div>
-    </div>
-    <div class="chart-card">
-      <h4 data-i18n="qgt-c2-h4">📈 Chỉ số 15C3D (T7 = 100) – xu hướng T7→T9</h4>
-      <div class="chart-wrapper"><canvas id="chartQgtIdx" height="290"></canvas></div>
-    </div>
-  </div>
-
-  <div class="content-row">
-    <div class="table-card" style="flex:1;width:auto;">
-      <h4 data-i18n="qgt-t3-h4">📶 REG – Kích hoạt – Cell*h theo quận (T7 → T10 đến 18/10)</h4>
-      <div style="overflow-x:auto;">
-      <table class="stats-table qgt-table" style="font-size:0.74rem;">
-        <thead>
-          <tr><th rowspan="2" data-i18n="qgt-th-dist">Quận</th><th colspan="6" data-i18n="qgt-th-reg">Thuê bao REG</th><th colspan="6" data-i18n="qgt-th-act">Thuê bao kích hoạt tại trạm</th><th colspan="2">Cell*h</th></tr>
-          <tr><th>T7</th><th>T8</th><th>T9</th><th>T10**</th><th>±T9</th><th>±T10**</th><th>T7</th><th>T8</th><th>T9</th><th>T10**</th><th data-i18n="qgt-th-t9c">T9 (1–18)</th><th data-i18n="qgt-th-vs9c">T10 so cùng kỳ</th><th>T9</th><th>T10 (1–9)</th></tr>
-        </thead>
-        <tbody>
-<tr class="sev-red"><td>Yuyapichis</td><td>1.849</td><td>1.344</td><td>1.143</td><td><strong>1.741</strong></td><td class="neg">-201</td><td class="pos">+598</td><td>58</td><td>52</td><td>28</td><td><strong>47</strong></td><td>5</td><td class="pos">+840,0%</td><td class="neg">8.020</td><td>421</td></tr>
-<tr class="sev-red"><td>Masisea</td><td>686</td><td>696</td><td>680</td><td><strong>673</strong></td><td class="neg">-16</td><td class="neg">-7</td><td>45</td><td>7</td><td>19</td><td><strong>22</strong></td><td>6</td><td class="pos">+266,7%</td><td class="neg">851</td><td>39</td></tr>
-<tr class="sev-yellow"><td>Curimana</td><td>1.896</td><td>1.960</td><td>1.905</td><td><strong>1.921</strong></td><td class="neg">-55</td><td class="pos">+16</td><td>145</td><td>186</td><td>132</td><td><strong>85</strong></td><td>59</td><td class="pos">+44,1%</td><td class="">434</td><td>1,7</td></tr>
-<tr class="sev-yellow"><td>Tournavista</td><td>2.462</td><td>2.785</td><td>2.737</td><td><strong>2.858</strong></td><td class="neg">-48</td><td class="pos">+121</td><td>204</td><td>278</td><td>238</td><td><strong>201</strong></td><td>154</td><td class="pos">+30,5%</td><td class="neg">567</td><td>9,5</td></tr>
-<tr class="sev-green"><td>Nueva Requena</td><td>631</td><td>645</td><td>591</td><td><strong>586</strong></td><td class="neg">-54</td><td class="neg">-5</td><td>33</td><td>34</td><td>19</td><td><strong>25</strong></td><td>13</td><td class="pos">+92,3%</td><td class="">337</td><td>0,2</td></tr>
-<tr class=""><td>Contamana</td><td>984</td><td>1.008</td><td>1.109</td><td><strong>1.257</strong></td><td class="pos">+101</td><td class="pos">+148</td><td>86</td><td>81</td><td>53</td><td><strong>83</strong></td><td>31</td><td class="pos">+167,7%</td><td class="neg">1.193</td><td>76</td></tr>
-<tr><td>Tahuania</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td></tr>
-        </tbody>
-        <tfoot><tr><td data-i18n="qgt-total6">Tổng 6 quận</td><td>8.508</td><td>8.438</td><td>8.165</td><td><strong>9.036</strong></td><td class="neg">-273</td><td class="pos">+871</td><td>571</td><td>638</td><td>489</td><td><strong>463</strong></td><td>268</td><td class="pos">+72,8%</td><td class="neg">11.402</td><td>547</td></tr><tr><td data-i18n="qgt-total-uca">Tổng UCABR (tham chiếu)</td><td>117.663</td><td>121.072</td><td>119.408</td><td><strong>121.043</strong></td><td class="neg">-1.664</td><td class="pos">+1.635</td><td>13.202</td><td>11.307</td><td>9.949</td><td><strong>6.030</strong></td><td>5.470</td><td class="pos">+10,2%</td><td class="neg">95.990</td><td>5.454</td></tr></tfoot>
-      </table>
-      </div>
-      <div class="note-box blue" data-i18n="qgt-note3">📌 <strong>T10** = đến 18/10/2026.</strong> REG: file REG 18/10 (REG_N cuối mỗi tháng). Kích hoạt: file Activar (T7–T10), đếm theo trạm phát sinh kích hoạt (cột bts_active) – chỉ ~85% kích hoạt có gắn trạm; T10 (1–18/10) so với cùng kỳ T9 (1–18/09). Cell*h: file Detail Cell down (1/9 – 9/10), tổng giờ cell bị down × số cell; chữ đỏ ≥ 500 Cell*h/tháng.</div>
-    </div>
-  </div>
-
-  <div class="section-divider">
-    <div class="tag yellow" data-i18n="qgt-tag2">Phần 2</div>
-    <h3 data-i18n="qgt-h3-2">Nhận Định Từng Quận</h3>
-    <div class="line"></div>
-  </div>
-  <div class="qgt-cards">
-<div class="qgt-card" style="background:#fff0f0;border-color:#ef4444;">
-      <div class="qgt-card-head"><span style="color:#9b1c1c;">Yuyapichis</span><span class="sev-cell sev-red" data-i18n="qgt-ev-yuyapichis">Giảm mạnh</span></div>
-      <div class="qgt-card-meta">Puerto Inca · UCABC02 · 5 <span data-i18n="qgt-sites">trạm</span> · <span data-i18n="qgt-share">Tỷ trọng UCABR</span> T7 1,64% → T9 1,32%</div>
-      <div class="qgt-card-txt" data-i18n="qgt-cm-yuyapichis">Giảm 2 tháng liền (T8 −37, T9 −348 / −18,2%). Nguyên nhân chính là <strong>mất sóng</strong>: Cell*h T9 = 8.021 (HUN0184 6.816, HUN0115 994), HUN0184B3U1 có REG = 0 trong T9. REG quận 1.849 → 1.143 (T7→T9), kích hoạt 58 → 28. Đến 18/10 REG hồi lên 1.741, kích hoạt 47 (cùng kỳ T9: 5).</div>
-    </div>
-<div class="qgt-card" style="background:#fff0f0;border-color:#ef4444;">
-      <div class="qgt-card-head"><span style="color:#9b1c1c;">Masisea</span><span class="sev-cell sev-red" data-i18n="qgt-ev-masisea">Giảm mạnh</span></div>
-      <div class="qgt-card-meta">Coronel Portillo · UCABC01 · 1 <span data-i18n="qgt-sites">trạm</span> · <span data-i18n="qgt-share">Tỷ trọng UCABR</span> T7 0,60% → T9 0,55%</div>
-      <div class="qgt-card-txt" data-i18n="qgt-cm-masisea">UCA0025: T9 −72 (−10,0%), churn −102 gấp 3,5 lần TB mới. Cell*h T9 = 851 (cao). REG ổn định ~680 nhưng kích hoạt giảm mạnh 45 → 7 → 19. Đến 18/10: 22 kích hoạt (cùng kỳ 6), 15C3D +79.</div>
-    </div>
-<div class="qgt-card" style="background:#fffbe6;border-color:#f0a800;">
-      <div class="qgt-card-head"><span style="color:#78350f;">Curimana</span><span class="sev-cell sev-yellow" data-i18n="qgt-ev-curimana">Giảm</span></div>
-      <div class="qgt-card-meta">Padre Abad · UCABC02 · 2 <span data-i18n="qgt-sites">trạm</span> · <span data-i18n="qgt-share">Tỷ trọng UCABR</span> T7 1,80% → T9 1,76%</div>
-      <div class="qgt-card-txt" data-i18n="qgt-cm-curimana">T9 −96 (−4,4%), chủ yếu UCA0027 (−117, churn −218). Cell*h T9 = 435. REG giảm nhẹ 1.960 → 1.905; kích hoạt 186 → 132. Đến 18/10: 85 kích hoạt (cùng kỳ 59) nhưng 15C3D chỉ +13 → hồi phục yếu.</div>
-    </div>
-<div class="qgt-card" style="background:#fffbe6;border-color:#f0a800;">
-      <div class="qgt-card-head"><span style="color:#78350f;">Tournavista</span><span class="sev-cell sev-yellow" data-i18n="qgt-ev-tournavista">Giảm nhẹ</span></div>
-      <div class="qgt-card-meta">Puerto Inca · UCABC02 · 3 <span data-i18n="qgt-sites">trạm</span> · <span data-i18n="qgt-share">Tỷ trọng UCABR</span> T7 2,26% → T9 2,45%</div>
-      <div class="qgt-card-txt" data-i18n="qgt-cm-tournavista">Sau T8 tăng mạnh (+280), T9 −55 (−1,8%). Kích hoạt 278 → 238, REG 2.785 → 2.737; Cell*h T9 = 567. Đến 18/10: REG 2.858 (cao nhất 4 tháng), kích hoạt 201 vs 154 cùng kỳ → đang hồi phục.</div>
-    </div>
-<div class="qgt-card" style="background:#ecfdf5;border-color:#10b981;">
-      <div class="qgt-card-head"><span style="color:#065f46;">Nueva Requena</span><span class="sev-cell sev-green" data-i18n="qgt-ev-nueva-requena">Cảnh báo</span></div>
-      <div class="qgt-card-meta">Coronel Portillo · UCABC01 · 1 <span data-i18n="qgt-sites">trạm</span> · <span data-i18n="qgt-share">Tỷ trọng UCABR</span> T7 0,54% → T9 0,56%</div>
-      <div class="qgt-card-txt" data-i18n="qgt-cm-nueva-requena">REG giảm liên tục 645 → 591 → 586, kích hoạt 34 → 19. Cell*h T9 = 337. 15C3D T9 +25 nhưng T10 −14 so cùng kỳ (churn −44 > TB mới 29); DT T9 −6,5%.</div>
-    </div>
-<div class="qgt-card" style="background:#eaf2fb;border-color:#7ab0d8;">
-      <div class="qgt-card-head"><span style="color:#0057A8;">Contamana</span><span class="sev-cell" data-i18n="qgt-ev-contamana">Theo dõi đối thủ</span></div>
-      <div class="qgt-card-meta">Ucayali (Loreto) · UCABC01 · 4 <span data-i18n="qgt-sites">trạm</span> · <span data-i18n="qgt-share">Tỷ trọng UCABR</span> T7 0,84% → T9 0,92%</div>
-      <div class="qgt-card-txt" data-i18n="qgt-cm-contamana">15C3D tăng 3 tháng (+37 / +57 / +138), REG tăng 984 → 1.257. Cell*h T9 = 1.193 (LOR0281: 1.061). Bitel vẫn tăng → giảm thị phần do đối thủ tăng nhanh hơn; cần khảo sát đối thủ và xử lý mất sóng LOR0281.</div>
-    </div>
-<div class="qgt-card" style="background:#eaf2fb;border-color:#7ab0d8;">
-      <div class="qgt-card-head"><span style="color:#0057A8;">Tahuania</span><span class="sev-cell" data-i18n="qgt-ev-tahuania">Chưa có trạm</span></div>
-      <div class="qgt-card-meta">Atalaya · — · 0 <span data-i18n="qgt-sites">trạm</span> · <span data-i18n="qgt-share">Tỷ trọng UCABR</span> T7 — → T9 —</div>
-      <div class="qgt-card-txt" data-i18n="qgt-cm-tahuania">Không có trạm BTS Bitel trong file 22/10 → không có số liệu 15C3D/REG/kích hoạt. Cần đánh giá phủ sóng / kế hoạch trạm mới.</div>
-    </div>
-  </div>
-
-  <div class="section-divider">
-    <div class="tag" data-i18n="qgt-tag3">Phần 3</div>
-    <h3 data-i18n="qgt-h3-3">Chi Tiết Theo Trạm BTS (16 trạm)</h3>
-    <div class="line"></div>
-  </div>
-  <div class="content-row">
-    <div class="table-card" style="flex:1;width:auto;">
-      <h4 data-i18n="qgt-t2-h4">🗼 15C3D, churn, TB mới, doanh thu theo trạm – sắp theo quận, giảm T9 nhiều nhất lên đầu</h4>
-      <div style="overflow-x:auto;">
-      <table class="stats-table qgt-table" style="font-size:0.74rem;">
-        <thead>
-          <tr><th rowspan="2" data-i18n="th-site">Trạm</th><th rowspan="2" style="text-align:left;" data-i18n="qgt-th-dist">Quận</th>
-              <th colspan="4" data-i18n="qgt-th-15">Thuê bao 15C3D</th><th colspan="3" data-i18n="qgt-th-inc">Tăng / Giảm 15C3D</th>
-              <th colspan="2" data-i18n="qgt-th-flow">Biến động T9</th><th colspan="3" data-i18n="qgt-th-rev2">Doanh thu (PEN)</th></tr>
-          <tr><th>T7</th><th>T8</th><th>T9</th><th>T10*</th><th>T8</th><th>T9</th><th>T10*</th><th>Churn</th><th data-i18n="qgt-th-new">TB mới</th><th>T8</th><th>T9</th><th>%T9</th></tr>
-        </thead>
-        <tbody>
-<tr class="sev-red"><td>HUN0115</td><td style="text-align:left;">Yuyapichis</td><td>842</td><td>696</td><td><strong>495</strong></td><td>470</td><td class="neg">-146</td><td class="neg">-201</td><td class="pos">+56</td><td class="neg">-222</td><td>18</td><td>17.410</td><td>11.375</td><td class="neg">-34,7%</td></tr>
-<tr class="sev-red"><td>HUN0184B3U1 <span class="sev-cell sev-red" style="font-size:0.66rem;">T9 = 0</span></td><td style="text-align:left;">Yuyapichis</td><td>240</td><td>175</td><td><strong>0</strong></td><td>179</td><td class="neg">-65</td><td class="neg">-175</td><td class="pos">+179</td><td class="neg">-175</td><td>0</td><td>3.685</td><td>0</td><td class="neg">-100,0%</td></tr>
-<tr class="sev-green"><td>HUN0184B3U2</td><td style="text-align:left;">Yuyapichis</td><td>250</td><td>383</td><td><strong>363</strong></td><td>265</td><td class="pos">+133</td><td class="neg">-20</td><td class="neg">-31</td><td class="neg">-27</td><td>7</td><td>9.813</td><td>8.891</td><td class="neg">-9,4%</td></tr>
-<tr class=""><td>HUN0171</td><td style="text-align:left;">Yuyapichis</td><td>322</td><td>338</td><td><strong>324</strong></td><td>253</td><td class="pos">+16</td><td class="neg">-14</td><td class="neg">-4</td><td class="neg">-29</td><td>15</td><td>9.576</td><td>9.304</td><td class="neg">-2,8%</td></tr>
-<tr class=""><td>HUN0184</td><td style="text-align:left;">Yuyapichis</td><td>300</td><td>325</td><td><strong>387</strong></td><td>245</td><td class="pos">+25</td><td class="pos">+62</td><td class="neg">-62</td><td class="pos">+41</td><td>16</td><td>9.550</td><td>10.124</td><td class="pos">+6,0%</td></tr>
-<tr class="sev-yellow"><td>UCA0025</td><td style="text-align:left;">Masisea</td><td>718</td><td>722</td><td><strong>650</strong></td><td>605</td><td class="pos">+4</td><td class="neg">-72</td><td class="pos">+79</td><td class="neg">-102</td><td>29</td><td>17.709</td><td>15.496</td><td class="neg">-12,5%</td></tr>
-<tr class="sev-red"><td>UCA0027</td><td style="text-align:left;">Curimana</td><td>1.862</td><td>1.918</td><td><strong>1.801</strong></td><td>1.388</td><td class="pos">+56</td><td class="neg">-117</td><td class="pos">+34</td><td class="neg">-218</td><td>98</td><td>52.651</td><td>48.893</td><td class="neg">-7,1%</td></tr>
-<tr class=""><td>UCA0141</td><td style="text-align:left;">Curimana</td><td>277</td><td>274</td><td><strong>295</strong></td><td>209</td><td class="neg">-3</td><td class="pos">+21</td><td class="neg">-21</td><td class="pos">+1</td><td>20</td><td>6.295</td><td>6.677</td><td class="pos">+6,1%</td></tr>
-<tr class="sev-green"><td>HUN0142B3U1</td><td style="text-align:left;">Tournavista</td><td>465</td><td>495</td><td><strong>470</strong></td><td>381</td><td class="pos">+30</td><td class="neg">-25</td><td class="neg">-11</td><td class="neg">-51</td><td>26</td><td>13.804</td><td>12.712</td><td class="neg">-7,9%</td></tr>
-<tr class=""><td>UCA0082</td><td style="text-align:left;">Tournavista</td><td>2.012</td><td>2.272</td><td><strong>2.253</strong></td><td>1.946</td><td class="pos">+260</td><td class="neg">-19</td><td class="pos">+158</td><td class="neg">-170</td><td>148</td><td>52.162</td><td>50.012</td><td class="neg">-4,1%</td></tr>
-<tr class=""><td>HUN0185</td><td style="text-align:left;">Tournavista</td><td>216</td><td>206</td><td><strong>195</strong></td><td>166</td><td class="neg">-10</td><td class="neg">-11</td><td class="pos">+5</td><td class="neg">-33</td><td>21</td><td>5.683</td><td>5.353</td><td class="neg">-5,8%</td></tr>
-<tr class=""><td>UCA0026</td><td style="text-align:left;">Nueva Requena</td><td>641</td><td>643</td><td><strong>668</strong></td><td>522</td><td class="pos">+2</td><td class="pos">+25</td><td class="neg">-14</td><td class="neg">-19</td><td>40</td><td>15.997</td><td>14.964</td><td class="neg">-6,5%</td></tr>
-<tr class="sev-green"><td>LOR0137</td><td style="text-align:left;">Contamana</td><td>259</td><td>285</td><td><strong>247</strong></td><td>249</td><td class="pos">+26</td><td class="neg">-38</td><td class="pos">+46</td><td class="neg">-57</td><td>18</td><td>6.885</td><td>6.099</td><td class="neg">-11,4%</td></tr>
-<tr class=""><td>LOR0029</td><td style="text-align:left;">Contamana</td><td>275</td><td>298</td><td><strong>278</strong></td><td>289</td><td class="pos">+23</td><td class="neg">-19</td><td class="pos">+67</td><td class="neg">-44</td><td>25</td><td>7.077</td><td>6.378</td><td class="neg">-9,9%</td></tr>
-<tr class=""><td>LOR0282</td><td style="text-align:left;">Contamana</td><td>227</td><td>219</td><td><strong>231</strong></td><td>206</td><td class="neg">-8</td><td class="pos">+12</td><td class="pos">+19</td><td class="neg">-3</td><td>15</td><td>5.754</td><td>5.785</td><td class="pos">+0,5%</td></tr>
-<tr class=""><td>LOR0281</td><td style="text-align:left;">Contamana</td><td>239</td><td>235</td><td><strong>337</strong></td><td>303</td><td class="neg">-4</td><td class="pos">+102</td><td class="pos">+6</td><td class="pos">+88</td><td>14</td><td>4.837</td><td>6.586</td><td class="pos">+36,2%</td></tr>
-        </tbody>
-      </table>
-      </div>
-    </div>
-  </div>
-
-  <div class="content-row">
-    <div class="table-card" style="flex:1;width:auto;">
-      <h4 data-i18n="qgt-t4-h4">🗼 REG – Kích hoạt – Cell*h theo trạm (T10 đến 18/10)</h4>
-      <div style="overflow-x:auto;">
-      <table class="stats-table qgt-table" style="font-size:0.74rem;">
-        <thead>
-          <tr><th rowspan="2" data-i18n="th-site">Trạm</th><th rowspan="2" style="text-align:left;" data-i18n="qgt-th-dist">Quận</th><th colspan="5" data-i18n="qgt-th-reg">Thuê bao REG</th><th colspan="5" data-i18n="qgt-th-act">Thuê bao kích hoạt tại trạm</th><th colspan="2">Cell*h</th></tr>
-          <tr><th>T7</th><th>T8</th><th>T9</th><th>T10**</th><th>±T9</th><th>T7</th><th>T8</th><th>T9</th><th>T10**</th><th data-i18n="qgt-th-t9c">T9 (1–18)</th><th>T9</th><th>T10 (1–9)</th></tr>
-        </thead>
-        <tbody>
-<tr><td>HUN0115</td><td style="text-align:left;">Yuyapichis</td><td>786</td><td>266</td><td>139</td><td><strong>597</strong></td><td class="neg">-127</td><td>29</td><td>23</td><td>14</td><td><strong>22</strong></td><td>1</td><td class="neg">994</td><td>376</td></tr>
-<tr><td>HUN0184B3U1</td><td style="text-align:left;">Yuyapichis</td><td>235</td><td>81</td><td>0</td><td><strong>232</strong></td><td class="neg">-81</td><td>5</td><td>0</td><td>0</td><td><strong>0</strong></td><td>0</td><td class="">—</td><td>—</td></tr>
-<tr><td>HUN0184B3U2</td><td style="text-align:left;">Yuyapichis</td><td>257</td><td>370</td><td>357</td><td><strong>312</strong></td><td class="neg">-13</td><td>1</td><td>8</td><td>3</td><td><strong>2</strong></td><td>1</td><td class="">—</td><td>—</td></tr>
-<tr><td>HUN0171</td><td style="text-align:left;">Yuyapichis</td><td>287</td><td>316</td><td>301</td><td><strong>316</strong></td><td class="neg">-15</td><td>2</td><td>6</td><td>1</td><td><strong>3</strong></td><td>1</td><td class="">211</td><td>0,9</td></tr>
-<tr><td>HUN0184</td><td style="text-align:left;">Yuyapichis</td><td>284</td><td>311</td><td>346</td><td><strong>284</strong></td><td class="pos">+35</td><td>21</td><td>15</td><td>10</td><td><strong>20</strong></td><td>2</td><td class="neg">6.816</td><td>44</td></tr>
-<tr><td>UCA0025</td><td style="text-align:left;">Masisea</td><td>686</td><td>696</td><td>680</td><td><strong>673</strong></td><td class="neg">-16</td><td>45</td><td>7</td><td>19</td><td><strong>22</strong></td><td>6</td><td class="neg">851</td><td>39</td></tr>
-<tr><td>UCA0027</td><td style="text-align:left;">Curimana</td><td>1.606</td><td>1.690</td><td>1.605</td><td><strong>1.645</strong></td><td class="neg">-85</td><td>141</td><td>179</td><td>128</td><td><strong>84</strong></td><td>57</td><td class="">390</td><td>0,2</td></tr>
-<tr><td>UCA0141</td><td style="text-align:left;">Curimana</td><td>290</td><td>270</td><td>300</td><td><strong>276</strong></td><td class="pos">+30</td><td>4</td><td>7</td><td>4</td><td><strong>1</strong></td><td>2</td><td class="">45</td><td>1,5</td></tr>
-<tr><td>HUN0142B3U1</td><td style="text-align:left;">Tournavista</td><td>408</td><td>469</td><td>423</td><td><strong>439</strong></td><td class="neg">-46</td><td>13</td><td>15</td><td>7</td><td><strong>13</strong></td><td>3</td><td class="">—</td><td>—</td></tr>
-<tr><td>UCA0082</td><td style="text-align:left;">Tournavista</td><td>1.846</td><td>2.113</td><td>2.117</td><td><strong>2.212</strong></td><td class="pos">+4</td><td>167</td><td>254</td><td>209</td><td><strong>186</strong></td><td>132</td><td class="">422</td><td>0,5</td></tr>
-<tr><td>HUN0185</td><td style="text-align:left;">Tournavista</td><td>208</td><td>203</td><td>197</td><td><strong>207</strong></td><td class="neg">-6</td><td>24</td><td>9</td><td>22</td><td><strong>2</strong></td><td>19</td><td class="">145</td><td>9,0</td></tr>
-<tr><td>UCA0026</td><td style="text-align:left;">Nueva Requena</td><td>631</td><td>645</td><td>591</td><td><strong>586</strong></td><td class="neg">-54</td><td>33</td><td>34</td><td>19</td><td><strong>25</strong></td><td>13</td><td class="">337</td><td>0,2</td></tr>
-<tr><td>LOR0137</td><td style="text-align:left;">Contamana</td><td>258</td><td>267</td><td>254</td><td><strong>305</strong></td><td class="neg">-13</td><td>15</td><td>8</td><td>10</td><td><strong>10</strong></td><td>7</td><td class="">0,0</td><td>0,0</td></tr>
-<tr><td>LOR0029</td><td style="text-align:left;">Contamana</td><td>274</td><td>295</td><td>269</td><td><strong>337</strong></td><td class="neg">-26</td><td>37</td><td>45</td><td>23</td><td><strong>29</strong></td><td>12</td><td class="">61</td><td>2,2</td></tr>
-<tr><td>LOR0282</td><td style="text-align:left;">Contamana</td><td>252</td><td>239</td><td>247</td><td><strong>272</strong></td><td class="pos">+8</td><td>28</td><td>22</td><td>18</td><td><strong>40</strong></td><td>11</td><td class="">70</td><td>72</td></tr>
-<tr><td>LOR0281</td><td style="text-align:left;">Contamana</td><td>200</td><td>207</td><td>339</td><td><strong>343</strong></td><td class="pos">+132</td><td>6</td><td>6</td><td>2</td><td><strong>4</strong></td><td>1</td><td class="neg">1.061</td><td>1,7</td></tr>
-        </tbody>
-      </table>
-      </div>
-      <div class="note-box yellow" data-i18n="qgt-note2">⏳ Cell*h “—”: trạm B3U không có trong file Detail Cell down. Tô màu dòng bảng 15C3D theo mức giảm T9: đỏ ≤ −100, vàng ≤ −50, xanh ≤ −20. Cell*h T10 mới có đến 9/10 – sẽ cập nhật khi có file mới.</div>
+      <div class="note-box blue" data-i18n="qgt-note5">📌 <strong>T9 = cả tháng 9; T10 = đến 18/10/2026.</strong> 15C3D, Churn: file 15C3D 18/10 – “± cùng kỳ” = 15C3D ngày 18/10 so với ngày 18/09. REG: số REG_N ngày 30/09 và 18/10. Kích hoạt: số thuê bao kích hoạt có gắn trạm (file Activar) – “± cùng kỳ” = T10 (1–18/10) so với T9 (1–18/09). Churn ± = Churn T10 − Churn T9 (T10 mới 18 ngày). Cell*h &amp; Sự cố: file Detail Cell down – T10 mới có đến 09/10; Sự cố = số lần cảnh báo cell/trạm down. Tahuania chưa có trạm Bitel. Dòng viền đỏ: 15C3D giảm so với cùng kỳ.</div>
     </div>
   </div>
 </div><!-- /#tabpanel-qgt -->
@@ -4541,35 +4374,6 @@ const mnpDailyOut = [49,51,80,70,32,71,83,71,34,64,59,12,99,75,61,68,80,65,25];
 })();
 
 
-// ── TAB QUẬN GIẢM THỊ PHẦN (22/10/2026) ───────────────────
-const qgtLabels = ["Yuyapichis", "Masisea", "Curimana", "Tournavista", "Nueva Requena", "Contamana"];
-const qgtInc8 = [-37, 4, 53, 280, 2, 37], qgtInc9 = [-348, -72, -96, -55, 25, 57], qgtInc10 = [138, 79, 13, 152, -14, 138];
-const qgtIdx = {"Yuyapichis": [100, 98.1, 80.3], "Masisea": [100, 100.6, 90.5], "Curimana": [100, 102.5, 98.0], "Tournavista": [100, 110.4, 108.4], "Nueva Requena": [100, 100.3, 104.2], "Contamana": [100, 103.7, 109.3], "UCABR": [100, 102.0, 100.0]};
-(function(){
-  const c1 = document.getElementById('chartQgtInc');
-  if (c1) new Chart(c1, { type:'bar',
-    data:{ labels: qgtLabels, datasets:[
-      { label:'T8', data:qgtInc8, backgroundColor:'rgba(0,87,168,0.55)', borderColor:'#0057A8', borderWidth:1.5, borderRadius:4 },
-      { label:'T9', data:qgtInc9, backgroundColor:qgtInc9.map(v=>v>=0?'rgba(0,128,0,0.6)':'rgba(192,57,43,0.75)'), borderColor:qgtInc9.map(v=>v>=0?'#15803d':'#c0392b'), borderWidth:1.5, borderRadius:4 },
-      { label:'T10* (cùng kỳ 21/10)', data:qgtInc10, backgroundColor:'rgba(255,209,0,0.75)', borderColor:'#c8a000', borderWidth:1.5, borderRadius:4 } ]},
-    options:{ responsive:true, maintainAspectRatio:false,
-      plugins:{ legend:{ position:'top', labels:{ font:{ size:12 } } }, tooltip:{ mode:'index', intersect:false } },
-      scales:{ y:{ grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 } } }, x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } } } });
-  const c2 = document.getElementById('chartQgtIdx');
-  const pal = ['#c62828','#e65100','#0057A8','#7b1fa2','#1a8a3a','#c8a000'];
-  if (c2) {
-    const ds = Object.keys(qgtIdx).map(function(k,i){
-      const isU = k==='UCABR';
-      return { label:k, data:qgtIdx[k], borderColor:isU?'#003a75':pal[i%pal.length], backgroundColor:isU?'#003a75':pal[i%pal.length],
-               borderWidth:isU?3:2, borderDash:isU?[6,4]:[], tension:0.25, pointRadius:4, fill:false };
-    });
-    new Chart(c2, { type:'line', data:{ labels:['T7','T8','T9'], datasets:ds },
-      options:{ responsive:true, maintainAspectRatio:false,
-        plugins:{ legend:{ position:'top', labels:{ font:{ size:11 }, boxWidth:14 } }, tooltip:{ mode:'index', intersect:false } },
-        scales:{ y:{ grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 } } }, x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } } } });
-  }
-})();
-
 // ── LANG / LOGIN / LOGOUT ─────────────────────────────────
 // ── I18N DICTIONARY ────────────────────────────────────────
 const I18N = {
@@ -4580,6 +4384,12 @@ const I18N = {
     'tab-dashboard': '📊 Dashboard chung',
     'tab-mobile': '📶 Di động',
     'tab-digital': '💻 Digital',
+    'qgt-t5-h4': '📋 Số liệu T9 – T10/2026 theo quận (T10 đến 18/10)',
+    'qgt-th-act2': 'Kích hoạt',
+    'qgt-th-inc2': 'Sự cố',
+    'qgt-th-pm1': '± cùng kỳ',
+    'qgt-th-pm1b': '± cùng kỳ',
+    'qgt-note5': '📌 <strong>T9 = cả tháng 9; T10 = đến 18/10/2026.</strong> 15C3D, Churn: file 15C3D 18/10 – “± cùng kỳ” = 15C3D ngày 18/10 so với ngày 18/09. REG: số REG_N ngày 30/09 và 18/10. Kích hoạt: số thuê bao kích hoạt có gắn trạm (file Activar) – “± cùng kỳ” = T10 (1–18/10) so với T9 (1–18/09). Churn ± = Churn T10 − Churn T9 (T10 mới 18 ngày). Cell*h &amp; Sự cố: file Detail Cell down – T10 mới có đến 09/10; Sự cố = số lần cảnh báo cell/trạm down. Tahuania chưa có trạm Bitel. Dòng viền đỏ: 15C3D giảm so với cùng kỳ.',
     'tab-qgt': '📉 Quận giảm thị phần',
     'qgt-tag0': 'Tháng 9 / 2026',
     'qgt-h3-0': 'Quận Giảm Thị Phần – Tháng 9/2026 (7 quận)',
@@ -4822,6 +4632,12 @@ const I18N = {
     'tab-dashboard': '📊 Panel General',
     'tab-mobile': '📶 Móvil',
     'tab-digital': '💻 Digital',
+    'qgt-t5-h4': '📋 Datos sep. – oct. 2026 por distrito (oct. al 18/10)',
+    'qgt-th-act2': 'Activaciones',
+    'qgt-th-inc2': 'Incidencias',
+    'qgt-th-pm1': '± mismo periodo',
+    'qgt-th-pm1b': '± mismo periodo',
+    'qgt-note5': '📌 <strong>Sep. = mes completo; Oct. = al 18/10/2026.</strong> 15C3D, Churn: archivo 15C3D 18/10 – “± mismo periodo” = 15C3D al 18/10 vs 18/09. REG: REG_N al 30/09 y 18/10. Activaciones: altas con estación asignada (archivo Activar) – “± mismo periodo” = oct. (1–18/10) vs sep. (1–18/09). Churn ± = Churn oct. − Churn sep. (oct. solo 18 días). Cell*h e Incidencias: archivo Detail Cell down – oct. solo hasta el 09/10; Incidencias = n° de alarmas de celda/estación caída. Tahuania sin estación Bitel. Fila con borde rojo: 15C3D cae vs mismo periodo.',
     'tab-qgt': '📉 Distritos con caída de participación',
     'qgt-tag0': 'Septiembre 2026',
     'qgt-h3-0': 'Distritos con Caída de Participación – Septiembre 2026 (7 distritos)',
@@ -5064,6 +4880,12 @@ const I18N = {
     'tab-dashboard': '📊 General Dashboard',
     'tab-mobile': '📶 Mobile',
     'tab-digital': '💻 Digital',
+    'qgt-t5-h4': '📋 Sep – Oct 2026 data by district (Oct to 18/10)',
+    'qgt-th-act2': 'Activations',
+    'qgt-th-inc2': 'Incidents',
+    'qgt-th-pm1': '± same period',
+    'qgt-th-pm1b': '± same period',
+    'qgt-note5': '📌 <strong>Sep = full month; Oct = up to 18/10/2026.</strong> 15C3D, Churn: 15C3D file 18/10 – “± same period” = 15C3D at 18/10 vs 18/09. REG: REG_N at 30/09 and 18/10. Activations: activations with a site (Activar file) – “± same period” = Oct (1–18/10) vs Sep (1–18/09). Churn ± = Oct churn − Sep churn (Oct only 18 days). Cell*h & Incidents: Detail Cell down file – Oct only up to 09/10; Incidents = number of cell/site-down alarms. Tahuania has no Bitel site. Red-border row: 15C3D down vs same period.',
     'tab-qgt': '📉 Districts losing share',
     'qgt-tag0': 'September 2026',
     'qgt-h3-0': 'Districts Losing Market Share – September 2026 (7 districts)',
