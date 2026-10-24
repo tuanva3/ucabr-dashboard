@@ -130,6 +130,9 @@
     padding: 9px 10px; text-align: right; font-size: 0.8rem;
   }
   .stats-table tfoot td:first-child { text-align: left; }
+  .stats-table.tight { font-size:0.76rem; }
+  .stats-table.tight thead tr th { padding:7px 5px; font-size:0.68rem; letter-spacing:0.2px; }
+  .stats-table.tight td, .stats-table.tight tfoot td { padding:7px 5px; white-space:nowrap; }
   .pos { color: #1a7a30; font-weight: 700; }
   .neg { color: #c62828; font-weight: 700; }
   .yellow-header thead tr th { background: #fff8d0; color: #6a4c00; }
@@ -581,7 +584,7 @@
   </div>
   <div class="table-card">
   <h4 data-i18n="sec1-table-h4">📋 Thống Kê Chi Tiết 15C3D</h4>
-  <table class="stats-table">
+  <table class="stats-table tight">
     <thead><tr><th data-i18n="th-month">Tháng</th><th>KH</th><th data-i18n="th-inc">TH (Increasing)</th><th data-i18n="th-pct">% TH/KH</th><th data-i18n="th-lk">Lũy Kế TH</th></tr></thead>
     <tbody><tr><td>T1</td><td class="pos">1.554</td><td class="neg">-467</td><td class="neg">-30,1%</td><td class="neg">-467</td></tr><tr><td>T2</td><td class="neg">-1.137</td><td class="neg">-256</td><td class="pos">22,5% (**)</td><td class="neg">-723</td></tr><tr><td>T3</td><td class="pos">4.422</td><td class="pos">6.203</td><td class="pos">140,3%</td><td class="pos">5.480</td></tr><tr><td>T4</td><td class="pos">559</td><td class="pos">533</td><td class="neg">95,3%</td><td class="pos">6.013</td></tr><tr><td>T5</td><td class="pos">3.332</td><td class="pos">2.893</td><td class="neg">86,8%</td><td class="pos">8.906</td></tr><tr><td>T6</td><td class="pos">825</td><td class="pos">1.903</td><td class="pos">230,7%</td><td class="pos">10.809</td></tr><tr><td>T7</td><td class="pos">2.247</td><td class="neg">-525</td><td class="neg">-23,4%</td><td class="pos">10.284</td></tr><tr><td>T8</td><td class="pos">1.617</td><td class="pos">2.324</td><td class="pos">143,7%</td><td class="pos">12.608</td></tr><tr><td>T9</td><td class="pos">835</td><td class="neg">-2.275</td><td class="neg">-272,5%</td><td class="pos">10.333</td></tr><tr><td>T10 (*)</td><td class="pos">1.617</td><td class="pos">1.153</td><td class="neg">71,3%</td><td class="pos">11.486</td></tr></tbody>
     <tfoot><tr><td data-i18n="tfoot-lk">LK T1–T10</td><td class="pos">+15.871</td><td class="pos">+11.486</td><td>72,4%</td><td class="pos">11.486</td></tr></tfoot>
@@ -757,7 +760,7 @@
   </div>
   <div class="table-card">
   <h4 data-i18n="sec3-table-h4">📋 Thống Kê Chi Tiết Revenue (PEN)</h4>
-  <table class="stats-table" style="--hdr-bg:#1a8a3a;">
+  <table class="stats-table tight" style="--hdr-bg:#1a8a3a;">
     <thead><tr><th data-i18n="th-month">Tháng</th><th>KH</th><th>Rev N</th><th data-i18n="th-pct">% TH/KH</th><th>Rev N-1</th><th data-i18n="th-diff">Chênh lệch</th></tr></thead>
     <tbody><tr><td>T1</td><td>2.790.163</td><td>2.809.731</td><td class="pos">100,7%</td><td>2.837.293</td><td class="neg">-27.562</td></tr><tr><td>T2</td><td>2.780.630</td><td>2.730.577</td><td class="neg">98,2%</td><td>2.809.564</td><td class="neg">-78.987</td></tr><tr><td>T3</td><td>2.839.169</td><td>2.963.535</td><td class="pos">104,4%</td><td>2.730.467</td><td class="pos">+233.068</td></tr><tr><td>T4</td><td>2.905.108</td><td>2.936.864</td><td class="pos">101,1%</td><td>2.963.595</td><td class="neg">-26.731</td></tr><tr><td>T5</td><td>2.956.612</td><td>3.034.710</td><td class="pos">102,6%</td><td>2.936.904</td><td class="pos">+97.806</td></tr><tr><td>T6</td><td>3.011.639</td><td>3.077.268</td><td class="pos">102,2%</td><td>3.054.748</td><td class="pos">+22.520</td></tr><tr><td>T7</td><td>3.052.303</td><td>2.776.518</td><td class="neg">91,0%</td><td>2.750.462</td><td class="pos">+26.056</td></tr><tr><td>T8</td><td>3.103.449</td><td>3.205.391</td><td class="pos">103,3%</td><td>3.127.774</td><td class="pos">+77.617</td></tr><tr><td>T9</td><td>3.135.901</td><td>3.097.943</td><td class="neg">98,8%</td><td>3.205.285</td><td class="neg">-107.342</td></tr><tr><td>T10 *</td><td>3.168.348</td><td>1.978.832</td><td class="neg">62,5%</td><td>1.952.102</td><td class="pos">+26.730</td></tr></tbody>
     <tfoot><tr><td>T1–T10</td><td>29.743.322</td><td>28.611.369</td><td>96,2%</td><td>28.368.194</td><td class="pos">+243.175</td></tr></tfoot>
