@@ -4110,9 +4110,105 @@
     <h3 data-i18n="qgt-h3-0">Quận Giảm Thị Phần – Tháng 9/2026 (7 quận)</h3>
     <div class="line"></div>
   </div>
+  <div class="week-tabs" style="padding:14px 24px 0;">
+  <div class="week-tab-btn" onclick="showQgtWeek('qgt-w19', this)">
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 3 <span data-i18n="wtb-month">tháng</span> 10</div>
+    <div class="wtb-range">12/10 → 18/10 (*)</div>
+    <div class="wtb-count">T10 <span data-i18n="th-asof">đến</span> 18/10</div>
+  </div>
+  <div class="week-tab-btn active" onclick="showQgtWeek('qgt-w20', this)">
+    <div class="wtb-title"><span data-i18n="wtb-week">Tuần</span> 4 <span data-i18n="wtb-month">tháng</span> 10</div>
+    <div class="wtb-range">19/10 → 25/10 (*)</div>
+    <div class="wtb-count">T10 <span data-i18n="th-asof">đến</span> 25/10</div>
+  </div>
+  </div>
+<div id="qgt-w19" class="qgt-week-panel" style="display:none">
   <div class="content-row">
     <div class="table-card" style="flex:1;width:auto;min-width:0;">
-      <h4 data-i18n="qgt-t5-h4">📋 Số liệu T9 – T10/2026 theo quận (T10 đến 18/10)</h4>
+      <h4 data-i18n="qgt-t5-h4-w19">📋 Số liệu T9 – T10/2026 theo quận (T10 đến 18/10)</h4>
+      <div style="overflow-x:auto;">
+      <table class="stats-table qgt-table" style="font-size:0.74rem;">
+        <thead>
+          <tr><th rowspan="2" data-i18n="qgt-th-dist-w19">Quận</th><th rowspan="2" style="text-align:left;">BC</th><th rowspan="2" data-i18n="qgt-th-sites-w19">Số trạm</th>
+              <th colspan="4">15C3D</th><th colspan="2">REG</th><th colspan="3">Cell*h</th><th colspan="3" data-i18n="qgt-th-act2-w19">Kích hoạt</th>
+              <th colspan="3">Churn</th><th colspan="3" data-i18n="qgt-th-inc2-w19">Sự cố</th><th rowspan="2" data-i18n="qgt-th-tr-w19">Xu hướng T10</th></tr>
+          <tr><th>T9</th><th>T10</th><th data-i18n="qgt-th-pm2-w19">± T10−T9</th><th>Increasing 15c3d</th><th>T9</th><th>T10</th><th>T9</th><th>T10</th><th data-i18n="qgt-th-pm2-w19">± T10−T9</th>
+              <th>T9</th><th>T10</th><th data-i18n="qgt-th-pm2-w19">± T10−T9</th><th>T9</th><th>T10</th><th data-i18n="qgt-th-pm2-w19">± T10−T9</th><th>T9</th><th>T10</th><th data-i18n="qgt-th-pm2-w19">± T10−T9</th></tr>
+        </thead>
+        <tbody>
+<tr class="sev-green"><td>Yuyapichis</td><td style="text-align:left;">UCABC02</td><td>5</td><td>1.569</td><td><strong>1.313</strong></td><td class="neg">-256</td><td class="pos"><strong>+126</strong></td><td>1.143</td><td><strong>1.741</strong></td><td class="neg">8.020</td><td>421</td><td class="pos">-7.599</td><td>28</td><td><strong>47</strong></td><td class="pos">+19</td><td class="neg">-412</td><td class="pos">+70</td><td class="pos">+482</td><td>380</td><td><strong>161</strong></td><td class="pos">-219</td><td><span class="sev-cell sev-green" data-i18n="qgt-tr-yuyapichis-w19">Hồi phục mạnh</span></td></tr>
+<tr class="sev-yellow"><td>Masisea</td><td style="text-align:left;">UCABC01</td><td>1</td><td>650</td><td><strong>583</strong></td><td class="neg">-67</td><td class="pos"><strong>+83</strong></td><td>680</td><td><strong>673</strong></td><td class="neg">851</td><td>22</td><td class="pos">-829</td><td>19</td><td><strong>22</strong></td><td class="pos">+3</td><td class="neg">-102</td><td class="pos">+57</td><td class="pos">+159</td><td>73</td><td><strong>17</strong></td><td class="pos">-56</td><td><span class="sev-cell sev-yellow" data-i18n="qgt-tr-masisea-w19">Hồi phục – cần theo dõi</span></td></tr>
+<tr class="sev-red"><td>Curimana</td><td style="text-align:left;">UCABC02</td><td>2</td><td>2.096</td><td><strong>1.520</strong></td><td class="neg">-576</td><td class="neg"><strong>-3</strong></td><td>1.905</td><td><strong>1.921</strong></td><td class="">434</td><td>107</td><td class="pos">-328</td><td>132</td><td><strong>85</strong></td><td class="neg">-47</td><td class="neg">-217</td><td class="neg">-88</td><td class="pos">+129</td><td>68</td><td><strong>26</strong></td><td class="pos">-42</td><td><span class="sev-cell sev-red" data-i18n="qgt-tr-curimana-w19">Chưa hồi phục</span></td></tr>
+<tr class="sev-green"><td>Tournavista</td><td style="text-align:left;">UCABC02</td><td>3</td><td>2.918</td><td><strong>2.376</strong></td><td class="neg">-542</td><td class="pos"><strong>+165</strong></td><td>2.737</td><td><strong>2.858</strong></td><td class="neg">567</td><td>10</td><td class="pos">-557</td><td>238</td><td><strong>201</strong></td><td class="neg">-37</td><td class="neg">-254</td><td class="pos">+36</td><td class="pos">+290</td><td>126</td><td><strong>17</strong></td><td class="pos">-109</td><td><span class="sev-cell sev-green" data-i18n="qgt-tr-tournavista-w19">Hồi phục</span></td></tr>
+<tr class="sev-red"><td>Nueva Requena</td><td style="text-align:left;">UCABC01</td><td>1</td><td>668</td><td><strong>504</strong></td><td class="neg">-164</td><td class="neg"><strong>-3</strong></td><td>591</td><td><strong>586</strong></td><td class="">337</td><td>0</td><td class="pos">-336</td><td>19</td><td><strong>25</strong></td><td class="pos">+6</td><td class="neg">-19</td><td class="neg">-27</td><td class="neg">-8</td><td>74</td><td><strong>8</strong></td><td class="pos">-66</td><td><span class="sev-cell sev-red" data-i18n="qgt-tr-nueva-requena-w19">Xấu đi</span></td></tr>
+<tr class="sev-green"><td>Contamana</td><td style="text-align:left;">UCABC01</td><td>4</td><td>1.093</td><td><strong>999</strong></td><td class="neg">-94</td><td class="pos"><strong>+136</strong></td><td>1.109</td><td><strong>1.257</strong></td><td class="neg">1.193</td><td>76</td><td class="pos">-1.117</td><td>53</td><td><strong>83</strong></td><td class="pos">+30</td><td class="neg">-16</td><td class="pos">+44</td><td class="pos">+60</td><td>663</td><td><strong>43</strong></td><td class="pos">-620</td><td><span class="sev-cell sev-green" data-i18n="qgt-tr-contamana-w19">Tăng tốt</span></td></tr>
+<tr><td>Tahuania</td><td style="text-align:left;">—</td><td>0</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td><span class="sev-cell" data-i18n="qgt-tr-tahuania-w19">Chưa có trạm</span></td></tr>
+        </tbody>
+        <tfoot><tr class=""><td data-i18n="qgt-total6-w19">Tổng 6 quận</td><td style="text-align:left;"></td><td>16</td><td>8.994</td><td><strong>7.295</strong></td><td class="neg">-1.699</td><td class="pos"><strong>+504</strong></td><td>8.165</td><td><strong>9.036</strong></td><td class="neg">11.402</td><td>636</td><td class="pos">-10.766</td><td>489</td><td><strong>463</strong></td><td class="neg">-26</td><td class="neg">-1.020</td><td class="pos">+92</td><td class="pos">+1.112</td><td>1.384</td><td><strong>272</strong></td><td class="pos">-1.112</td><td></td></tr><tr class=""><td data-i18n="qgt-total-uca-w19">Tổng UCABR (tham chiếu)</td><td style="text-align:left;"></td><td>187</td><td>118.987</td><td><strong>89.378</strong></td><td class="neg">-29.609</td><td class="pos"><strong>+1.153</strong></td><td>119.408</td><td><strong>121.043</strong></td><td class="neg">95.990</td><td>24.308</td><td class="pos">-71.681</td><td>9.949</td><td><strong>6.030</strong></td><td class="neg">-3.919</td><td class="neg">-10.338</td><td class="neg">-3.291</td><td class="pos">+7.047</td><td>10.703</td><td><strong>3.181</strong></td><td class="pos">-7.522</td><td></td></tr></tfoot>
+      </table>
+      </div>
+      <div class="note-box blue" data-i18n="qgt-note5-w19">📌 <strong>T9 = cả tháng 9; T10 = đến 18/10/2026</strong> (T10 mới 18 ngày nên số tuyệt đối thấp hơn T9). Cột <strong>± = T10 − T9</strong>. <strong>Increasing 15c3d</strong> = 15C3D ngày 18/10 so với cùng kỳ 18/09 (theo file 15C3D). Cell*h, Sự cố: ± âm (xanh) = giảm mất sóng. 15C3D, Churn: file 15C3D 18/10. REG: REG_N ngày 30/09 và 18/10. Kích hoạt: thuê bao kích hoạt có gắn trạm (file Activar). Cell*h &amp; Sự cố T9: file Detail Cell down. <strong>T10: trạm UCA theo file Cellh 19/10 (đến 18/10, cảnh báo Single/Station down)</strong>; trạm HUN/LOR không có trong file Cellh → giữ số Detail Cell down đến 09/10. Sự cố = số lần cảnh báo cell/trạm down. Tahuania chưa có trạm Bitel. Viền màu đầu dòng theo xu hướng T10 ở Phần 2.</div>
+    </div>
+  </div>
+  <div class="content-row">
+    <div class="chart-card">
+      <h4 data-i18n="qgt-c1b-h4-w19">📊 Increasing 15C3D theo quận – T8, T9, T10 (đến 18/10)</h4>
+      <div class="chart-wrapper"><canvas id="chartQgtInc_w19" height="290"></canvas></div>
+    </div>
+    <div class="chart-card">
+      <h4 data-i18n="qgt-c2b-h4-w19">📈 Chỉ số REG (T7 = 100) – xu hướng T7 → 18/10</h4>
+      <div class="chart-wrapper"><canvas id="chartQgtIdx_w19" height="290"></canvas></div>
+    </div>
+  </div>
+  <div class="section-divider">
+    <div class="tag yellow" data-i18n="qgt-tag2-w19">Phần 2</div>
+    <h3 data-i18n="qgt-h3-2b-w19">Đánh Giá Xu Hướng T10 So Với T9 (tham khảo T7–T8)</h3>
+    <div class="line"></div>
+  </div>
+  <div style="padding:14px 24px 0;"><div class="note-box yellow" style="margin-top:0;font-size:0.82rem;" data-i18n="qgt-sum-w19"><strong>Tổng quan T10 so với T9:</strong> 6 quận có Increasing 15C3D <strong>+504 (+7,4%)</strong>, cao hơn mức chung UCABR (+1,3%) → nhóm quận giảm thị phần đang hồi phục nhanh hơn trung bình. <strong>4/6 quận cải thiện</strong> (Yuyapichis, Tournavista, Contamana, Masisea). <strong>Curimana và Nueva Requena chưa hồi phục</strong>: Nueva Requena mạng ổn → do cạnh tranh; Curimana vừa cạnh tranh vừa mạng UCA0027 xấu đi (Cell*h 106 so với 41 cùng kỳ). Kích hoạt 1–18/10 của 6 quận: 463 so với 268 cùng kỳ (+73%); sự cố mạng so cùng kỳ: 272 so với 628 (−57%) – theo Cellh 19/10 cho trạm UCA (đến 18/10), trạm HUN/LOR vẫn theo số đến 9/10.</div></div>
+  <div class="qgt-cards">
+<div class="qgt-card" style="background:#ecfdf5;border-color:#10b981;">
+      <div class="qgt-card-head"><span style="color:#065f46;">Yuyapichis</span><span class="sev-cell sev-green" data-i18n="qgt-tr-yuyapichis-w19">Hồi phục mạnh</span></div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15-w19">Increasing 15C3D</span>: T8 -37 · T9 -348 · <strong>T10 +126 (+10,6%)</strong></div><div class="qgt-m"><span>REG</span>: T7 1.849 → T8 1.344 → T9 1.143 → <strong>18/10 1.741</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act-w19">Kích hoạt</span>: T7 58 · T8 52 · T9 28 | <strong>1–18/10: 47</strong> vs 5</div><div class="qgt-m"><span data-i18n="qgt-mn-old-w19">Mạng 1–9/10 vs 1–9/09 (trạm HUN/LOR chưa có Cellh mới)</span>: Cell*h <strong>421</strong> vs 1.434 · <span data-i18n="qgt-m-inc-w19">Sự cố</span> <strong>161</strong> vs 208</div><div class="qgt-m"><span>Churn</span>: T9 -412 · <strong>T10 (18/10) +70</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-yuyapichis-w19">Đảo chiều rõ rệt: từ −348 (T9) lên <strong>+126 (+10,6%)</strong>, mức tăng tốt nhất 4 tháng. Nguyên nhân chính là mạng ổn định trở lại (Cell*h giảm 71% so cùng kỳ) và HUN0184B3U1 phát sóng lại: REG +598, kích hoạt 47 so với 5. Tuy nhiên REG (1.741) vẫn dưới mức T7 (1.849) và sự cố vẫn cao nhất 6 quận (161 lần/9 ngày, chủ yếu HUN0115) → cần xử lý dứt điểm HUN0115 để giữ đà.</div>
+    </div>
+<div class="qgt-card" style="background:#ecfdf5;border-color:#10b981;">
+      <div class="qgt-card-head"><span style="color:#065f46;">Tournavista</span><span class="sev-cell sev-green" data-i18n="qgt-tr-tournavista-w19">Hồi phục</span></div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15-w19">Increasing 15C3D</span>: T8 +280 · T9 -55 · <strong>T10 +165 (+7,5%)</strong></div><div class="qgt-m"><span>REG</span>: T7 2.462 → T8 2.785 → T9 2.737 → <strong>18/10 2.858</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act-w19">Kích hoạt</span>: T7 204 · T8 278 · T9 238 | <strong>1–18/10: 201</strong> vs 154</div><div class="qgt-m"><span data-i18n="qgt-mn-mix-w19">Mạng (UCA0082 1–18/10, HUN 1–9/10) vs cùng kỳ</span>: Cell*h <strong>9,7</strong> vs 304 · <span data-i18n="qgt-m-inc-w19">Sự cố</span> <strong>17</strong> vs 70</div><div class="qgt-m"><span>Churn</span>: T9 -254 · <strong>T10 (18/10) +36</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-tournavista-w19">Hồi phục sau T9: <strong>+165 (+7,5%)</strong>, quay lại đà tăng của T8 (+280). REG 2.858, cao nhất 4 tháng; kích hoạt 201 so với 154 cùng kỳ (+31%). Mạng tốt lên rõ: UCA0082 chỉ 0,7 Cell*h trong 1–18/10 (cùng kỳ 285,7), sự cố cả quận 17 so với 70. Đà tốt, tiếp tục giữ kênh bán tại UCA0082.</div>
+    </div>
+<div class="qgt-card" style="background:#ecfdf5;border-color:#10b981;">
+      <div class="qgt-card-head"><span style="color:#065f46;">Contamana</span><span class="sev-cell sev-green" data-i18n="qgt-tr-contamana-w19">Tăng tốt</span></div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15-w19">Increasing 15C3D</span>: T8 +37 · T9 +57 · <strong>T10 +136 (+15,8%)</strong></div><div class="qgt-m"><span>REG</span>: T7 984 → T8 1.008 → T9 1.109 → <strong>18/10 1.257</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act-w19">Kích hoạt</span>: T7 86 · T8 81 · T9 53 | <strong>1–18/10: 83</strong> vs 31</div><div class="qgt-m"><span data-i18n="qgt-mn-old-w19">Mạng 1–9/10 vs 1–9/09 (trạm HUN/LOR chưa có Cellh mới)</span>: Cell*h <strong>76</strong> vs 163 · <span data-i18n="qgt-m-inc-w19">Sự cố</span> <strong>43</strong> vs 207</div><div class="qgt-m"><span>Churn</span>: T9 -16 · <strong>T10 (18/10) +44</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-contamana-w19">Tăng mạnh nhất 4 tháng (+37 / +57 / <strong>+136, +15,8%</strong>). REG 1.257, cao nhất; kích hoạt 83 so với 31 cùng kỳ; sự cố giảm 207 → 43. Bitel vẫn tăng đều, việc giảm thị phần T9 là do đối thủ tăng nhanh hơn → cần đẩy mạnh bán để lấy lại thị phần.</div>
+    </div>
+<div class="qgt-card" style="background:#fffbe6;border-color:#f0a800;">
+      <div class="qgt-card-head"><span style="color:#78350f;">Masisea</span><span class="sev-cell sev-yellow" data-i18n="qgt-tr-masisea-w19">Hồi phục – cần theo dõi</span></div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15-w19">Increasing 15C3D</span>: T8 +4 · T9 -72 · <strong>T10 +83 (+16,6%)</strong></div><div class="qgt-m"><span>REG</span>: T7 686 → T8 696 → T9 680 → <strong>18/10 673</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act-w19">Kích hoạt</span>: T7 45 · T8 7 · T9 19 | <strong>1–18/10: 22</strong> vs 6</div><div class="qgt-m"><span data-i18n="qgt-mn-new-w19">Mạng 1–18/10 vs 1–18/09</span>: Cell*h <strong>22</strong> vs 182 · <span data-i18n="qgt-m-inc-w19">Sự cố</span> <strong>17</strong> vs 31</div><div class="qgt-m"><span>Churn</span>: T9 -102 · <strong>T10 (18/10) +57</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-masisea-w19">15C3D hồi phục: <strong>+83 (+16,6%)</strong> sau −72 ở T9; kích hoạt 22 so với 6. Mạng tại UCA0025 đã ổn định hơn: Cell*h 1–18/10 là 21,8 so với 182,5 cùng kỳ, sự cố 17 so với 31. Điểm cần theo dõi: REG vẫn giảm nhẹ 3 tháng liên tiếp (696 → 680 → 673).</div>
+    </div>
+<div class="qgt-card" style="background:#fff0f0;border-color:#ef4444;">
+      <div class="qgt-card-head"><span style="color:#9b1c1c;">Curimana</span><span class="sev-cell sev-red" data-i18n="qgt-tr-curimana-w19">Chưa hồi phục</span></div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15-w19">Increasing 15C3D</span>: T8 +53 · T9 -96 · <strong>T10 -3 (-0,2%)</strong></div><div class="qgt-m"><span>REG</span>: T7 1.896 → T8 1.960 → T9 1.905 → <strong>18/10 1.921</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act-w19">Kích hoạt</span>: T7 145 · T8 186 · T9 132 | <strong>1–18/10: 85</strong> vs 59</div><div class="qgt-m"><span data-i18n="qgt-mn-new-w19">Mạng 1–18/10 vs 1–18/09</span>: Cell*h <strong>107</strong> vs 62 · <span data-i18n="qgt-m-inc-w19">Sự cố</span> <strong>26</strong> vs 51</div><div class="qgt-m"><span>Churn</span>: T9 -217 · <strong>T10 (18/10) -88</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-curimana-w19">Chưa hồi phục: Increasing <strong>−3 (−0,2%)</strong> sau −96 ở T9. Churn vẫn cao (−88 trong 18 ngày) trong khi thuê bao mới chỉ 81. REG đi ngang 1.921 (thấp hơn T8: 1.960). Kích hoạt có tăng (85 so với 59) nhưng chưa đủ bù churn. <strong>Mạng UCA0027 xấu đi</strong>: Cell*h 1–18/10 là 106,2 so với 41,0 cùng kỳ → cùng với cạnh tranh làm churn cao; cần xử lý mạng UCA0027 và chạy chương trình giữ chân thuê bao.</div>
+    </div>
+<div class="qgt-card" style="background:#fff0f0;border-color:#ef4444;">
+      <div class="qgt-card-head"><span style="color:#9b1c1c;">Nueva Requena</span><span class="sev-cell sev-red" data-i18n="qgt-tr-nueva-requena-w19">Xấu đi</span></div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15-w19">Increasing 15C3D</span>: T8 +2 · T9 +25 · <strong>T10 -3 (-0,6%)</strong></div><div class="qgt-m"><span>REG</span>: T7 631 → T8 645 → T9 591 → <strong>18/10 586</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act-w19">Kích hoạt</span>: T7 33 · T8 34 · T9 19 | <strong>1–18/10: 25</strong> vs 13</div><div class="qgt-m"><span data-i18n="qgt-mn-new-w19">Mạng 1–18/10 vs 1–18/09</span>: Cell*h <strong>0,5</strong> vs 318 · <span data-i18n="qgt-m-inc-w19">Sự cố</span> <strong>8</strong> vs 61</div><div class="qgt-m"><span>Churn</span>: T9 -19 · <strong>T10 (18/10) -27</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-nueva-requena-w19">Xấu đi: từ +25 (T9) sang <strong>−3 (−0,6%)</strong>. REG giảm 3 tháng liên tiếp (645 → 591 → 586); churn T10 −27 đã vượt cả tháng 9 (−19) chỉ sau 18 ngày; thuê bao mới giảm (23 so với 40). Mạng tốt lên rõ (Cell*h 0,5 so với 317,8; sự cố 8 so với 61 cùng kỳ) → nguyên nhân là đối thủ cạnh tranh, cần ưu tiên kênh bán và khuyến mãi tại UCA0026.</div>
+    </div>
+<div class="qgt-card" style="background:#eaf2fb;border-color:#7ab0d8;">
+      <div class="qgt-card-head"><span style="color:#0057A8;">Tahuania</span><span class="sev-cell" data-i18n="qgt-tr-tahuania-w19">Chưa có trạm</span></div>
+      
+      <div class="qgt-card-txt" data-i18n="qgt-tx-tahuania-w19">Không có trạm Bitel nên không đánh giá được xu hướng. Cần đề xuất kế hoạch phủ sóng.</div>
+    </div>
+  </div>
+
+</div><!-- /qgt-w19 -->
+<div id="qgt-w20" class="qgt-week-panel">
+  <div class="content-row">
+    <div class="table-card" style="flex:1;width:auto;min-width:0;">
+      <h4 data-i18n="qgt-t5-h4">📋 Số liệu T9 – T10/2026 theo quận (T10 đến 25/10)</h4>
       <div style="overflow-x:auto;">
       <table class="stats-table qgt-table" style="font-size:0.74rem;">
         <thead>
@@ -4123,27 +4219,29 @@
               <th>T9</th><th>T10</th><th data-i18n="qgt-th-pm2">± T10−T9</th><th>T9</th><th>T10</th><th data-i18n="qgt-th-pm2">± T10−T9</th><th>T9</th><th>T10</th><th data-i18n="qgt-th-pm2">± T10−T9</th></tr>
         </thead>
         <tbody>
-<tr class="sev-green"><td>Yuyapichis</td><td style="text-align:left;">UCABC02</td><td>5</td><td>1.569</td><td><strong>1.313</strong></td><td class="neg">-256</td><td class="pos"><strong>+126</strong></td><td>1.143</td><td><strong>1.741</strong></td><td class="neg">8.020</td><td>421</td><td class="pos">-7.599</td><td>28</td><td><strong>47</strong></td><td class="pos">+19</td><td class="neg">-412</td><td class="pos">+70</td><td class="pos">+482</td><td>380</td><td><strong>161</strong></td><td class="pos">-219</td><td><span class="sev-cell sev-green" data-i18n="qgt-tr-yuyapichis">Hồi phục mạnh</span></td></tr>
-<tr class="sev-yellow"><td>Masisea</td><td style="text-align:left;">UCABC01</td><td>1</td><td>650</td><td><strong>583</strong></td><td class="neg">-67</td><td class="pos"><strong>+83</strong></td><td>680</td><td><strong>673</strong></td><td class="neg">851</td><td>22</td><td class="pos">-829</td><td>19</td><td><strong>22</strong></td><td class="pos">+3</td><td class="neg">-102</td><td class="pos">+57</td><td class="pos">+159</td><td>73</td><td><strong>17</strong></td><td class="pos">-56</td><td><span class="sev-cell sev-yellow" data-i18n="qgt-tr-masisea">Hồi phục – cần theo dõi</span></td></tr>
-<tr class="sev-red"><td>Curimana</td><td style="text-align:left;">UCABC02</td><td>2</td><td>2.096</td><td><strong>1.520</strong></td><td class="neg">-576</td><td class="neg"><strong>-3</strong></td><td>1.905</td><td><strong>1.921</strong></td><td class="">434</td><td>107</td><td class="pos">-328</td><td>132</td><td><strong>85</strong></td><td class="neg">-47</td><td class="neg">-217</td><td class="neg">-88</td><td class="pos">+129</td><td>68</td><td><strong>26</strong></td><td class="pos">-42</td><td><span class="sev-cell sev-red" data-i18n="qgt-tr-curimana">Chưa hồi phục</span></td></tr>
-<tr class="sev-green"><td>Tournavista</td><td style="text-align:left;">UCABC02</td><td>3</td><td>2.918</td><td><strong>2.376</strong></td><td class="neg">-542</td><td class="pos"><strong>+165</strong></td><td>2.737</td><td><strong>2.858</strong></td><td class="neg">567</td><td>10</td><td class="pos">-557</td><td>238</td><td><strong>201</strong></td><td class="neg">-37</td><td class="neg">-254</td><td class="pos">+36</td><td class="pos">+290</td><td>126</td><td><strong>17</strong></td><td class="pos">-109</td><td><span class="sev-cell sev-green" data-i18n="qgt-tr-tournavista">Hồi phục</span></td></tr>
-<tr class="sev-red"><td>Nueva Requena</td><td style="text-align:left;">UCABC01</td><td>1</td><td>668</td><td><strong>504</strong></td><td class="neg">-164</td><td class="neg"><strong>-3</strong></td><td>591</td><td><strong>586</strong></td><td class="">337</td><td>0</td><td class="pos">-336</td><td>19</td><td><strong>25</strong></td><td class="pos">+6</td><td class="neg">-19</td><td class="neg">-27</td><td class="neg">-8</td><td>74</td><td><strong>8</strong></td><td class="pos">-66</td><td><span class="sev-cell sev-red" data-i18n="qgt-tr-nueva-requena">Xấu đi</span></td></tr>
-<tr class="sev-green"><td>Contamana</td><td style="text-align:left;">UCABC01</td><td>4</td><td>1.093</td><td><strong>999</strong></td><td class="neg">-94</td><td class="pos"><strong>+136</strong></td><td>1.109</td><td><strong>1.257</strong></td><td class="neg">1.193</td><td>76</td><td class="pos">-1.117</td><td>53</td><td><strong>83</strong></td><td class="pos">+30</td><td class="neg">-16</td><td class="pos">+44</td><td class="pos">+60</td><td>663</td><td><strong>43</strong></td><td class="pos">-620</td><td><span class="sev-cell sev-green" data-i18n="qgt-tr-contamana">Tăng tốt</span></td></tr>
+<tr class="sev-green"><td>Yuyapichis</td><td style="text-align:left;">UCABC02</td><td>5</td><td>1.569</td><td><strong>1.560</strong></td><td class="neg">-9</td><td class="pos"><strong>+200</strong></td><td>1.143</td><td><strong>1.816</strong></td><td class="neg">8.020</td><td>421</td><td class="pos">-7.599</td><td>28</td><td><strong>58</strong></td><td class="pos">+30</td><td class="neg">-412</td><td class="pos">+114</td><td class="pos">+526</td><td>380</td><td><strong>161</strong></td><td class="pos">-219</td><td><span class="sev-cell sev-green" data-i18n="qgt-tr-yuyapichis">Hồi phục mạnh</span></td></tr>
+<tr class="sev-yellow"><td>Masisea</td><td style="text-align:left;">UCABC01</td><td>1</td><td>650</td><td><strong>633</strong></td><td class="neg">-17</td><td class="pos"><strong>+52</strong></td><td>680</td><td><strong>634</strong></td><td class="neg">851</td><td>22</td><td class="pos">-829</td><td>19</td><td><strong>26</strong></td><td class="pos">+7</td><td class="neg">-102</td><td class="pos">+12</td><td class="pos">+114</td><td>73</td><td><strong>17</strong></td><td class="pos">-56</td><td><span class="sev-cell sev-yellow" data-i18n="qgt-tr-masisea">Hồi phục – cần theo dõi</span></td></tr>
+<tr class="sev-yellow"><td>Curimana</td><td style="text-align:left;">UCABC02</td><td>2</td><td>2.096</td><td><strong>1.800</strong></td><td class="neg">-296</td><td class="pos"><strong>+32</strong></td><td>1.905</td><td><strong>1.915</strong></td><td class="">434</td><td>107</td><td class="pos">-327</td><td>132</td><td><strong>144</strong></td><td class="pos">+12</td><td class="neg">-217</td><td class="neg">-98</td><td class="pos">+119</td><td>68</td><td><strong>26</strong></td><td class="pos">-42</td><td><span class="sev-cell sev-yellow" data-i18n="qgt-tr-curimana">Hồi phục nhẹ – cần theo dõi</span></td></tr>
+<tr class="sev-green"><td>Tournavista</td><td style="text-align:left;">UCABC02</td><td>3</td><td>2.918</td><td><strong>2.699</strong></td><td class="neg">-219</td><td class="pos"><strong>+130</strong></td><td>2.737</td><td><strong>2.910</strong></td><td class="neg">567</td><td>10</td><td class="pos">-557</td><td>238</td><td><strong>271</strong></td><td class="pos">+33</td><td class="neg">-254</td><td class="neg">-52</td><td class="pos">+202</td><td>126</td><td><strong>17</strong></td><td class="pos">-109</td><td><span class="sev-cell sev-green" data-i18n="qgt-tr-tournavista">Hồi phục</span></td></tr>
+<tr class="sev-red"><td>Nueva Requena</td><td style="text-align:left;">UCABC01</td><td>1</td><td>668</td><td><strong>575</strong></td><td class="neg">-93</td><td class="neg"><strong>-16</strong></td><td>591</td><td><strong>612</strong></td><td class="">337</td><td>0</td><td class="pos">-337</td><td>19</td><td><strong>31</strong></td><td class="pos">+12</td><td class="neg">-19</td><td class="neg">-53</td><td class="neg">-34</td><td>74</td><td><strong>8</strong></td><td class="pos">-66</td><td><span class="sev-cell sev-red" data-i18n="qgt-tr-nueva-requena">Xấu đi</span></td></tr>
+<tr class="sev-green"><td>Contamana</td><td style="text-align:left;">UCABC01</td><td>4</td><td>1.093</td><td><strong>1.123</strong></td><td class="pos">+30</td><td class="pos"><strong>+136</strong></td><td>1.109</td><td><strong>1.213</strong></td><td class="neg">1.193</td><td>76</td><td class="pos">-1.117</td><td>53</td><td><strong>100</strong></td><td class="pos">+47</td><td class="neg">-16</td><td class="pos">+16</td><td class="pos">+32</td><td>663</td><td><strong>43</strong></td><td class="pos">-620</td><td><span class="sev-cell sev-green" data-i18n="qgt-tr-contamana">Tăng tốt</span></td></tr>
 <tr><td>Tahuania</td><td style="text-align:left;">—</td><td>0</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td style="color:#aaa;">—</td><td><span class="sev-cell" data-i18n="qgt-tr-tahuania">Chưa có trạm</span></td></tr>
         </tbody>
-        <tfoot><tr class=""><td data-i18n="qgt-total6">Tổng 6 quận</td><td style="text-align:left;"></td><td>16</td><td>8.994</td><td><strong>7.295</strong></td><td class="neg">-1.699</td><td class="pos"><strong>+504</strong></td><td>8.165</td><td><strong>9.036</strong></td><td class="neg">11.402</td><td>636</td><td class="pos">-10.766</td><td>489</td><td><strong>463</strong></td><td class="neg">-26</td><td class="neg">-1.020</td><td class="pos">+92</td><td class="pos">+1.112</td><td>1.384</td><td><strong>272</strong></td><td class="pos">-1.112</td><td></td></tr><tr class=""><td data-i18n="qgt-total-uca">Tổng UCABR (tham chiếu)</td><td style="text-align:left;"></td><td>187</td><td>118.987</td><td><strong>89.378</strong></td><td class="neg">-29.609</td><td class="pos"><strong>+1.153</strong></td><td>119.408</td><td><strong>121.043</strong></td><td class="neg">95.990</td><td>24.308</td><td class="pos">-71.681</td><td>9.949</td><td><strong>6.030</strong></td><td class="neg">-3.919</td><td class="neg">-10.338</td><td class="neg">-3.291</td><td class="pos">+7.047</td><td>10.703</td><td><strong>3.181</strong></td><td class="pos">-7.522</td><td></td></tr></tfoot>
+        <tfoot><tr class=""><td data-i18n="qgt-total6">Tổng 6 quận</td><td style="text-align:left;"></td><td>16</td><td>8.994</td><td><strong>8.390</strong></td><td class="neg">-604</td><td class="pos"><strong>+534</strong></td><td>8.165</td><td><strong>9.100</strong></td><td class="neg">11.402</td><td>636</td><td class="pos">-10.766</td><td>489</td><td><strong>630</strong></td><td class="pos">+141</td><td class="neg">-1.020</td><td class="neg">-61</td><td class="pos">+959</td><td>1.384</td><td><strong>272</strong></td><td class="pos">-1.112</td><td></td></tr>
+<tr class=""><td data-i18n="qgt-total-uca">Tổng UCABR (tham chiếu)</td><td style="text-align:left;"></td><td>187</td><td>118.987</td><td><strong>103.373</strong></td><td class="neg">-15.614</td><td class="pos"><strong>+1.851</strong></td><td>119.408</td><td><strong>122.401</strong></td><td class="neg">95.990</td><td>43.730</td><td style="color:#aaa;">—</td><td>9.949</td><td><strong>8.406</strong></td><td class="neg">-1.543</td><td class="neg">-10.338</td><td class="neg">-4.902</td><td class="pos">+5.436</td><td>10.703</td><td><strong>4.964</strong></td><td style="color:#aaa;">—</td><td></td></tr>
+</tfoot>
       </table>
       </div>
-      <div class="note-box blue" data-i18n="qgt-note5">📌 <strong>T9 = cả tháng 9; T10 = đến 18/10/2026</strong> (T10 mới 18 ngày nên số tuyệt đối thấp hơn T9). Cột <strong>± = T10 − T9</strong>. <strong>Increasing 15c3d</strong> = 15C3D ngày 18/10 so với cùng kỳ 18/09 (theo file 15C3D). Cell*h, Sự cố: ± âm (xanh) = giảm mất sóng. 15C3D, Churn: file 15C3D 18/10. REG: REG_N ngày 30/09 và 18/10. Kích hoạt: thuê bao kích hoạt có gắn trạm (file Activar). Cell*h &amp; Sự cố T9: file Detail Cell down. <strong>T10: trạm UCA theo file Cellh 19/10 (đến 18/10, cảnh báo Single/Station down)</strong>; trạm HUN/LOR không có trong file Cellh → giữ số Detail Cell down đến 09/10. Sự cố = số lần cảnh báo cell/trạm down. Tahuania chưa có trạm Bitel. Viền màu đầu dòng theo xu hướng T10 ở Phần 2.</div>
+      <div class="note-box blue" data-i18n="qgt-note5">📌 <strong>T9 = cả tháng 9; T10 = đến 25/10/2026</strong> (T10 mới 25 ngày nên số tuyệt đối thấp hơn T9). Cột <strong>± = T10 − T9</strong>. <strong>Increasing 15c3d</strong> = 15C3D ngày 25/10 so với cùng kỳ 25/09 (theo file 15C3D). Cell*h, Sự cố: ± âm (xanh) = giảm mất sóng. 15C3D, Churn: file 15C3D 25/10. REG: REG_N ngày 30/09 và 25/10. Kích hoạt: thuê bao kích hoạt có gắn trạm (file Activar). Cell*h &amp; Sự cố T9: file Detail Cell down. <strong>T10: trạm UCA theo file Cellh 26/10 (đến 25/10, cảnh báo Single/Station down)</strong>; trạm HUN/LOR không có trong file Cellh → giữ số Detail Cell down đến 09/10. Sự cố = số lần cảnh báo cell/trạm down. Tahuania chưa có trạm Bitel. Viền màu đầu dòng theo xu hướng T10 ở Phần 2. Dòng Tổng UCABR: Cell*h/Sự cố T10 chỉ gồm trạm UCA (file Cellh), không so sánh ± với T9. Thẻ đánh giá: mạng T10 so với <strong>cả tháng 9</strong>; kích hoạt so với cùng kỳ 1–25/09.</div>
     </div>
   </div>
   <div class="content-row">
     <div class="chart-card">
-      <h4 data-i18n="qgt-c1b-h4">📊 Increasing 15C3D theo quận – T8, T9, T10 (đến 18/10)</h4>
+      <h4 data-i18n="qgt-c1b-h4">📊 Increasing 15C3D theo quận – T8, T9, T10 (đến 25/10)</h4>
       <div class="chart-wrapper"><canvas id="chartQgtInc" height="290"></canvas></div>
     </div>
     <div class="chart-card">
-      <h4 data-i18n="qgt-c2b-h4">📈 Chỉ số REG (T7 = 100) – xu hướng T7 → 18/10</h4>
+      <h4 data-i18n="qgt-c2b-h4">📈 Chỉ số REG (T7 = 100) – xu hướng T7 → 25/10</h4>
       <div class="chart-wrapper"><canvas id="chartQgtIdx" height="290"></canvas></div>
     </div>
   </div>
@@ -4152,37 +4250,37 @@
     <h3 data-i18n="qgt-h3-2b">Đánh Giá Xu Hướng T10 So Với T9 (tham khảo T7–T8)</h3>
     <div class="line"></div>
   </div>
-  <div style="padding:14px 24px 0;"><div class="note-box yellow" style="margin-top:0;font-size:0.82rem;" data-i18n="qgt-sum"><strong>Tổng quan T10 so với T9:</strong> 6 quận có Increasing 15C3D <strong>+504 (+7,4%)</strong>, cao hơn mức chung UCABR (+1,3%) → nhóm quận giảm thị phần đang hồi phục nhanh hơn trung bình. <strong>4/6 quận cải thiện</strong> (Yuyapichis, Tournavista, Contamana, Masisea). <strong>Curimana và Nueva Requena chưa hồi phục</strong>: Nueva Requena mạng ổn → do cạnh tranh; Curimana vừa cạnh tranh vừa mạng UCA0027 xấu đi (Cell*h 106 so với 41 cùng kỳ). Kích hoạt 1–18/10 của 6 quận: 463 so với 268 cùng kỳ (+73%); sự cố mạng so cùng kỳ: 272 so với 628 (−57%) – theo Cellh 19/10 cho trạm UCA (đến 18/10), trạm HUN/LOR vẫn theo số đến 9/10.</div></div>
+  <div style="padding:14px 24px 0;"><div class="note-box yellow" style="margin-top:0;font-size:0.82rem;" data-i18n="qgt-sum"><strong>Tổng quan T10 (đến 25/10) so với T9:</strong> 6 quận có Increasing 15C3D <strong>+534 (+6,8%)</strong>, cao hơn mức chung UCABR (+1,8%). <strong>5/6 quận tăng</strong> (Yuyapichis, Contamana, Tournavista, Masisea và Curimana – Curimana mới chuyển dương). <strong>Nueva Requena vẫn giảm</strong> (−16) dù mạng ổn → do cạnh tranh. Masisea cần theo dõi REG giảm (680 → 634). Kích hoạt 1–25/10 của 6 quận: 630 so với 401 cùng kỳ T9 (+57%). Mạng: trạm UCA theo Cellh 26/10 (đến 25/10); trạm HUN/LOR vẫn theo số đến 9/10.</div></div>
   <div class="qgt-cards">
 <div class="qgt-card" style="background:#ecfdf5;border-color:#10b981;">
       <div class="qgt-card-head"><span style="color:#065f46;">Yuyapichis</span><span class="sev-cell sev-green" data-i18n="qgt-tr-yuyapichis">Hồi phục mạnh</span></div>
-      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 -37 · T9 -348 · <strong>T10 +126 (+10,6%)</strong></div><div class="qgt-m"><span>REG</span>: T7 1.849 → T8 1.344 → T9 1.143 → <strong>18/10 1.741</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 58 · T8 52 · T9 28 | <strong>1–18/10: 47</strong> vs 5</div><div class="qgt-m"><span data-i18n="qgt-mn-old">Mạng 1–9/10 vs 1–9/09 (trạm HUN/LOR chưa có Cellh mới)</span>: Cell*h <strong>421</strong> vs 1.434 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>161</strong> vs 208</div><div class="qgt-m"><span>Churn</span>: T9 -412 · <strong>T10 (18/10) +70</strong></div></div>
-      <div class="qgt-card-txt" data-i18n="qgt-tx-yuyapichis">Đảo chiều rõ rệt: từ −348 (T9) lên <strong>+126 (+10,6%)</strong>, mức tăng tốt nhất 4 tháng. Nguyên nhân chính là mạng ổn định trở lại (Cell*h giảm 71% so cùng kỳ) và HUN0184B3U1 phát sóng lại: REG +598, kích hoạt 47 so với 5. Tuy nhiên REG (1.741) vẫn dưới mức T7 (1.849) và sự cố vẫn cao nhất 6 quận (161 lần/9 ngày, chủ yếu HUN0115) → cần xử lý dứt điểm HUN0115 để giữ đà.</div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 -37 · T9 -348 · <strong>T10 +200 (+14,7%)</strong></div><div class="qgt-m"><span>REG</span>: T7 1.849 → T8 1.344 → T9 1.143 → <strong>25/10 1.816</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 58 · T8 54 · T9 28 | <strong>1–25/10: 58</strong> vs 22</div><div class="qgt-m"><span data-i18n="qgt-mn-old">Mạng 1–9/10 vs cả T9 (trạm HUN/LOR chưa có Cellh mới)</span>: Cell*h <strong>421</strong> vs 8.020 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>161</strong> vs 380</div><div class="qgt-m"><span>Churn</span>: T9 -412 · <strong>T10 (25/10) +114</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-yuyapichis">Tiếp tục hồi phục mạnh: Increasing <strong>+200 (+14,7%)</strong>, cao nhất 6 quận (T9 −348). REG lên 1.816, gần bằng mức T7 (1.849); kích hoạt 1–25/10 đạt 58 so với 22 cùng kỳ T9; churn +114. Mạng trạm HUN mới có số đến 9/10 (Cell*h 421, sự cố 161, chủ yếu HUN0115) → cần file Detail Cell down mới để đánh giá đầy đủ, tiếp tục xử lý HUN0115 để giữ đà.</div>
     </div>
 <div class="qgt-card" style="background:#ecfdf5;border-color:#10b981;">
       <div class="qgt-card-head"><span style="color:#065f46;">Tournavista</span><span class="sev-cell sev-green" data-i18n="qgt-tr-tournavista">Hồi phục</span></div>
-      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 +280 · T9 -55 · <strong>T10 +165 (+7,5%)</strong></div><div class="qgt-m"><span>REG</span>: T7 2.462 → T8 2.785 → T9 2.737 → <strong>18/10 2.858</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 204 · T8 278 · T9 238 | <strong>1–18/10: 201</strong> vs 154</div><div class="qgt-m"><span data-i18n="qgt-mn-mix">Mạng (UCA0082 1–18/10, HUN 1–9/10) vs cùng kỳ</span>: Cell*h <strong>9,7</strong> vs 304 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>17</strong> vs 70</div><div class="qgt-m"><span>Churn</span>: T9 -254 · <strong>T10 (18/10) +36</strong></div></div>
-      <div class="qgt-card-txt" data-i18n="qgt-tx-tournavista">Hồi phục sau T9: <strong>+165 (+7,5%)</strong>, quay lại đà tăng của T8 (+280). REG 2.858, cao nhất 4 tháng; kích hoạt 201 so với 154 cùng kỳ (+31%). Mạng tốt lên rõ: UCA0082 chỉ 0,7 Cell*h trong 1–18/10 (cùng kỳ 285,7), sự cố cả quận 17 so với 70. Đà tốt, tiếp tục giữ kênh bán tại UCA0082.</div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 +280 · T9 -55 · <strong>T10 +130 (+5,1%)</strong></div><div class="qgt-m"><span>REG</span>: T7 2.462 → T8 2.785 → T9 2.737 → <strong>25/10 2.910</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 204 · T8 284 · T9 238 | <strong>1–25/10: 271</strong> vs 202</div><div class="qgt-m"><span data-i18n="qgt-mn-mix">Mạng (UCA0082 1–25/10, HUN 1–9/10) vs cả T9</span>: Cell*h <strong>9,7</strong> vs 567 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>17</strong> vs 126</div><div class="qgt-m"><span>Churn</span>: T9 -254 · <strong>T10 (25/10) -52</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-tournavista">Giữ đà hồi phục: <strong>+130 (+5,1%)</strong> sau −55 ở T9. REG 2.910, cao nhất 4 tháng; kích hoạt 271 so với 202 cùng kỳ (+34%). Mạng tốt: UCA0082 chỉ 0,7 Cell*h trong 1–25/10, sự cố cả quận 17 so với 126 cả T9. Tiếp tục giữ kênh bán tại UCA0082.</div>
     </div>
 <div class="qgt-card" style="background:#ecfdf5;border-color:#10b981;">
       <div class="qgt-card-head"><span style="color:#065f46;">Contamana</span><span class="sev-cell sev-green" data-i18n="qgt-tr-contamana">Tăng tốt</span></div>
-      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 +37 · T9 +57 · <strong>T10 +136 (+15,8%)</strong></div><div class="qgt-m"><span>REG</span>: T7 984 → T8 1.008 → T9 1.109 → <strong>18/10 1.257</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 86 · T8 81 · T9 53 | <strong>1–18/10: 83</strong> vs 31</div><div class="qgt-m"><span data-i18n="qgt-mn-old">Mạng 1–9/10 vs 1–9/09 (trạm HUN/LOR chưa có Cellh mới)</span>: Cell*h <strong>76</strong> vs 163 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>43</strong> vs 207</div><div class="qgt-m"><span>Churn</span>: T9 -16 · <strong>T10 (18/10) +44</strong></div></div>
-      <div class="qgt-card-txt" data-i18n="qgt-tx-contamana">Tăng mạnh nhất 4 tháng (+37 / +57 / <strong>+136, +15,8%</strong>). REG 1.257, cao nhất; kích hoạt 83 so với 31 cùng kỳ; sự cố giảm 207 → 43. Bitel vẫn tăng đều, việc giảm thị phần T9 là do đối thủ tăng nhanh hơn → cần đẩy mạnh bán để lấy lại thị phần.</div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 +37 · T9 +57 · <strong>T10 +136 (+13,8%)</strong></div><div class="qgt-m"><span>REG</span>: T7 984 → T8 1.008 → T9 1.109 → <strong>25/10 1.213</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 86 · T8 84 · T9 53 | <strong>1–25/10: 100</strong> vs 48</div><div class="qgt-m"><span data-i18n="qgt-mn-old">Mạng 1–9/10 vs cả T9 (trạm HUN/LOR chưa có Cellh mới)</span>: Cell*h <strong>76,0</strong> vs 1.193 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>43</strong> vs 663</div><div class="qgt-m"><span>Churn</span>: T9 -16 · <strong>T10 (25/10) +16</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-contamana">Tăng tốt và ổn định: Increasing <strong>+136 (+13,8%)</strong>, REG 1.213 cao nhất 4 tháng, kích hoạt 100 so với 48 cùng kỳ (gấp đôi). Mạng trạm LOR mới có số đến 9/10 (Cell*h 76, sự cố 43). Bitel vẫn tăng đều → tiếp tục đẩy mạnh bán để lấy lại thị phần.</div>
     </div>
 <div class="qgt-card" style="background:#fffbe6;border-color:#f0a800;">
       <div class="qgt-card-head"><span style="color:#78350f;">Masisea</span><span class="sev-cell sev-yellow" data-i18n="qgt-tr-masisea">Hồi phục – cần theo dõi</span></div>
-      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 +4 · T9 -72 · <strong>T10 +83 (+16,6%)</strong></div><div class="qgt-m"><span>REG</span>: T7 686 → T8 696 → T9 680 → <strong>18/10 673</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 45 · T8 7 · T9 19 | <strong>1–18/10: 22</strong> vs 6</div><div class="qgt-m"><span data-i18n="qgt-mn-new">Mạng 1–18/10 vs 1–18/09</span>: Cell*h <strong>22</strong> vs 182 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>17</strong> vs 31</div><div class="qgt-m"><span>Churn</span>: T9 -102 · <strong>T10 (18/10) +57</strong></div></div>
-      <div class="qgt-card-txt" data-i18n="qgt-tx-masisea">15C3D hồi phục: <strong>+83 (+16,6%)</strong> sau −72 ở T9; kích hoạt 22 so với 6. Mạng tại UCA0025 đã ổn định hơn: Cell*h 1–18/10 là 21,8 so với 182,5 cùng kỳ, sự cố 17 so với 31. Điểm cần theo dõi: REG vẫn giảm nhẹ 3 tháng liên tiếp (696 → 680 → 673).</div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 +4 · T9 -72 · <strong>T10 +52 (+9,0%)</strong></div><div class="qgt-m"><span>REG</span>: T7 686 → T8 696 → T9 680 → <strong>25/10 634</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 45 · T8 7 · T9 19 | <strong>1–25/10: 26</strong> vs 13</div><div class="qgt-m"><span data-i18n="qgt-mn-new">Mạng 1–25/10 vs cả T9</span>: Cell*h <strong>21,8</strong> vs 851 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>17</strong> vs 73</div><div class="qgt-m"><span>Churn</span>: T9 -102 · <strong>T10 (25/10) +12</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-masisea">15C3D vẫn tăng: <strong>+52 (+9,0%)</strong> sau −72 ở T9; kích hoạt 26 so với 13 cùng kỳ. Mạng UCA0025 ổn định (Cell*h 21,8 so với 851 cả T9, không phát sinh sự cố mới từ 19/10). Điểm cần theo dõi: REG giảm rõ 680 → 634 (−46) → cần kiểm tra thuê bao rời mạng và đẩy bán tại UCA0025.</div>
     </div>
-<div class="qgt-card" style="background:#fff0f0;border-color:#ef4444;">
-      <div class="qgt-card-head"><span style="color:#9b1c1c;">Curimana</span><span class="sev-cell sev-red" data-i18n="qgt-tr-curimana">Chưa hồi phục</span></div>
-      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 +53 · T9 -96 · <strong>T10 -3 (-0,2%)</strong></div><div class="qgt-m"><span>REG</span>: T7 1.896 → T8 1.960 → T9 1.905 → <strong>18/10 1.921</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 145 · T8 186 · T9 132 | <strong>1–18/10: 85</strong> vs 59</div><div class="qgt-m"><span data-i18n="qgt-mn-new">Mạng 1–18/10 vs 1–18/09</span>: Cell*h <strong>107</strong> vs 62 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>26</strong> vs 51</div><div class="qgt-m"><span>Churn</span>: T9 -217 · <strong>T10 (18/10) -88</strong></div></div>
-      <div class="qgt-card-txt" data-i18n="qgt-tx-curimana">Chưa hồi phục: Increasing <strong>−3 (−0,2%)</strong> sau −96 ở T9. Churn vẫn cao (−88 trong 18 ngày) trong khi thuê bao mới chỉ 81. REG đi ngang 1.921 (thấp hơn T8: 1.960). Kích hoạt có tăng (85 so với 59) nhưng chưa đủ bù churn. <strong>Mạng UCA0027 xấu đi</strong>: Cell*h 1–18/10 là 106,2 so với 41,0 cùng kỳ → cùng với cạnh tranh làm churn cao; cần xử lý mạng UCA0027 và chạy chương trình giữ chân thuê bao.</div>
+<div class="qgt-card" style="background:#fffbe6;border-color:#f0a800;">
+      <div class="qgt-card-head"><span style="color:#78350f;">Curimana</span><span class="sev-cell sev-yellow" data-i18n="qgt-tr-curimana">Hồi phục nhẹ – cần theo dõi</span></div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 +53 · T9 -96 · <strong>T10 +32 (+1,8%)</strong></div><div class="qgt-m"><span>REG</span>: T7 1.896 → T8 1.960 → T9 1.905 → <strong>25/10 1.915</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 145 · T8 187 · T9 132 | <strong>1–25/10: 144</strong> vs 99</div><div class="qgt-m"><span data-i18n="qgt-mn-new">Mạng 1–25/10 vs cả T9</span>: Cell*h <strong>107</strong> vs 434 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>26</strong> vs 68</div><div class="qgt-m"><span>Churn</span>: T9 -217 · <strong>T10 (25/10) -98</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-curimana">Bắt đầu hồi phục nhẹ: Increasing chuyển dương <strong>+32 (+1,8%)</strong> (tuần trước −3). Kích hoạt 144 so với 99 cùng kỳ (+45%), REG 1.915 nhỉnh hơn T9 (1.905). Tuy nhiên churn vẫn −98 và mạng UCA0027 chưa tốt (Cell*h 106 trong T10) → tiếp tục theo dõi, ưu tiên xử lý mạng UCA0027 và giữ đà bán.</div>
     </div>
 <div class="qgt-card" style="background:#fff0f0;border-color:#ef4444;">
       <div class="qgt-card-head"><span style="color:#9b1c1c;">Nueva Requena</span><span class="sev-cell sev-red" data-i18n="qgt-tr-nueva-requena">Xấu đi</span></div>
-      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 +2 · T9 +25 · <strong>T10 -3 (-0,6%)</strong></div><div class="qgt-m"><span>REG</span>: T7 631 → T8 645 → T9 591 → <strong>18/10 586</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 33 · T8 34 · T9 19 | <strong>1–18/10: 25</strong> vs 13</div><div class="qgt-m"><span data-i18n="qgt-mn-new">Mạng 1–18/10 vs 1–18/09</span>: Cell*h <strong>0,5</strong> vs 318 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>8</strong> vs 61</div><div class="qgt-m"><span>Churn</span>: T9 -19 · <strong>T10 (18/10) -27</strong></div></div>
-      <div class="qgt-card-txt" data-i18n="qgt-tx-nueva-requena">Xấu đi: từ +25 (T9) sang <strong>−3 (−0,6%)</strong>. REG giảm 3 tháng liên tiếp (645 → 591 → 586); churn T10 −27 đã vượt cả tháng 9 (−19) chỉ sau 18 ngày; thuê bao mới giảm (23 so với 40). Mạng tốt lên rõ (Cell*h 0,5 so với 317,8; sự cố 8 so với 61 cùng kỳ) → nguyên nhân là đối thủ cạnh tranh, cần ưu tiên kênh bán và khuyến mãi tại UCA0026.</div>
+      <div class="qgt-metrics"><div class="qgt-m"><span data-i18n="qgt-m-15">Increasing 15C3D</span>: T8 +2 · T9 +25 · <strong>T10 -16 (-2,7%)</strong></div><div class="qgt-m"><span>REG</span>: T7 631 → T8 645 → T9 591 → <strong>25/10 612</strong></div><div class="qgt-m"><span data-i18n="qgt-m-act">Kích hoạt</span>: T7 33 · T8 34 · T9 19 | <strong>1–25/10: 31</strong> vs 17</div><div class="qgt-m"><span data-i18n="qgt-mn-new">Mạng 1–25/10 vs cả T9</span>: Cell*h <strong>0,5</strong> vs 337 · <span data-i18n="qgt-m-inc">Sự cố</span> <strong>8</strong> vs 74</div><div class="qgt-m"><span>Churn</span>: T9 -19 · <strong>T10 (25/10) -53</strong></div></div>
+      <div class="qgt-card-txt" data-i18n="qgt-tx-nueva-requena">Vẫn đi xuống: Increasing <strong>−16 (−2,7%)</strong>, 15C3D 575 so với 668 cuối T9. Mạng UCA0026 ổn định (Cell*h 0,5; 8 sự cố) và kích hoạt có tăng (31 so với 17 cùng kỳ), REG nhích lên 612 nhưng churn −53 → nguyên nhân chủ yếu do cạnh tranh, cần chương trình giữ chân thuê bao và tăng điểm bán.</div>
     </div>
 <div class="qgt-card" style="background:#eaf2fb;border-color:#7ab0d8;">
       <div class="qgt-card-head"><span style="color:#0057A8;">Tahuania</span><span class="sev-cell" data-i18n="qgt-tr-tahuania">Chưa có trạm</span></div>
@@ -4191,6 +4289,7 @@
     </div>
   </div>
 
+</div><!-- /qgt-w20 -->
 </div><!-- /#tabpanel-qgt -->
 
 
@@ -4584,34 +4683,44 @@ const mnpDailyOut = [49,51,80,70,32,71,83,71,34,64,59,12,99,75,61,68,80,65,25,80
 })();
 
 
-// ── TAB QUẬN GIẢM THỊ PHẦN (22/10/2026) ───────────────────
-const qgtLabels = ["Yuyapichis", "Masisea", "Curimana", "Tournavista", "Nueva Requena", "Contamana"];
-const qgtInc8 = [-37, 4, 53, 280, 2, 37], qgtInc9 = [-348, -72, -96, -55, 25, 57], qgtInc10 = [126, 83, -3, 165, -3, 136];
-const qgtIdx = {"Yuyapichis": [100, 72.7, 61.8, 94.2], "Masisea": [100, 101.5, 99.1, 98.1], "Curimana": [100, 103.4, 100.5, 101.3], "Tournavista": [100, 113.1, 111.2, 116.1], "Nueva Requena": [100, 102.2, 93.7, 92.9], "Contamana": [100, 102.4, 112.7, 127.7], "UCABR": [100, 102.9, 101.5, 102.9]};
-(function(){
-  const c1 = document.getElementById('chartQgtInc');
+// ── TAB QUẬN GIẢM THỊ PHẦN (22/10/2026) – tuần lưu trữ theo tab ───────────────────
+function showQgtWeek(wid, btn){
+  document.querySelectorAll('.qgt-week-panel').forEach(function(p){p.style.display='none';});
+  var el=document.getElementById(wid); if(el) el.style.display='';
+  document.querySelectorAll('#tabpanel-qgt .week-tab-btn').forEach(function(b){b.classList.remove('active');});
+  if(btn) btn.classList.add('active');
+  if(window.Chart && Chart.instances) setTimeout(function(){Object.keys(Chart.instances).forEach(function(i){try{Chart.instances[i].resize();}catch(e){}});},0);
+}
+function drawQgt(sfx, labels, inc8, inc9, inc10, lbl10, idx, lastLbl){
+  const c1 = document.getElementById('chartQgtInc'+sfx);
   if (c1) new Chart(c1, { type:'bar',
-    data:{ labels: qgtLabels, datasets:[
-      { label:'T8', data:qgtInc8, backgroundColor:'rgba(0,87,168,0.55)', borderColor:'#0057A8', borderWidth:1.5, borderRadius:4 },
-      { label:'T9', data:qgtInc9, backgroundColor:qgtInc9.map(v=>v>=0?'rgba(0,128,0,0.6)':'rgba(192,57,43,0.75)'), borderColor:qgtInc9.map(v=>v>=0?'#15803d':'#c0392b'), borderWidth:1.5, borderRadius:4 },
-      { label:'T10 (18/10 vs 18/09)', data:qgtInc10, backgroundColor:'rgba(255,209,0,0.75)', borderColor:'#c8a000', borderWidth:1.5, borderRadius:4 } ]},
+    data:{ labels: labels, datasets:[
+      { label:'T8', data:inc8, backgroundColor:'rgba(0,87,168,0.55)', borderColor:'#0057A8', borderWidth:1.5, borderRadius:4 },
+      { label:'T9', data:inc9, backgroundColor:inc9.map(v=>v>=0?'rgba(0,128,0,0.6)':'rgba(192,57,43,0.75)'), borderColor:inc9.map(v=>v>=0?'#15803d':'#c0392b'), borderWidth:1.5, borderRadius:4 },
+      { label:lbl10, data:inc10, backgroundColor:'rgba(255,209,0,0.75)', borderColor:'#c8a000', borderWidth:1.5, borderRadius:4 } ]},
     options:{ responsive:true, maintainAspectRatio:false,
       plugins:{ legend:{ position:'top', labels:{ font:{ size:12 } } }, tooltip:{ mode:'index', intersect:false } },
       scales:{ y:{ grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 } } }, x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } } } });
-  const c2 = document.getElementById('chartQgtIdx');
+  const c2 = document.getElementById('chartQgtIdx'+sfx);
   const pal = ['#c62828','#e65100','#0057A8','#7b1fa2','#1a8a3a','#c8a000'];
   if (c2) {
-    const ds = Object.keys(qgtIdx).map(function(k,i){
+    const ds = Object.keys(idx).map(function(k,i){
       const isU = k==='UCABR';
-      return { label:k, data:qgtIdx[k], borderColor:isU?'#003a75':pal[i%pal.length], backgroundColor:isU?'#003a75':pal[i%pal.length],
+      return { label:k, data:idx[k], borderColor:isU?'#003a75':pal[i%pal.length], backgroundColor:isU?'#003a75':pal[i%pal.length],
                borderWidth:isU?3:2, borderDash:isU?[6,4]:[], tension:0.25, pointRadius:4, fill:false };
     });
-    new Chart(c2, { type:'line', data:{ labels:['T7','T8','T9','18/10'], datasets:ds },
+    new Chart(c2, { type:'line', data:{ labels:['T7','T8','T9',lastLbl], datasets:ds },
       options:{ responsive:true, maintainAspectRatio:false,
         plugins:{ legend:{ position:'top', labels:{ font:{ size:11 }, boxWidth:14 } }, tooltip:{ mode:'index', intersect:false } },
         scales:{ y:{ grid:{ color:'rgba(0,0,0,0.06)' }, ticks:{ font:{ size:11 } } }, x:{ grid:{ display:false }, ticks:{ font:{ size:11 } } } } } });
   }
-})();
+}
+const qgtLabels = ["Yuyapichis", "Masisea", "Curimana", "Tournavista", "Nueva Requena", "Contamana"];
+// Tuần 3 tháng 10 (đến 18/10) – lưu trữ
+drawQgt('_w19', qgtLabels, [-37, 4, 53, 280, 2, 37], [-348, -72, -96, -55, 25, 57], [126, 83, -3, 165, -3, 136], 'T10 (18/10 vs 18/09)',
+  {"Yuyapichis": [100, 72.7, 61.8, 94.2], "Masisea": [100, 101.5, 99.1, 98.1], "Curimana": [100, 103.4, 100.5, 101.3], "Tournavista": [100, 113.1, 111.2, 116.1], "Nueva Requena": [100, 102.2, 93.7, 92.9], "Contamana": [100, 102.4, 112.7, 127.7], "UCABR": [100, 102.9, 101.5, 102.9]}, '18/10');
+// Tuần 4 tháng 10 (đến 25/10) – hiện tại
+drawQgt('', qgtLabels, [-37, 4, 53, 280, 2, 37], [-348, -72, -96, -55, 25, 57], [200, 52, 32, 130, -16, 136], 'T10 (25/10 vs 25/09)', {"Yuyapichis": [100, 72.7, 61.8, 98.2], "Masisea": [100, 101.5, 99.1, 92.4], "Curimana": [100, 103.4, 100.5, 101.0], "Tournavista": [100, 113.1, 111.2, 118.2], "Nueva Requena": [100, 102.2, 93.7, 97.0], "Contamana": [100, 102.4, 112.7, 123.3], "UCABR": [100, 102.9, 101.5, 104.0]}, '25/10');
 
 // ── LANG / LOGIN / LOGOUT ─────────────────────────────────
 // ── I18N DICTIONARY ────────────────────────────────────────
@@ -4624,39 +4733,74 @@ const I18N = {
     'tab-mobile': '📶 Di động',
     'tab-digital': '💻 Digital',
     'qgt-h3-2b': 'Đánh Giá Xu Hướng T10 So Với T9 (tham khảo T7–T8)',
-    'qgt-sum': '<strong>Tổng quan T10 so với T9:</strong> 6 quận có Increasing 15C3D <strong>+504 (+7,4%)</strong>, cao hơn mức chung UCABR (+1,3%) → nhóm quận giảm thị phần đang hồi phục nhanh hơn trung bình. <strong>4/6 quận cải thiện</strong> (Yuyapichis, Tournavista, Contamana, Masisea). <strong>Curimana và Nueva Requena chưa hồi phục</strong>: Nueva Requena mạng ổn → do cạnh tranh; Curimana vừa cạnh tranh vừa mạng UCA0027 xấu đi (Cell*h 106 so với 41 cùng kỳ). Kích hoạt 1–18/10 của 6 quận: 463 so với 268 cùng kỳ (+73%); sự cố mạng so cùng kỳ: 272 so với 628 (−57%) – theo Cellh 19/10 cho trạm UCA (đến 18/10), trạm HUN/LOR vẫn theo số đến 9/10.',
+    'qgt-sum': '<strong>Tổng quan T10 (đến 25/10) so với T9:</strong> 6 quận có Increasing 15C3D <strong>+534 (+6,8%)</strong>, cao hơn mức chung UCABR (+1,8%). <strong>5/6 quận tăng</strong> (Yuyapichis, Contamana, Tournavista, Masisea và Curimana – Curimana mới chuyển dương). <strong>Nueva Requena vẫn giảm</strong> (−16) dù mạng ổn → do cạnh tranh. Masisea cần theo dõi REG giảm (680 → 634). Kích hoạt 1–25/10 của 6 quận: 630 so với 401 cùng kỳ T9 (+57%). Mạng: trạm UCA theo Cellh 26/10 (đến 25/10); trạm HUN/LOR vẫn theo số đến 9/10.',
     'qgt-m-15': 'Increasing 15C3D',
     'qgt-m-act': 'Kích hoạt',
     'qgt-m-net': 'Mạng 1–9/10 vs 1–9/09',
-    'qgt-mn-old': 'Mạng 1–9/10 vs 1–9/09 (trạm HUN/LOR chưa có Cellh mới)',
-    'qgt-mn-new': 'Mạng 1–18/10 vs 1–18/09',
-    'qgt-mn-mix': 'Mạng (UCA0082 1–18/10, HUN 1–9/10) vs cùng kỳ',
+    'qgt-mn-old': 'Mạng 1–9/10 vs cả T9 (trạm HUN/LOR chưa có Cellh mới)',
+    'qgt-mn-new': 'Mạng 1–25/10 vs cả T9',
+    'qgt-mn-mix': 'Mạng (UCA0082 1–25/10, HUN 1–9/10) vs cả T9',
     'qgt-m-inc': 'Sự cố',
     'qgt-th-tr': 'Xu hướng T10',
-    'qgt-c1b-h4': '📊 Increasing 15C3D theo quận – T8, T9, T10 (đến 18/10)',
-    'qgt-c2b-h4': '📈 Chỉ số REG (T7 = 100) – xu hướng T7 → 18/10',
+    'qgt-c1b-h4': '📊 Increasing 15C3D theo quận – T8, T9, T10 (đến 25/10)',
+    'qgt-c2b-h4': '📈 Chỉ số REG (T7 = 100) – xu hướng T7 → 25/10',
     'qgt-tr-yuyapichis': 'Hồi phục mạnh',
-    'qgt-tx-yuyapichis': 'Đảo chiều rõ rệt: từ −348 (T9) lên <strong>+126 (+10,6%)</strong>, mức tăng tốt nhất 4 tháng. Nguyên nhân chính là mạng ổn định trở lại (Cell*h giảm 71% so cùng kỳ) và HUN0184B3U1 phát sóng lại: REG +598, kích hoạt 47 so với 5. Tuy nhiên REG (1.741) vẫn dưới mức T7 (1.849) và sự cố vẫn cao nhất 6 quận (161 lần/9 ngày, chủ yếu HUN0115) → cần xử lý dứt điểm HUN0115 để giữ đà.',
+    'qgt-tx-yuyapichis': 'Tiếp tục hồi phục mạnh: Increasing <strong>+200 (+14,7%)</strong>, cao nhất 6 quận (T9 −348). REG lên 1.816, gần bằng mức T7 (1.849); kích hoạt 1–25/10 đạt 58 so với 22 cùng kỳ T9; churn +114. Mạng trạm HUN mới có số đến 9/10 (Cell*h 421, sự cố 161, chủ yếu HUN0115) → cần file Detail Cell down mới để đánh giá đầy đủ, tiếp tục xử lý HUN0115 để giữ đà.',
     'qgt-tr-tournavista': 'Hồi phục',
-    'qgt-tx-tournavista': 'Hồi phục sau T9: <strong>+165 (+7,5%)</strong>, quay lại đà tăng của T8 (+280). REG 2.858, cao nhất 4 tháng; kích hoạt 201 so với 154 cùng kỳ (+31%). Mạng tốt lên rõ: UCA0082 chỉ 0,7 Cell*h trong 1–18/10 (cùng kỳ 285,7), sự cố cả quận 17 so với 70. Đà tốt, tiếp tục giữ kênh bán tại UCA0082.',
+    'qgt-tx-tournavista': 'Giữ đà hồi phục: <strong>+130 (+5,1%)</strong> sau −55 ở T9. REG 2.910, cao nhất 4 tháng; kích hoạt 271 so với 202 cùng kỳ (+34%). Mạng tốt: UCA0082 chỉ 0,7 Cell*h trong 1–25/10, sự cố cả quận 17 so với 126 cả T9. Tiếp tục giữ kênh bán tại UCA0082.',
     'qgt-tr-contamana': 'Tăng tốt',
-    'qgt-tx-contamana': 'Tăng mạnh nhất 4 tháng (+37 / +57 / <strong>+136, +15,8%</strong>). REG 1.257, cao nhất; kích hoạt 83 so với 31 cùng kỳ; sự cố giảm 207 → 43. Bitel vẫn tăng đều, việc giảm thị phần T9 là do đối thủ tăng nhanh hơn → cần đẩy mạnh bán để lấy lại thị phần.',
+    'qgt-tx-contamana': 'Tăng tốt và ổn định: Increasing <strong>+136 (+13,8%)</strong>, REG 1.213 cao nhất 4 tháng, kích hoạt 100 so với 48 cùng kỳ (gấp đôi). Mạng trạm LOR mới có số đến 9/10 (Cell*h 76, sự cố 43). Bitel vẫn tăng đều → tiếp tục đẩy mạnh bán để lấy lại thị phần.',
     'qgt-tr-masisea': 'Hồi phục – cần theo dõi',
-    'qgt-tx-masisea': '15C3D hồi phục: <strong>+83 (+16,6%)</strong> sau −72 ở T9; kích hoạt 22 so với 6. Mạng tại UCA0025 đã ổn định hơn: Cell*h 1–18/10 là 21,8 so với 182,5 cùng kỳ, sự cố 17 so với 31. Điểm cần theo dõi: REG vẫn giảm nhẹ 3 tháng liên tiếp (696 → 680 → 673).',
-    'qgt-tr-curimana': 'Chưa hồi phục',
-    'qgt-tx-curimana': 'Chưa hồi phục: Increasing <strong>−3 (−0,2%)</strong> sau −96 ở T9. Churn vẫn cao (−88 trong 18 ngày) trong khi thuê bao mới chỉ 81. REG đi ngang 1.921 (thấp hơn T8: 1.960). Kích hoạt có tăng (85 so với 59) nhưng chưa đủ bù churn. <strong>Mạng UCA0027 xấu đi</strong>: Cell*h 1–18/10 là 106,2 so với 41,0 cùng kỳ → cùng với cạnh tranh làm churn cao; cần xử lý mạng UCA0027 và chạy chương trình giữ chân thuê bao.',
+    'qgt-tx-masisea': '15C3D vẫn tăng: <strong>+52 (+9,0%)</strong> sau −72 ở T9; kích hoạt 26 so với 13 cùng kỳ. Mạng UCA0025 ổn định (Cell*h 21,8 so với 851 cả T9, không phát sinh sự cố mới từ 19/10). Điểm cần theo dõi: REG giảm rõ 680 → 634 (−46) → cần kiểm tra thuê bao rời mạng và đẩy bán tại UCA0025.',
+    'qgt-tr-curimana': 'Hồi phục nhẹ – cần theo dõi',
+    'qgt-tx-curimana': 'Bắt đầu hồi phục nhẹ: Increasing chuyển dương <strong>+32 (+1,8%)</strong> (tuần trước −3). Kích hoạt 144 so với 99 cùng kỳ (+45%), REG 1.915 nhỉnh hơn T9 (1.905). Tuy nhiên churn vẫn −98 và mạng UCA0027 chưa tốt (Cell*h 106 trong T10) → tiếp tục theo dõi, ưu tiên xử lý mạng UCA0027 và giữ đà bán.',
     'qgt-tr-nueva-requena': 'Xấu đi',
-    'qgt-tx-nueva-requena': 'Xấu đi: từ +25 (T9) sang <strong>−3 (−0,6%)</strong>. REG giảm 3 tháng liên tiếp (645 → 591 → 586); churn T10 −27 đã vượt cả tháng 9 (−19) chỉ sau 18 ngày; thuê bao mới giảm (23 so với 40). Mạng tốt lên rõ (Cell*h 0,5 so với 317,8; sự cố 8 so với 61 cùng kỳ) → nguyên nhân là đối thủ cạnh tranh, cần ưu tiên kênh bán và khuyến mãi tại UCA0026.',
+    'qgt-tx-nueva-requena': 'Vẫn đi xuống: Increasing <strong>−16 (−2,7%)</strong>, 15C3D 575 so với 668 cuối T9. Mạng UCA0026 ổn định (Cell*h 0,5; 8 sự cố) và kích hoạt có tăng (31 so với 17 cùng kỳ), REG nhích lên 612 nhưng churn −53 → nguyên nhân chủ yếu do cạnh tranh, cần chương trình giữ chân thuê bao và tăng điểm bán.',
     'qgt-tr-tahuania': 'Chưa có trạm',
     'qgt-tx-tahuania': 'Không có trạm Bitel nên không đánh giá được xu hướng. Cần đề xuất kế hoạch phủ sóng.',
-    'qgt-t5-h4': '📋 Số liệu T9 – T10/2026 theo quận (T10 đến 18/10)',
+    'qgt-t5-h4': '📋 Số liệu T9 – T10/2026 theo quận (T10 đến 25/10)',
     'qgt-th-act2': 'Kích hoạt',
     'qgt-th-inc2': 'Sự cố',
     'qgt-th-pm1': '± cùng kỳ',
     'qgt-th-pm1b': '± cùng kỳ',
     'qgt-th-pm2': '± T10−T9',
-    'qgt-note5': '📌 <strong>T9 = cả tháng 9; T10 = đến 18/10/2026</strong> (T10 mới 18 ngày nên số tuyệt đối thấp hơn T9). Cột <strong>± = T10 − T9</strong>. <strong>Increasing 15c3d</strong> = 15C3D ngày 18/10 so với cùng kỳ 18/09 (theo file 15C3D). Cell*h, Sự cố: ± âm (xanh) = giảm mất sóng. 15C3D, Churn: file 15C3D 18/10. REG: REG_N ngày 30/09 và 18/10. Kích hoạt: thuê bao kích hoạt có gắn trạm (file Activar). Cell*h &amp; Sự cố T9: file Detail Cell down. <strong>T10: trạm UCA theo file Cellh 19/10 (đến 18/10, cảnh báo Single/Station down)</strong>; trạm HUN/LOR không có trong file Cellh → giữ số Detail Cell down đến 09/10. Sự cố = số lần cảnh báo cell/trạm down. Tahuania chưa có trạm Bitel. Viền màu đầu dòng theo xu hướng T10 ở Phần 2.',
+    'qgt-note5': '📌 <strong>T9 = cả tháng 9; T10 = đến 25/10/2026</strong> (T10 mới 25 ngày nên số tuyệt đối thấp hơn T9). Cột <strong>± = T10 − T9</strong>. <strong>Increasing 15c3d</strong> = 15C3D ngày 25/10 so với cùng kỳ 25/09 (theo file 15C3D). Cell*h, Sự cố: ± âm (xanh) = giảm mất sóng. 15C3D, Churn: file 15C3D 25/10. REG: REG_N ngày 30/09 và 25/10. Kích hoạt: thuê bao kích hoạt có gắn trạm (file Activar). Cell*h &amp; Sự cố T9: file Detail Cell down. <strong>T10: trạm UCA theo file Cellh 26/10 (đến 25/10, cảnh báo Single/Station down)</strong>; trạm HUN/LOR không có trong file Cellh → giữ số Detail Cell down đến 09/10. Sự cố = số lần cảnh báo cell/trạm down. Tahuania chưa có trạm Bitel. Viền màu đầu dòng theo xu hướng T10 ở Phần 2. Dòng Tổng UCABR: Cell*h/Sự cố T10 chỉ gồm trạm UCA (file Cellh), không so sánh ± với T9. Thẻ đánh giá: mạng T10 so với <strong>cả tháng 9</strong>; kích hoạt so với cùng kỳ 1–25/09.',
     'th-fullm': 'cả tháng',
+    'qgt-c1b-h4-w19': '📊 Increasing 15C3D theo quận – T8, T9, T10 (đến 18/10)',
+    'qgt-c2b-h4-w19': '📈 Chỉ số REG (T7 = 100) – xu hướng T7 → 18/10',
+    'qgt-h3-2b-w19': 'Đánh Giá Xu Hướng T10 So Với T9 (tham khảo T7–T8)',
+    'qgt-m-15-w19': 'Increasing 15C3D',
+    'qgt-m-act-w19': 'Kích hoạt',
+    'qgt-m-inc-w19': 'Sự cố',
+    'qgt-mn-mix-w19': 'Mạng (UCA0082 1–18/10, HUN 1–9/10) vs cùng kỳ',
+    'qgt-mn-new-w19': 'Mạng 1–18/10 vs 1–18/09',
+    'qgt-mn-old-w19': 'Mạng 1–9/10 vs 1–9/09 (trạm HUN/LOR chưa có Cellh mới)',
+    'qgt-note5-w19': '📌 <strong>T9 = cả tháng 9; T10 = đến 18/10/2026</strong> (T10 mới 18 ngày nên số tuyệt đối thấp hơn T9). Cột <strong>± = T10 − T9</strong>. <strong>Increasing 15c3d</strong> = 15C3D ngày 18/10 so với cùng kỳ 18/09 (theo file 15C3D). Cell*h, Sự cố: ± âm (xanh) = giảm mất sóng. 15C3D, Churn: file 15C3D 18/10. REG: REG_N ngày 30/09 và 18/10. Kích hoạt: thuê bao kích hoạt có gắn trạm (file Activar). Cell*h &amp; Sự cố T9: file Detail Cell down. <strong>T10: trạm UCA theo file Cellh 19/10 (đến 18/10, cảnh báo Single/Station down)</strong>; trạm HUN/LOR không có trong file Cellh → giữ số Detail Cell down đến 09/10. Sự cố = số lần cảnh báo cell/trạm down. Tahuania chưa có trạm Bitel. Viền màu đầu dòng theo xu hướng T10 ở Phần 2.',
+    'qgt-sum-w19': '<strong>Tổng quan T10 so với T9:</strong> 6 quận có Increasing 15C3D <strong>+504 (+7,4%)</strong>, cao hơn mức chung UCABR (+1,3%) → nhóm quận giảm thị phần đang hồi phục nhanh hơn trung bình. <strong>4/6 quận cải thiện</strong> (Yuyapichis, Tournavista, Contamana, Masisea). <strong>Curimana và Nueva Requena chưa hồi phục</strong>: Nueva Requena mạng ổn → do cạnh tranh; Curimana vừa cạnh tranh vừa mạng UCA0027 xấu đi (Cell*h 106 so với 41 cùng kỳ). Kích hoạt 1–18/10 của 6 quận: 463 so với 268 cùng kỳ (+73%); sự cố mạng so cùng kỳ: 272 so với 628 (−57%) – theo Cellh 19/10 cho trạm UCA (đến 18/10), trạm HUN/LOR vẫn theo số đến 9/10.',
+    'qgt-t5-h4-w19': '📋 Số liệu T9 – T10/2026 theo quận (T10 đến 18/10)',
+    'qgt-tag2-w19': 'Phần 2',
+    'qgt-th-act2-w19': 'Kích hoạt',
+    'qgt-th-dist-w19': 'Quận',
+    'qgt-th-inc2-w19': 'Sự cố',
+    'qgt-th-pm2-w19': '± T10−T9',
+    'qgt-th-sites-w19': 'Số trạm',
+    'qgt-th-tr-w19': 'Xu hướng T10',
+    'qgt-total-uca-w19': 'Tổng UCABR (tham chiếu)',
+    'qgt-total6-w19': 'Tổng 6 quận',
+    'qgt-tr-contamana-w19': 'Tăng tốt',
+    'qgt-tr-curimana-w19': 'Chưa hồi phục',
+    'qgt-tr-masisea-w19': 'Hồi phục – cần theo dõi',
+    'qgt-tr-nueva-requena-w19': 'Xấu đi',
+    'qgt-tr-tahuania-w19': 'Chưa có trạm',
+    'qgt-tr-tournavista-w19': 'Hồi phục',
+    'qgt-tr-yuyapichis-w19': 'Hồi phục mạnh',
+    'qgt-tx-contamana-w19': 'Tăng mạnh nhất 4 tháng (+37 / +57 / <strong>+136, +15,8%</strong>). REG 1.257, cao nhất; kích hoạt 83 so với 31 cùng kỳ; sự cố giảm 207 → 43. Bitel vẫn tăng đều, việc giảm thị phần T9 là do đối thủ tăng nhanh hơn → cần đẩy mạnh bán để lấy lại thị phần.',
+    'qgt-tx-curimana-w19': 'Chưa hồi phục: Increasing <strong>−3 (−0,2%)</strong> sau −96 ở T9. Churn vẫn cao (−88 trong 18 ngày) trong khi thuê bao mới chỉ 81. REG đi ngang 1.921 (thấp hơn T8: 1.960). Kích hoạt có tăng (85 so với 59) nhưng chưa đủ bù churn. <strong>Mạng UCA0027 xấu đi</strong>: Cell*h 1–18/10 là 106,2 so với 41,0 cùng kỳ → cùng với cạnh tranh làm churn cao; cần xử lý mạng UCA0027 và chạy chương trình giữ chân thuê bao.',
+    'qgt-tx-masisea-w19': '15C3D hồi phục: <strong>+83 (+16,6%)</strong> sau −72 ở T9; kích hoạt 22 so với 6. Mạng tại UCA0025 đã ổn định hơn: Cell*h 1–18/10 là 21,8 so với 182,5 cùng kỳ, sự cố 17 so với 31. Điểm cần theo dõi: REG vẫn giảm nhẹ 3 tháng liên tiếp (696 → 680 → 673).',
+    'qgt-tx-nueva-requena-w19': 'Xấu đi: từ +25 (T9) sang <strong>−3 (−0,6%)</strong>. REG giảm 3 tháng liên tiếp (645 → 591 → 586); churn T10 −27 đã vượt cả tháng 9 (−19) chỉ sau 18 ngày; thuê bao mới giảm (23 so với 40). Mạng tốt lên rõ (Cell*h 0,5 so với 317,8; sự cố 8 so với 61 cùng kỳ) → nguyên nhân là đối thủ cạnh tranh, cần ưu tiên kênh bán và khuyến mãi tại UCA0026.',
+    'qgt-tx-tahuania-w19': 'Không có trạm Bitel nên không đánh giá được xu hướng. Cần đề xuất kế hoạch phủ sóng.',
+    'qgt-tx-tournavista-w19': 'Hồi phục sau T9: <strong>+165 (+7,5%)</strong>, quay lại đà tăng của T8 (+280). REG 2.858, cao nhất 4 tháng; kích hoạt 201 so với 154 cùng kỳ (+31%). Mạng tốt lên rõ: UCA0082 chỉ 0,7 Cell*h trong 1–18/10 (cùng kỳ 285,7), sự cố cả quận 17 so với 70. Đà tốt, tiếp tục giữ kênh bán tại UCA0082.',
+    'qgt-tx-yuyapichis-w19': 'Đảo chiều rõ rệt: từ −348 (T9) lên <strong>+126 (+10,6%)</strong>, mức tăng tốt nhất 4 tháng. Nguyên nhân chính là mạng ổn định trở lại (Cell*h giảm 71% so cùng kỳ) và HUN0184B3U1 phát sóng lại: REG +598, kích hoạt 47 so với 5. Tuy nhiên REG (1.741) vẫn dưới mức T7 (1.849) và sự cố vẫn cao nhất 6 quận (161 lần/9 ngày, chủ yếu HUN0115) → cần xử lý dứt điểm HUN0115 để giữ đà.',
     'tab-qgt': '📉 Quận giảm thị phần',
     'qgt-tag0': 'Tháng 9 / 2026',
     'qgt-h3-0': 'Quận Giảm Thị Phần – Tháng 9/2026 (7 quận)',
@@ -4902,39 +5046,74 @@ const I18N = {
     'tab-mobile': '📶 Móvil',
     'tab-digital': '💻 Digital',
     'qgt-h3-2b': 'Tendencia Oct. vs Sep. (referencia jul.–ago.)',
-    'qgt-sum': '<strong>Resumen oct. vs sep.:</strong> los 6 distritos suman Increasing 15C3D <strong>+504 (+7,4%)</strong>, por encima del total UCABR (+1,3%) → el grupo se recupera más rápido que el promedio. <strong>4 de 6 mejoran</strong> (Yuyapichis, Tournavista, Contamana, Masisea). <strong>Curimana y Nueva Requena no se recuperan</strong>: en Nueva Requena la red está estable → competencia; en Curimana, competencia y además empeora la red de UCA0027 (Cell*h 106 vs 41). Activaciones 1–18/10: 463 vs 268 (+73%); incidencias vs mismo periodo: 272 vs 628 (−57%) – Cellh 19/10 para estaciones UCA (al 18/10); HUN/LOR siguen con datos al 9/10.',
+    'qgt-sum': '<strong>Resumen oct. (al 25/10) vs sep.:</strong> los 6 distritos tienen Increasing 15C3D <strong>+534 (+6,8%)</strong>, por encima del total UCABR (+1,8%). <strong>5 de 6 distritos crecen</strong> (Yuyapichis, Contamana, Tournavista, Masisea y Curimana – Curimana recién pasa a positivo). <strong>Nueva Requena sigue cayendo</strong> (−16) con red estable → competencia. Masisea: vigilar la caída del REG (680 → 634). Activaciones 1–25/10 de los 6 distritos: 630 vs 401 del mismo periodo de sep. (+57%). Red: estaciones UCA según Cellh 26/10 (al 25/10); HUN/LOR siguen con datos al 9/10.',
     'qgt-m-15': 'Increasing 15C3D',
     'qgt-m-act': 'Activaciones',
     'qgt-m-net': 'Red 1–9/10 vs 1–9/09',
-    'qgt-mn-old': 'Red 1–9/10 vs 1–9/09 (HUN/LOR sin Cellh nuevo)',
-    'qgt-mn-new': 'Red 1–18/10 vs 1–18/09',
-    'qgt-mn-mix': 'Red (UCA0082 1–18/10, HUN 1–9/10) vs mismo periodo',
+    'qgt-mn-old': 'Red 1–9/10 vs sep. completo (HUN/LOR sin Cellh nuevo)',
+    'qgt-mn-new': 'Red 1–25/10 vs sep. completo',
+    'qgt-mn-mix': 'Red (UCA0082 1–25/10, HUN 1–9/10) vs sep. completo',
     'qgt-m-inc': 'Incidencias',
     'qgt-th-tr': 'Tendencia oct.',
-    'qgt-c1b-h4': '📊 Increasing 15C3D por distrito – ago., sep., oct. (al 18/10)',
-    'qgt-c2b-h4': '📈 Índice REG (jul. = 100) – tendencia jul. → 18/10',
+    'qgt-c1b-h4': '📊 Increasing 15C3D por distrito – ago., sep., oct. (al 25/10)',
+    'qgt-c2b-h4': '📈 Índice REG (jul. = 100) – tendencia jul. → 25/10',
     'qgt-tr-yuyapichis': 'Fuerte recuperación',
-    'qgt-tx-yuyapichis': 'Giro claro: de −348 (sep.) a <strong>+126 (+10,6%)</strong>, el mejor resultado en 4 meses. Causa principal: la red se estabiliza (Cell*h −71% vs mismo periodo) y HUN0184B3U1 vuelve al aire: REG +598, activaciones 47 vs 5. Pero el REG (1.741) sigue por debajo de julio (1.849) y las incidencias siguen siendo las más altas de los 6 distritos (161 en 9 días, sobre todo HUN0115) → resolver HUN0115 para mantener la tendencia.',
+    'qgt-tx-yuyapichis': 'Sigue la fuerte recuperación: Increasing <strong>+200 (+14,7%)</strong>, el mayor de los 6 distritos (sep. −348). El REG sube a 1.816, casi al nivel de jul. (1.849); activaciones 1–25/10: 58 vs 22 del mismo periodo de sep.; churn +114. La red de estaciones HUN solo tiene datos al 9/10 (Cell*h 421, 161 incidencias, sobre todo HUN0115) → se necesita un nuevo archivo Detail Cell down; seguir resolviendo HUN0115 para mantener el ritmo.',
     'qgt-tr-tournavista': 'Recuperación',
-    'qgt-tx-tournavista': 'Se recupera tras septiembre: <strong>+165 (+7,5%)</strong>, vuelve al ritmo de agosto (+280). REG 2.858, máximo de 4 meses; activaciones 201 vs 154 (+31%). La red mejora claramente: UCA0082 solo 0,7 Cell*h en 1–18/10 (mismo periodo 285,7), incidencias del distrito 17 vs 70. Buena tendencia: mantener los canales de venta en UCA0082.',
+    'qgt-tx-tournavista': 'Mantiene la recuperación: <strong>+130 (+5,1%)</strong> tras −55 en sep. REG 2.910, el más alto en 4 meses; activaciones 271 vs 202 del mismo periodo (+34%). Buena red: UCA0082 solo 0,7 Cell*h en 1–25/10, incidencias del distrito 17 vs 126 en todo sep. Mantener el canal de ventas en UCA0082.',
     'qgt-tr-contamana': 'Buen crecimiento',
-    'qgt-tx-contamana': 'El mayor crecimiento en 4 meses (+37 / +57 / <strong>+136, +15,8%</strong>). REG 1.257, el más alto; activaciones 83 vs 31; incidencias bajan 207 → 43. Bitel crece de forma constante; la pérdida de participación en septiembre se debe a que la competencia crece más rápido → impulsar ventas para recuperar participación.',
+    'qgt-tx-contamana': 'Crecimiento sólido y estable: Increasing <strong>+136 (+13,8%)</strong>, REG 1.213 (máximo de 4 meses), activaciones 100 vs 48 del mismo periodo (el doble). La red de estaciones LOR solo tiene datos al 9/10 (Cell*h 76, 43 incidencias). Bitel sigue creciendo → seguir impulsando ventas para recuperar participación.',
     'qgt-tr-masisea': 'Recupera – vigilar',
-    'qgt-tx-masisea': '15C3D se recupera: <strong>+83 (+16,6%)</strong> tras −72 en septiembre; activaciones 22 vs 6. La red de UCA0025 está más estable: Cell*h 1–18/10 = 21,8 vs 182,5 en el mismo periodo, incidencias 17 vs 31. A vigilar: el REG sigue bajando levemente 3 meses seguidos (696 → 680 → 673).',
-    'qgt-tr-curimana': 'Sin recuperación',
-    'qgt-tx-curimana': 'Sin recuperación: Increasing <strong>−3 (−0,2%)</strong> tras −96 en septiembre. El churn sigue alto (−88 en 18 días) frente a solo 81 nuevas. REG estable en 1.921 (por debajo de agosto: 1.960). Las activaciones suben (85 vs 59) pero no compensan el churn. <strong>La red de UCA0027 empeora</strong>: Cell*h 1–18/10 = 106,2 vs 41,0 en el mismo periodo → junto con la competencia eleva el churn; corregir la red de UCA0027 y aplicar retención.',
+    'qgt-tx-masisea': 'El 15C3D sigue creciendo: <strong>+52 (+9,0%)</strong> tras −72 en sep.; activaciones 26 vs 13 del mismo periodo. Red de UCA0025 estable (Cell*h 21,8 vs 851 en todo sep., sin nuevas incidencias desde el 19/10). A vigilar: el REG baja de 680 a 634 (−46) → revisar bajas e impulsar ventas en UCA0025.',
+    'qgt-tr-curimana': 'Recuperación leve – vigilar',
+    'qgt-tx-curimana': 'Comienza una leve recuperación: el Increasing pasa a positivo <strong>+32 (+1,8%)</strong> (semana anterior −3). Activaciones 144 vs 99 del mismo periodo (+45%), REG 1.915, algo por encima de sep. (1.905). Pero el churn sigue en −98 y la red de UCA0027 aún no mejora (Cell*h 106 en oct.) → seguir vigilando, priorizar la red de UCA0027 y mantener las ventas.',
     'qgt-tr-nueva-requena': 'Empeora',
-    'qgt-tx-nueva-requena': 'Empeora: de +25 (sep.) a <strong>−3 (−0,6%)</strong>. REG cae 3 meses seguidos (645 → 591 → 586); el churn de oct. (−27) ya supera todo septiembre (−19) en solo 18 días; menos altas nuevas (23 vs 40). La red mejora claramente (Cell*h 0,5 vs 317,8; incidencias 8 vs 61) → la causa es la competencia; priorizar canales de venta y promociones en UCA0026.',
+    'qgt-tx-nueva-requena': 'Sigue empeorando: Increasing <strong>−16 (−2,7%)</strong>, 15C3D 575 vs 668 a fin de sep. La red de UCA0026 es estable (Cell*h 0,5; 8 incidencias) y las activaciones suben (31 vs 17 del mismo periodo); el REG sube a 612 pero el churn es −53 → la causa principal es la competencia; se necesita un programa de retención y más puntos de venta.',
     'qgt-tr-tahuania': 'Sin estación',
     'qgt-tx-tahuania': 'Sin estación Bitel, no se puede evaluar la tendencia. Proponer un plan de cobertura.',
-    'qgt-t5-h4': '📋 Datos sep. – oct. 2026 por distrito (oct. al 18/10)',
+    'qgt-t5-h4': '📋 Datos sep. – oct. 2026 por distrito (oct. al 25/10)',
     'qgt-th-act2': 'Activaciones',
     'qgt-th-inc2': 'Incidencias',
     'qgt-th-pm1': '± mismo periodo',
     'qgt-th-pm1b': '± mismo periodo',
     'qgt-th-pm2': '± Oct.−Sep.',
-    'qgt-note5': '📌 <strong>Sep. = mes completo; Oct. = al 18/10/2026</strong> (oct. solo 18 días, por eso los valores son menores). Columna <strong>± = Oct. − Sep.</strong> <strong>Increasing 15c3d</strong> = 15C3D al 18/10 vs mismo periodo 18/09 (archivo 15C3D). Cell*h, Incidencias: ± negativo (verde) = menos caídas. 15C3D, Churn: archivo 15C3D 18/10. REG: REG_N al 30/09 y 18/10. Activaciones: altas con estación (archivo Activar). Cell*h e Incidencias sep.: archivo Detail Cell down. <strong>Oct.: estaciones UCA según Cellh 19/10 (al 18/10, alarmas Single/Station down)</strong>; HUN/LOR no están en el Cellh → se mantiene Detail Cell down al 09/10. Incidencias = n° de alarmas de celda/estación caída. Tahuania sin estación Bitel. Color del borde según la tendencia de oct. (Parte 2).',
+    'qgt-note5': '📌 <strong>Sep. = mes completo; Oct. = al 25/10/2026</strong> (oct. solo 25 días, por eso los valores son menores). Columna <strong>± = Oct. − Sep.</strong> <strong>Increasing 15c3d</strong> = 15C3D al 25/10 vs mismo periodo 25/09 (archivo 15C3D). Cell*h, Incidencias: ± negativo (verde) = menos caídas. 15C3D, Churn: archivo 15C3D 25/10. REG: REG_N al 30/09 y 25/10. Activaciones: altas con estación (archivo Activar). Cell*h e Incidencias sep.: archivo Detail Cell down. <strong>Oct.: estaciones UCA según Cellh 26/10 (al 25/10, alarmas Single/Station down)</strong>; HUN/LOR no están en el Cellh → se mantiene Detail Cell down al 09/10. Incidencias = n° de alarmas de celda/estación caída. Tahuania sin estación Bitel. Color del borde según la tendencia de oct. (Parte 2). Fila Total UCABR: Cell*h/Incidencias oct. solo estaciones UCA (archivo Cellh), sin ± vs sep. Tarjetas: red oct. vs <strong>sep. completo</strong>; activaciones vs mismo periodo 1–25/09.',
     'th-fullm': 'mes completo',
+    'qgt-c1b-h4-w19': '📊 Increasing 15C3D por distrito – ago., sep., oct. (al 18/10)',
+    'qgt-c2b-h4-w19': '📈 Índice REG (jul. = 100) – tendencia jul. → 18/10',
+    'qgt-h3-2b-w19': 'Tendencia Oct. vs Sep. (referencia jul.–ago.)',
+    'qgt-m-15-w19': 'Increasing 15C3D',
+    'qgt-m-act-w19': 'Activaciones',
+    'qgt-m-inc-w19': 'Incidencias',
+    'qgt-mn-mix-w19': 'Red (UCA0082 1–18/10, HUN 1–9/10) vs mismo periodo',
+    'qgt-mn-new-w19': 'Red 1–18/10 vs 1–18/09',
+    'qgt-mn-old-w19': 'Red 1–9/10 vs 1–9/09 (HUN/LOR sin Cellh nuevo)',
+    'qgt-note5-w19': '📌 <strong>Sep. = mes completo; Oct. = al 18/10/2026</strong> (oct. solo 18 días, por eso los valores son menores). Columna <strong>± = Oct. − Sep.</strong> <strong>Increasing 15c3d</strong> = 15C3D al 18/10 vs mismo periodo 18/09 (archivo 15C3D). Cell*h, Incidencias: ± negativo (verde) = menos caídas. 15C3D, Churn: archivo 15C3D 18/10. REG: REG_N al 30/09 y 18/10. Activaciones: altas con estación (archivo Activar). Cell*h e Incidencias sep.: archivo Detail Cell down. <strong>Oct.: estaciones UCA según Cellh 19/10 (al 18/10, alarmas Single/Station down)</strong>; HUN/LOR no están en el Cellh → se mantiene Detail Cell down al 09/10. Incidencias = n° de alarmas de celda/estación caída. Tahuania sin estación Bitel. Color del borde según la tendencia de oct. (Parte 2).',
+    'qgt-sum-w19': '<strong>Resumen oct. vs sep.:</strong> los 6 distritos suman Increasing 15C3D <strong>+504 (+7,4%)</strong>, por encima del total UCABR (+1,3%) → el grupo se recupera más rápido que el promedio. <strong>4 de 6 mejoran</strong> (Yuyapichis, Tournavista, Contamana, Masisea). <strong>Curimana y Nueva Requena no se recuperan</strong>: en Nueva Requena la red está estable → competencia; en Curimana, competencia y además empeora la red de UCA0027 (Cell*h 106 vs 41). Activaciones 1–18/10: 463 vs 268 (+73%); incidencias vs mismo periodo: 272 vs 628 (−57%) – Cellh 19/10 para estaciones UCA (al 18/10); HUN/LOR siguen con datos al 9/10.',
+    'qgt-t5-h4-w19': '📋 Datos sep. – oct. 2026 por distrito (oct. al 18/10)',
+    'qgt-tag2-w19': 'Parte 2',
+    'qgt-th-act2-w19': 'Activaciones',
+    'qgt-th-dist-w19': 'Distrito',
+    'qgt-th-inc2-w19': 'Incidencias',
+    'qgt-th-pm2-w19': '± Oct.−Sep.',
+    'qgt-th-sites-w19': 'N° estaciones',
+    'qgt-th-tr-w19': 'Tendencia oct.',
+    'qgt-total-uca-w19': 'Total UCABR (referencia)',
+    'qgt-total6-w19': 'Total 6 distritos',
+    'qgt-tr-contamana-w19': 'Buen crecimiento',
+    'qgt-tr-curimana-w19': 'Sin recuperación',
+    'qgt-tr-masisea-w19': 'Recupera – vigilar',
+    'qgt-tr-nueva-requena-w19': 'Empeora',
+    'qgt-tr-tahuania-w19': 'Sin estación',
+    'qgt-tr-tournavista-w19': 'Recuperación',
+    'qgt-tr-yuyapichis-w19': 'Fuerte recuperación',
+    'qgt-tx-contamana-w19': 'El mayor crecimiento en 4 meses (+37 / +57 / <strong>+136, +15,8%</strong>). REG 1.257, el más alto; activaciones 83 vs 31; incidencias bajan 207 → 43. Bitel crece de forma constante; la pérdida de participación en septiembre se debe a que la competencia crece más rápido → impulsar ventas para recuperar participación.',
+    'qgt-tx-curimana-w19': 'Sin recuperación: Increasing <strong>−3 (−0,2%)</strong> tras −96 en septiembre. El churn sigue alto (−88 en 18 días) frente a solo 81 nuevas. REG estable en 1.921 (por debajo de agosto: 1.960). Las activaciones suben (85 vs 59) pero no compensan el churn. <strong>La red de UCA0027 empeora</strong>: Cell*h 1–18/10 = 106,2 vs 41,0 en el mismo periodo → junto con la competencia eleva el churn; corregir la red de UCA0027 y aplicar retención.',
+    'qgt-tx-masisea-w19': '15C3D se recupera: <strong>+83 (+16,6%)</strong> tras −72 en septiembre; activaciones 22 vs 6. La red de UCA0025 está más estable: Cell*h 1–18/10 = 21,8 vs 182,5 en el mismo periodo, incidencias 17 vs 31. A vigilar: el REG sigue bajando levemente 3 meses seguidos (696 → 680 → 673).',
+    'qgt-tx-nueva-requena-w19': 'Empeora: de +25 (sep.) a <strong>−3 (−0,6%)</strong>. REG cae 3 meses seguidos (645 → 591 → 586); el churn de oct. (−27) ya supera todo septiembre (−19) en solo 18 días; menos altas nuevas (23 vs 40). La red mejora claramente (Cell*h 0,5 vs 317,8; incidencias 8 vs 61) → la causa es la competencia; priorizar canales de venta y promociones en UCA0026.',
+    'qgt-tx-tahuania-w19': 'Sin estación Bitel, no se puede evaluar la tendencia. Proponer un plan de cobertura.',
+    'qgt-tx-tournavista-w19': 'Se recupera tras septiembre: <strong>+165 (+7,5%)</strong>, vuelve al ritmo de agosto (+280). REG 2.858, máximo de 4 meses; activaciones 201 vs 154 (+31%). La red mejora claramente: UCA0082 solo 0,7 Cell*h en 1–18/10 (mismo periodo 285,7), incidencias del distrito 17 vs 70. Buena tendencia: mantener los canales de venta en UCA0082.',
+    'qgt-tx-yuyapichis-w19': 'Giro claro: de −348 (sep.) a <strong>+126 (+10,6%)</strong>, el mejor resultado en 4 meses. Causa principal: la red se estabiliza (Cell*h −71% vs mismo periodo) y HUN0184B3U1 vuelve al aire: REG +598, activaciones 47 vs 5. Pero el REG (1.741) sigue por debajo de julio (1.849) y las incidencias siguen siendo las más altas de los 6 distritos (161 en 9 días, sobre todo HUN0115) → resolver HUN0115 para mantener la tendencia.',
     'tab-qgt': '📉 Distritos con caída de participación',
     'qgt-tag0': 'Septiembre 2026',
     'qgt-h3-0': 'Distritos con Caída de Participación – Septiembre 2026 (7 distritos)',
@@ -5180,39 +5359,74 @@ const I18N = {
     'tab-mobile': '📶 Mobile',
     'tab-digital': '💻 Digital',
     'qgt-h3-2b': 'Oct vs Sep Trend (Jul–Aug for reference)',
-    'qgt-sum': '<strong>Oct vs Sep overview:</strong> the 6 districts post Increasing 15C3D <strong>+504 (+7.4%)</strong>, above the UCABR total (+1.3%) → the group is recovering faster than average. <strong>4 of 6 improve</strong> (Yuyapichis, Tournavista, Contamana, Masisea). <strong>Curimana and Nueva Requena are not recovering</strong>: Nueva Requena has a stable network → competition; Curimana faces competition plus a worse UCA0027 network (Cell*h 106 vs 41). Activations 1–18/10: 463 vs 268 (+73%); incidents vs same period: 272 vs 628 (−57%) – Cellh 19/10 for UCA sites (to 18/10); HUN/LOR still use data to 9/10.',
+    'qgt-sum': '<strong>Oct (to 25/10) vs Sep overview:</strong> the 6 districts have Increasing 15C3D <strong>+534 (+6.8%)</strong>, above the UCABR total (+1.8%). <strong>5 of 6 districts grow</strong> (Yuyapichis, Contamana, Tournavista, Masisea and Curimana – Curimana just turned positive). <strong>Nueva Requena still declines</strong> (−16) despite a stable network → competition. Masisea: watch the REG drop (680 → 634). Activations 1–25/10 in the 6 districts: 630 vs 401 same Sep period (+57%). Network: UCA sites from Cellh 26/10 (to 25/10); HUN/LOR still use data to 9/10.',
     'qgt-m-15': 'Increasing 15C3D',
     'qgt-m-act': 'Activations',
     'qgt-m-net': 'Network 1–9/10 vs 1–9/09',
-    'qgt-mn-old': 'Network 1–9/10 vs 1–9/09 (HUN/LOR not in new Cellh)',
-    'qgt-mn-new': 'Network 1–18/10 vs 1–18/09',
-    'qgt-mn-mix': 'Network (UCA0082 1–18/10, HUN 1–9/10) vs same period',
+    'qgt-mn-old': 'Network 1–9/10 vs full Sep (HUN/LOR sites have no new Cellh)',
+    'qgt-mn-new': 'Network 1–25/10 vs full Sep',
+    'qgt-mn-mix': 'Network (UCA0082 1–25/10, HUN 1–9/10) vs full Sep',
     'qgt-m-inc': 'Incidents',
     'qgt-th-tr': 'Oct trend',
-    'qgt-c1b-h4': '📊 Increasing 15C3D by district – Aug, Sep, Oct (to 18/10)',
-    'qgt-c2b-h4': '📈 REG index (Jul = 100) – Jul → 18/10 trend',
+    'qgt-c1b-h4': '📊 Increasing 15C3D by district – Aug, Sep, Oct (to 25/10)',
+    'qgt-c2b-h4': '📈 REG index (Jul = 100) – Jul → 25/10 trend',
     'qgt-tr-yuyapichis': 'Strong recovery',
-    'qgt-tx-yuyapichis': 'Clear turnaround: from −348 (Sep) to <strong>+126 (+10.6%)</strong>, the best in 4 months. Main driver: the network is stable again (Cell*h −71% vs same period) and HUN0184B3U1 is back on air: REG +598, activations 47 vs 5. But REG (1,741) is still below July (1,849) and incidents remain the highest of the 6 districts (161 in 9 days, mainly HUN0115) → fix HUN0115 to keep the momentum.',
+    'qgt-tx-yuyapichis': 'Strong recovery continues: Increasing <strong>+200 (+14.7%)</strong>, the best of the 6 districts (Sep −348). REG up to 1,816, close to the July level (1,849); activations 1–25/10: 58 vs 22 in the same Sep period; churn +114. HUN site network data only to 9/10 (Cell*h 421, 161 incidents, mainly HUN0115) → a new Detail Cell down file is needed; keep fixing HUN0115 to hold the momentum.',
     'qgt-tr-tournavista': 'Recovering',
-    'qgt-tx-tournavista': 'Recovering after September: <strong>+165 (+7.5%)</strong>, back to the August pace (+280). REG 2,858, a 4-month high; activations 201 vs 154 (+31%). Network clearly better: UCA0082 only 0.7 Cell*h in 1–18/10 (same period 285.7), district incidents 17 vs 70. Good trend: keep the sales channels at UCA0082.',
+    'qgt-tx-tournavista': 'Recovery holds: <strong>+130 (+5.1%)</strong> after −55 in Sep. REG 2,910, the highest in 4 months; activations 271 vs 202 same period (+34%). Good network: UCA0082 only 0.7 Cell*h in 1–25/10, district incidents 17 vs 126 in all of Sep. Keep the sales channel at UCA0082.',
     'qgt-tr-contamana': 'Growing well',
-    'qgt-tx-contamana': 'Strongest growth in 4 months (+37 / +57 / <strong>+136, +15.8%</strong>). REG 1,257, the highest; activations 83 vs 31; incidents down 207 → 43. Bitel keeps growing; the September share loss is because competitors grew faster → push sales to win back share.',
+    'qgt-tx-contamana': 'Solid, steady growth: Increasing <strong>+136 (+13.8%)</strong>, REG 1,213 (4-month high), activations 100 vs 48 same period (double). LOR site network data only to 9/10 (Cell*h 76, 43 incidents). Bitel keeps growing → keep pushing sales to regain share.',
     'qgt-tr-masisea': 'Recovering – watch',
-    'qgt-tx-masisea': '15C3D recovering: <strong>+83 (+16.6%)</strong> after −72 in September; activations 22 vs 6. UCA0025 network is more stable: Cell*h 1–18/10 = 21.8 vs 182.5 same period, incidents 17 vs 31. Watch point: REG keeps slipping for 3 months (696 → 680 → 673).',
-    'qgt-tr-curimana': 'Not recovering',
-    'qgt-tx-curimana': 'Not recovering: Increasing <strong>−3 (−0.2%)</strong> after −96 in September. Churn is still high (−88 in 18 days) vs only 81 new subs. REG flat at 1,921 (below Aug: 1,960). Activations are up (85 vs 59) but don\'t offset churn. <strong>UCA0027 network is worse</strong>: Cell*h 1–18/10 = 106.2 vs 41.0 same period → together with competition this drives churn; fix UCA0027 and run a retention programme.',
+    'qgt-tx-masisea': '15C3D still growing: <strong>+52 (+9.0%)</strong> after −72 in Sep; activations 26 vs 13 same period. UCA0025 network stable (Cell*h 21.8 vs 851 in all of Sep, no new incidents since 19/10). Watch point: REG drops 680 → 634 (−46) → check churned lines and push sales at UCA0025.',
+    'qgt-tr-curimana': 'Slight recovery – watch',
+    'qgt-tx-curimana': 'Slight recovery starts: Increasing turns positive <strong>+32 (+1.8%)</strong> (last week −3). Activations 144 vs 99 same period (+45%), REG 1,915, slightly above Sep (1,905). But churn is still −98 and the UCA0027 network has not improved (Cell*h 106 in Oct) → keep watching, prioritise the UCA0027 network and keep selling.',
     'qgt-tr-nueva-requena': 'Worsening',
-    'qgt-tx-nueva-requena': 'Worsening: from +25 (Sep) to <strong>−3 (−0.6%)</strong>. REG down 3 months in a row (645 → 591 → 586); October churn (−27) already exceeds all of September (−19) after just 18 days; fewer new subs (23 vs 40). Network clearly better (Cell*h 0.5 vs 317.8; incidents 8 vs 61) → competition is the cause; prioritise sales channels and promotions at UCA0026.',
+    'qgt-tx-nueva-requena': 'Still declining: Increasing <strong>−16 (−2.7%)</strong>, 15C3D 575 vs 668 at end of Sep. UCA0026 network stable (Cell*h 0.5; 8 incidents) and activations up (31 vs 17 same period); REG edges up to 612 but churn is −53 → mainly competition; a retention programme and more points of sale are needed.',
     'qgt-tr-tahuania': 'No site',
     'qgt-tx-tahuania': 'No Bitel site, so the trend cannot be assessed. Propose a coverage plan.',
-    'qgt-t5-h4': '📋 Sep – Oct 2026 data by district (Oct to 18/10)',
+    'qgt-t5-h4': '📋 Sep – Oct 2026 data by district (Oct to 25/10)',
     'qgt-th-act2': 'Activations',
     'qgt-th-inc2': 'Incidents',
     'qgt-th-pm1': '± same period',
     'qgt-th-pm1b': '± same period',
     'qgt-th-pm2': '± Oct−Sep',
-    'qgt-note5': '📌 <strong>Sep = full month; Oct = up to 18/10/2026</strong> (Oct only 18 days, so values are lower). Column <strong>± = Oct − Sep</strong>. <strong>Increasing 15c3d</strong> = 15C3D at 18/10 vs same period 18/09 (15C3D file). Cell*h, Incidents: negative ± (green) = fewer outages. 15C3D, Churn: 15C3D file 18/10. REG: REG_N at 30/09 and 18/10. Activations: activations with a site (Activar file). Sep Cell*h & Incidents: Detail Cell down file. <strong>Oct: UCA sites from Cellh 19/10 (to 18/10, Single/Station down alarms)</strong>; HUN/LOR are not in the Cellh file → Detail Cell down to 09/10 kept. Incidents = number of cell/site-down alarms. Tahuania has no Bitel site. Row border colour follows the October trend (Part 2).',
+    'qgt-note5': '📌 <strong>Sep = full month; Oct = up to 25/10/2026</strong> (Oct only 25 days, so values are lower). Column <strong>± = Oct − Sep</strong>. <strong>Increasing 15c3d</strong> = 15C3D at 25/10 vs same period 25/09 (15C3D file). Cell*h, Incidents: negative ± (green) = fewer outages. 15C3D, Churn: 15C3D file 25/10. REG: REG_N at 30/09 and 25/10. Activations: activations with a site (Activar file). Sep Cell*h & Incidents: Detail Cell down file. <strong>Oct: UCA sites from Cellh 26/10 (to 25/10, Single/Station down alarms)</strong>; HUN/LOR are not in the Cellh file → Detail Cell down to 09/10 kept. Incidents = number of cell/site-down alarms. Tahuania has no Bitel site. Row border colour follows the October trend (Part 2). UCABR total row: Oct Cell*h/Incidents only UCA sites (Cellh file), no ± vs Sep. Cards: Oct network vs <strong>full Sep</strong>; activations vs same period 1–25/09.',
     'th-fullm': 'full month',
+    'qgt-c1b-h4-w19': '📊 Increasing 15C3D by district – Aug, Sep, Oct (to 18/10)',
+    'qgt-c2b-h4-w19': '📈 REG index (Jul = 100) – Jul → 18/10 trend',
+    'qgt-h3-2b-w19': 'Oct vs Sep Trend (Jul–Aug for reference)',
+    'qgt-m-15-w19': 'Increasing 15C3D',
+    'qgt-m-act-w19': 'Activations',
+    'qgt-m-inc-w19': 'Incidents',
+    'qgt-mn-mix-w19': 'Network (UCA0082 1–18/10, HUN 1–9/10) vs same period',
+    'qgt-mn-new-w19': 'Network 1–18/10 vs 1–18/09',
+    'qgt-mn-old-w19': 'Network 1–9/10 vs 1–9/09 (HUN/LOR not in new Cellh)',
+    'qgt-note5-w19': '📌 <strong>Sep = full month; Oct = up to 18/10/2026</strong> (Oct only 18 days, so values are lower). Column <strong>± = Oct − Sep</strong>. <strong>Increasing 15c3d</strong> = 15C3D at 18/10 vs same period 18/09 (15C3D file). Cell*h, Incidents: negative ± (green) = fewer outages. 15C3D, Churn: 15C3D file 18/10. REG: REG_N at 30/09 and 18/10. Activations: activations with a site (Activar file). Sep Cell*h & Incidents: Detail Cell down file. <strong>Oct: UCA sites from Cellh 19/10 (to 18/10, Single/Station down alarms)</strong>; HUN/LOR are not in the Cellh file → Detail Cell down to 09/10 kept. Incidents = number of cell/site-down alarms. Tahuania has no Bitel site. Row border colour follows the October trend (Part 2).',
+    'qgt-sum-w19': '<strong>Oct vs Sep overview:</strong> the 6 districts post Increasing 15C3D <strong>+504 (+7.4%)</strong>, above the UCABR total (+1.3%) → the group is recovering faster than average. <strong>4 of 6 improve</strong> (Yuyapichis, Tournavista, Contamana, Masisea). <strong>Curimana and Nueva Requena are not recovering</strong>: Nueva Requena has a stable network → competition; Curimana faces competition plus a worse UCA0027 network (Cell*h 106 vs 41). Activations 1–18/10: 463 vs 268 (+73%); incidents vs same period: 272 vs 628 (−57%) – Cellh 19/10 for UCA sites (to 18/10); HUN/LOR still use data to 9/10.',
+    'qgt-t5-h4-w19': '📋 Sep – Oct 2026 data by district (Oct to 18/10)',
+    'qgt-tag2-w19': 'Part 2',
+    'qgt-th-act2-w19': 'Activations',
+    'qgt-th-dist-w19': 'District',
+    'qgt-th-inc2-w19': 'Incidents',
+    'qgt-th-pm2-w19': '± Oct−Sep',
+    'qgt-th-sites-w19': 'Sites',
+    'qgt-th-tr-w19': 'Oct trend',
+    'qgt-total-uca-w19': 'UCABR total (reference)',
+    'qgt-total6-w19': 'Total 6 districts',
+    'qgt-tr-contamana-w19': 'Growing well',
+    'qgt-tr-curimana-w19': 'Not recovering',
+    'qgt-tr-masisea-w19': 'Recovering – watch',
+    'qgt-tr-nueva-requena-w19': 'Worsening',
+    'qgt-tr-tahuania-w19': 'No site',
+    'qgt-tr-tournavista-w19': 'Recovering',
+    'qgt-tr-yuyapichis-w19': 'Strong recovery',
+    'qgt-tx-contamana-w19': 'Strongest growth in 4 months (+37 / +57 / <strong>+136, +15.8%</strong>). REG 1,257, the highest; activations 83 vs 31; incidents down 207 → 43. Bitel keeps growing; the September share loss is because competitors grew faster → push sales to win back share.',
+    'qgt-tx-curimana-w19': 'Not recovering: Increasing <strong>−3 (−0.2%)</strong> after −96 in September. Churn is still high (−88 in 18 days) vs only 81 new subs. REG flat at 1,921 (below Aug: 1,960). Activations are up (85 vs 59) but don\'t offset churn. <strong>UCA0027 network is worse</strong>: Cell*h 1–18/10 = 106.2 vs 41.0 same period → together with competition this drives churn; fix UCA0027 and run a retention programme.',
+    'qgt-tx-masisea-w19': '15C3D recovering: <strong>+83 (+16.6%)</strong> after −72 in September; activations 22 vs 6. UCA0025 network is more stable: Cell*h 1–18/10 = 21.8 vs 182.5 same period, incidents 17 vs 31. Watch point: REG keeps slipping for 3 months (696 → 680 → 673).',
+    'qgt-tx-nueva-requena-w19': 'Worsening: from +25 (Sep) to <strong>−3 (−0.6%)</strong>. REG down 3 months in a row (645 → 591 → 586); October churn (−27) already exceeds all of September (−19) after just 18 days; fewer new subs (23 vs 40). Network clearly better (Cell*h 0.5 vs 317.8; incidents 8 vs 61) → competition is the cause; prioritise sales channels and promotions at UCA0026.',
+    'qgt-tx-tahuania-w19': 'No Bitel site, so the trend cannot be assessed. Propose a coverage plan.',
+    'qgt-tx-tournavista-w19': 'Recovering after September: <strong>+165 (+7.5%)</strong>, back to the August pace (+280). REG 2,858, a 4-month high; activations 201 vs 154 (+31%). Network clearly better: UCA0082 only 0.7 Cell*h in 1–18/10 (same period 285.7), district incidents 17 vs 70. Good trend: keep the sales channels at UCA0082.',
+    'qgt-tx-yuyapichis-w19': 'Clear turnaround: from −348 (Sep) to <strong>+126 (+10.6%)</strong>, the best in 4 months. Main driver: the network is stable again (Cell*h −71% vs same period) and HUN0184B3U1 is back on air: REG +598, activations 47 vs 5. But REG (1,741) is still below July (1,849) and incidents remain the highest of the 6 districts (161 in 9 days, mainly HUN0115) → fix HUN0115 to keep the momentum.',
     'tab-qgt': '📉 Districts losing share',
     'qgt-tag0': 'September 2026',
     'qgt-h3-0': 'Districts Losing Market Share – September 2026 (7 districts)',
