@@ -6109,6 +6109,9 @@ var TP_PERIODS = [
     'Tahuania':[0,0,1327,40], 'Sepahua':[0,34,89,103], 'Yurua':null,
     'Contamana':[99,18675,6035,1380], 'Sarayacu':[0,11619,2,0], 'Vargas Guerra':[0,2546,2,0], 'Padre Marquez':[230,0,0,3215], 'Pampa Hermosa':[0,0,0,3], 'Inahuaya':null,
     'Maquia':[0,3824,8,0], 'Emilio San Martin':[4,22,6434,1], 'Puinahua':[0,1674,2304,1371], 'Tapiche':null, 'Soplin':null
+  }},
+  { key:'T10/2026', vi:'Tháng 10/2026', es:'Octubre 2026', en:'October 2026', d:{
+    'Calleria':[102667,77732,39130,100904], 'Yarinacocha':[50363,58657,24670,38016], 'Manantay':[30431,38431,15539,22172], 'Campoverde':[5610,8857,4415,4254], 'Masisea':[0,6524,0,29], 'Nueva Requena':[1871,3183,2442,1480], 'Iparia':[0,0,102,0], 'Irazola':[11037,26160,14930,3771], 'Neshuya':[5360,17984,1346,1911], 'Curimana':[1863,1045,5871,10], 'Alexander Von Humboldt':[10361,2897,852,161], 'Puerto Inca':[12480,8071,1939,3], 'Honoria':[2336,88,2679,2869], 'Yuyapichis':[1275,6048,0,0], 'Tournavista':[268,734,246,4], 'Puerto Bermudez':[10139,15830,240,95], 'Constitucion':[10300,15994,126,6], 'Tahuania':[0,0,6756,106], 'Sepahua':[11,545,3770,110], 'Yurua':[0,0,112,0], 'Contamana':[469,33678,11737,2227], 'Sarayacu':[0,11899,0,0], 'Vargas Guerra':[0,6095,3,0], 'Padre Marquez':[3420,37,0,1000], 'Pampa Hermosa':[0,5,0,0], 'Inahuaya':null, 'Maquia':[0,3269,3,0], 'Emilio San Martin':[0,181,7372,0], 'Puinahua':[0,5022,2194,2215], 'Tapiche':null, 'Soplin':[0,0,582,0]
   }}
 ];
 // Quận → tỉnh (theo 7 file nguồn) ; số trạm Bitel theo bts_info (File chốt BTS theo quận)
@@ -6149,8 +6152,11 @@ var TP_T = {
   s1b:'Bitel đang <strong>dẫn đầu</strong> toàn UCABR với <strong>{p}</strong> ({e} events), hơn {S} {g} điểm %.',
   s2:'<strong>{P}</strong> chiếm {ps} tổng events. Tại đây Bitel đạt {bp}, đứng #{r}.',
   s3:'<strong>{D}</strong> là quận lớn nhất ({ds} thị trường): Bitel {bp}, đứng #{r}; dẫn đầu là {L} {lp}. Tại {D}, mỗi 1 điểm % tương đương khoảng {one} events.',
+  s3b:'<strong>{D}</strong> là quận lớn nhất ({ds} thị trường): <strong>Bitel dẫn đầu</strong> với {bp}, hơn {S} {g} điểm %. Tại {D}, mỗi 1 điểm % tương đương khoảng {one} events.',
   s4:'Khoảng cách events tới nhà mạng dẫn đầu lớn nhất ở: {list}. Đây là các quận ưu tiên để tăng thị phần.',
   s5:'7 quận giảm thị phần: {list}.',
+  s6:'Thị phần Bitel thay đổi nhiều nhất so với {k} (quận ≥ 1.000 events): tăng – {up}; giảm – {dn}.',
+  s7:'Lưu ý: tổng events {k2} {g} so với {k}, nên so sánh theo % thị phần thay vì số events tuyệt đối.',
   s0:'So với {k}: Bitel {d} điểm % ({e} events).'
  },
  es:{tag:'Participación', h1:'Participación de Mercado de 4 Operadores – UCABR (31 distritos)', h2:'Parte 1 · Resumen de participación', h3:'Parte 2 · Participación por distrito', h4:'Parte 3 · Evaluación',
@@ -6170,8 +6176,11 @@ var TP_T = {
   s1b:'Bitel <strong>lidera</strong> UCABR con <strong>{p}</strong> ({e} events), {g} pp por encima de {S}.',
   s2:'<strong>{P}</strong> concentra el {ps} del total de events. Allí Bitel tiene {bp} y ocupa el #{r}.',
   s3:'<strong>{D}</strong> es el distrito más grande ({ds} del mercado): Bitel {bp}, puesto #{r}; lidera {L} con {lp}. En {D}, cada 1 pp equivale a unos {one} events.',
+  s3b:'<strong>{D}</strong> es el distrito más grande ({ds} del mercado): <strong>Bitel lidera</strong> con {bp}, {g} pp por encima de {S}. En {D}, cada 1 pp equivale a unos {one} events.',
   s4:'Las mayores brechas de events frente al líder están en: {list}. Son los distritos prioritarios para ganar participación.',
   s5:'Los 7 distritos con caída de participación: {list}.',
+  s6:'Mayores cambios de participación de Bitel frente a {k} (distritos ≥ 1.000 events): suben – {up}; bajan – {dn}.',
+  s7:'Nota: el total de events de {k2} varía {g} frente a {k}; compare por % de participación, no por events absolutos.',
   s0:'Frente a {k}: Bitel {d} pp ({e} events).'
  },
  en:{tag:'Market share', h1:'Market Share of 4 Operators – UCABR (31 districts)', h2:'Part 1 · Market share overview', h3:'Part 2 · Market share by district', h4:'Part 3 · Assessment',
@@ -6191,8 +6200,11 @@ var TP_T = {
   s1b:'Bitel <strong>leads</strong> UCABR with <strong>{p}</strong> ({e} events), {g} pp ahead of {S}.',
   s2:'<strong>{P}</strong> accounts for {ps} of all events. There Bitel has {bp}, ranking #{r}.',
   s3:'<strong>{D}</strong> is the largest district ({ds} of the market): Bitel {bp}, rank #{r}; {L} leads with {lp}. In {D}, each 1 pp is about {one} events.',
+  s3b:'<strong>{D}</strong> is the largest district ({ds} of the market): <strong>Bitel leads</strong> with {bp}, {g} pp ahead of {S}. In {D}, each 1 pp is about {one} events.',
   s4:'The largest event gaps to the leader are in: {list}. These are the priority districts to gain share.',
   s5:'The 7 districts losing share: {list}.',
+  s6:'Largest Bitel share changes vs {k} (districts ≥ 1,000 events): up – {up}; down – {dn}.',
+  s7:'Note: total events in {k2} changed {g} vs {k}, so compare by share % rather than absolute events.',
   s0:'Vs {k}: Bitel {d} pp ({e} events).'
  }
 };
@@ -6200,7 +6212,7 @@ var TP_T = {
 function tpLang(){ var l = document.documentElement.getAttribute('lang'); return TP_T[l] ? l : 'vi'; }
 function tpN(x, l){ return Math.round(x).toLocaleString(l === 'en' ? 'en-US' : 'de-DE'); }
 function tpP(x, l, dec){ dec = (dec === undefined) ? 1 : dec; var s = x.toFixed(dec); return (l === 'en' ? s : s.replace('.', ',')) + '%'; }
-function tpPP(x, l){ var s = (x > 0 ? '+' : (x < 0 ? '−' : '')) + Math.abs(x).toFixed(1); return l === 'en' ? s : s.replace('.', ','); }
+function tpPP(x, l){ x = Math.round(x * 10) / 10; if(x === 0) x = 0; var s = (x > 0 ? '+' : (x < 0 ? '−' : '')) + Math.abs(x).toFixed(1); return l === 'en' ? s : s.replace('.', ','); }
 function tpF(s, o){ return s.replace(/\{(\w+)\}/g, function(m, k){ return o[k] !== undefined ? o[k] : m; }); }
 
 // Tính chỉ số cho 1 mảng [B,C,E,M]
@@ -6307,10 +6319,23 @@ function tpRender(){
   var bigP = A.prov.filter(function(x){ return x.st; }).sort(function(a,b){ return b.st.t - a.st.t; })[0];
   s.push(tpF(T.s2, {P: bigP.name, ps: tpP(bigP.st.t / tot.t * 100, l), bp: tpP(bigP.st.p[0], l), r: bigP.st.rank || '—'}));
   var bigD = dl[0];
-  s.push(tpF(T.s3, {D: bigD.d, ds: tpP(bigD.st.t / tot.t * 100, l), bp: tpP(bigD.st.p[0], l), r: bigD.st.rank || '—', L: TP_OPS[bigD.st.li], lp: tpP(bigD.st.p[bigD.st.li], l), one: tpN(bigD.st.t / 100, l)}));
+  s.push(tpF(bigD.st.li === 0 ? T.s3b : T.s3, {S: TP_OPS[bigD.st.second], g: tpPP(bigD.st.p[0] - bigD.st.p[bigD.st.second], l).replace('+',''), D: bigD.d, ds: tpP(bigD.st.t / tot.t * 100, l), bp: tpP(bigD.st.p[0], l), r: bigD.st.rank || '—', L: TP_OPS[bigD.st.li], lp: tpP(bigD.st.p[bigD.st.li], l), one: tpN(bigD.st.t / 100, l)}));
   var gaps = dl.filter(function(x){ return x.st.li !== 0; }).sort(function(a,b){ return b.st.gapEv - a.st.gapEv; }).slice(0, 3);
   s.push(tpF(T.s4, {list: gaps.map(function(x){ return '<strong>' + x.d + '</strong> ' + tpN(x.st.gapEv, l) + ' (' + TP_OPS[x.st.li] + ' ' + tpP(x.st.p[x.st.li], l) + ', Bitel ' + tpP(x.st.p[0], l) + ')'; }).join('; ')}));
-  s.push(tpF(T.s5, {list: TP_QGT.map(function(d){ var st = tpStat(per.d[d]); return d + ' ' + (st && st.t ? tpP(st.p[0], l) : '—'); }).join(' · ')}));
+  s.push(tpF(T.s5, {list: TP_QGT.map(function(d){ var st = tpStat(per.d[d]), sp = prevP ? tpStat(prevP.d[d]) : null;
+    var cur = st && st.t ? tpP(st.p[0], l) : '—';
+    if(sp && sp.t && st && st.t){ var dd = st.p[0] - sp.p[0]; return d + ' ' + tpP(sp.p[0], l) + ' → <strong>' + cur + '</strong> (<span class="' + (dd >= 0 ? 'pos' : 'neg') + '">' + tpPP(dd, l) + '</span>)'; }
+    return d + ' ' + cur; }).join(' · ')}));
+  if(prevP){
+    var mv = [];
+    Object.keys(per.d).forEach(function(d){ var a = tpStat(prevP.d[d]), b = tpStat(per.d[d]); if(a && b && a.t >= 1000 && b.t >= 1000) mv.push({d:d, a:a, b:b, dd:b.p[0] - a.p[0]}); });
+    mv.sort(function(x,y){ return y.dd - x.dd; });
+    var fm = function(x){ return '<strong>' + x.d + '</strong> ' + tpP(x.a.p[0], l) + ' → ' + tpP(x.b.p[0], l) + ' (' + tpPP(x.dd, l) + ')'; };
+    var up = mv.filter(function(x){ return x.dd > 0; }).slice(0, 3), dn = mv.filter(function(x){ return x.dd < 0; }).reverse().slice(0, 3);
+    s.push(tpF(T.s6, {k: prevP[l], up: up.length ? up.map(fm).join(', ') : '—', dn: dn.length ? dn.map(fm).join(', ') : '—'}));
+    var gr = (tot.t / Ap.tot.t - 1) * 100;
+    if(Math.abs(gr) >= 10) s.push(tpF(T.s7, {k: prevP[l], k2: per[l], g: tpPP(gr, l) + '%'}));
+  }
   h += '<div style="padding:14px 24px 0;"><div class="note-box yellow" style="margin-top:0;font-size:0.84rem;line-height:1.55;"><strong>' + T.sumT + ':</strong><ul style="margin:6px 0 0 18px;padding:0;">' + s.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul></div></div>';
   // Nhóm quận
   var G = {g1:[], g2:[], g3:[], g4:[], g5:[], g6:[]};
