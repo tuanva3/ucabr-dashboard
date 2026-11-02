@@ -296,6 +296,16 @@
   .qgt-card .sev-cell { display:inline-block; padding: 2px 10px; border-radius: 10px; font-size: 0.7rem; font-weight: 700; background:#eaf2fb; color:#0057A8; white-space:nowrap; }
   .qgt-card-meta { font-size: 0.72rem; color: #3a6080; margin: 6px 0 8px; }
   .qgt-card-txt { font-size: 0.8rem; color: #1a2a3a; line-height: 1.45; }
+  .tp-table { font-size:0.74rem; }
+  .tp-table thead tr th { padding:7px 6px; font-size:0.68rem; white-space:nowrap; }
+  .tp-table td { padding:6px 6px; white-space:nowrap; }
+  .tp-table tr.tp-sub td:not([style*="background"]) { background:#ddeef8 !important; }
+  .tp-table tr.tp-sub td { color:#003a75; font-weight:800; border-top:2px solid #0057A8; }
+  .tp-qgt { color:#c62828; font-size:0.7rem; font-weight:800; }
+  .tp-chips { display:flex; flex-wrap:wrap; gap:6px; }
+  .tp-chip { background:#fff; border:1px solid rgba(0,87,168,0.18); border-radius:8px; padding:5px 9px; font-size:0.74rem; color:#1a2a3a; display:flex; flex-direction:column; gap:1px; }
+  .tp-chip .tp-ci { font-size:0.68rem; color:#3a6080; }
+  #tabpanel-tp .qgt-cards { align-items:start; }
   @media (max-width: 600px) { .qgt-cards { grid-template-columns: 1fr; padding: 12px 16px; } }
   @media (max-width: 1100px) {
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
@@ -472,6 +482,7 @@
   <button class="main-tab-btn" data-tab="mobile" onclick="showMainTab('mobile', this)" data-i18n="tab-mobile">📶 Di động</button>
   <button class="main-tab-btn" data-tab="digital" onclick="showMainTab('digital', this)" data-i18n="tab-digital">💻 Digital</button>
   <button class="main-tab-btn" data-tab="qgt" onclick="showMainTab('qgt', this)" data-i18n="tab-qgt">📉 Quận giảm thị phần</button>
+  <button class="main-tab-btn" data-tab="tp" onclick="showMainTab('tp', this)" data-i18n="tab-tp">🥧 Thị phần</button>
 </div>
 
 <div id="tabpanel-dashboard" class="tab-panel">
@@ -4292,6 +4303,11 @@
 </div><!-- /qgt-w20 -->
 </div><!-- /#tabpanel-qgt -->
 
+<!-- ═══ THẺ THỊ PHẦN (01/11/2026) – nội dung do JS tpRender() vẽ từ TP_PERIODS ═══ -->
+<div id="tabpanel-tp" class="tab-panel" style="display:none">
+  <div id="tp-root"></div>
+</div><!-- /#tabpanel-tp -->
+
 
 <!-- PAGE FOOTER -->
 <div class="page-footer">
@@ -4802,6 +4818,7 @@ const I18N = {
     'qgt-tx-tournavista-w19': 'Hồi phục sau T9: <strong>+165 (+7,5%)</strong>, quay lại đà tăng của T8 (+280). REG 2.858, cao nhất 4 tháng; kích hoạt 201 so với 154 cùng kỳ (+31%). Mạng tốt lên rõ: UCA0082 chỉ 0,7 Cell*h trong 1–18/10 (cùng kỳ 285,7), sự cố cả quận 17 so với 70. Đà tốt, tiếp tục giữ kênh bán tại UCA0082.',
     'qgt-tx-yuyapichis-w19': 'Đảo chiều rõ rệt: từ −348 (T9) lên <strong>+126 (+10,6%)</strong>, mức tăng tốt nhất 4 tháng. Nguyên nhân chính là mạng ổn định trở lại (Cell*h giảm 71% so cùng kỳ) và HUN0184B3U1 phát sóng lại: REG +598, kích hoạt 47 so với 5. Tuy nhiên REG (1.741) vẫn dưới mức T7 (1.849) và sự cố vẫn cao nhất 6 quận (161 lần/9 ngày, chủ yếu HUN0115) → cần xử lý dứt điểm HUN0115 để giữ đà.',
     'tab-qgt': '📉 Quận giảm thị phần',
+    'tab-tp': '🥧 Thị phần',
     'qgt-tag0': 'Tháng 9 / 2026',
     'qgt-h3-0': 'Quận Giảm Thị Phần – Tháng 9/2026 (7 quận)',
     'qgt-k1': 'Quận giảm thị phần T9',
@@ -5115,6 +5132,7 @@ const I18N = {
     'qgt-tx-tournavista-w19': 'Se recupera tras septiembre: <strong>+165 (+7,5%)</strong>, vuelve al ritmo de agosto (+280). REG 2.858, máximo de 4 meses; activaciones 201 vs 154 (+31%). La red mejora claramente: UCA0082 solo 0,7 Cell*h en 1–18/10 (mismo periodo 285,7), incidencias del distrito 17 vs 70. Buena tendencia: mantener los canales de venta en UCA0082.',
     'qgt-tx-yuyapichis-w19': 'Giro claro: de −348 (sep.) a <strong>+126 (+10,6%)</strong>, el mejor resultado en 4 meses. Causa principal: la red se estabiliza (Cell*h −71% vs mismo periodo) y HUN0184B3U1 vuelve al aire: REG +598, activaciones 47 vs 5. Pero el REG (1.741) sigue por debajo de julio (1.849) y las incidencias siguen siendo las más altas de los 6 distritos (161 en 9 días, sobre todo HUN0115) → resolver HUN0115 para mantener la tendencia.',
     'tab-qgt': '📉 Distritos con caída de participación',
+    'tab-tp': '🥧 Participación',
     'qgt-tag0': 'Septiembre 2026',
     'qgt-h3-0': 'Distritos con Caída de Participación – Septiembre 2026 (7 distritos)',
     'qgt-k1': 'Distritos con caída (sep.)',
@@ -5428,6 +5446,7 @@ const I18N = {
     'qgt-tx-tournavista-w19': 'Recovering after September: <strong>+165 (+7.5%)</strong>, back to the August pace (+280). REG 2,858, a 4-month high; activations 201 vs 154 (+31%). Network clearly better: UCA0082 only 0.7 Cell*h in 1–18/10 (same period 285.7), district incidents 17 vs 70. Good trend: keep the sales channels at UCA0082.',
     'qgt-tx-yuyapichis-w19': 'Clear turnaround: from −348 (Sep) to <strong>+126 (+10.6%)</strong>, the best in 4 months. Main driver: the network is stable again (Cell*h −71% vs same period) and HUN0184B3U1 is back on air: REG +598, activations 47 vs 5. But REG (1,741) is still below July (1,849) and incidents remain the highest of the 6 districts (161 in 9 days, mainly HUN0115) → fix HUN0115 to keep the momentum.',
     'tab-qgt': '📉 Districts losing share',
+    'tab-tp': '🥧 Market share',
     'qgt-tag0': 'September 2026',
     'qgt-h3-0': 'Districts Losing Market Share – September 2026 (7 districts)',
     'qgt-k1': 'Districts losing share (Sep)',
@@ -6073,6 +6092,307 @@ function clearBtsTableFilter(table){
   window.addEventListener('scroll', toggleBtn, {passive:true});
   toggleBtn();
 })();
+</script>
+
+<script>
+// ── THẺ THỊ PHẦN (01/11/2026) ─────────────────────────────────────────────
+// Nguồn: file "Thị phần UCA" (tổng hợp từ 7 file tỉnh, cột KPI dòng 2 của từng nhà mạng).
+// Thêm kỳ mới: thêm 1 phần tử vào CUỐI mảng TP_PERIODS (giữ nguyên các kỳ cũ).
+// d: {Quận: [Bitel, Claro, Entel, Movistar]} ; null = không có dữ liệu trong file nguồn.
+var TP_PERIODS = [
+  { key:'T9/2026', vi:'Tháng 9/2026', es:'Septiembre 2026', en:'September 2026', d:{
+    'Calleria':[52566,66801,35068,69929], 'Yarinacocha':[31049,34674,23535,26824], 'Manantay':[21610,22489,20316,21787],
+    'Campoverde':[5217,7377,864,2650], 'Masisea':[324,4543,378,9], 'Nueva Requena':[132,1147,1701,2459], 'Iparia':null,
+    'Irazola':[5353,14697,1847,960], 'Neshuya':[3427,11338,2422,4307], 'Curimana':[2647,1152,9661,15], 'Alexander Von Humboldt':[7941,2803,141,290],
+    'Puerto Inca':[4324,6243,791,0], 'Honoria':[4294,12,3496,1829], 'Yuyapichis':[612,2005,46,0], 'Tournavista':[388,1575,27,0],
+    'Puerto Bermudez':[5517,9681,15,126], 'Constitucion':[8204,13527,291,0],
+    'Tahuania':[0,0,1327,40], 'Sepahua':[0,34,89,103], 'Yurua':null,
+    'Contamana':[99,18675,6035,1380], 'Sarayacu':[0,11619,2,0], 'Vargas Guerra':[0,2546,2,0], 'Padre Marquez':[230,0,0,3215], 'Pampa Hermosa':[0,0,0,3], 'Inahuaya':null,
+    'Maquia':[0,3824,8,0], 'Emilio San Martin':[4,22,6434,1], 'Puinahua':[0,1674,2304,1371], 'Tapiche':null, 'Soplin':null
+  }}
+];
+// Quận → tỉnh (theo 7 file nguồn) ; số trạm Bitel theo bts_info (File chốt BTS theo quận)
+var TP_PROV = [
+  ['Coronel Portillo',['Calleria','Yarinacocha','Manantay','Campoverde','Masisea','Nueva Requena','Iparia']],
+  ['Padre Abad',['Irazola','Neshuya','Curimana','Alexander Von Humboldt']],
+  ['Puerto Inca',['Puerto Inca','Honoria','Yuyapichis','Tournavista']],
+  ['Oxapampa',['Puerto Bermudez','Constitucion']],
+  ['Atalaya',['Tahuania','Sepahua','Yurua']],
+  ['Ucayali',['Contamana','Sarayacu','Vargas Guerra','Padre Marquez','Pampa Hermosa','Inahuaya']],
+  ['Requena',['Maquia','Emilio San Martin','Puinahua','Tapiche','Soplin']]
+];
+var TP_SITES = {'Calleria':39,'Yarinacocha':28,'Manantay':24,'Campoverde':7,'Masisea':1,'Nueva Requena':1,'Irazola':7,'Neshuya':4,'Curimana':2,
+  'Alexander Von Humboldt':2,'Puerto Inca':6,'Honoria':5,'Yuyapichis':5,'Tournavista':3,'Puerto Bermudez':10,'Constitucion':11,'Sepahua':1,'Contamana':4,'Padre Marquez':1};
+var TP_QGT = ['Tournavista','Nueva Requena','Curimana','Contamana','Masisea','Yuyapichis','Tahuania'];
+var TP_OPS = ['Bitel','Claro','Entel','Movistar'];
+var TP_COL = {Bitel:'#FFD100', Claro:'#DA291C', Entel:'#1E2D78', Movistar:'#2FA8E0'};
+var TP_TINT = {Bitel:'rgba(255,209,0,0.22)', Claro:'rgba(218,41,28,0.12)', Entel:'rgba(30,45,120,0.12)', Movistar:'rgba(47,168,224,0.16)'};
+var TP_TXT_ON = {Bitel:'#003a75', Claro:'#fff', Entel:'#fff', Movistar:'#fff'};
+var TP_SEL = TP_PERIODS.length - 1;
+var TP_CHARTS = [];
+
+var TP_T = {
+ vi:{tag:'Thị phần', h1:'Thị Phần 4 Nhà Mạng – UCABR (31 quận)', h2:'Phần 1 · Tổng quan thị phần', h3:'Phần 2 · Thị phần theo quận', h4:'Phần 3 · Đánh giá',
+  share:'Thị phần', ev:'Events', rank:'Hạng', of4:'trên 4 nhà mạng', vsLead:'Cách #1', vsSecond:'Hơn #2', pts:'điểm %',
+  c1:'🥧 Thị phần tổng UCABR', c2:'🗺️ Thị phần theo tỉnh', c3:'📊 Thị phần theo quận (xếp theo quy mô thị trường)', t1:'📋 Bảng thị phần theo quận',
+  prov:'Tỉnh', dist:'Quận', sites:'Trạm Bitel', mkt:'Tổng Events', lead:'Dẫn đầu', bRank:'Hạng Bitel', dpp:'± Bitel', sub:'Cộng', tot:'Tổng UCABR', nod:'Chưa có dữ liệu',
+  prev:'so với kỳ trước', period:'Kỳ',
+  note:'📌 <strong>Nguồn:</strong> file "Thị phần UCA" – tổng hợp từ 7 file tỉnh (Atalaya, Coronel Portillo, Oxapampa, Padre Abad, Puerto Inca, Requena, Ucayali), lấy cột <strong>KPI</strong> của từng nhà mạng. Thị phần = Events nhà mạng / tổng Events 4 nhà mạng. Ô tô đậm = nhà mạng dẫn đầu quận; "-" = 0. Số trạm Bitel theo file chốt BTS theo quận. Khi có file 7 tỉnh kỳ mới sẽ thêm kỳ mới, giữ nguyên các kỳ cũ.',
+  g1:'🏆 Bitel dẫn đầu', g1t:'Giữ vững vị trí #1: duy trì chất lượng mạng và kênh bán.',
+  g2:'🎯 Sát #1 – cơ hội vượt lên', g2t:'Chênh lệch với nhà mạng dẫn đầu ≤ 5 điểm %. Ưu tiên đẩy bán để lên #1.',
+  g3:'📈 Có thị phần, còn cách xa #1', g3t:'Bitel có chỗ đứng (≥ 10%) nhưng cách #1 hơn 5 điểm %. Cần tăng kênh bán và khuyến mãi theo đối thủ dẫn đầu.',
+  g4:'⚠️ Thị phần thấp (< 10%)', g4t:'Bitel có lưu lượng nhưng rất nhỏ. Cần kiểm tra vùng phủ, chất lượng trạm và kênh phân phối.',
+  g5:'⛔ Bitel chưa có lưu lượng', g5t:'Bitel = 0 events. Cần xem xét đầu tư trạm, hoặc kiểm tra lại số liệu nếu đã có trạm.',
+  g6:'❔ Chưa có dữ liệu nguồn', g6t:'Các quận này không có số liệu trong 7 file tỉnh.',
+  hasSite:'có {n} trạm → kiểm tra', sumT:'Tổng quan',
+  s1:'Bitel đứng <strong>#{r}</strong> toàn UCABR với <strong>{p}</strong> ({e} events). Nhà mạng dẫn đầu là <strong>{L}</strong> với {lp}, Bitel kém <strong>{g} điểm %</strong> ({ge} events).',
+  s1b:'Bitel đang <strong>dẫn đầu</strong> toàn UCABR với <strong>{p}</strong> ({e} events), hơn {S} {g} điểm %.',
+  s2:'<strong>{P}</strong> chiếm {ps} tổng events. Tại đây Bitel đạt {bp}, đứng #{r}.',
+  s3:'<strong>{D}</strong> là quận lớn nhất ({ds} thị trường): Bitel {bp}, đứng #{r}; dẫn đầu là {L} {lp}. Tại {D}, mỗi 1 điểm % tương đương khoảng {one} events.',
+  s4:'Khoảng cách events tới nhà mạng dẫn đầu lớn nhất ở: {list}. Đây là các quận ưu tiên để tăng thị phần.',
+  s5:'7 quận giảm thị phần: {list}.',
+  s0:'So với {k}: Bitel {d} điểm % ({e} events).'
+ },
+ es:{tag:'Participación', h1:'Participación de Mercado de 4 Operadores – UCABR (31 distritos)', h2:'Parte 1 · Resumen de participación', h3:'Parte 2 · Participación por distrito', h4:'Parte 3 · Evaluación',
+  share:'Participación', ev:'Events', rank:'Puesto', of4:'de 4 operadores', vsLead:'Brecha con #1', vsSecond:'Ventaja sobre #2', pts:'pp',
+  c1:'🥧 Participación total UCABR', c2:'🗺️ Participación por provincia', c3:'📊 Participación por distrito (ordenado por tamaño de mercado)', t1:'📋 Tabla de participación por distrito',
+  prov:'Provincia', dist:'Distrito', sites:'Sitios Bitel', mkt:'Total Events', lead:'Líder', bRank:'Puesto Bitel', dpp:'± Bitel', sub:'Subtotal', tot:'Total UCABR', nod:'Sin datos',
+  prev:'vs periodo anterior', period:'Periodo',
+  note:'📌 <strong>Fuente:</strong> archivo "Thị phần UCA" – consolidado de 7 archivos provinciales (Atalaya, Coronel Portillo, Oxapampa, Padre Abad, Puerto Inca, Requena, Ucayali), columna <strong>KPI</strong> de cada operador. Participación = Events del operador / total Events de los 4 operadores. Celda de color sólido = operador líder del distrito; "-" = 0. Sitios Bitel según el archivo de BTS por distrito. Con los nuevos archivos de las 7 provincias se agregará un nuevo periodo, conservando los anteriores.',
+  g1:'🏆 Bitel lidera', g1t:'Mantener el puesto #1: cuidar la calidad de red y los canales de venta.',
+  g2:'🎯 Cerca del #1 – oportunidad de superar', g2t:'Brecha con el líder ≤ 5 pp. Priorizar ventas para llegar al #1.',
+  g3:'📈 Con presencia, lejos del #1', g3t:'Bitel tiene presencia (≥ 10%) pero está a más de 5 pp del líder. Reforzar canales de venta y promociones frente al líder.',
+  g4:'⚠️ Participación baja (< 10%)', g4t:'Bitel tiene tráfico pero muy bajo. Revisar cobertura, calidad de sitios y canales de distribución.',
+  g5:'⛔ Bitel sin tráfico', g5t:'Bitel = 0 events. Evaluar inversión en sitios, o revisar los datos si ya existe sitio.',
+  g6:'❔ Sin datos en la fuente', g6t:'Estos distritos no tienen datos en los 7 archivos provinciales.',
+  hasSite:'tiene {n} sitio(s) → revisar', sumT:'Resumen',
+  s1:'Bitel ocupa el <strong>#{r}</strong> en UCABR con <strong>{p}</strong> ({e} events). El líder es <strong>{L}</strong> con {lp}; Bitel está <strong>{g} pp</strong> por debajo ({ge} events).',
+  s1b:'Bitel <strong>lidera</strong> UCABR con <strong>{p}</strong> ({e} events), {g} pp por encima de {S}.',
+  s2:'<strong>{P}</strong> concentra el {ps} del total de events. Allí Bitel tiene {bp} y ocupa el #{r}.',
+  s3:'<strong>{D}</strong> es el distrito más grande ({ds} del mercado): Bitel {bp}, puesto #{r}; lidera {L} con {lp}. En {D}, cada 1 pp equivale a unos {one} events.',
+  s4:'Las mayores brechas de events frente al líder están en: {list}. Son los distritos prioritarios para ganar participación.',
+  s5:'Los 7 distritos con caída de participación: {list}.',
+  s0:'Frente a {k}: Bitel {d} pp ({e} events).'
+ },
+ en:{tag:'Market share', h1:'Market Share of 4 Operators – UCABR (31 districts)', h2:'Part 1 · Market share overview', h3:'Part 2 · Market share by district', h4:'Part 3 · Assessment',
+  share:'Share', ev:'Events', rank:'Rank', of4:'of 4 operators', vsLead:'Gap to #1', vsSecond:'Lead over #2', pts:'pp',
+  c1:'🥧 Total UCABR market share', c2:'🗺️ Market share by province', c3:'📊 Market share by district (sorted by market size)', t1:'📋 Market share table by district',
+  prov:'Province', dist:'District', sites:'Bitel sites', mkt:'Total Events', lead:'Leader', bRank:'Bitel rank', dpp:'± Bitel', sub:'Subtotal', tot:'UCABR total', nod:'No data',
+  prev:'vs previous period', period:'Period',
+  note:'📌 <strong>Source:</strong> "Thị phần UCA" file – consolidated from 7 province files (Atalaya, Coronel Portillo, Oxapampa, Padre Abad, Puerto Inca, Requena, Ucayali), <strong>KPI</strong> column of each operator. Share = operator Events / total Events of the 4 operators. Solid cell = district leader; "-" = 0. Bitel sites per the BTS-by-district file. New 7-province files will be added as a new period, keeping earlier periods.',
+  g1:'🏆 Bitel leads', g1t:'Hold #1: keep network quality and sales channels strong.',
+  g2:'🎯 Close to #1 – chance to overtake', g2t:'Gap to the leader ≤ 5 pp. Push sales to reach #1.',
+  g3:'📈 Present, far from #1', g3t:'Bitel has a foothold (≥ 10%) but trails the leader by more than 5 pp. Strengthen sales channels and promotions against the leader.',
+  g4:'⚠️ Low share (< 10%)', g4t:'Bitel has traffic but very little. Check coverage, site quality and distribution channels.',
+  g5:'⛔ No Bitel traffic', g5t:'Bitel = 0 events. Consider site investment, or re-check the data where a site exists.',
+  g6:'❔ No source data', g6t:'These districts have no data in the 7 province files.',
+  hasSite:'has {n} site(s) → check', sumT:'Overview',
+  s1:'Bitel ranks <strong>#{r}</strong> in UCABR with <strong>{p}</strong> ({e} events). The leader is <strong>{L}</strong> at {lp}; Bitel trails by <strong>{g} pp</strong> ({ge} events).',
+  s1b:'Bitel <strong>leads</strong> UCABR with <strong>{p}</strong> ({e} events), {g} pp ahead of {S}.',
+  s2:'<strong>{P}</strong> accounts for {ps} of all events. There Bitel has {bp}, ranking #{r}.',
+  s3:'<strong>{D}</strong> is the largest district ({ds} of the market): Bitel {bp}, rank #{r}; {L} leads with {lp}. In {D}, each 1 pp is about {one} events.',
+  s4:'The largest event gaps to the leader are in: {list}. These are the priority districts to gain share.',
+  s5:'The 7 districts losing share: {list}.',
+  s0:'Vs {k}: Bitel {d} pp ({e} events).'
+ }
+};
+
+function tpLang(){ var l = document.documentElement.getAttribute('lang'); return TP_T[l] ? l : 'vi'; }
+function tpN(x, l){ return Math.round(x).toLocaleString(l === 'en' ? 'en-US' : 'de-DE'); }
+function tpP(x, l, dec){ dec = (dec === undefined) ? 1 : dec; var s = x.toFixed(dec); return (l === 'en' ? s : s.replace('.', ',')) + '%'; }
+function tpPP(x, l){ var s = (x > 0 ? '+' : (x < 0 ? '−' : '')) + Math.abs(x).toFixed(1); return l === 'en' ? s : s.replace('.', ','); }
+function tpF(s, o){ return s.replace(/\{(\w+)\}/g, function(m, k){ return o[k] !== undefined ? o[k] : m; }); }
+
+// Tính chỉ số cho 1 mảng [B,C,E,M]
+function tpStat(v){
+  if(!v) return null;
+  var t = v[0] + v[1] + v[2] + v[3];
+  var p = v.map(function(x){ return t ? x / t * 100 : 0; });
+  var order = [0,1,2,3].sort(function(a,b){ return v[b] - v[a]; });
+  var rank = 1; for(var i = 1; i < 4; i++){ if(v[i] > v[0]) rank++; }
+  var li = order[0];
+  return { v:v, t:t, p:p, li:li, rank: v[0] > 0 ? rank : null, gapPP: p[li] - p[0], gapEv: v[li] - v[0], second: order[1] };
+}
+function tpAgg(per){
+  var tot = [0,0,0,0], prov = [];
+  TP_PROV.forEach(function(pr){
+    var s = [0,0,0,0], any = false;
+    pr[1].forEach(function(d){ var v = per.d[d]; if(v){ any = true; for(var i=0;i<4;i++){ s[i]+=v[i]; tot[i]+=v[i]; } } });
+    prov.push({ name: pr[0], st: any ? tpStat(s) : null });
+  });
+  return { tot: tpStat(tot), prov: prov };
+}
+
+function tpRender(){
+  var root = document.getElementById('tp-root'); if(!root) return;
+  var l = tpLang(), T = TP_T[l], per = TP_PERIODS[TP_SEL], prevP = TP_SEL > 0 ? TP_PERIODS[TP_SEL - 1] : null;
+  var A = tpAgg(per), tot = A.tot, Ap = prevP ? tpAgg(prevP) : null;
+  var h = '';
+  // Header + chọn kỳ
+  h += '<div class="section-divider"><div class="tag" style="background:#0057A8;">' + per[l] + '</div><h3>' + T.h1 + '</h3><div class="line"></div></div>';
+  if(TP_PERIODS.length > 1){
+    h += '<div class="week-tabs" style="padding:14px 24px 0;">';
+    TP_PERIODS.forEach(function(p, i){
+      h += '<div class="week-tab-btn' + (i === TP_SEL ? ' active' : '') + '" onclick="TP_SEL=' + i + ';tpRender();"><div class="wtb-title">' + p[l] + '</div><div class="wtb-count">' + T.period + ' ' + p.key + '</div></div>';
+    });
+    h += '</div>';
+  }
+  // Phần 1 – KPI
+  h += '<div class="section-divider"><div class="tag yellow">' + T.h2.split(' · ')[0] + '</div><h3>' + T.h2.split(' · ')[1] + '</h3><div class="line"></div></div>';
+  h += '<div style="padding:14px 24px 0;"><div class="kpi-grid">';
+  TP_OPS.forEach(function(op, i){
+    var r = 1; for(var j=0;j<4;j++){ if(tot.v[j] > tot.v[i]) r++; }
+    var extra = '';
+    if(i === 0){
+      extra = r === 1 ? (T.vsSecond + ': <strong class="pos">' + tpPP(tot.p[0] - tot.p[tot.second], l) + ' ' + T.pts + '</strong>')
+                      : (T.vsLead + ' (' + TP_OPS[tot.li] + '): <strong class="neg">' + tpPP(-tot.gapPP, l) + ' ' + T.pts + '</strong> · ' + tpN(tot.gapEv, l) + ' ' + T.ev.toLowerCase());
+    }
+    if(Ap){ var d = tot.p[i] - Ap.tot.p[i]; extra += (extra ? '<br>' : '') + T.prev + ': <strong class="' + (d >= 0 ? 'pos' : 'neg') + '">' + tpPP(d, l) + ' ' + T.pts + '</strong>'; }
+    h += '<div class="kpi-card" style="border-left-color:' + TP_COL[op] + ';' + (i === 0 ? 'background:#fffbe6;' : '') + '">'
+      + '<div class="kpi-label"><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:' + TP_COL[op] + ';margin-right:6px;vertical-align:middle;"></span>' + op + ' · ' + T.rank + ' #' + r + '</div>'
+      + '<div class="kpi-value" style="color:' + (i === 0 ? '#0057A8' : (op === 'Movistar' ? '#1a7fb0' : TP_COL[op])) + ';">' + tpP(tot.p[i], l) + '</div>'
+      + '<div class="kpi-sub">' + T.ev + ': <strong>' + tpN(tot.v[i], l) + '</strong>' + (extra ? '<br>' + extra : '') + '</div></div>';
+  });
+  h += '</div></div>';
+  h += '<div class="content-row"><div class="chart-card" style="flex:0.8;"><h4>' + T.c1 + '</h4><div class="chart-wrapper"><canvas id="chartTpTotal"></canvas></div></div>'
+     + '<div class="chart-card"><h4>' + T.c2 + '</h4><div class="chart-wrapper"><canvas id="chartTpProv"></canvas></div></div></div>';
+
+  // Phần 2 – theo quận
+  h += '<div class="section-divider"><div class="tag yellow">' + T.h3.split(' · ')[0] + '</div><h3>' + T.h3.split(' · ')[1] + '</h3><div class="line"></div></div>';
+  var dl = []; TP_PROV.forEach(function(pr){ pr[1].forEach(function(d){ var st = tpStat(per.d[d]); if(st && st.t > 0) dl.push({d:d, st:st}); }); });
+  dl.sort(function(a,b){ return b.st.t - a.st.t; });
+  h += '<div class="content-row"><div class="chart-card"><h4>' + T.c3 + '</h4><div style="position:relative;height:' + (dl.length * 24 + 70) + 'px;"><canvas id="chartTpDist"></canvas></div></div></div>';
+  // Bảng
+  var th = 'style="text-align:center;"';
+  h += '<div class="content-row"><div class="table-card" style="flex:1;width:100%;max-width:100%;min-width:0;box-sizing:border-box;"><h4>' + T.t1 + '</h4><div style="overflow-x:auto;">'
+     + '<table class="stats-table tp-table"><thead><tr><th rowspan="2">' + T.dist + '</th><th rowspan="2" ' + th + '>' + T.sites + '</th>';
+  TP_OPS.forEach(function(op){ h += '<th colspan="2" style="text-align:center;background:' + TP_COL[op] + ';color:' + TP_TXT_ON[op] + ';">' + op + '</th>'; });
+  h += '<th rowspan="2">' + T.mkt + '</th><th rowspan="2" ' + th + '>' + T.bRank + '</th><th rowspan="2" ' + th + '>' + T.vsLead + '</th>' + (prevP ? '<th rowspan="2" ' + th + '>' + T.dpp + '</th>' : '') + '</tr><tr>';
+  TP_OPS.forEach(function(){ h += '<th>' + T.ev + '</th><th>%</th>'; });
+  h += '</tr></thead><tbody>';
+  function row(name, st, isSub, sites, stPrev){
+    var cls = isSub ? ' class="tp-sub"' : '';
+    var r = '<tr' + cls + '><td>' + name + (TP_QGT.indexOf(name) >= 0 ? ' <span class="tp-qgt" title="QGT">▼</span>' : '') + '</td><td style="text-align:center;">' + (isSub ? sites : (sites || '<span style="color:#aaa;">0</span>')) + '</td>';
+    if(!st){ return r + '<td colspan="' + (11 + (prevP ? 1 : 0)) + '" style="text-align:center;color:#999;font-style:italic;">' + T.nod + '</td></tr>'; }
+    TP_OPS.forEach(function(op, i){
+      var lead = st.li === i && st.v[i] > 0;
+      var bg = st.v[i] === 0 ? '' : (lead ? 'background:' + TP_COL[op] + ';color:' + TP_TXT_ON[op] + ';font-weight:800;' : 'background:' + TP_TINT[op] + ';');
+      r += '<td>' + (st.v[i] ? tpN(st.v[i], l) : '-') + '</td><td style="' + bg + '">' + (st.v[i] ? tpP(st.p[i], l) : '-') + '</td>';
+    });
+    r += '<td><strong>' + tpN(st.t, l) + '</strong></td>';
+    r += '<td style="text-align:center;">' + (st.rank ? '#' + st.rank : '—') + '</td>';
+    r += '<td style="text-align:center;" class="' + (st.li === 0 ? 'pos' : 'neg') + '">' + (st.li === 0 ? '#1' : tpPP(-st.gapPP, l)) + '</td>';
+    if(prevP){ var dd = stPrev ? st.p[0] - stPrev.p[0] : null; r += '<td style="text-align:center;" class="' + (dd === null ? '' : (dd >= 0 ? 'pos' : 'neg')) + '">' + (dd === null ? '—' : tpPP(dd, l)) + '</td>'; }
+    return r + '</tr>';
+  }
+  TP_PROV.forEach(function(pr, pi){
+    var ap = A.prov[pi], sites = 0;
+    pr[1].forEach(function(d){ sites += TP_SITES[d] || 0; });
+    h += row('📍 ' + pr[0], ap.st, true, sites, Ap ? Ap.prov[pi].st : null);
+    var ds = pr[1].slice().sort(function(a,b){ var x = per.d[a], y = per.d[b]; return (y ? y[0]+y[1]+y[2]+y[3] : -1) - (x ? x[0]+x[1]+x[2]+x[3] : -1); });
+    ds.forEach(function(d){ h += row(d, tpStat(per.d[d]), false, TP_SITES[d] || 0, prevP ? tpStat(prevP.d[d]) : null); });
+  });
+  var allSites = 0; Object.keys(TP_SITES).forEach(function(k){ allSites += TP_SITES[k]; });
+  h += '</tbody><tfoot><tr><td style="color:#FFD100;">' + T.tot + '</td><td style="text-align:center;">' + allSites + '</td>';
+  TP_OPS.forEach(function(op, i){ h += '<td>' + tpN(tot.v[i], l) + '</td><td>' + tpP(tot.p[i], l) + '</td>'; });
+  h += '<td>' + tpN(tot.t, l) + '</td><td style="text-align:center;">#' + tot.rank + '</td><td style="text-align:center;">' + (tot.li === 0 ? '#1' : tpPP(-tot.gapPP, l)) + '</td>' + (prevP ? '<td style="text-align:center;">' + tpPP(tot.p[0] - Ap.tot.p[0], l) + '</td>' : '') + '</tr></tfoot></table></div>';
+  h += '<div class="note-box blue">' + T.note + ' <span class="tp-qgt">▼</span> = ' + (l === 'vi' ? 'quận trong thẻ "Quận giảm thị phần"' : (l === 'es' ? 'distrito de la pestaña "Distritos con caída de participación"' : 'district in the "Districts losing share" tab')) + '.</div></div></div>';
+
+  // Phần 3 – Đánh giá
+  h += '<div class="section-divider"><div class="tag yellow">' + T.h4.split(' · ')[0] + '</div><h3>' + T.h4.split(' · ')[1] + '</h3><div class="line"></div></div>';
+  var s = [];
+  if(Ap){ s.push(tpF(T.s0, {k: prevP[l], d: tpPP(tot.p[0] - Ap.tot.p[0], l), e: (tot.v[0] - Ap.tot.v[0] >= 0 ? '+' : '−') + tpN(Math.abs(tot.v[0] - Ap.tot.v[0]), l)})); }
+  s.push(tot.li === 0 ? tpF(T.s1b, {p: tpP(tot.p[0], l), e: tpN(tot.v[0], l), S: TP_OPS[tot.second], g: tpPP(tot.p[0] - tot.p[tot.second], l).replace('+','')})
+                      : tpF(T.s1, {r: tot.rank, p: tpP(tot.p[0], l), e: tpN(tot.v[0], l), L: TP_OPS[tot.li], lp: tpP(tot.p[tot.li], l), g: tot.gapPP.toFixed(1).replace('.', l === 'en' ? '.' : ','), ge: tpN(tot.gapEv, l)}));
+  var bigP = A.prov.filter(function(x){ return x.st; }).sort(function(a,b){ return b.st.t - a.st.t; })[0];
+  s.push(tpF(T.s2, {P: bigP.name, ps: tpP(bigP.st.t / tot.t * 100, l), bp: tpP(bigP.st.p[0], l), r: bigP.st.rank || '—'}));
+  var bigD = dl[0];
+  s.push(tpF(T.s3, {D: bigD.d, ds: tpP(bigD.st.t / tot.t * 100, l), bp: tpP(bigD.st.p[0], l), r: bigD.st.rank || '—', L: TP_OPS[bigD.st.li], lp: tpP(bigD.st.p[bigD.st.li], l), one: tpN(bigD.st.t / 100, l)}));
+  var gaps = dl.filter(function(x){ return x.st.li !== 0; }).sort(function(a,b){ return b.st.gapEv - a.st.gapEv; }).slice(0, 3);
+  s.push(tpF(T.s4, {list: gaps.map(function(x){ return '<strong>' + x.d + '</strong> ' + tpN(x.st.gapEv, l) + ' (' + TP_OPS[x.st.li] + ' ' + tpP(x.st.p[x.st.li], l) + ', Bitel ' + tpP(x.st.p[0], l) + ')'; }).join('; ')}));
+  s.push(tpF(T.s5, {list: TP_QGT.map(function(d){ var st = tpStat(per.d[d]); return d + ' ' + (st && st.t ? tpP(st.p[0], l) : '—'); }).join(' · ')}));
+  h += '<div style="padding:14px 24px 0;"><div class="note-box yellow" style="margin-top:0;font-size:0.84rem;line-height:1.55;"><strong>' + T.sumT + ':</strong><ul style="margin:6px 0 0 18px;padding:0;">' + s.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul></div></div>';
+  // Nhóm quận
+  var G = {g1:[], g2:[], g3:[], g4:[], g5:[], g6:[]};
+  TP_PROV.forEach(function(pr){ pr[1].forEach(function(d){
+    var st = tpStat(per.d[d]);
+    if(!st || st.t === 0){ if(!st) G.g6.push({d:d}); else G.g5.push({d:d, st:st}); return; }
+    if(st.v[0] === 0) G.g5.push({d:d, st:st});
+    else if(st.li === 0) G.g1.push({d:d, st:st});
+    else if(st.gapPP <= 5) G.g2.push({d:d, st:st});
+    else if(st.p[0] >= 10) G.g3.push({d:d, st:st});
+    else G.g4.push({d:d, st:st});
+  }); });
+  var GS = {g1:['#ecfdf5','#10b981','#065f46'], g2:['#eff6ff','#0057A8','#003a75'], g3:['#fffbe6','#FFD100','#6a4c00'], g4:['#fff7ed','#f59e0b','#92400e'], g5:['#fef2f2','#c62828','#7f1d1d'], g6:['#f5f5f5','#bdbdbd','#555']};
+  h += '<div class="qgt-cards">';
+  ['g1','g2','g3','g4','g5','g6'].forEach(function(g){
+    var it = G[g]; if(!it.length) return;
+    it.sort(function(a,b){ return (b.st ? b.st.t : 0) - (a.st ? a.st.t : 0); });
+    var c = GS[g];
+    h += '<div class="qgt-card" style="background:' + c[0] + ';border-color:' + c[1] + ';"><div class="qgt-card-head"><span style="color:' + c[2] + ';">' + T[g] + '</span><span class="sev-cell">' + it.length + '</span></div>'
+       + '<div class="qgt-card-txt" style="margin:6px 0 8px;">' + T[g + 't'] + '</div><div class="tp-chips">';
+    it.forEach(function(x){
+      var info = '';
+      if(x.st && x.st.t){
+        info = g === 'g5' ? (TP_OPS[x.st.li] + ' ' + tpP(x.st.p[x.st.li], l) + ' · ' + tpN(x.st.t, l) + ' ' + T.ev.toLowerCase())
+             : ('Bitel ' + tpP(x.st.p[0], l) + (g === 'g1' ? ' · ' + T.vsSecond.toLowerCase() + ' ' + TP_OPS[x.st.second] + ' ' + tpPP(x.st.p[0] - x.st.p[x.st.second], l).replace('+','') + ' ' + T.pts
+                                                   : ' · #1 ' + TP_OPS[x.st.li] + ' ' + tpP(x.st.p[x.st.li], l)));
+      }
+      if(g === 'g5' && TP_SITES[x.d]) info += ' · <strong style="color:#c62828;">' + tpF(T.hasSite, {n: TP_SITES[x.d]}) + '</strong>';
+      if(g === 'g5' && x.st && x.st.t === 0) info = '—';
+      h += '<div class="tp-chip"><div><strong>' + x.d + '</strong>' + (TP_QGT.indexOf(x.d) >= 0 ? ' <b class="tp-qgt">▼</b>' : '') + '</div>' + (info ? '<div class="tp-ci">' + info + '</div>' : '') + '</div>';
+    });
+    h += '</div></div>';
+  });
+  h += '</div>';
+  root.innerHTML = h;
+  tpCharts(A, dl, l, T);
+}
+
+var tpPctPlugin = { id:'tpPct', afterDatasetsDraw: function(chart){
+  var ctx = chart.ctx, horiz = chart.config.type === 'bar';
+  chart.data.datasets.forEach(function(ds, di){
+    var meta = chart.getDatasetMeta(di); if(meta.hidden) return;
+    meta.data.forEach(function(el, i){
+      var v = ds.data[i]; if(!v || v < (horiz ? 7 : 5)) return;
+      var p = horiz ? {x:(el.x + el.base) / 2, y:el.y} : el.tooltipPosition();
+      ctx.save(); ctx.font = 'bold ' + (horiz ? 10 : 12) + 'px Segoe UI, Arial'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+      ctx.fillStyle = ds.label === 'Bitel' || (Array.isArray(ds.backgroundColor) && ds.backgroundColor[i] === TP_COL.Bitel) ? '#003a75' : '#fff';
+      var lg = document.documentElement.getAttribute('lang') === 'en';
+      ctx.fillText((Math.round(v * 10) / 10).toFixed(1).replace('.', lg ? '.' : ',') + '%', p.x, p.y);
+      ctx.restore();
+    });
+  });
+}};
+
+function tpCharts(A, dl, l, T){
+  TP_CHARTS.forEach(function(c){ try{ c.destroy(); }catch(e){} }); TP_CHARTS = [];
+  if(!window.Chart) return;
+  var tot = A.tot;
+  var tt = { callbacks: { label: function(c){ var ds = c.dataset; var raw = ds._ev ? ds._ev[c.dataIndex] : null; return (c.chart.config.type === 'doughnut' ? c.label : ds.label) + ': ' + tpP(c.parsed.x !== undefined && c.chart.config.type === 'bar' ? c.parsed.x : c.parsed, l) + (raw !== null ? ' · ' + tpN(raw, l) + ' events' : ''); } } };
+  var c1 = document.getElementById('chartTpTotal');
+  if(c1){ TP_CHARTS.push(new Chart(c1, { type:'doughnut', plugins:[tpPctPlugin],
+    data:{ labels: TP_OPS, datasets:[{ data: tot.p, _ev: tot.v, backgroundColor: TP_OPS.map(function(o){ return TP_COL[o]; }), borderColor:'#fff', borderWidth:2 }] },
+    options:{ responsive:true, maintainAspectRatio:false, cutout:'52%', plugins:{ legend:{ position:'right' }, tooltip: tt } } })); }
+  function stacked(id, labels, stats){
+    var el = document.getElementById(id); if(!el) return;
+    TP_CHARTS.push(new Chart(el, { type:'bar', plugins:[tpPctPlugin],
+      data:{ labels: labels, datasets: TP_OPS.map(function(op, i){ return { label: op, data: stats.map(function(s){ return s.p[i]; }), _ev: stats.map(function(s){ return s.v[i]; }), backgroundColor: TP_COL[op], borderColor:'#fff', borderWidth:{right:1} }; }) },
+      options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false,
+        scales:{ x:{ stacked:true, max:100, ticks:{ callback:function(v){ return v + '%'; } } }, y:{ stacked:true, ticks:{ font:{ size:11 } } } },
+        plugins:{ legend:{ position:'top' }, tooltip: tt } } }));
+  }
+  var pv = A.prov.filter(function(x){ return x.st; }).sort(function(a,b){ return b.st.t - a.st.t; });
+  stacked('chartTpProv', pv.map(function(x){ return x.name + ' (' + tpN(x.st.t, l) + ')'; }), pv.map(function(x){ return x.st; }));
+  stacked('chartTpDist', dl.map(function(x){ return x.d + ' (' + tpN(x.st.t, l) + ')'; }), dl.map(function(x){ return x.st; }));
+}
+
+(function(){
+  var _prevApplyLang = applyLang;
+  applyLang = function(lang){ _prevApplyLang(lang); try{ tpRender(); }catch(e){ console.error(e); } };
+  window.addEventListener('load', function(){ try{ tpRender(); }catch(e){ console.error(e); } });
+})();
+
 </script>
 
 </body></html>
