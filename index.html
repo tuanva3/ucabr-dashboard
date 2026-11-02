@@ -6289,18 +6289,20 @@ function tpRender(){
   h += '<div class="content-row"><div class="table-card" style="flex:1;width:100%;max-width:100%;min-width:0;box-sizing:border-box;"><h4>' + T.t1 + '</h4><div style="overflow-x:auto;">'
      + '<table class="stats-table tp-table"><thead><tr><th rowspan="2">' + T.dist + '</th><th rowspan="2">' + T.pop + '</th><th rowspan="2" ' + th + '>' + T.sites + '</th>';
   TP_OPS.forEach(function(op){ h += '<th colspan="2" style="text-align:center;background:' + TP_COL[op] + ';color:' + TP_TXT_ON[op] + ';">' + op + '</th>'; });
+  if(prevP) h += '<th rowspan="2" style="text-align:center;background:' + TP_COL.Bitel + ';color:' + TP_TXT_ON.Bitel + ';">Bitel %<br><span style="font-weight:600;">' + prevP.key + '</span></th>';
   h += '<th rowspan="2">' + T.mkt + '</th><th rowspan="2" ' + th + '>' + T.bRank + '</th><th rowspan="2" ' + th + '>' + T.vsLead + '</th>' + (prevP ? '<th rowspan="2" ' + th + '>' + T.dpp + '</th>' : '') + '</tr><tr>';
   TP_OPS.forEach(function(){ h += '<th>' + T.ev + '</th><th>%</th>'; });
   h += '</tr></thead><tbody>';
   function row(name, st, isSub, sites, stPrev, pop, stCmp){
     var cls = isSub ? ' class="tp-sub"' : '';
     var r = '<tr' + cls + '><td>' + name + (TP_QGT.indexOf(name) >= 0 ? ' <span class="tp-qgt" title="QGT">▼</span>' : '') + '</td><td>' + (pop ? tpN(pop, l) : '<span style="color:#aaa;">—</span>') + '</td><td style="text-align:center;">' + (isSub ? sites : (sites || '<span style="color:#aaa;">0</span>')) + '</td>';
-    if(!st){ return r + '<td colspan="' + (11 + (prevP ? 1 : 0)) + '" style="text-align:center;color:#999;font-style:italic;">' + T.nod + '</td></tr>'; }
+    if(!st){ return r + '<td colspan="' + (11 + (prevP ? 2 : 0)) + '" style="text-align:center;color:#999;font-style:italic;">' + T.nod + '</td></tr>'; }
     TP_OPS.forEach(function(op, i){
       var lead = st.li === i && st.v[i] > 0;
       var bg = st.v[i] === 0 ? '' : (lead ? 'background:' + TP_COL[op] + ';color:' + TP_TXT_ON[op] + ';font-weight:800;' : 'background:' + TP_TINT[op] + ';');
       r += '<td>' + (st.v[i] ? tpN(st.v[i], l) : '-') + '</td><td style="' + bg + '">' + (st.v[i] ? tpP(st.p[i], l) : '-') + '</td>';
     });
+    if(prevP){ r += '<td style="text-align:center;background:' + TP_TINT.Bitel + ';">' + ((stPrev && stPrev.t) ? (stPrev.v[0] ? tpP(stPrev.p[0], l) : '-') : '<span style="color:#aaa;">—</span>') + '</td>'; }
     r += '<td><strong>' + tpN(st.t, l) + '</strong></td>';
     r += '<td style="text-align:center;">' + (st.rank ? '#' + st.rank : '—') + '</td>';
     r += '<td style="text-align:center;" class="' + (st.li === 0 ? 'pos' : 'neg') + '">' + (st.li === 0 ? '#1' : tpPP(-st.gapPP, l)) + '</td>';
@@ -6318,6 +6320,7 @@ function tpRender(){
   var allPop = 0; Object.keys(TP_POP).filter(tpIn).forEach(function(k){ allPop += TP_POP[k]; });
   h += '</tbody><tfoot><tr><td style="color:#FFD100;">' + T.tot + '</td><td>' + tpN(allPop, l) + '</td><td style="text-align:center;">' + allSites + '</td>';
   TP_OPS.forEach(function(op, i){ h += '<td>' + tpN(tot.v[i], l) + '</td><td>' + tpP(tot.p[i], l) + '</td>'; });
+  if(prevP) h += '<td style="text-align:center;">' + tpP(Ap.tot.p[0], l) + '</td>';
   h += '<td>' + tpN(tot.t, l) + '</td><td style="text-align:center;">#' + tot.rank + '</td><td style="text-align:center;">' + (tot.li === 0 ? '#1' : tpPP(-tot.gapPP, l)) + '</td>' + (prevP ? '<td style="text-align:center;">' + tpPP(totC.p[0] - Ap.tot.p[0], l) + '</td>' : '') + '</tr></tfoot></table></div>';
   h += '<div class="note-box blue">' + T.note + ' <span class="tp-qgt">▼</span> = ' + (l === 'vi' ? 'quận trong thẻ "Quận giảm thị phần"' : (l === 'es' ? 'distrito de la pestaña "Distritos con caída de participación"' : 'district in the "Districts losing share" tab')) + '.</div></div></div>';
 
