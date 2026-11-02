@@ -306,6 +306,9 @@
   .tp-chip { background:#fff; border:1px solid rgba(0,87,168,0.18); border-radius:8px; padding:5px 9px; font-size:0.74rem; color:#1a2a3a; display:flex; flex-direction:column; gap:1px; }
   .tp-chip .tp-ci { font-size:0.68rem; color:#3a6080; }
   #tabpanel-tp .qgt-cards { align-items:start; }
+  .tp-pbtns { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+  .tp-pbtn { border:1px solid #b3d4ec; background:#fff; color:#0057A8; font-weight:700; font-size:0.74rem; padding:5px 12px; border-radius:16px; cursor:pointer; }
+  .tp-pbtn.active { background:#0057A8; color:#FFD100; border-color:#0057A8; }
   @media (max-width: 600px) { .qgt-cards { grid-template-columns: 1fr; padding: 12px 16px; } }
   @media (max-width: 1100px) {
     .kpi-grid { grid-template-columns: repeat(2, 1fr); }
@@ -6133,11 +6136,12 @@ var TP_TINT = {Bitel:'rgba(255,209,0,0.22)', Claro:'rgba(218,41,28,0.12)', Entel
 var TP_TXT_ON = {Bitel:'#003a75', Claro:'#fff', Entel:'#fff', Movistar:'#fff'};
 var TP_SEL = TP_PERIODS.length - 1;
 var TP_CHARTS = [];
+var TP_DIST_PROV = 'Coronel Portillo';
 
 var TP_T = {
  vi:{tag:'Thị phần', h1:'Thị Phần 4 Nhà Mạng – UCABR (31 quận)', h2:'Phần 1 · Tổng quan thị phần', h3:'Phần 2 · Thị phần theo quận', h4:'Phần 3 · Đánh giá',
   share:'Thị phần', ev:'Events', rank:'Hạng', of4:'trên 4 nhà mạng', vsLead:'Cách #1', vsSecond:'Hơn #2', pts:'điểm %',
-  c1:'🥧 Thị phần tổng UCABR', c2:'🗺️ Thị phần theo tỉnh', c3:'📊 Thị phần theo quận (xếp theo quy mô thị trường)', t1:'📋 Bảng thị phần theo quận',
+  c1:'🥧 Thị phần tổng UCABR', c2:'🗺️ Thị phần theo tỉnh', c3:'📊 Events theo quận – 4 nhà mạng', allP:'Tất cả 31 quận', t1:'📋 Bảng thị phần theo quận',
   prov:'Tỉnh', dist:'Quận', sites:'Trạm Bitel', mkt:'Tổng Events', lead:'Dẫn đầu', bRank:'Hạng Bitel', dpp:'± Bitel', sub:'Cộng', tot:'Tổng UCABR', nod:'Chưa có dữ liệu',
   prev:'so với kỳ trước', period:'Kỳ',
   note:'📌 <strong>Nguồn:</strong> file "Thị phần UCA" – tổng hợp từ 7 file tỉnh (Atalaya, Coronel Portillo, Oxapampa, Padre Abad, Puerto Inca, Requena, Ucayali), lấy cột <strong>KPI</strong> của từng nhà mạng. Thị phần = Events nhà mạng / tổng Events 4 nhà mạng. Ô tô đậm = nhà mạng dẫn đầu quận; "-" = 0. Số trạm Bitel theo file chốt BTS theo quận. Khi có file 7 tỉnh kỳ mới sẽ thêm kỳ mới, giữ nguyên các kỳ cũ.',
@@ -6161,7 +6165,7 @@ var TP_T = {
  },
  es:{tag:'Participación', h1:'Participación de Mercado de 4 Operadores – UCABR (31 distritos)', h2:'Parte 1 · Resumen de participación', h3:'Parte 2 · Participación por distrito', h4:'Parte 3 · Evaluación',
   share:'Participación', ev:'Events', rank:'Puesto', of4:'de 4 operadores', vsLead:'Brecha con #1', vsSecond:'Ventaja sobre #2', pts:'pp',
-  c1:'🥧 Participación total UCABR', c2:'🗺️ Participación por provincia', c3:'📊 Participación por distrito (ordenado por tamaño de mercado)', t1:'📋 Tabla de participación por distrito',
+  c1:'🥧 Participación total UCABR', c2:'🗺️ Participación por provincia', c3:'📊 Events por distrito – 4 operadores', allP:'Los 31 distritos', t1:'📋 Tabla de participación por distrito',
   prov:'Provincia', dist:'Distrito', sites:'Sitios Bitel', mkt:'Total Events', lead:'Líder', bRank:'Puesto Bitel', dpp:'± Bitel', sub:'Subtotal', tot:'Total UCABR', nod:'Sin datos',
   prev:'vs periodo anterior', period:'Periodo',
   note:'📌 <strong>Fuente:</strong> archivo "Thị phần UCA" – consolidado de 7 archivos provinciales (Atalaya, Coronel Portillo, Oxapampa, Padre Abad, Puerto Inca, Requena, Ucayali), columna <strong>KPI</strong> de cada operador. Participación = Events del operador / total Events de los 4 operadores. Celda de color sólido = operador líder del distrito; "-" = 0. Sitios Bitel según el archivo de BTS por distrito. Con los nuevos archivos de las 7 provincias se agregará un nuevo periodo, conservando los anteriores.',
@@ -6185,7 +6189,7 @@ var TP_T = {
  },
  en:{tag:'Market share', h1:'Market Share of 4 Operators – UCABR (31 districts)', h2:'Part 1 · Market share overview', h3:'Part 2 · Market share by district', h4:'Part 3 · Assessment',
   share:'Share', ev:'Events', rank:'Rank', of4:'of 4 operators', vsLead:'Gap to #1', vsSecond:'Lead over #2', pts:'pp',
-  c1:'🥧 Total UCABR market share', c2:'🗺️ Market share by province', c3:'📊 Market share by district (sorted by market size)', t1:'📋 Market share table by district',
+  c1:'🥧 Total UCABR market share', c2:'🗺️ Market share by province', c3:'📊 Events by district – 4 operators', allP:'All 31 districts', t1:'📋 Market share table by district',
   prov:'Province', dist:'District', sites:'Bitel sites', mkt:'Total Events', lead:'Leader', bRank:'Bitel rank', dpp:'± Bitel', sub:'Subtotal', tot:'UCABR total', nod:'No data',
   prev:'vs previous period', period:'Period',
   note:'📌 <strong>Source:</strong> "Thị phần UCA" file – consolidated from 7 province files (Atalaya, Coronel Portillo, Oxapampa, Padre Abad, Puerto Inca, Requena, Ucayali), <strong>KPI</strong> column of each operator. Share = operator Events / total Events of the 4 operators. Solid cell = district leader; "-" = 0. Bitel sites per the BTS-by-district file. New 7-province files will be added as a new period, keeping earlier periods.',
@@ -6273,7 +6277,10 @@ function tpRender(){
   h += '<div class="section-divider"><div class="tag yellow">' + T.h3.split(' · ')[0] + '</div><h3>' + T.h3.split(' · ')[1] + '</h3><div class="line"></div></div>';
   var dl = []; TP_PROV.forEach(function(pr){ pr[1].forEach(function(d){ var st = tpStat(per.d[d]); if(st && st.t > 0) dl.push({d:d, st:st}); }); });
   dl.sort(function(a,b){ return b.st.t - a.st.t; });
-  h += '<div class="content-row"><div class="chart-card"><h4>' + T.c3 + '</h4><div style="position:relative;height:' + (dl.length * 24 + 70) + 'px;"><canvas id="chartTpDist"></canvas></div></div></div>';
+  var pb = TP_PROV.map(function(pr){ return pr[0]; }).concat(['*']);
+  h += '<div class="content-row"><div class="chart-card"><h4>' + T.c3 + '</h4><div class="tp-pbtns">'
+     + pb.map(function(pn){ return '<button class="tp-pbtn' + (pn === TP_DIST_PROV ? ' active' : '') + '" onclick="TP_DIST_PROV=\'' + pn + '\';tpRender();">' + (pn === '*' ? T.allP : pn) + '</button>'; }).join('')
+     + '</div><div style="position:relative;height:380px;"><canvas id="chartTpDist"></canvas></div></div></div>';
   // Bảng
   var th = 'style="text-align:center;"';
   h += '<div class="content-row"><div class="table-card" style="flex:1;width:100%;max-width:100%;min-width:0;box-sizing:border-box;"><h4>' + T.t1 + '</h4><div style="overflow-x:auto;">'
@@ -6409,7 +6416,27 @@ function tpCharts(A, dl, l, T){
   }
   var pv = A.prov.filter(function(x){ return x.st; }).sort(function(a,b){ return b.st.t - a.st.t; });
   stacked('chartTpProv', pv.map(function(x){ return x.name + ' (' + tpN(x.st.t, l) + ')'; }), pv.map(function(x){ return x.st; }));
-  stacked('chartTpDist', dl.map(function(x){ return x.d + ' (' + tpN(x.st.t, l) + ')'; }), dl.map(function(x){ return x.st; }));
+  // Biểu đồ cột nhóm: Events 4 nhà mạng theo quận (lọc theo tỉnh)
+  var per = TP_PERIODS[TP_SEL], ds = [];
+  TP_PROV.forEach(function(pr){ if(TP_DIST_PROV === '*' || pr[0] === TP_DIST_PROV) pr[1].forEach(function(d){ ds.push(d); }); });
+  ds.sort(function(a,b){ return a.localeCompare(b); });
+  var el3 = document.getElementById('chartTpDist');
+  if(el3){
+    var hl = { id:'tpHl', beforeDatasetsDraw: function(ch){ var a = ch.getActiveElements(); if(!a.length) return; var x = ch.scales.x, i = a[0].index;
+      var w = (x.getPixelForValue(1) - x.getPixelForValue(0)) || x.width; var c = ch.ctx; c.save(); c.fillStyle = 'rgba(0,87,168,0.07)';
+      c.fillRect(x.getPixelForValue(i) - w / 2, ch.chartArea.top, w, ch.chartArea.bottom - ch.chartArea.top); c.restore(); } };
+    TP_CHARTS.push(new Chart(el3, { type:'bar', plugins:[hl],
+      data:{ labels: ds, datasets: TP_OPS.map(function(op, i){ return { label: op.toUpperCase(), data: ds.map(function(d){ var v = per.d[d]; return v ? v[i] : null; }),
+        backgroundColor: TP_COL[op], borderRadius: 2, maxBarThickness: 26, categoryPercentage: 0.62, barPercentage: 0.9 }; }) },
+      options:{ responsive:true, maintainAspectRatio:false, interaction:{ mode:'index', intersect:false },
+        scales:{ x:{ grid:{ display:true, offset:true, color:'#eef2f6' }, ticks:{ autoSkip:false, maxRotation: ds.length > 10 ? 45 : 0, font:{ size:11 } } },
+                 y:{ beginAtZero:true, grid:{ color:'#eef2f6' }, title:{ display:true, text:'Events', font:{ size:11 } },
+                     ticks:{ callback:function(v){ return v >= 1000 ? tpN(v / 1000, l) + 'k' : v; } } } },
+        plugins:{ legend:{ position:'top', labels:{ usePointStyle:true, pointStyle:'circle', boxWidth:8, font:{ weight:'bold', size:11 } } },
+          tooltip:{ backgroundColor:'rgba(16,28,44,0.95)', titleColor:'#fff', bodyColor:'#fff', padding:10, usePointStyle:true, boxPadding:4, titleFont:{ size:14, weight:'bold' }, bodyFont:{ size:12 },
+            itemSort:function(a,b){ return (b.raw || 0) - (a.raw || 0); },
+            callbacks:{ label:function(c){ var st = tpStat(per.d[c.label]); return ' ' + c.dataset.label + '   ' + (c.raw === null ? '—' : tpN(c.raw, l)) + (st && st.t ? '  (' + tpP(st.p[c.datasetIndex], l) + ')' : ''); } } } } } }));
+  }
 }
 
 (function(){
