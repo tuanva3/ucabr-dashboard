@@ -6950,7 +6950,8 @@ function tpCharts(A, dl, l, T){
   // Biểu đồ cột nhóm: Events 4 nhà mạng theo quận (lọc theo tỉnh)
   var per = TP_PERIODS[TP_SEL], ds = [];
   TP_PROV.forEach(function(pr){ if(TP_DIST_PROV === '*' || pr[0] === TP_DIST_PROV) pr[1].forEach(function(d){ ds.push(d); }); });
-  ds.sort(function(a,b){ return a.localeCompare(b); });
+  // Sắp xếp theo dân số (INEI 2025) từ đông → ít, trái → phải (09/11/2026)
+  ds.sort(function(a,b){ return ((TP_POP[b] || 0) - (TP_POP[a] || 0)) || a.localeCompare(b); });
   var el3 = document.getElementById('chartTpDist');
   if(el3){
     var hl = { id:'tpHl', beforeDatasetsDraw: function(ch){ var a = ch.getActiveElements(); if(!a.length) return; var x = ch.scales.x, i = a[0].index;
