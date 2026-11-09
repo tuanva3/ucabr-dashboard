@@ -6804,8 +6804,94 @@ function tpRender(){
     h += '</div></div>';
   });
   h += '</div>';
+  try{ h += tp15Section(l, per, prevP); }catch(e){ console.error(e); }
   root.innerHTML = h;
   tpCharts(A, dl, l, T);
+}
+
+// ── Phần 4 thẻ Thị phần: đối chiếu 15C3D theo quận với thị phần (thêm 09/11/2026) ──
+// Nguồn 15C3D: bảng Phần 4 tuần 1 T11 (121 trạm giảm, lũy kế 01/11→08/11), gộp theo quận bằng BTS_GEO_INFO.
+// [số trạm giảm, 15C3D T11 của các trạm giảm, 15C3D T10 của chính các trạm đó, thuê bao T11 các trạm giảm]
+var TP15_KEY = 'T11/2026';
+var TP15 = {'Yarinacocha':[18,-855,-460,5379],'Padre Abad':[10,-756,1702,5289],'Manantay':[20,-706,420,4770],'Calleria':[18,-531,123,5376],
+ 'Constitucion':[8,-422,-65,2800],'Puerto Bermudez':[10,-313,148,1945],'Irazola':[3,-245,90,1770],'Palcazu':[2,-174,42,604],
+ 'Yuyapichis':[3,-152,-153,317],'Puerto Inca':[4,-148,-48,1769],'Tournavista':[3,-138,135,1359],'Curimana':[2,-127,-11,831],
+ 'Codo del Pozuzo':[2,-95,23,389],'Campoverde':[5,-93,93,2242],'Honoria':[4,-90,153,812],'Huipoca':[1,-75,92,383],
+ 'Nueva Requena':[1,-63,-34,264],'Masisea':[1,-49,83,330],'Padre Marquez':[1,-48,31,156],'Alexander Von Humboldt':[1,-40,24,574],
+ 'Contamana':[2,-40,95,230],'Boqueron':[1,-27,33,371],'Neshuya':[1,-9,0,26]};
+// 15C3D net theo quận (thẻ Quận giảm thị phần, T11 đến 08/11)
+var TP15_NET = {'Yuyapichis':-57,'Masisea':-49,'Curimana':-127,'Tournavista':-138,'Nueva Requena':-63,'Contamana':-23};
+var TP15_T = {
+ vi:{h:'Phần 4 · Đối chiếu 15C3D – Thị phần theo quận', tt:'📋 15C3D giảm (T11 đến 08/11) so với thị phần Bitel T10 → T11',
+  note:'📌 15C3D: chỉ cộng các trạm <strong>giảm</strong> ở Phần 4 tuần 1 T11 (121 trạm, tổng −5.196; các trạm tăng bù +1.665 → net UCABR −3.531), gộp theo quận của trạm. Cột “Net quận” chỉ có cho 6 quận đang theo dõi ở thẻ Quận giảm thị phần. Thị phần = tỷ lệ Events (lượng hoạt động trên mạng), không phải số thuê bao; T11 mới có 8 ngày.',
+  prov:'Tỉnh', dist:'Quận', ns:'Trạm giảm', d11:'15C3D giảm T11', d10:'T10 (cùng trạm)', sh:'Tỷ trọng giảm', net:'Net quận', tp10:'TP T10', tp11:'TP T11', dd:'± điểm', ev:'Events T11', ev2:'Đánh giá',
+  m1:'Khớp – cùng giảm', m2:'Ngược chiều', m3:'Đi ngang', m4:'Mẫu nhỏ', tot:'Tổng 23 quận',
+  sumT:'Nhận định',
+  b:['Mất thuê bao tập trung ở <strong>đô thị</strong>: Yarinacocha, Padre Abad, Manantay, Calleria chiếm −2.848 / −5.196 (55%). Nông thôn giảm ít về số tuyệt đối.',
+     '<strong>Yarinacocha</strong> là quận “khớp” rõ nhất: 15C3D −855 (lớn nhất) và thị phần 28,7% → 26,4% (−2,3 điểm) trên mẫu Events lớn → <strong>ưu tiên số 1</strong>. Cùng xu hướng: Constitucion (−422; 37,9% → 35,0%), Puerto Inca, Neshuya.',
+     '<strong>Ngược chiều</strong> – nguyên nhân làm thị phần tổng tăng: Padre Abad (−756 nhưng 27,3% → 32,1%), Manantay (−706; 28,9% → 33,5%), Puerto Bermudez (−313; 38,4% → 43,2%), Irazola (−245; 19,6% → 30,2%). Thuê bao rơi là SIM ít dùng, khách dùng nhiều vẫn ở lại nên Events không giảm.',
+     'Padre Abad: các trạm này T10 <strong>+1.702</strong>, sang T11 <strong>−756</strong> → dấu hiệu SIM kích hoạt T10 không phát sinh sử dụng, đang rụng. Cần kiểm tra chất lượng kích hoạt T10 theo điểm bán/PR (Manantay tương tự: +420 → −706).',
+     'Quận nông thôn có Events T11 rất nhỏ (Honoria, Yuyapichis, Padre Marquez, Palcazu < 2.000) → thị phần dao động mạnh (VD Honoria 28,1% → 3,5%), chưa đủ tin cậy; theo dõi tiếp đến cuối tháng.',
+     'Kết luận: thị phần Events tăng <strong>không bù</strong> được việc mất thuê bao. Ưu tiên: (1) Yarinacocha – giữ chân thuê bao; (2) Padre Abad, Manantay – rà kích hoạt kém chất lượng; (3) Constitucion, Puerto Bermudez – kiểm tra trạm giảm.']},
+ es:{h:'Parte 4 · Cruce 15C3D – Participación por distrito', tt:'📋 Caída 15C3D (Nov al 08/11) vs. participación Bitel Oct → Nov',
+  note:'📌 15C3D: solo se suman las estaciones <strong>en caída</strong> de la Parte 4, semana 1 de noviembre (121 estaciones, total −5.196; las que suben compensan +1.665 → neto UCABR −3.531), agrupadas por distrito. “Neto distrito” solo existe para los 6 distritos de la pestaña Distritos con caída de participación. Participación = % de Events (actividad en la red), no número de abonados; noviembre solo tiene 8 días.',
+  prov:'Provincia', dist:'Distrito', ns:'Est. en caída', d11:'Caída 15C3D Nov', d10:'Oct (mismas est.)', sh:'% de la caída', net:'Neto distrito', tp10:'Part. Oct', tp11:'Part. Nov', dd:'± pts', ev:'Events Nov', ev2:'Evaluación',
+  m1:'Coincide – ambos caen', m2:'Opuesto', m3:'Estable', m4:'Muestra pequeña', tot:'Total 23 distritos',
+  sumT:'Análisis',
+  b:['La pérdida de abonados se concentra en la <strong>zona urbana</strong>: Yarinacocha, Padre Abad, Manantay y Calleria suman −2.848 / −5.196 (55%). La zona rural cae poco en números absolutos.',
+     '<strong>Yarinacocha</strong> es el caso más claro: 15C3D −855 (la mayor caída) y participación 28,7% → 26,4% (−2,3 pts) con una muestra grande → <strong>prioridad 1</strong>. Misma tendencia: Constitución (−422; 37,9% → 35,0%), Puerto Inca, Neshuya.',
+     '<strong>Opuesto</strong> – explica por qué sube la participación total: Padre Abad (−756 pero 27,3% → 32,1%), Manantay (−706; 28,9% → 33,5%), Puerto Bermúdez (−313; 38,4% → 43,2%), Irazola (−245; 19,6% → 30,2%). Se pierden líneas de bajo consumo; los clientes de alto consumo se quedan, por eso los Events no bajan.',
+     'Padre Abad: estas estaciones tuvieron <strong>+1.702</strong> en octubre y <strong>−756</strong> en noviembre → señal de que las líneas activadas en octubre no generan consumo y se están cayendo. Revisar la calidad de activaciones de octubre por punto de venta/PR (Manantay igual: +420 → −706).',
+     'Los distritos rurales tienen muy pocos Events en noviembre (Honoria, Yuyapichis, Padre Márquez, Palcazu < 2.000) → la participación varía mucho (p. ej. Honoria 28,1% → 3,5%); aún no es confiable, seguir hasta fin de mes.',
+     'Conclusión: el aumento de participación por Events <strong>no compensa</strong> la pérdida de abonados. Prioridades: (1) Yarinacocha – retención; (2) Padre Abad, Manantay – revisar activaciones de baja calidad; (3) Constitución, Puerto Bermúdez – revisar estaciones en caída.']},
+ en:{h:'Part 4 · 15C3D vs. market share by district', tt:'📋 15C3D decline (Nov to 08/11) vs. Bitel share Oct → Nov',
+  note:'📌 15C3D: only <strong>declining</strong> sites from Part 4, week 1 of November (121 sites, total −5,196; growing sites offset +1,665 → UCABR net −3,531), grouped by the site\'s district. “District net” is only available for the 6 districts tracked in the Share-loss districts tab. Share = % of Events (network activity), not subscriber count; November has only 8 days.',
+  prov:'Province', dist:'District', ns:'Declining sites', d11:'15C3D drop Nov', d10:'Oct (same sites)', sh:'% of drop', net:'District net', tp10:'Share Oct', tp11:'Share Nov', dd:'± pts', ev:'Events Nov', ev2:'Assessment',
+  m1:'Match – both down', m2:'Opposite', m3:'Flat', m4:'Small sample', tot:'Total 23 districts',
+  sumT:'Assessment',
+  b:['Subscriber loss is concentrated in <strong>urban</strong> areas: Yarinacocha, Padre Abad, Manantay and Calleria account for −2,848 / −5,196 (55%). Rural districts lose little in absolute terms.',
+     '<strong>Yarinacocha</strong> is the clearest match: 15C3D −855 (largest) and share 28.7% → 26.4% (−2.3 pts) on a large Events sample → <strong>priority 1</strong>. Same trend: Constitucion (−422; 37.9% → 35.0%), Puerto Inca, Neshuya.',
+     '<strong>Opposite</strong> – why total share rises: Padre Abad (−756 but 27.3% → 32.1%), Manantay (−706; 28.9% → 33.5%), Puerto Bermudez (−313; 38.4% → 43.2%), Irazola (−245; 19.6% → 30.2%). Lost lines are low-usage SIMs; heavy users stay, so Events do not fall.',
+     'Padre Abad: these sites were <strong>+1,702</strong> in October and <strong>−756</strong> in November → October activations are not generating usage and are dropping off. Check October activation quality by point of sale/PR (Manantay similar: +420 → −706).',
+     'Rural districts have very few November Events (Honoria, Yuyapichis, Padre Marquez, Palcazu < 2,000) → share swings widely (e.g. Honoria 28.1% → 3.5%); not yet reliable, keep tracking to month end.',
+     'Conclusion: the rise in Events share does <strong>not offset</strong> the subscriber loss. Priorities: (1) Yarinacocha – retention; (2) Padre Abad, Manantay – review low-quality activations; (3) Constitucion, Puerto Bermudez – check declining sites.']}
+};
+function tp15Section(l, per, prevP){
+  if(!per || per.key !== TP15_KEY || !prevP) return '';
+  var T = TP15_T[l] || TP15_T.vi, totD = 0, rows = [];
+  Object.keys(TP15).forEach(function(d){ totD += TP15[d][1]; });
+  TP_PROV.forEach(function(pr){ pr[1].forEach(function(d){
+    var x = TP15[d]; if(!x) return;
+    var a = tpStat(prevP.d[d]), b = tpStat(per.d[d]);
+    var dd = (a && b && a.t && b.t) ? b.p[0] - a.p[0] : null;
+    var m = (!b || b.t < 2000) ? 'm4' : (dd === null ? 'm3' : (dd <= -0.5 ? 'm1' : (dd >= 0.5 ? 'm2' : 'm3')));
+    rows.push({p:pr[0], d:d, x:x, a:a, b:b, dd:dd, m:m});
+  }); });
+  rows.sort(function(u,v){ return u.x[1] - v.x[1]; });
+  var MC = {m1:['#fdecea','#c62828'], m2:['#fff7d6','#8a6d00'], m3:['#eef4fb','#0057A8'], m4:['#f2f2f2','#666']};
+  var sg = function(v){ return (v > 0 ? '+' : (v < 0 ? '−' : '')) + tpN(Math.abs(v), l); };
+  var h = '<div class="section-divider"><div class="tag yellow">' + T.h.split(' · ')[0] + '</div><h3>' + T.h.split(' · ')[1] + '</h3><div class="line"></div></div>';
+  h += '<div style="padding:0 24px;"><div class="table-card" style="width:100%;"><h4>' + T.tt + '</h4><div style="overflow-x:auto;"><table class="stats-table" style="min-width:980px;"><thead><tr>'
+     + ['prov','dist','ns','d11','d10','sh','net','tp10','tp11','dd','ev','ev2'].map(function(k,i){ return '<th' + (i < 2 || i === 11 ? ' style="text-align:left;"' : '') + '>' + T[k] + '</th>'; }).join('') + '</tr></thead><tbody>';
+  var sN = 0, s11 = 0, s10 = 0;
+  rows.forEach(function(r){
+    sN += r.x[0]; s11 += r.x[1]; s10 += r.x[2];
+    var c = MC[r.m], net = TP15_NET[r.d];
+    h += '<tr><td style="text-align:left;">' + r.p + '</td><td style="text-align:left;"><strong>' + r.d + '</strong>' + (TP_QGT.indexOf(r.d) >= 0 ? ' <b class="tp-qgt">▼</b>' : '') + '</td>'
+       + '<td>' + r.x[0] + (TP_SITES[r.d] ? '/' + TP_SITES[r.d] : '') + '</td>'
+       + '<td style="color:#c62828;font-weight:700;">' + sg(r.x[1]) + '</td>'
+       + '<td style="color:' + (r.x[2] >= 0 ? '#15803d' : '#c62828') + ';">' + sg(r.x[2]) + '</td>'
+       + '<td>' + tpP(r.x[1] / totD * 100, l) + '</td>'
+       + '<td>' + (net !== undefined ? '<strong style="color:#c62828;">' + sg(net) + '</strong>' : '—') + '</td>'
+       + '<td>' + (r.a && r.a.t ? tpP(r.a.p[0], l) : '—') + '</td><td><strong>' + (r.b && r.b.t ? tpP(r.b.p[0], l) : '—') + '</strong></td>'
+       + '<td style="font-weight:700;color:' + (r.dd === null ? '#666' : (r.dd >= 0 ? '#15803d' : '#c62828')) + ';">' + (r.dd === null ? '—' : tpPP(r.dd, l)) + '</td>'
+       + '<td>' + (r.b ? tpN(r.b.t, l) : '—') + '</td>'
+       + '<td style="text-align:left;"><span style="display:inline-block;padding:2px 8px;border-radius:10px;font-size:0.72rem;font-weight:700;background:' + c[0] + ';color:' + c[1] + ';">' + T[r.m] + '</span></td></tr>';
+  });
+  h += '</tbody><tfoot><tr style="font-weight:700;background:#f4f8fc;"><td colspan="2" style="text-align:left;">' + T.tot + '</td><td>' + sN + '</td><td style="color:#c62828;">' + sg(s11) + '</td><td>' + sg(s10) + '</td><td>100%</td><td colspan="6"></td></tr></tfoot></table></div>'
+     + '<div class="note-box" style="font-size:0.78rem;">' + T.note + '</div></div></div>';
+  h += '<div style="padding:14px 24px 0;"><div class="note-box yellow" style="margin-top:0;font-size:0.84rem;line-height:1.55;"><strong>' + T.sumT + ':</strong><ul style="margin:6px 0 0 18px;padding:0;">' + T.b.map(function(x){ return '<li>' + x + '</li>'; }).join('') + '</ul></div></div>';
+  return h;
 }
 
 var tpPctPlugin = { id:'tpPct', afterDatasetsDraw: function(chart){
