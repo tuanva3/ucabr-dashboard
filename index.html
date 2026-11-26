@@ -500,6 +500,7 @@
   <button class="main-tab-btn" data-tab="cd" onclick="showMainTab('cd', this)" data-i18n="tab-cd">📞 Kênh CĐ</button>
   <button class="main-tab-btn" data-tab="pdv" onclick="showMainTab('pdv', this)" data-i18n="tab-pdv">🏪 Kênh PDV</button>
   <button class="main-tab-btn" data-tab="pr" onclick="showMainTab('pr', this)" data-i18n="tab-pr">🧑‍💼 Kênh PR</button>
+  <button class="main-tab-btn" data-tab="tlkt" onclick="showMainTab('tlkt', this)" data-i18n="tab-tlkt">📚 Tài liệu KT</button>
 </div>
 
 <div id="tabpanel-dashboard" class="tab-panel">
@@ -5288,6 +5289,16 @@ if(b)new Chart(b,{type:'bar',data:{labels:C.af,datasets:[{label:'T'+C.m,data:C.p
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',draw);else draw();})();</script>
 </div><!-- /#tabpanel-pr -->
 <!-- PR-END -->
+<!-- TLKT-START -->
+<div id="tabpanel-tlkt" class="tab-panel" style="display:none">
+  <div class="section-divider"><div class="tag" style="background:#0057A8;">Tài liệu KT</div>
+    <h3>BTS Physical Model – Alarm Map (mô tả về trạm BTS)</h3><div class="line"></div></div>
+  <div style="margin:0 0 10px;">
+    <a href="tai-lieu-kt/BTS_Alarm_Map.html" target="_blank" rel="noopener" style="display:inline-block;background:#0057A8;color:#fff;padding:8px 16px;border-radius:8px;font-weight:600;font-size:0.85rem;text-decoration:none;">🔗 Mở toàn màn hình (tab mới)</a>
+  </div>
+  <iframe id="tlktFrame" data-src="tai-lieu-kt/BTS_Alarm_Map.html" title="BTS Alarm Map" style="width:100%;height:82vh;min-height:560px;border:2px solid #0057A8;border-radius:10px;background:#0d1117;"></iframe>
+</div>
+<!-- TLKT-END -->
 
 
 <!-- PAGE FOOTER -->
@@ -5925,6 +5936,7 @@ const I18N = {
     'tab-cd': '📞 Kênh CĐ',
     'tab-pdv': '🏪 Kênh PDV',
     'tab-pr': '🧑‍💼 Kênh PR',
+    'tab-tlkt': '📚 Tài liệu KT',
     'pdv-tag': 'Kênh PDV',
     'pdv-h3': 'Kết Quả Kênh PDV (AC chăm sóc điểm bán) – T11 / 2026 &nbsp;·&nbsp; Chips đến 19/11/2026 · Visitas cắt 20/11/2026',
     'pdv-kpi-title': 'Visitas OK (2 lần/tháng) 187/397 PDV = 47,1% (nhịp chuẩn 66,7%) &nbsp;|&nbsp; Chips T11 2.586 vs T10 cùng kỳ 3.003 (-13,9%)',
@@ -6372,6 +6384,7 @@ const I18N = {
     'tab-cd': '📞 Canal Fijo',
     'tab-pdv': '🏪 Canal PDV',
     'tab-pr': '🧑‍💼 Canal PR',
+    'tab-tlkt': '📚 Documentos técnicos',
     'pdv-tag': 'Canal PDV',
     'pdv-h3': 'Resultados Canal PDV (AC) – Noviembre 2026 &nbsp;·&nbsp; Chips al 19/11/2026 · Visitas al 20/11/2026',
     'pdv-kpi-title': 'Visitas OK (2/mes) 187/397 PDV = 47,1% (ritmo esperado 66,7%) &nbsp;|&nbsp; Chips Nov 2.586 vs Oct mismo periodo 3.003 (-13,9%)',
@@ -6819,6 +6832,7 @@ const I18N = {
     'tab-cd': '📞 Fixed channel',
     'tab-pdv': '🏪 POS channel',
     'tab-pr': '🧑‍💼 PR channel',
+    'tab-tlkt': '📚 Technical docs',
     'pdv-tag': 'POS channel',
     'pdv-h3': 'POS Channel Results (AC) – Nov 2026 &nbsp;·&nbsp; Chips to 19/11/2026 · Visits to 20/11/2026',
     'pdv-kpi-title': 'Visits OK (2/month) 187/397 POS = 47.1% (expected pace 66.7%) &nbsp;|&nbsp; Chips 2.586 vs same period last month 3.003',
@@ -7156,6 +7170,7 @@ function showMainTab(tab, btnEl){
     if(btn) btn.classList.add('active');
   }
   try{ localStorage.setItem('bitel_main_tab', tab); }catch(e){}
+  if(tab==='tlkt'){ var f=document.getElementById('tlktFrame'); if(f && !f.getAttribute('src')) f.setAttribute('src', f.getAttribute('data-src')); }
   // Charts inside a tab that was display:none at creation time get 0-size
   // canvases; force every Chart.js instance to recompute its size now that
   // the panel is visible (fixes MAU/Di động/Digital charts rendering as slivers).
